@@ -1,25 +1,19 @@
 
 function FractureGrid() constructor {
-	width = 400;
-	height = 400;
+	width = sprite_get_width(sprAnimal);
+	height = sprite_get_height(sprAnimal);
 	gridDivsX = 5;
 	gridDivsY = 5;
 	spacingX = width / gridDivsX;
 	spacingY = height / gridDivsY;
-	noise = 0.2;
+	noise = 0.3;
 	noiseX = spacingX * noise;
 	noiseY = spacingY * noise;
 	cells = [];
 	
-	xOffset = (room_width - width) / 2;
-	yOffset = (room_height - height) / 2;
-	
-	vertex_format_begin();
-	vertex_format_add_position();
-	vertex_format_add_color();
-	format = vertex_format_end();
-	
 	static Generate = function() {
+		__FRACTURE_FORMAT;
+		
 		cells = array_create(gridDivsX * gridDivsY);
 		
 		var _prevCol = undefined;
@@ -49,9 +43,6 @@ function FractureGrid() constructor {
 		            _x += random_range(-noiseX, noiseX);
 		            _y += random_range(-noiseY, noiseY);
 		        }
-		
-				_x = round(_x);
-				_y = round(_y);
 				
 		        _col[_j] = [_x, _y];
 				
@@ -66,19 +57,18 @@ function FractureGrid() constructor {
 					var _x3 = _br[0], _y3 = _br[1];
 					var _x4 = _bl[0], _y4 = _bl[1];
 					
-					//var _color = make_color_hsv(_index * 10, 200, 200);
-					var _color = c_white;
-					
 					var _vb = vertex_create_buffer(); {
-						vertex_begin(_vb, format);
+						vertex_begin(_vb, _format);
 						
-						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, _color, 1);
-						vertex_position(_vb, _x2, _y2); vertex_colour(_vb, _color, 1);
-						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, _color, 1);
+						show_debug_message(_x1 / width)
 						
-						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, _color, 1);
-						vertex_position(_vb, _x4, _y4); vertex_colour(_vb, _color, 1);
-						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, _color, 1);
+						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / width, _y1 / height);
+						vertex_position(_vb, _x2, _y2); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / width, _y2 / height);
+						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / width, _y3 / height);
+						
+						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / width, _y3 / height);
+						vertex_position(_vb, _x4, _y4); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / width, _y4 / height);
+						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / width, _y1 / height);
 						
 						vertex_end(_vb);
 						vertex_freeze(_vb);
@@ -97,22 +87,26 @@ function FractureGrid() constructor {
 		
 		var _t = get_timer();
 		
-		matrix_build(xOffset, yOffset, 0, 0, 0, 0, 1, 1, 1, _matrixA);
+		var _xOffset = (room_width - width) / 2;
+		var _yOffset = (room_height - height) / 2;
+		matrix_build(_xOffset, _yOffset, 0, 0, 0, 0, 1, 1, 1, _matrixA);
 		matrix_set(matrix_world, _matrixA);
 		
 		array_foreach(cells, function(_cell) {
 			_cell.Draw();
 		});
-		
-		show_debug_message((get_timer() - _t) / 1000);
+		array_foreach(cells, function(_cell) {
+			_cell.DrawOutline();
+		});
 		
 		with (cells[0]) {
-		    var _angle = current_time / 10
+		    var _angle = current_time / 10;
 		    matrix_build(mouse_x, mouse_y, 0, 0, 0, _angle, 1, 1, 1, _matrixA);
 		    matrix_build(-w / 2, -h / 2, 0, 0, 0, 0, 1, 1, 1, _matrixB);
 			matrix_multiply(_matrixB, _matrixA, _matrixC)
 		    matrix_set(matrix_world, _matrixC);
 		    Draw();
+		    DrawOutline();
 		}
 		
 		matrix_set(matrix_world, _matrixIdentity);
@@ -124,6 +118,10 @@ function FractureGridCell(_vb, _w, _h) constructor {
 	h = _w;
 	
 	static Draw = function() {
+		var _texture = sprite_get_texture(sprAnimal, 0);
+		vertex_submit(vb, pr_trianglestrip, _texture);
+	};
+	static DrawOutline = function() {
 		vertex_submit(vb, pr_linestrip, -1);
 	};
 	static Cleanup = function() {

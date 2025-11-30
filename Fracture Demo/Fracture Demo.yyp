@@ -33,6 +33,7 @@
     {"id":{"name":"__FractureUtility","path":"scripts/__FractureUtility/__FractureUtility.yy",},},
     {"id":{"name":"FractureGrid","path":"scripts/FractureGrid/FractureGrid.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
+    {"id":{"name":"sprAnimal","path":"sprites/sprAnimal/sprAnimal.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
