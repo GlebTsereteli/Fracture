@@ -1,4 +1,6 @@
 
+/*
+
 function FractureGrid() constructor {
 	width = sprite_get_width(sprAnimal);
 	height = sprite_get_height(sprAnimal);

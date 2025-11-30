@@ -1,0 +1,13 @@
+
+if (room == rmDemo) {
+	var _fx = physics_fixture_create();
+	physics_fixture_set_collision_group(_fx, 1);
+	physics_fixture_set_density(_fx, 0);
+	physics_fixture_set_chain_shape(_fx, true);
+	physics_fixture_add_point(_fx, 0, 0);
+	physics_fixture_add_point(_fx, room_width, 0);
+	physics_fixture_add_point(_fx, room_width, room_height);
+	physics_fixture_add_point(_fx, 0, room_height);
+	edgeFixture = physics_fixture_bind(_fx, id);
+	physics_fixture_delete(_fx);
+}
