@@ -26,6 +26,7 @@
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
+    {"id":{"name":"FractureGrid","path":"scripts/FractureGrid/FractureGrid.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
   ],
   "resourceType":"GMProject",
