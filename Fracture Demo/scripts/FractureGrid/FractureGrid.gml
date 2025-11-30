@@ -14,12 +14,20 @@ function FractureGrid() constructor {
 	xOffset = (room_width - width) / 2;
 	yOffset = (room_height - height) / 2;
 	
+	vertex_format_begin();
+	vertex_format_add_position();
+	vertex_format_add_color();
+	format = vertex_format_end();
+	
 	static Generate = function() {
 		cells = array_create(gridDivsX * gridDivsY);
 		
 		var _prevCol = undefined;
 		var _notFirst = false;
 		var _index = 0;
+		
+		var _xPrev = undefined;
+		var _yPrev = undefined;
 		
 		for (var _i = 0; _i <= gridDivsX; _i++) {
 		    var _col = array_create(gridDivsY);
@@ -42,43 +50,83 @@ function FractureGrid() constructor {
 		            _y += random_range(-noiseY, noiseY);
 		        }
 		
-		        var _px = round(_x);
-		        var _py = round(_y);
-		        _col[_j] = [_px, _py];
-		
+				_x = round(_x);
+				_y = round(_y);
+				
+		        _col[_j] = [_x, _y];
+				
 		        if ((_i > 0) and (_j > 0)) {
 		            var _tl = _prevCol[_j - 1];
 		            var _tr = _col[_j - 1];
 		            var _br = _col[_j];
 		            var _bl = _prevCol[_j];
-            
-		            cells[_index++] = {
-		                x1: _tl[0], y1: _tl[1],
-		                x2: _tr[0], y2: _tr[1],
-		                x3: _br[0], y3: _br[1],
-		                x4: _bl[0], y4: _bl[1]
-		            };
+					
+					var _x1 = _tl[0], _y1 = _tl[1];
+					var _x2 = _tr[0], _y2 = _tr[1];
+					var _x3 = _br[0], _y3 = _br[1];
+					var _x4 = _bl[0], _y4 = _bl[1];
+					
+					//var _color = make_color_hsv(_index * 10, 200, 200);
+					var _color = c_white;
+					
+					var _vb = vertex_create_buffer(); {
+						vertex_begin(_vb, format);
+						
+						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, _color, 1);
+						vertex_position(_vb, _x2, _y2); vertex_colour(_vb, _color, 1);
+						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, _color, 1);
+						
+						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, _color, 1);
+						vertex_position(_vb, _x4, _y4); vertex_colour(_vb, _color, 1);
+						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, _color, 1);
+						
+						vertex_end(_vb);
+						vertex_freeze(_vb);
+					}
+					var _w = max(_x2, _x3) - min(_x1, _x4);
+					var _h = max(_y2, _y3) - min(_y1, _y4);
+		            cells[_index++] = new FractureGridCell(_vb, _w, _h);
 		        }
 		    }
 		    _prevCol = _col;
 		}
 	};
+	
 	static Draw = function() {
-		var _matrix = matrix_build(xOffset, yOffset, 0, 0, 0, 0, 1, 1, 1);
-		matrix_set(matrix_world, _matrix);
+		__FRACTURE_LOCAL_MATRICES;
+		
+		var _t = get_timer();
+		
+		matrix_build(xOffset, yOffset, 0, 0, 0, 0, 1, 1, 1, _matrixA);
+		matrix_set(matrix_world, _matrixA);
 		
 		array_foreach(cells, function(_cell) {
-			draw_primitive_begin(pr_linestrip);
-			with (_cell) {
-				draw_vertex(x1, y1); draw_circle(x1, y1, 4, false);
-				draw_vertex(x2, y2); draw_circle(x2, y2, 4, false);
-				draw_vertex(x3, y3); draw_circle(x3, y3, 4, false);
-				draw_vertex(x4, y4); draw_circle(x4, y4, 4, false);
-				draw_vertex(x1, y1); draw_circle(x1, y1, 4, false);
-			}
-			draw_primitive_end();
+			_cell.Draw();
 		});
 		
-		matrix_set(matrix_world, matrix_build_identity());
+		show_debug_message((get_timer() - _t) / 1000);
+		
+		with (cells[0]) {
+		    var _angle = current_time / 10
+		    matrix_build(mouse_x, mouse_y, 0, 0, 0, _angle, 1, 1, 1, _matrixA);
+		    matrix_build(-w / 2, -h / 2, 0, 0, 0, 0, 1, 1, 1, _matrixB);
+			matrix_multiply(_matrixB, _matrixA, _matrixC)
+		    matrix_set(matrix_world, _matrixC);
+		    Draw();
+		}
+		
+		matrix_set(matrix_world, _matrixIdentity);
+	};
+}
+function FractureGridCell(_vb, _w, _h) constructor {
+	vb = _vb;
+	w = _w;
+	h = _w;
+	
+	static Draw = function() {
+		vertex_submit(vb, pr_linestrip, -1);
+	};
+	static Cleanup = function() {
+		vertex_delete_buffer(vb);
 	};
 }

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureGrid",
+  "%Name":"__FractureMacros",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureGrid",
+  "name":"__FractureMacros",
   "parent":{
-    "name":"02. Public",
-    "path":"folders/02. Fracture/02. Public.yy",
+    "name":"03. Private",
+    "path":"folders/02. Fracture/03. Private.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
