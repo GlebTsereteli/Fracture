@@ -1,129 +1,106 @@
 
-function FractureGrid() constructor {
-	width = sprite_get_width(sprAnimal);
-	height = sprite_get_height(sprAnimal);
-	gridDivsX = 5;
-	gridDivsY = 5;
-	spacingX = width / gridDivsX;
-	spacingY = height / gridDivsY;
-	noise = 0.3;
-	noiseX = spacingX * noise;
-	noiseY = spacingY * noise;
-	cells = [];
+function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
+	if (not sprite_exists(_inst.sprite_index)) {
+		show_error("no sprite", true);
+	}
 	
-	static Generate = function() {
-		__FRACTURE_FORMAT;
+	var _w = _inst.sprite_width;
+	var _h = _inst.sprite_height;
+	
+	var _spacingX = _w / _divX;
+	var _spacingY = _h / _divX;
+	
+	var _noiseX = _spacingX * _noise;
+	var _noiseY = _spacingY * _noise;
+	
+	__FRACTURE_FORMAT;
+	
+	var _pieces = array_create(_divX * _divY);
+	
+	var _prevCol = undefined;
+	var _notFirst = false;
+	var _index = 0;
+	
+	var _prevX = undefined;
+	var _prevY = undefined;
+	
+	for (var _i = 0; _i <= _divX; _i++) {
+		var _col = array_create(_divY);
 		
-		cells = array_create(gridDivsX * gridDivsY);
-		
-		var _prevCol = undefined;
-		var _notFirst = false;
-		var _index = 0;
-		
-		var _xPrev = undefined;
-		var _yPrev = undefined;
-		
-		for (var _i = 0; _i <= gridDivsX; _i++) {
-		    var _col = array_create(gridDivsY);
+		for (var _j = 0; _j <= _divY; _j++) {
+		    var _x = _i * _spacingX;
+		    var _y = _j * _spacingY;
 			
-		    for (var _j = 0; _j <= gridDivsY; _j++) {
-		        var _x = _i * spacingX;
-		        var _y = _j * spacingY;
-				
-		        var _onEdge = ((_i == 0) or (_i == gridDivsX) or (_j == 0) or (_j == gridDivsY));
-		        if (_onEdge) {
-					if ((_i > 0) and (_i < gridDivsX)) {
-						_x += random_range(-noiseX, noiseX);
-					}
-					if ((_j > 0) and (_j < gridDivsY)) {
-						_y += random_range(-noiseY, noiseY);
-					}
+		    var _onEdge = ((_i == 0) or (_i == _divX) or (_j == 0) or (_j == _divY));
+		    if (_onEdge) {
+				if ((_i > 0) and (_i < _divX)) {
+					_x += random_range(-_noiseX, _noiseX);
 				}
-				else {
-		            _x += random_range(-noiseX, noiseX);
-		            _y += random_range(-noiseY, noiseY);
-		        }
-				
-		        _col[_j] = [_x, _y];
-				
-		        if ((_i > 0) and (_j > 0)) {
-		            var _tl = _prevCol[_j - 1];
-		            var _tr = _col[_j - 1];
-		            var _br = _col[_j];
-		            var _bl = _prevCol[_j];
-					
-					var _x1 = _tl[0], _y1 = _tl[1];
-					var _x2 = _tr[0], _y2 = _tr[1];
-					var _x3 = _br[0], _y3 = _br[1];
-					var _x4 = _bl[0], _y4 = _bl[1];
-					
-					var _vb = vertex_create_buffer(); {
-						vertex_begin(_vb, _format);
-						
-						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / width, _y1 / height);
-						vertex_position(_vb, _x2, _y2); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / width, _y2 / height);
-						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / width, _y3 / height);
-						
-						vertex_position(_vb, _x3, _y3); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / width, _y3 / height);
-						vertex_position(_vb, _x4, _y4); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / width, _y4 / height);
-						vertex_position(_vb, _x1, _y1); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / width, _y1 / height);
-						
-						vertex_end(_vb);
-						vertex_freeze(_vb);
-					}
-					var _w = max(_x2, _x3) - min(_x1, _x4);
-					var _h = max(_y2, _y3) - min(_y1, _y4);
-		            cells[_index++] = new FractureGridCell(_vb, _w, _h);
-		        }
+				if ((_j > 0) and (_j < _divY)) {
+					_y += random_range(-_noiseY, _noiseY);
+				}
+			}
+			else {
+		        _x += random_range(-_noiseX, _noiseX);
+		        _y += random_range(-_noiseY, _noiseY);
 		    }
-		    _prevCol = _col;
+			
+		    _col[_j] = [_x, _y];
+			
+		    if ((_i > 0) and (_j > 0)) {
+				var _tl = _prevCol[_j - 1];
+		        var _tr = _col[_j - 1];
+		        var _bl = _prevCol[_j];
+				
+				var _x1 = _tl[0], _y1 = _tl[1];
+				var _x2 = _tr[0], _y2 = _tr[1];
+				var _x3 = _x, _y3 = _y;
+				var _x4 = _bl[0], _y4 = _bl[1];
+				
+				var _xLeft = min(_x1, _x2, _x3, _x4);
+				var _yTop = min(_y1, _y2, _y3, _y4);
+				
+				var _piece = instance_create_depth(_inst.bbox_left + _xLeft, _inst.bbox_top + _yTop, _inst.depth, objFracturePiece);
+				with (_piece) {
+					vb = vertex_create_buffer(); {
+						vertex_begin(vb, _format);
+						
+						vertex_position(vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x1 / _w, _y1 / _h);
+						vertex_position(vb, _x2 - _xLeft, _y2 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x2 / _w, _y2 / _h);
+						vertex_position(vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x3 / _w, _y3 / _h);
+						
+						vertex_position(vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x3 / _w, _y3 / _h);
+						vertex_position(vb, _x4 - _xLeft, _y4 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x4 / _w, _y4 / _h);
+						vertex_position(vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x1 / _w, _y1 / _h);
+						
+						vertex_end(vb);
+						vertex_freeze(vb);
+					}
+					
+					sprite = _inst.sprite_index;
+					frame = _inst.image_index;
+					
+					var _fx = physics_fixture_create();
+					physics_fixture_set_collision_group(_fx, 1);
+					physics_fixture_set_polygon_shape(_fx);
+					physics_fixture_set_density(_fx, 0.5);
+					physics_fixture_add_point(_fx, _x1 - _xLeft, _y1 - _yTop);
+					physics_fixture_add_point(_fx, _x2 - _xLeft, _y2 - _yTop);
+					physics_fixture_add_point(_fx, _x3 - _xLeft, _y3 - _yTop);
+					physics_fixture_add_point(_fx, _x4 - _xLeft, _y4 - _yTop);
+					fixture = physics_fixture_bind(_fx, id);
+					phy_speed_x = _inst.phy_speed_x;
+					phy_speed_y = _inst.phy_speed_y;
+				}
+				_pieces[_index++] = _piece;
+		    }
 		}
-	};
+		_prevCol = _col;
+		_prevX = _x;
+		_prevY = _y;
+	}
 	
-	static Draw = function() {
-		__FRACTURE_LOCAL_MATRICES;
-		
-		var _t = get_timer();
-		
-		var _xOffset = (room_width - width) / 2;
-		var _yOffset = (room_height - height) / 2;
-		matrix_build(_xOffset, _yOffset, 0, 0, 0, 0, 1, 1, 1, _matrixA);
-		//matrix_build(0, 0, 0, 0, 0, 0, width, height, 1, _matrixA);
-		matrix_set(matrix_world, _matrixA);
-		
-		array_foreach(cells, function(_cell) {
-			_cell.Draw();
-		});
-		array_foreach(cells, function(_cell) {
-			_cell.DrawOutline();
-		});
-		
-		with (cells[0]) {
-		    var _angle = current_time / 10;
-		    matrix_build(mouse_x, mouse_y, 0, 0, 0, _angle, 1, 1, 1, _matrixA);
-		    matrix_build(-w / 2, -h / 2, 0, 0, 0, 0, 1, 1, 1, _matrixB);
-			matrix_multiply(_matrixB, _matrixA, _matrixC)
-		    matrix_set(matrix_world, _matrixC);
-		    Draw();
-		    DrawOutline();
-		}
-		
-		matrix_set(matrix_world, _matrixIdentity);
-	};
-}
-function FractureGridCell(_vb, _w, _h) constructor {
-	vb = _vb;
-	w = _w;
-	h = _w;
+	instance_destroy(_inst);
 	
-	static Draw = function() {
-		var _texture = sprite_get_texture(sprAnimal, 0);
-		vertex_submit(vb, pr_trianglestrip, _texture);
-	};
-	static DrawOutline = function() {
-		vertex_submit(vb, pr_linestrip, -1);
-	};
-	static Cleanup = function() {
-		vertex_delete_buffer(vb);
-	};
+	return _pieces;
 }

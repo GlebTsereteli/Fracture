@@ -1,3 +1,3 @@
 
-grid = new FractureGrid();
+grid = new FractureGridClass();
 grid.Generate();
