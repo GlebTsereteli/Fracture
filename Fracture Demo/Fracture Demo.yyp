@@ -36,7 +36,6 @@
     {"id":{"name":"FractureGrid","path":"scripts/FractureGrid/FractureGrid.yy",},},
     {"id":{"name":"FractureGridClass","path":"scripts/FractureGridClass/FractureGridClass.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
-    {"id":{"name":"Script5","path":"scripts/Script5/Script5.yy",},},
     {"id":{"name":"sprAnimal","path":"sprites/sprAnimal/sprAnimal.yy",},},
   ],
   "resourceType":"GMProject",

@@ -1,4 +1,8 @@
 
+image_xscale = random_range(0.9, 1.1);
+image_yscale = image_xscale;
+image_index = irandom(image_number - 1);
+
 var _fx = physics_fixture_create(); {
 	physics_fixture_set_collision_group(_fx, 1);
 	physics_fixture_set_box_shape(_fx, sprite_width / 2, sprite_height / 2)
@@ -8,5 +12,3 @@ var _fx = physics_fixture_create(); {
 	fixture = physics_fixture_bind(_fx, id);
 	physics_fixture_delete(_fx);
 }
-
-image_index = irandom(image_number - 1);

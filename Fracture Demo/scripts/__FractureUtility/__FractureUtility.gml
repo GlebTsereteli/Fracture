@@ -11,18 +11,14 @@ function __FractureFormat() {
 }
 
 function __FractureMatrixA() {
-	static _matrixA = matrix_build_identity();
-	return _matrixA;
+	__FRACTURE_MATRIX;
 }
 function __FractureMatrixB() {
-	static _matrixB = matrix_build_identity();
-	return _matrixB;
+	__FRACTURE_MATRIX;
 }
 function __FractureMatrixC() {
-	static _matrixC = matrix_build_identity();
-	return _matrixC;
+	__FRACTURE_MATRIX;
 }
 function __FractureMatrixIdentity() {
-	static _matrixIdentity = matrix_build_identity();
-	return _matrixIdentity;
+	__FRACTURE_MATRIX;
 }

@@ -92,8 +92,9 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 					physics_fixture_add_point(_fx, _x4 - _xLeft, _y4 - _yTop);
 					fixture = physics_fixture_bind(_fx, id);
 					
-					phy_speed_x = _inst.phy_speed_x;
-					phy_speed_y = _inst.phy_speed_y;
+					phy_linear_velocity_x = _inst.phy_linear_velocity_x;
+			        phy_linear_velocity_y = _inst.phy_linear_velocity_y;
+			        phy_angular_velocity = _inst.phy_angular_velocity;
 					phy_rotation = _angle;
 					
 					//var _force = 0.2;
