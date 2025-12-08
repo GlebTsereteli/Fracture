@@ -4,8 +4,12 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 		show_error("no sprite", true);
 	}
 	
+	__FRACTURE_FORMAT;
+	
 	var _w = _inst.sprite_width;
 	var _h = _inst.sprite_height;
+	var _xCenter = _w / 2;
+	var _yCenter = _h / 2;
 	var _angle = _inst.phy_rotation;
 	
 	var _spacingX = _w / _divX;
@@ -14,13 +18,10 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 	var _noiseX = _spacingX * _noise;
 	var _noiseY = _spacingY * _noise;
 	
-	__FRACTURE_FORMAT;
-	
-	var _pieces = array_create(_divX * _divY);
-	
 	var _prevCol = undefined;
 	var _index = 0;
 	
+	var _pieces = array_create(_divX * _divY);
 	for (var _i = 0; _i <= _divX; _i++) {
 		var _col = array_create(_divY);
 		
@@ -53,11 +54,8 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 				var _x2 = _tr[0], _y2 = _tr[1];
 				var _x4 = _bl[0], _y4 = _bl[1];
 				
-				var _xLeft = min(_x1, _x2, _x3, _x4);
-				var _yTop = min(_y1, _y2, _y3, _y4);
-				
-				var _xCenter = _w / 2;
-				var _yCenter = _h / 2;
+				var _xLeft = min(_x1, _x4);
+				var _yTop = min(_y1, _y2);
 				
 				var _dist = point_distance(_xCenter, _yCenter, _xLeft, _yTop);
 				var _dir = point_direction(_xCenter, _yCenter, _xLeft, _yTop);
@@ -66,21 +64,22 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 				
 				var _piece = instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece);
 				with (_piece) {
-					vb = vertex_create_buffer(); {
-						vertex_begin(vb, _format);
+					__index = _index;
+					__vb = vertex_create_buffer(); {
+						vertex_begin(__vb, _format);
 						
-						vertex_position(vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x1 / _w, _y1 / _h);
-						vertex_position(vb, _x2 - _xLeft, _y2 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x2 / _w, _y2 / _h);
-						vertex_position(vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x3 / _w, _y3 / _h);
+						vertex_position(__vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x1 / _w, _y1 / _h);
+						vertex_position(__vb, _x2 - _xLeft, _y2 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x2 / _w, _y2 / _h);
+						vertex_position(__vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x3 / _w, _y3 / _h);
 						
-						vertex_position(vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x3 / _w, _y3 / _h);
-						vertex_position(vb, _x4 - _xLeft, _y4 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x4 / _w, _y4 / _h);
-						vertex_position(vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(vb, c_white, 1); vertex_texcoord(vb, _x1 / _w, _y1 / _h);
+						vertex_position(__vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x3 / _w, _y3 / _h);
+						vertex_position(__vb, _x4 - _xLeft, _y4 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x4 / _w, _y4 / _h);
+						vertex_position(__vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x1 / _w, _y1 / _h);
 						
-						vertex_end(vb);
-						vertex_freeze(vb);
+						vertex_end(__vb);
+						vertex_freeze(__vb);
 					}
-					texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
+					__texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 					
 					var _fx = physics_fixture_create();
 					physics_fixture_set_collision_group(_fx, 1);
@@ -90,7 +89,8 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 					physics_fixture_add_point(_fx, _x2 - _xLeft, _y2 - _yTop);
 					physics_fixture_add_point(_fx, _x3 - _xLeft, _y3 - _yTop);
 					physics_fixture_add_point(_fx, _x4 - _xLeft, _y4 - _yTop);
-					fixture = physics_fixture_bind(_fx, id);
+					__fixture = physics_fixture_bind(_fx, id);
+					physics_fixture_delete(_fx);
 					
 					phy_linear_velocity_x = _inst.phy_linear_velocity_x;
 			        phy_linear_velocity_y = _inst.phy_linear_velocity_y;

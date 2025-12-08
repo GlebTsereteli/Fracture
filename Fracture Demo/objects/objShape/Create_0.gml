@@ -1,5 +1,5 @@
 
-image_xscale = random_range(0.9, 1.1);
+image_xscale = random_range(0.8, 1.2);
 image_yscale = image_xscale;
 image_index = irandom(image_number - 1);
 
