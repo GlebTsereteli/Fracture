@@ -1,7 +1,4 @@
 
-if (keyboard_check_pressed(vk_space)) {
-	grid.Generate();
-}
 if (keyboard_check_pressed(ord("1"))) {
 	instance_create_depth(mouse_x, mouse_y, depth, objShape);
 }
@@ -14,7 +11,7 @@ if (keyboard_check_pressed(ord("2"))) {
 	}
 }
 if (keyboard_check_pressed(ord("3"))) {
-	with (instance_destroy(objShape)) {
+	with (objShape) {
 		FractureGrid(id);
 	}
 }

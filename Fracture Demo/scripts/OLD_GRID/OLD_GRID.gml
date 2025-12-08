@@ -1,5 +1,7 @@
 
-function FractureGridClass() constructor {
+/*
+
+function OLD_GRID() constructor {
 	width = sprite_get_width(sprAnimal);
 	height = sprite_get_height(sprAnimal);
 	gridDivsX = 5;

@@ -1,5 +1,9 @@
 
-function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
+/// @func FractureGrid()
+/// @param {Id.Instance} inst The instance to fracture.
+/// @param {Real} divisionsX The amount of divisions on the X axis.
+/// @param {Real} divisionsY The amount of divisions on the Y axis.
+function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.35) {
 	if (not sprite_exists(_inst.sprite_index)) {
 		show_error("no sprite", true);
 	}
@@ -13,7 +17,7 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 	var _angle = _inst.phy_rotation;
 	
 	var _spacingX = _w / _divX;
-	var _spacingY = _h / _divX;
+	var _spacingY = _h / _divY;
 	
 	var _noiseX = _spacingX * _noise;
 	var _noiseY = _spacingY * _noise;
@@ -27,9 +31,16 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 	var _index = 0;
 	var _n = _divX * _divY;
 	
+	var _prevX = undefined;
+	var _prevY = undefined;
+	var _prevXX = undefined;
+	var _prevYY = undefined;
+	
 	var _pieces = array_create(_n);
 	for (var _i = 0; _i <= _divX; _i++) {
 		var _col = array_create(_divY);
+		var _xx = undefined;
+		var _yy = undefined;
 		
 		for (var _j = 0; _j <= _divY; _j++) {
 		    var _x3 = _i * _spacingX;
@@ -106,17 +117,22 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 				_pieces[_index++] = _piece;
 		    }
 		}
+		_prevXX = _prevX;
+		_prevYY = _prevY;
+		
+		_prevX = _x3;
+		_prevY = _x3;
+		
 		_prevCol = _col;
 	}
 	
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	instance_create_depth(0, 0, _inst.depth, __objFracturePieceGroup, {
-		__vertexBuffer: _vb,
-		__pieces: _pieces,
-		__n: _n,
-	})
+	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePieceGroup);
+	_group.__vertexBuffer = _vb;
+	_group.__pieces = _pieces;
+	_group.__n = _n;
 	
 	instance_destroy(_inst);
 	

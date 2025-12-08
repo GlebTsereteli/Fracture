@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureGridClass",
+  "%Name":"OLD_GRID",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureGridClass",
+  "name":"OLD_GRID",
   "parent":{
-    "name":"02. Public",
-    "path":"folders/02. Fracture/02. Public.yy",
+    "name":"Fracture Demo",
+    "path":"Fracture Demo.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

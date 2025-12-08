@@ -35,7 +35,7 @@
     {"id":{"name":"__FractureMacros","path":"scripts/__FractureMacros/__FractureMacros.yy",},},
     {"id":{"name":"__FractureUtility","path":"scripts/__FractureUtility/__FractureUtility.yy",},},
     {"id":{"name":"FractureGrid","path":"scripts/FractureGrid/FractureGrid.yy",},},
-    {"id":{"name":"FractureGridClass","path":"scripts/FractureGridClass/FractureGridClass.yy",},},
+    {"id":{"name":"OLD_GRID","path":"scripts/OLD_GRID/OLD_GRID.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
     {"id":{"name":"sprAnimal","path":"sprites/sprAnimal/sprAnimal.yy",},},
   ],
