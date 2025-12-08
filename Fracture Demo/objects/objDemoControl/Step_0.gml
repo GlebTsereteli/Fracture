@@ -17,5 +17,5 @@ if (keyboard_check_pressed(ord("3"))) {
 }
 if (keyboard_check_pressed(ord("4"))) {
 	instance_destroy(objShape);
-	instance_destroy(__objFracturePieceGroup);
+	instance_destroy(objFracturePieceGroup);
 }
