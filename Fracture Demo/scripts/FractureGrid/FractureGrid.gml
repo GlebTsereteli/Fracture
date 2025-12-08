@@ -18,10 +18,16 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 	var _noiseX = _spacingX * _noise;
 	var _noiseY = _spacingY * _noise;
 	
+	var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
+	
+	var _vb = vertex_create_buffer();
+	vertex_begin(_vb, _format);
+	
 	var _prevCol = undefined;
 	var _index = 0;
+	var _n = _divX * _divY;
 	
-	var _pieces = array_create(_divX * _divY);
+	var _pieces = array_create(_n);
 	for (var _i = 0; _i <= _divX; _i++) {
 		var _col = array_create(_divY);
 		
@@ -62,24 +68,19 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 				var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 				var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
-				var _piece = instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece);
+				var _piece = instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece);
 				with (_piece) {
-					__index = _index;
-					__vb = vertex_create_buffer(); {
-						vertex_begin(__vb, _format);
-						
-						vertex_position(__vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x1 / _w, _y1 / _h);
-						vertex_position(__vb, _x2 - _xLeft, _y2 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x2 / _w, _y2 / _h);
-						vertex_position(__vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x3 / _w, _y3 / _h);
-						
-						vertex_position(__vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x3 / _w, _y3 / _h);
-						vertex_position(__vb, _x4 - _xLeft, _y4 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x4 / _w, _y4 / _h);
-						vertex_position(__vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(__vb, c_white, 1); vertex_texcoord(__vb, _x1 / _w, _y1 / _h);
-						
-						vertex_end(__vb);
-						vertex_freeze(__vb);
-					}
-					__texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
+					vertex_position(_vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
+					vertex_position(_vb, _x2 - _xLeft, _y2 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h);
+					vertex_position(_vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
+					
+					vertex_position(_vb, _x3 - _xLeft, _y3 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
+					vertex_position(_vb, _x4 - _xLeft, _y4 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h);
+					vertex_position(_vb, _x1 - _xLeft, _y1 - _yTop); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
+					
+					__vertexIndex = _index * 6;
+					__vertexBuffer = _vb;
+					__texture = _texture;
 					
 					var _fx = physics_fixture_create();
 					physics_fixture_set_collision_group(_fx, 1);
@@ -107,6 +108,15 @@ function FractureGrid(_inst, _divX = 3, _divY = 3, _noise = 0.3) {
 		}
 		_prevCol = _col;
 	}
+	
+	vertex_end(_vb);
+	vertex_freeze(_vb);
+	
+	instance_create_depth(0, 0, _inst.depth, __objFracturePieceGroup, {
+		__vertexBuffer: _vb,
+		__pieces: _pieces,
+		__n: _n,
+	})
 	
 	instance_destroy(_inst);
 	

@@ -14,6 +14,11 @@ if (keyboard_check_pressed(ord("2"))) {
 	}
 }
 if (keyboard_check_pressed(ord("3"))) {
+	with (instance_destroy(objShape)) {
+		FractureGrid(id);
+	}
+}
+if (keyboard_check_pressed(ord("4"))) {
 	instance_destroy(objShape);
-	instance_destroy(objFracturePiece);
+	instance_destroy(__objFracturePieceGroup);
 }
