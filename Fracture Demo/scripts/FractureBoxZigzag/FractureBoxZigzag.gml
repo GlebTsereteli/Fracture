@@ -1,5 +1,5 @@
 
-function FractureBoxZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
+function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
 	__FRACTURE_BOX_START;
 	
 	var _pieces = array_create(_count);

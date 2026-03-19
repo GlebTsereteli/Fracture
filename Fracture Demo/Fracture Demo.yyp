@@ -49,6 +49,8 @@
     {"id":{"name":"FractureBoxVoronoi","path":"scripts/FractureBoxVoronoi/FractureBoxVoronoi.yy",},},
     {"id":{"name":"FractureBoxZigzag","path":"scripts/FractureBoxZigzag/FractureBoxZigzag.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
+    {"id":{"name":"scrDemoTypes","path":"scripts/scrDemoTypes/scrDemoTypes.yy",},},
+    {"id":{"name":"scrDemoUtility","path":"scripts/scrDemoUtility/scrDemoUtility.yy",},},
     {"id":{"name":"sprAnimal","path":"sprites/sprAnimal/sprAnimal.yy",},},
   ],
   "resourceType":"GMProject",

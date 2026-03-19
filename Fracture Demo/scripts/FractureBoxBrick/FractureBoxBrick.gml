@@ -1,3 +1,4 @@
+
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 	__FRACTURE_BOX_START;
 	

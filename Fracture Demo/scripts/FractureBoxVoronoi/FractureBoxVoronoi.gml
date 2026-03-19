@@ -1,11 +1,12 @@
 
-function FractureBoxVoronoi(_inst, _count, _minDist = 0) {
+function FractureBoxVoronoi(_inst, _count) {
 	__FRACTURE_BOX_START;
 	
 	// seeds
 	var _seeds = [];
 	var _attempts = 0;
 	var _maxAttempts = _count * 100;
+	var _minDist = 10;
 	
 	while ((array_length(_seeds) < _count) and (_attempts < _maxAttempts)) {
 		_attempts++;

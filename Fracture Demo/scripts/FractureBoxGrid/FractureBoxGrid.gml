@@ -1,5 +1,5 @@
 
-function FractureBoxGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noiseX) {
+function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) {
 	__FRACTURE_BOX_START;
 	
 	var _spacingX = _w / _cols;
