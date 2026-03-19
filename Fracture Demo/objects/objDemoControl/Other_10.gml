@@ -12,6 +12,10 @@ RefreshInterface = function() {
 	var _h = window_get_height() - _y - _pad;
 	view = dbg_view($"{__FRACTURE_NAME} {__FRACTURE_VERSION} Demo", true, _x, _y, _w, _h);
 	
+	dbg_button("Fracture All", FractureAll, 188);
+	dbg_same_line();
+	dbg_button("Destroy All", DestroyAll, 188);
+	
 	dbg_section("Type"); {
 		var _names = array_map(types, function(_type) {
 			return _type.name;
@@ -49,4 +53,13 @@ Fracture = function(_inst) {
 	method_call(type.func, _args);
 	
 	show_debug_message((get_timer() - _t) / 1000);
+};
+FractureAll = function() {
+	with (objShape) {
+		other.Fracture(id);
+	}
+};
+DestroyAll = function() {
+	instance_destroy(objShape);
+	instance_destroy(__objFracturePack);
 };

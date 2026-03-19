@@ -14,11 +14,9 @@ if (keyboard_check_pressed(ord("2"))) {
 	}
 }
 if (keyboard_check_pressed(ord("3"))) {
-	with (objShape) {
-		other.Fracture(id);
-	}
+	FractureAll();
 }
 if (keyboard_check_pressed(ord("4"))) {
-	instance_destroy(objShape);
-	instance_destroy(__objFracturePack);
+	DestroyAll();
+	
 }
