@@ -1,5 +1,5 @@
 
-function FractureVoronoi(_inst, _count, _minDist = 0) {
+function FractureBoxVoronoi(_inst, _count, _minDist = 0) {
 	__FRACTURE_FORMAT;
 	
 	var _w = _inst.sprite_width;
@@ -56,7 +56,7 @@ function FractureVoronoi(_inst, _count, _minDist = 0) {
 			var _midY = mean(_iSeed.y, _jSeed.y);
 			var _normalX = _iSeed.x - _jSeed.x;
 			var _normalY = _iSeed.y - _jSeed.y;
-			_polygon = PolygonClipHalfPlane(_polygon, _midX, _midY, _normalX, _normalY);
+			_polygon = __FracturePolygonClipHalfPlane(_polygon, _midX, _midY, _normalX, _normalY);
 		}
 		
 		var _nVerts = array_length(_polygon);
@@ -77,7 +77,7 @@ function FractureVoronoi(_inst, _count, _minDist = 0) {
 		var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 		var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
-		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece)) {
+		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
 			for (var _k = 1; _k < _nVerts - 1; _k++) {
 				var _p0 = _polygon[0];
 				var _pk = _polygon[_k];
@@ -107,6 +107,11 @@ function FractureVoronoi(_inst, _count, _minDist = 0) {
 			phy_angular_velocity = _inst.phy_angular_velocity;
 			phy_rotation = _angle;
 			
+			var _force = 0.5;
+			var _xImpulse = lengthdir_x(_force, _dir);
+			var _yImpulse = lengthdir_y(_force, _dir);
+			physics_apply_impulse(x, y, _xImpulse, _yImpulse);
+			
 			_pieces[_index] = self;
 		}
 		
@@ -117,7 +122,7 @@ function FractureVoronoi(_inst, _count, _minDist = 0) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePack);
+	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
 	_group.__vertexBuffer = _vb;
 	_group.__pieces = _pieces;
 	_group.__n = _index;

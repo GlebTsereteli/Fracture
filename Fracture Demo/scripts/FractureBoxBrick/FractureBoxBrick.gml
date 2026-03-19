@@ -1,5 +1,5 @@
 
-function FractureBrick(_inst, _cols, _rows, _horizontal = true) {
+function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 	__FRACTURE_FORMAT;
 	
 	var _w = _inst.sprite_width;
@@ -40,7 +40,7 @@ function FractureBrick(_inst, _cols, _rows, _horizontal = true) {
 				var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 				var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
-				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece)) {
+				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
 					vertex_position(_vb, _bx1 - _xl, _ry1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
 					vertex_position(_vb, _bx2 - _xl, _ry1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry1 / _h);
 					vertex_position(_vb, _bx2 - _xl, _ry2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
@@ -98,7 +98,7 @@ function FractureBrick(_inst, _cols, _rows, _horizontal = true) {
 				var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 				var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
-				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece)) {
+				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
 					vertex_position(_vb, _rx1 - _xl, _by1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h);
 					vertex_position(_vb, _rx2 - _xl, _by1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h);
 					vertex_position(_vb, _rx2 - _xl, _by2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h);
@@ -138,7 +138,7 @@ function FractureBrick(_inst, _cols, _rows, _horizontal = true) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePack);
+	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
 	_group.__vertexBuffer = _vb;
 	_group.__pieces = _pieces;
 	_group.__n = array_length(_pieces);

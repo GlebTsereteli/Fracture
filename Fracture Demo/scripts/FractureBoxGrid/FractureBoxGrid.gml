@@ -1,5 +1,5 @@
 
-function FractureGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noiseX) {
+function FractureBoxGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noiseX) {
 	__FRACTURE_FORMAT;
 	
 	var _w = _inst.sprite_width;
@@ -58,7 +58,7 @@ function FractureGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noi
 			var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 			var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 			
-			with (instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece)) {
+			with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
 				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
 				vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h);
 				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
@@ -103,7 +103,7 @@ function FractureGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noi
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePack);
+	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
 	_group.__vertexBuffer = _vb;
 	_group.__pieces = _pieces;
 	_group.__n = _n;

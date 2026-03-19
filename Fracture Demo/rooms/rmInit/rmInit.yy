@@ -10,8 +10,8 @@
   "layers":[],
   "name":"rmInit",
   "parent":{
-    "name":"Init",
-    "path":"folders/01. Demo/Init.yy",
+    "name":"00. Init",
+    "path":"folders/01. Demo/00. Init.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

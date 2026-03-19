@@ -1,15 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"objFracturePiece",
+  "%Name":"__objFracturePack",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objFracturePiece",
+  "name":"__objFracturePack",
   "overriddenProperties":[],
   "parent":{
-    "name":"Fracture Demo",
-    "path":"Fracture Demo.yyp",
+    "name":"03. Private",
+    "path":"folders/02. Fracture/03. Private.yy",
   },
   "parentObjectId":null,
   "persistent":false,

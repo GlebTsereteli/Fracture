@@ -1,5 +1,5 @@
 
-function FractureZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
+function FractureBoxZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
 	__FRACTURE_FORMAT;
 	
 	var _w = _inst.sprite_width;
@@ -40,7 +40,7 @@ function FractureZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
 		var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 		var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
-		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, objFracturePiece)) {
+		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
 			vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _ax / _w, _ay / _h);
 			vertex_position(_vb, _bx - _xl, _by - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx / _w, _by / _h);
 			vertex_position(_vb, _cx - _xl, _cy - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _cx / _w, _cy / _h);
@@ -81,7 +81,7 @@ function FractureZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePack);
+	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
 	_group.__vertexBuffer = _vb;
 	_group.__pieces = _pieces;
 	_group.__n = _count;

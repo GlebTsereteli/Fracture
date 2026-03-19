@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script10",
+  "%Name":"FractureBoxZigzag",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script10",
+  "name":"FractureBoxZigzag",
   "parent":{
-    "name":"Fracture Demo",
-    "path":"Fracture Demo.yyp",
+    "name":"01. Box",
+    "path":"folders/02. Fracture/02. Public/01. Box.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
