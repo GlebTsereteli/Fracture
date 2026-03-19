@@ -1,14 +1,14 @@
 
-function FractureBoxVoronoi(_inst, _count) {
+function FractureBoxVoronoi(_inst, _bodyCount) {
 	__FRACTURE_BOX_START;
 	
 	// seeds
 	var _seeds = [];
 	var _attempts = 0;
-	var _maxAttempts = _count * 100;
+	var _maxAttempts = _bodyCount * 100;
 	var _minDist = 10;
 	
-	while ((array_length(_seeds) < _count) and (_attempts < _maxAttempts)) {
+	while ((array_length(_seeds) < _bodyCount) and (_attempts < _maxAttempts)) {
 		_attempts++;
 		var _sx = random(_w);
 		var _sy = random(_h);
@@ -29,11 +29,11 @@ function FractureBoxVoronoi(_inst, _count) {
 	var _index = 0;
 	var _vertexOffset = 0;
 	
-	var _pieces = array_create(_count);
+	var _bodies = array_create(_bodyCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
 		var _polygon = [
-			{ x: 0,  y: 0  },
-			{ x: _w, y: 0  },
+			{ x: 0,  y: 0 },
+			{ x: _w, y: 0 },
 			{ x: _w, y: _h },
 			{ x: 0,  y: _h },
 		];
@@ -55,7 +55,7 @@ function FractureBoxVoronoi(_inst, _count) {
 		if (_nVerts < 3) continue;
 		
 		var _nTriangles = _nVerts - 2;
-		var _nVerticesForPiece = _nTriangles * 3;
+		var _nVerticesForBody = _nTriangles * 3;
 		
 		var _xl = _polygon[0].x;
 		var _yt = _polygon[0].y;
@@ -66,20 +66,20 @@ function FractureBoxVoronoi(_inst, _count) {
 		
 		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
 		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-		var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-		var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
+		var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
+		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
-		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
+		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
 			for (var _k = 1; _k < _nVerts - 1; _k++) {
 				var _p0 = _polygon[0];
 				var _pk = _polygon[_k];
 				var _pk1 = _polygon[_k + 1];
-				vertex_position(_vb, _p0.x - _xl,  _p0.y - _yt);  vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _p0.x / _w,  _p0.y / _h);
-				vertex_position(_vb, _pk.x - _xl,  _pk.y - _yt);  vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _pk.x / _w,  _pk.y / _h);
+				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _p0.x / _w,  _p0.y / _h);
+				vertex_position(_vb, _pk.x - _xl, _pk.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _pk.x / _w,  _pk.y / _h);
 				vertex_position(_vb, _pk1.x - _xl, _pk1.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _pk1.x / _w, _pk1.y / _h);
 			}
 			
-			__nVertices = _nVerticesForPiece;
+			__nVertices = _nVerticesForBody;
 			__vertexIndex = _vertexOffset;
 			__vertexBuffer = _vb;
 			__texture = _texture;
@@ -99,22 +99,22 @@ function FractureBoxVoronoi(_inst, _count) {
 			phy_angular_velocity = _inst.phy_angular_velocity;
 			phy_rotation = _angle;
 			
-			_pieces[_index] = self;
+			_bodies[_index] = self;
 		}
 		
-		_vertexOffset += _nVerticesForPiece;
+		_vertexOffset += _nVerticesForBody;
 		_index++;
 	}
 	
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_group.__vertexBuffer = _vb;
-	_group.__pieces = _pieces;
-	_group.__n = _index;
+	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
+	_pack.__vertexBuffer = _vb;
+	_pack.__bodies = _bodies;
+	_pack.__n = _index;
 	
 	instance_destroy(_inst);
 	
-	return _group;
+	return _pack;
 }

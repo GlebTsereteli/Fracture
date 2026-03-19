@@ -8,7 +8,7 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 	_noiseY *= _spacingY;
 	
 	var _n = _rows * _cols;
-	var _pieces = array_create(_n);
+	var _bodies = array_create(_n);
 	
 	var _index = 0;
 	var _prevColX = undefined;
@@ -45,19 +45,16 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 			
 			var _dist = point_distance(_centerX, _centerY, _xl, _yt);
 			var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-			var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-			var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
+			var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
+			var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 			
-			with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
-				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
-				vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h);
-				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
+			with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h); // TL
+				vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h); // TR
+				vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h); // BL
+				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h); // BR
 				
-				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
-				vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h);
-				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
-				
-				__nVertices = 6;
+				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;
 				__vertexBuffer = _vb;
 				__texture = _texture;
@@ -83,7 +80,7 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 				//var _yImpulse = lengthdir_y(_force, _dir);
 				//physics_apply_impulse(x, y, _xImpulse, _yImpulse);
 				
-				_pieces[_index++] = self;
+				_bodies[_index++] = self;
 			}
 		}
 		_prevColX = _colX;
@@ -93,12 +90,12 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_group.__vertexBuffer = _vb;
-	_group.__pieces = _pieces;
-	_group.__n = _n;
+	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
+	_pack.__vertexBuffer = _vb;
+	_pack.__bodies = _bodies;
+	_pack.__n = _n;
 	
 	instance_destroy(_inst);
 	
-	return _group;
+	return _pack;
 }

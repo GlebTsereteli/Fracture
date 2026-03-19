@@ -1,12 +1,12 @@
 
-function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
+function FractureBoxZigzag(_inst, _bodyCount, _vertical, _noise = 0.5) {
 	__FRACTURE_BOX_START;
 	
-	var _pieces = array_create(_count);
+	var _bodies = array_create(_bodyCount);
 	var _edgeA = 0;
 	var _edgeB = _vertical ? _w : _h;
 	var _fixedB = _vertical ? _h : _w;
-	var _step = _fixedB / (_count - 1);
+	var _step = _fixedB / (_bodyCount - 1);
 	var _jitter = _noise * _step;
 	
 	var _ax = 0;
@@ -14,8 +14,8 @@ function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
 	var _bx = _vertical ? _w : 0;
 	var _by = _vertical ? 0 : _h;
 	
-	for (var _i = 0; _i < _count; _i++) {
-		var _pos = (_i >= _count - 2) ? _fixedB : (_step * (_i + 1)) + random_range(-_jitter, _jitter);
+	for (var _i = 0; _i < _bodyCount; _i++) {
+		var _pos = (_i >= _bodyCount - 2) ? _fixedB : (_step * (_i + 1)) + random_range(-_jitter, _jitter);
 		var _even = (_i mod 2 == 0);
 		var _side = _even ? _edgeA : _edgeB;
 		
@@ -27,10 +27,10 @@ function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
 		
 		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
 		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-		var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-		var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
+		var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
+		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
-		with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
+		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
 			vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _ax / _w, _ay / _h);
 			vertex_position(_vb, _bx - _xl, _by - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx / _w, _by / _h);
 			vertex_position(_vb, _cx - _xl, _cy - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _cx / _w, _cy / _h);
@@ -61,7 +61,7 @@ function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
 			phy_angular_velocity = _inst.phy_angular_velocity;
 			phy_rotation = _angle;
 			
-			_pieces[_i] = self;
+			_bodies[_i] = self;
 		}
 		
 		_ax = _bx; _ay = _by;
@@ -71,12 +71,12 @@ function FractureBoxZigzag(_inst, _count, _vertical, _noise = 0.5) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_group.__vertexBuffer = _vb;
-	_group.__pieces = _pieces;
-	_group.__n = _count;
+	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
+	_pack.__vertexBuffer = _vb;
+	_pack.__bodies = _bodies;
+	_pack.__n = _bodyCount;
 	
 	instance_destroy(_inst);
 	
-	return _group;
+	return _pack;
 }

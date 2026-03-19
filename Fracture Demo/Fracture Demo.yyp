@@ -36,8 +36,8 @@
   "name":"Fracture Demo",
   "resources":[
     {"id":{"name":"01. Fracture Info","path":"notes/01. Fracture Info/01. Fracture Info.yy",},},
+    {"id":{"name":"__objFractureBody","path":"objects/__objFractureBody/__objFractureBody.yy",},},
     {"id":{"name":"__objFracturePack","path":"objects/__objFracturePack/__objFracturePack.yy",},},
-    {"id":{"name":"__objFracturePiece","path":"objects/__objFracturePiece/__objFracturePiece.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objShape","path":"objects/objShape/objShape.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},

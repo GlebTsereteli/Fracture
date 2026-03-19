@@ -1,10 +1,10 @@
 
-function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
+function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_BOX_START;
 	
 	var _brickW = _w / _cols;
 	var _brickH = _h / _rows;
-	var _pieces = [];
+	var _bodies = [];
 	var _index = 0;
 	
 	if (_horizontal) {
@@ -29,19 +29,16 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 				
 				var _dist = point_distance(_centerX, _centerY, _cx, _cy);
 				var _dir = point_direction(_centerX, _centerY, _cx, _cy);
-				var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-				var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
+				var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
+				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
-				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
+				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
 					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
 					vertex_position(_vb, _halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry1 / _h);
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
-					
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
 					vertex_position(_vb, -_halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry2 / _h);
-					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
+					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
 					
-					__nVertices = 6;
+					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
 					__texture = _texture;
@@ -58,7 +55,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 					phy_angular_velocity = _inst.phy_angular_velocity;
 					phy_rotation = _angle;
 					
-					array_push(_pieces, self);
+					array_push(_bodies, self);
 					_index++;
 				}
 			}
@@ -86,19 +83,16 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 				
 				var _dist = point_distance(_centerX, _centerY, _cx, _cy);
 				var _dir = point_direction(_centerX, _centerY, _cx, _cy);
-				var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-				var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
+				var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
+				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
-				with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) {
-					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h);
-					vertex_position(_vb, _halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h);
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h);
-					
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h);
-					vertex_position(_vb, -_halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by2 / _h);
-					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h);
-					
-					__nVertices = 6;
+				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h); // TL
+					vertex_position(_vb, _halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h); // TR
+					vertex_position(_vb, -_halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by2 / _h); // BL
+					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h); // BR
+
+					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
 					__texture = _texture;
@@ -115,7 +109,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 					phy_angular_velocity = _inst.phy_angular_velocity;
 					phy_rotation = _angle;
 					
-					array_push(_pieces, self);
+					array_push(_bodies, self);
 					_index++;
 				}
 			}
@@ -125,12 +119,12 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal = true) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_group.__vertexBuffer = _vb;
-	_group.__pieces = _pieces;
-	_group.__n = array_length(_pieces);
+	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
+	_pack.__vertexBuffer = _vb;
+	_pack.__bodies = _bodies;
+	_pack.__n = array_length(_bodies);
 	
 	instance_destroy(_inst);
 	
-	return _group;
+	return _pack;
 }

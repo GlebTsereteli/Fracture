@@ -1,7 +1,6 @@
-/// @desc Destroy pieces.
+/// @desc Destroy bodies & vertex buffer
 
 var _i = 0; repeat (__n) {
-	instance_destroy(__pieces[_i]);
-	_i++;
+	instance_destroy(__bodies[_i++]);
 }
 vertex_delete_buffer(__vertexBuffer);
