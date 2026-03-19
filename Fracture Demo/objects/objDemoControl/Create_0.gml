@@ -1,2 +1,3 @@
 
-show_debug_overlay(true);
+DEMOS = new Demos();
+DEMOS.Init();

@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"objFracturePieceGroup",
+  "%Name":"objFracturePack",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objFracturePieceGroup",
+  "name":"objFracturePack",
   "overriddenProperties":[],
   "parent":{
     "name":"Fracture Demo",

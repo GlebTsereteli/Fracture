@@ -1,20 +1,5 @@
 
-FractureGrid()
-
-/**
-* @param {Id.Instance} inst The instance to fracture. Must have a sprite and be physics-enabled.
-* @param {Real} rows Number of rows in the fracture grid (minimum 1).
-* @param {Real} columns Number of columns in the fracture grid (minimum 1).
-* @param {Real} noise Randomization factor for internal grid points (0 = perfect grid, higher = more jagged). Applied as a percentage of cell size on non-edge points.
-*
-* @returns {Id.Instance} 
-*
-* @desc Fractures a physics-enabled instance into a grid of irregular polygonal pieces.
-* Each piece becomes an instance of objFracturePiece with its own physics fixture, sharing a single frozen vertex buffer for efficient rendering.
-* 
-* The original instance is destroyed, and an instance of objFracturePieceGroup that owns all pieces and the shared vertex buffer is returned. Use this to manage or clean up the fracture.
-*/
-function FractureGrid(_inst, _rows = 1, _cols = 3, _noise = 0.35) {
+function FractureGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noiseX) {
 	__FRACTURE_FORMAT;
 	
 	var _w = _inst.sprite_width;
@@ -26,19 +11,18 @@ function FractureGrid(_inst, _rows = 1, _cols = 3, _noise = 0.35) {
 	var _spacingX = _w / _cols;
 	var _spacingY = _h / _rows;
 	
-	var _noiseX = _spacingX * _noise;
-	var _noiseY = _spacingY * _noise;
+	_noiseX *= _spacingX;
+	_noiseY *= _spacingY;
 	
 	var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
-	
-	var _prevColX = undefined;
-	var _prevColY = undefined;
-	var _index = 0;
 	var _n = _rows * _cols;
-	
 	var _pieces = array_create(_n);
 	var _vb = vertex_create_buffer();
 	vertex_begin(_vb, _format);
+	
+	var _index = 0;
+	var _prevColX = undefined;
+	var _prevColY = undefined;
 	
 	for (var _i = 0; _i <= _cols; _i++) {
 		var _colX = array_create(_rows);
@@ -47,23 +31,15 @@ function FractureGrid(_inst, _rows = 1, _cols = 3, _noise = 0.35) {
 		var _iOnEdge = (_iFirst or (_i == _cols));
 		
 		for (var _j = 0; _j <= _rows; _j++) {
-		    var _jOnEdge = ((_j == 0) or (_j == _rows));
-			
 			var _x3 = _i * _spacingX;
 		    var _y3 = _j * _spacingY;
 			
-		    if (_iOnEdge or _jOnEdge) {
-				if (not _iOnEdge) {
-					_x3 += random_range(-_noiseX, _noiseX);
-				}
-				if (not _jOnEdge) {
-					_y3 += random_range(-_noiseY, _noiseY);
-				}
+			if (not _iOnEdge) {
+				_x3 += random_range(-_noiseX, _noiseX);
 			}
-			else {
-		        _x3 += random_range(-_noiseX, _noiseX);
-		        _y3 += random_range(-_noiseY, _noiseY);
-		    }
+			if ((_j > 0) and (_j < _rows)) {
+				_y3 += random_range(-_noiseY, _noiseY);
+			}
 			
 		    _colX[_j] = _x3;
 		    _colY[_j] = _y3;
@@ -91,7 +67,8 @@ function FractureGrid(_inst, _rows = 1, _cols = 3, _noise = 0.35) {
 				vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h);
 				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
 				
-				__vertexIndex = _index * 6;
+				__nVertices = 6;
+				__vertexIndex = _index * __nVertices;
 				__vertexBuffer = _vb;
 				__texture = _texture;
 				
@@ -126,7 +103,7 @@ function FractureGrid(_inst, _rows = 1, _cols = 3, _noise = 0.35) {
 	vertex_end(_vb);
 	vertex_freeze(_vb);
 	
-	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePieceGroup);
+	var _group = instance_create_depth(0, 0, _inst.depth, objFracturePack);
 	_group.__vertexBuffer = _vb;
 	_group.__pieces = _pieces;
 	_group.__n = _n;

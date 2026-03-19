@@ -6,16 +6,16 @@ if (keyboard_check_pressed(ord("2"))) {
 	var _shape = instance_position(mouse_x, mouse_y, objShape);
 	if (_shape != noone) {
 		var _t = get_timer();
-		FractureGrid(_shape);
+		FractureZigzag(_shape, 4);
 		show_debug_message((get_timer() - _t) / 1000);
 	}
 }
 if (keyboard_check_pressed(ord("3"))) {
 	with (objShape) {
-		FractureGrid(id);
+		FractureZigzag(id, 4);
 	}
 }
 if (keyboard_check_pressed(ord("4"))) {
 	instance_destroy(objShape);
-	instance_destroy(objFracturePieceGroup);
+	instance_destroy(objFracturePack);
 }
