@@ -9,8 +9,8 @@
   "name":"objShape",
   "overriddenProperties":[],
   "parent":{
-    "name":"Fracture Demo",
-    "path":"Fracture Demo.yyp",
+    "name":"01. Demo",
+    "path":"folders/01. Demo.yy",
   },
   "parentObjectId":null,
   "persistent":false,

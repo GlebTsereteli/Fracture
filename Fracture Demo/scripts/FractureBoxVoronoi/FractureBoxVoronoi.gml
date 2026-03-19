@@ -107,11 +107,6 @@ function FractureBoxVoronoi(_inst, _count, _minDist = 0) {
 			phy_angular_velocity = _inst.phy_angular_velocity;
 			phy_rotation = _angle;
 			
-			var _force = 0.5;
-			var _xImpulse = lengthdir_x(_force, _dir);
-			var _yImpulse = lengthdir_y(_force, _dir);
-			physics_apply_impulse(x, y, _xImpulse, _yImpulse);
-			
 			_pieces[_index] = self;
 		}
 		
