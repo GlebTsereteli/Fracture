@@ -10,13 +10,7 @@ function __FractureFormat() {
 	return _format;
 }
 
-function __FractureMatrixA() {
-	__FRACTURE_MATRIX;
-}
-function __FractureMatrixB() {
-	__FRACTURE_MATRIX;
-}
-function __FractureMatrixC() {
+function __FractureMatrix() {
 	__FRACTURE_MATRIX;
 }
 function __FractureMatrixIdentity() {

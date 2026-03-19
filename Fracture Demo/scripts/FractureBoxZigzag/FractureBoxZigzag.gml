@@ -1,18 +1,8 @@
 
 function FractureBoxZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
-	__FRACTURE_FORMAT;
+	__FRACTURE_BOX_START;
 	
-	var _w = _inst.sprite_width;
-	var _h = _inst.sprite_height;
-	var _xCenter = _w / 2;
-	var _yCenter = _h / 2;
-	var _angle = _inst.phy_rotation;
-	
-	var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 	var _pieces = array_create(_count);
-	var _vb = vertex_create_buffer();
-	vertex_begin(_vb, _format);
-	
 	var _edgeA = 0;
 	var _edgeB = _vertical ? _w : _h;
 	var _fixedB = _vertical ? _h : _w;
@@ -35,8 +25,8 @@ function FractureBoxZigzag(_inst, _count, _vertical = true, _noise = 0.5) {
 		var _xl = min(_ax, _bx, _cx);
 		var _yt = min(_ay, _by, _cy);
 		
-		var _dist = point_distance(_xCenter, _yCenter, _xl, _yt);
-		var _dir = point_direction(_xCenter, _yCenter, _xl, _yt);
+		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
+		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
 		var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 		var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		

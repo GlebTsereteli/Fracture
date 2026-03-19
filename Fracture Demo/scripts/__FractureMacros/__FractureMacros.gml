@@ -9,22 +9,22 @@
 #endregion
 #region core
 
-#macro __FRACTURE_FORMAT var _format = __FractureFormat()
+#macro __FRACTURE_START \
+static _format = __FractureFormat(); \
+var _vb = vertex_create_buffer(); \
+vertex_begin(_vb, _format)
+
+#macro __FRACTURE_BOX_START \
+__FRACTURE_START; \
+var _w = _inst.sprite_width; \
+var _h = _inst.sprite_height; \
+var _centerX = _w / 2; \
+var _centerY = _h / 2; \
+var _angle = _inst.phy_rotation; \
+var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index)
 
 #macro __FRACTURE_MATRIX \
 static _matrix = matrix_build_identity(); \
 return _matrix
-
-#macro __FRACTURE_LOCAL_MATRICES \
-var _matrixA = __FractureMatrixA(); \
-var _matrixB = __FractureMatrixB(); \
-var _matrixC = __FractureMatrixC(); \
-var _matrixIdentity = __FractureMatrixIdentity()
-
-#macro __FRACTURE_MATRICES \
-matrixA = __FractureMatrixA(); \
-matrixB = __FractureMatrixB(); \
-matrixC = __FractureMatrixC(); \
-matrixIdentity = __FractureMatrixIdentity()
 
 #endregion

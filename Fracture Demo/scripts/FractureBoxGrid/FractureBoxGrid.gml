@@ -1,24 +1,14 @@
 
 function FractureBoxGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _noiseX) {
-	__FRACTURE_FORMAT;
-	
-	var _w = _inst.sprite_width;
-	var _h = _inst.sprite_height;
-	var _xCenter = _w / 2;
-	var _yCenter = _h / 2;
-	var _angle = _inst.phy_rotation;
+	__FRACTURE_BOX_START;
 	
 	var _spacingX = _w / _cols;
 	var _spacingY = _h / _rows;
-	
 	_noiseX *= _spacingX;
 	_noiseY *= _spacingY;
 	
-	var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 	var _n = _rows * _cols;
 	var _pieces = array_create(_n);
-	var _vb = vertex_create_buffer();
-	vertex_begin(_vb, _format);
 	
 	var _index = 0;
 	var _prevColX = undefined;
@@ -53,8 +43,8 @@ function FractureBoxGrid(_inst, _rows = 3, _cols = 3, _noiseX = 0.3, _noiseY = _
 			var _xl = min(_x1, _x4);
 			var _yt = min(_y1, _y2);
 			
-			var _dist = point_distance(_xCenter, _yCenter, _xl, _yt);
-			var _dir = point_direction(_xCenter, _yCenter, _xl, _yt);
+			var _dist = point_distance(_centerX, _centerY, _xl, _yt);
+			var _dir = point_direction(_centerX, _centerY, _xl, _yt);
 			var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 			var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 			
