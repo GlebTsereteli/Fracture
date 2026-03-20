@@ -1,4 +1,4 @@
-/// @desc Destroy bodies & vertex buffer
+/// @desc Destroy bodies & vertex buffer.
 
 var _i = 0; repeat (__n) {
 	instance_destroy(__bodies[_i++]);

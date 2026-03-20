@@ -11,6 +11,9 @@
 #region core
 
 #macro __FRACTURE_START \
+if (not instance_exists(__objFractureRenderer)) { \
+    instance_create_depth(0, 0, 0, __objFractureRenderer); \
+} \
 static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
 vertex_begin(_vb, _format);
