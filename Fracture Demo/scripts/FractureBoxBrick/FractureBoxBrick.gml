@@ -5,7 +5,9 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	
 	var _brickW = _w / _cols;
 	var _brickH = _h / _rows;
-	var _bodies = [];
+	
+	var _bodyCount = _horizontal ? (_cols * _rows + (_rows div 2)) : (_cols * _rows + (_cols div 2));
+	var _bodies = array_create(_bodyCount);
 	var _index = 0;
 	
 	if (_horizontal) {
@@ -49,8 +51,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 						__FRACTURE_FIXTURE_END;
 					}
 					
-					array_push(_bodies, self);
-					_index++;
+					_bodies[_index++] = id;
 				}
 			}
 		}
@@ -96,22 +97,11 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 						__FRACTURE_FIXTURE_END;
 					}
 					
-					array_push(_bodies, self);
-					_index++;
+					_bodies[_index++] = id;
 				}
 			}
 		}
 	}
 	
-	vertex_end(_vb);
-	vertex_freeze(_vb);
-	
-	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_pack.__vertexBuffer = _vb;
-	_pack.__bodies = _bodies;
-	_pack.__n = array_length(_bodies);
-	
-	instance_destroy(_inst);
-	
-	return _pack;
+	__FRACTURE_END;
 }

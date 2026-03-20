@@ -64,15 +64,5 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 		_bx = _cx; _by = _cy;
 	}
 	
-	vertex_end(_vb);
-	vertex_freeze(_vb);
-	
-	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_pack.__vertexBuffer = _vb;
-	_pack.__bodies = _bodies;
-	_pack.__n = _bodyCount;
-	
-	instance_destroy(_inst);
-	
-	return _pack;
+	__FRACTURE_END;
 }

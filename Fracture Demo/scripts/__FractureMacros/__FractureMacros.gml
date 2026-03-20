@@ -18,6 +18,26 @@ static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
 vertex_begin(_vb, _format);
 
+#macro __FRACTURE_END \
+vertex_end(_vb); \
+vertex_freeze(_vb); \
+\
+var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
+_pack.__vertexBuffer = _vb; \
+_pack.__bodies = _bodies; \
+_pack.__bodyCount = _bodyCount; \
+\
+instance_destroy(_inst); \
+\
+return _pack;
+
+#macro __FRACTURE_MATRIX \
+static _matrix = matrix_build_identity(); \
+return _matrix;
+
+#endregion
+#region shapes
+
 #macro __FRACTURE_BOX_START \
 __FRACTURE_START; \
 var _w = _inst.sprite_width; \
@@ -26,10 +46,6 @@ var _centerX = _w / 2; \
 var _centerY = _h / 2; \
 var _angle = _inst.phy_rotation; \
 var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
-
-#macro __FRACTURE_MATRIX \
-static _matrix = matrix_build_identity(); \
-return _matrix;
 
 #endregion
 #region fixtures

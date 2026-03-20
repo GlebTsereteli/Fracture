@@ -15,7 +15,7 @@ shader_set(__shader);
 with (__objFracturePack) {
 	gpu_set_depth(depth);
 	
-	var _i = 0; repeat (__n) {
+	var _i = 0; repeat (__bodyCount) {
 		with (__bodies[_i]) {
 			matrix_build(phy_position_x, phy_position_y, 0, 0, 0, -phy_rotation, 1, 1, 1, _matrix);
 			matrix_set(matrix_world, _matrix);

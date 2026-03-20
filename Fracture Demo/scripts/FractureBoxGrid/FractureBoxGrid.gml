@@ -8,8 +8,8 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 	_noiseX *= _spacingX;
 	_noiseY *= _spacingY;
 	
-	var _n = _rows * _cols;
-	var _bodies = array_create(_n);
+	var _bodyCount = _rows * _cols;
+	var _bodies = array_create(_bodyCount);
 	
 	var _index = 0;
 	var _prevColX = undefined;
@@ -73,22 +73,12 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 				//var _yImpulse = lengthdir_y(_force, _dir);
 				//physics_apply_impulse(x, y, _xImpulse, _yImpulse);
 				
-				_bodies[_index++] = self;
+				_bodies[_index++] = id;
 			}
 		}
 		_prevColX = _colX;
 		_prevColY = _colY;
 	}
 	
-	vertex_end(_vb);
-	vertex_freeze(_vb);
-	
-	var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack);
-	_pack.__vertexBuffer = _vb;
-	_pack.__bodies = _bodies;
-	_pack.__n = _n;
-	
-	instance_destroy(_inst);
-	
-	return _pack;
+	__FRACTURE_END;
 }
