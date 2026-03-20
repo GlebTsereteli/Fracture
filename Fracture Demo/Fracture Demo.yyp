@@ -48,6 +48,7 @@
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
     {"id":{"name":"scrDemoTypes","path":"scripts/scrDemoTypes/scrDemoTypes.yy",},},
     {"id":{"name":"scrDemoUtility","path":"scripts/scrDemoUtility/scrDemoUtility.yy",},},
+    {"id":{"name":"__shdFracture","path":"shaders/__shdFracture/__shdFracture.yy",},},
     {"id":{"name":"sprAnimal","path":"sprites/sprAnimal/sprAnimal.yy",},},
   ],
   "resourceType":"GMProject",
