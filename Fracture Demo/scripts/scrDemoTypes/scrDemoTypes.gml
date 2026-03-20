@@ -11,7 +11,7 @@ function DemoType(_name) constructor {
 function DemoTypeGrid() : DemoType("Grid") constructor {
 	cols = 3;
 	rows = 3;
-	noiseX = 0.3;
+	noiseX = 1;
 	noiseY = noiseX;
 	
 	static Init = function() {

@@ -1,12 +1,14 @@
 // feather ignore all
 
-function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) {
+function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
+	static _maxNoise = 0.3;
+	
 	__FRACTURE_BOX_START;
 	
 	var _spacingX = _w / _cols;
 	var _spacingY = _h / _rows;
-	_noiseX *= _spacingX;
-	_noiseY *= _spacingY;
+	_noiseX = clamp(_noiseX, 0, 1) * _maxNoise * _spacingX;
+	_noiseY = clamp(_noiseY, 0, 1) * _maxNoise * _spacingY;
 	
 	var _bodyCount = _rows * _cols;
 	var _bodies = array_create(_bodyCount);
