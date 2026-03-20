@@ -42,8 +42,8 @@ return _matrix;
 __FRACTURE_START; \
 var _w = _inst.sprite_width; \
 var _h = _inst.sprite_height; \
-var _centerX = _w / 2; \
-var _centerY = _h / 2; \
+var _centerX = _inst.sprite_xoffset; \
+var _centerY = _inst.sprite_yoffset; \
 var _angle = _inst.phy_rotation; \
 var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 
