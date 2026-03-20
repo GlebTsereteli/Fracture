@@ -26,16 +26,16 @@ function DemoTypeGrid() : DemoType("Grid") constructor {
 }
 function DemoTypeZigzag() : DemoType("Zigzag") constructor {
 	count = 5;
-	vertical = true;
+	horizontal = true;
 	noise = 0.5;
 	
 	static Init = function() {
 		dbg_slider_int(ref_create(self, "count"), 2, 20, "Count");
-		dbg_checkbox(ref_create(self, "vertical"), "Vertical");
+		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
 		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
 	};
 	static GetArguments = function() {
-		return [count, vertical, noise];
+		return [count, horizontal, noise];
 	};
 }
 function DemoTypeBrick() : DemoType("Brick") constructor {

@@ -1,3 +1,4 @@
+// feather ignore all
 
 function FractureBoxVoronoi(_inst, _bodyCount) {
 	__FRACTURE_BOX_START;
@@ -74,9 +75,9 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 				var _p0 = _polygon[0];
 				var _pk = _polygon[_k];
 				var _pk1 = _polygon[_k + 1];
-				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _p0.x / _w,  _p0.y / _h);
-				vertex_position(_vb, _pk.x - _xl, _pk.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _pk.x / _w,  _pk.y / _h);
-				vertex_position(_vb, _pk1.x - _xl, _pk1.y - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _pk1.x / _w, _pk1.y / _h);
+				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _p0.x / _w,  _p0.y / _h);
+				vertex_position(_vb, _pk.x - _xl, _pk.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _pk.x / _w,  _pk.y / _h);
+				vertex_position(_vb, _pk1.x - _xl, _pk1.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _pk1.x / _w, _pk1.y / _h);
 			}
 			
 			__nVertices = _nVerticesForBody;
@@ -84,20 +85,12 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			__vertexBuffer = _vb;
 			__texture = _texture;
 			
-			var _fx = physics_fixture_create();
-			physics_fixture_set_collision_group(_fx, 1);
-			physics_fixture_set_polygon_shape(_fx);
-			physics_fixture_set_density(_fx, 0.5);
-			for (var _k = 0; _k < _nVerts; _k++) {
-				physics_fixture_add_point(_fx, _polygon[_k].x - _xl, _polygon[_k].y - _yt);
+			__FRACTURE_FIXTURE_START; {
+				for (var _k = 0; _k < _nVerts; _k++) {
+					physics_fixture_add_point(_fx, _polygon[_k].x - _xl, _polygon[_k].y - _yt);
+				}
+				__FRACTURE_FIXTURE_END;
 			}
-			__fixture = physics_fixture_bind(_fx, id);
-			physics_fixture_delete(_fx);
-			
-			phy_linear_velocity_x = _inst.phy_linear_velocity_x;
-			phy_linear_velocity_y = _inst.phy_linear_velocity_y;
-			phy_angular_velocity = _inst.phy_angular_velocity;
-			phy_rotation = _angle;
 			
 			_bodies[_index] = self;
 		}

@@ -1,3 +1,4 @@
+// feather ignore all
 
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_BOX_START;
@@ -33,27 +34,20 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
-					vertex_position(_vb, _halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry1 / _h);
-					vertex_position(_vb, -_halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry2 / _h);
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
+					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
+					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry1 / _h);
+					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry2 / _h);
+					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
 					
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
 					__texture = _texture;
 					
-					var _fx = physics_fixture_create();
-					physics_fixture_set_collision_group(_fx, 1);
-					physics_fixture_set_box_shape(_fx, _halfW, _halfH);
-					physics_fixture_set_density(_fx, 0.5);
-					__fixture = physics_fixture_bind(_fx, id);
-					physics_fixture_delete(_fx);
-					
-					phy_linear_velocity_x = _inst.phy_linear_velocity_x;
-					phy_linear_velocity_y = _inst.phy_linear_velocity_y;
-					phy_angular_velocity = _inst.phy_angular_velocity;
-					phy_rotation = _angle;
+					__FRACTURE_FIXTURE_START; {
+						physics_fixture_set_box_shape(_fx, _halfW, _halfH);
+						__FRACTURE_FIXTURE_END;
+					}
 					
 					array_push(_bodies, self);
 					_index++;
@@ -87,27 +81,20 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-					vertex_position(_vb, -_halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h); // TL
-					vertex_position(_vb, _halfW, -_halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h); // TR
-					vertex_position(_vb, -_halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by2 / _h); // BL
-					vertex_position(_vb, _halfW, _halfH); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h); // BR
-
+					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h); // TL
+					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h); // TR
+					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by2 / _h); // BL
+					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h); // BR
+					
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
 					__texture = _texture;
 					
-					var _fx = physics_fixture_create();
-					physics_fixture_set_collision_group(_fx, 1);
-					physics_fixture_set_box_shape(_fx, _halfW, _halfH);
-					physics_fixture_set_density(_fx, 0.5);
-					__fixture = physics_fixture_bind(_fx, id);
-					physics_fixture_delete(_fx);
-					
-					phy_linear_velocity_x = _inst.phy_linear_velocity_x;
-					phy_linear_velocity_y = _inst.phy_linear_velocity_y;
-					phy_angular_velocity = _inst.phy_angular_velocity;
-					phy_rotation = _angle;
+					__FRACTURE_FIXTURE_START; {
+						physics_fixture_set_box_shape(_fx, _halfW, _halfH);
+						__FRACTURE_FIXTURE_END;
+					}
 					
 					array_push(_bodies, self);
 					_index++;

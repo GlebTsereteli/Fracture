@@ -12,7 +12,7 @@ type = array_first(types);
 prevType = type;
 
 // debug
-outlines = true;
+outlines = false;
 coms = false;
 shapes = false;
 aabb = false;

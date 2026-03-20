@@ -1,3 +1,4 @@
+// feather ignore all
 
 function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) {
 	__FRACTURE_BOX_START;
@@ -49,31 +50,23 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 0.3, _noiseY = _noiseX) 
 			var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 			
 			with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h); // TL
-				vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h); // TR
-				vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h); // BL
-				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_colour(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h); // BR
+				vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _x1 / _w, _y1 / _h);
+				vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _x2 / _w, _y2 / _h);
+				vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _x4 / _w, _y4 / _h);
+				vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _x3 / _w, _y3 / _h);
 				
 				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;
 				__vertexBuffer = _vb;
 				__texture = _texture;
 				
-				var _fx = physics_fixture_create();
-				physics_fixture_set_collision_group(_fx, 1);
-				physics_fixture_set_polygon_shape(_fx);
-				physics_fixture_set_density(_fx, 0.5);
-				physics_fixture_add_point(_fx, _x1 - _xl, _y1 - _yt);
-				physics_fixture_add_point(_fx, _x2 - _xl, _y2 - _yt);
-				physics_fixture_add_point(_fx, _x3 - _xl, _y3 - _yt);
-				physics_fixture_add_point(_fx, _x4 - _xl, _y4 - _yt);
-				__fixture = physics_fixture_bind(_fx, id);
-				physics_fixture_delete(_fx);
-				
-				phy_linear_velocity_x = _inst.phy_linear_velocity_x;
-			    phy_linear_velocity_y = _inst.phy_linear_velocity_y;
-			    phy_angular_velocity = _inst.phy_angular_velocity;
-				phy_rotation = _angle;
+				__FRACTURE_FIXTURE_START; {
+					physics_fixture_add_point(_fx, _x1 - _xl, _y1 - _yt);
+					physics_fixture_add_point(_fx, _x2 - _xl, _y2 - _yt);
+					physics_fixture_add_point(_fx, _x3 - _xl, _y3 - _yt);
+					physics_fixture_add_point(_fx, _x4 - _xl, _y4 - _yt);
+					__FRACTURE_FIXTURE_END;
+				}
 				
 				//var _force = 0.2;
 				//var _xImpulse = lengthdir_x(_force, _dir);

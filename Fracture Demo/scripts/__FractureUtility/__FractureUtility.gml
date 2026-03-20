@@ -1,3 +1,4 @@
+// feather ignore all
 
 function __FractureFormat() {
 	static _format = (function() {

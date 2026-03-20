@@ -17,10 +17,7 @@
     {"$GMFolder":"","%Name":"02. Public","folderPath":"folders/02. Fracture/02. Public.yy","name":"02. Public","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01. Box","folderPath":"folders/02. Fracture/02. Public/01. Box.yy","name":"01. Box","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02. Circle","folderPath":"folders/02. Fracture/02. Public/02. Circle.yy","name":"02. Circle","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"03. Polygon [COMING SOON]","folderPath":"folders/02. Fracture/02. Public/03. Polygon [COMING SOON].yy","name":"03. Polygon [COMING SOON]","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"04. Sprite [COMING SOON]","folderPath":"folders/02. Fracture/02. Public/04. Sprite [COMING SOON].yy","name":"04. Sprite [COMING SOON]","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"05. Tilemap [COMING SOON]","folderPath":"folders/02. Fracture/02. Public/05. Tilemap [COMING SOON].yy","name":"05. Tilemap [COMING SOON]","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"06. Text [COMING SOON]","folderPath":"folders/02. Fracture/02. Public/06. Text [COMING SOON].yy","name":"06. Text [COMING SOON]","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"04. Convex Sprite","folderPath":"folders/02. Fracture/02. Public/04. Convex Sprite.yy","name":"04. Convex Sprite","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"03. Private","folderPath":"folders/02. Fracture/03. Private.yy","name":"03. Private","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
