@@ -24,7 +24,7 @@ with (__objFractureBody) {
         shader_set_uniform_f(_uAlpha, image_alpha);
         _prevAlpha = image_alpha;
     }
-    vertex_submit_ext(__vertexBuffer, pr_trianglestrip, __texture, __vertexIndex, __nVertices);
+    vertex_submit_ext(__vertexBuffer, __primitiveType, __texture, __vertexIndex, __nVertices);
 }
 
 matrix_set(matrix_world, _prevMatrix);

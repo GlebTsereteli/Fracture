@@ -9,8 +9,8 @@ function DemoType(_name) constructor {
 	};
 }
 function DemoTypeGrid() : DemoType("Grid") constructor {
-	cols = 3;
-	rows = 3;
+	cols = 4;
+	rows = 4;
 	noiseX = 1;
 	noiseY = noiseX;
 	
@@ -25,7 +25,7 @@ function DemoTypeGrid() : DemoType("Grid") constructor {
 	};
 }
 function DemoTypeZigzag() : DemoType("Zigzag") constructor {
-	count = 5;
+	count = 4;
 	horizontal = true;
 	noise = 0.5;
 	
