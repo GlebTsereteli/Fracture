@@ -1,7 +1,7 @@
 // feather ignore all
 
 function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
-	static _maxNoise = 0.3;
+	static _maxNoise = 0.25;
 	
 	__FRACTURE_BOX_START;
 	
