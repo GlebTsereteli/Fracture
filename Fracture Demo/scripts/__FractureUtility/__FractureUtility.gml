@@ -1,5 +1,17 @@
 // feather ignore all
 
+function __FractureLogBase(_message) {
+	show_debug_message($"[{__FRACTURE_NAME}] {_message}.");
+}
+function __FractureLog(_message) {
+	if (not FRACTURE_DEBUG) return;
+	
+	__FractureLogBase(_message);
+}
+function __FractureError(_message) {
+	show_error($"[{__FRACTURE_NAME} {__FRACTURE_VERSION}] Error.\n-----------------------------------\n{_message}.\n\n", true);
+}
+
 function __FractureFormat() {
 	static _format = (function() {
 		vertex_format_begin();

@@ -25,7 +25,9 @@
     {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
     {"link":"io.gamemaker.gm_filter_edgedetect-1.0.0","name":"io.gamemaker.gm_filter_edgedetect-1.0.0","path":"io.gamemaker.gm_filter_edgedetect-1.0.0.yyp",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"Fracture License.txt","CopyToMask":-1,"filePath":"datafiles","name":"Fracture License.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -41,6 +43,7 @@
     {"id":{"name":"objShape","path":"objects/objShape/objShape.yy",},},
     {"id":{"name":"rmDemo","path":"rooms/rmDemo/rmDemo.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
+    {"id":{"name":"__FractureInit","path":"scripts/__FractureInit/__FractureInit.yy",},},
     {"id":{"name":"__FractureMacros","path":"scripts/__FractureMacros/__FractureMacros.yy",},},
     {"id":{"name":"__FractureUtility","path":"scripts/__FractureUtility/__FractureUtility.yy",},},
     {"id":{"name":"FractureBoxBrick","path":"scripts/FractureBoxBrick/FractureBoxBrick.yy",},},

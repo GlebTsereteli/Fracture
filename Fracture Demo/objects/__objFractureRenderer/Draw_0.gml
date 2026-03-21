@@ -5,11 +5,10 @@ var _ztest = gpu_get_ztestenable();
 var _depth = gpu_get_depth();
 var _prevMatrix = matrix_get(matrix_world);
 var _matrix = __FractureMatrix();
+var _uAlpha = __uAlpha;
 
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
-
-var _uAlpha = __uAlpha;
 shader_set(__shader);
 
 var _prevDepth = undefined;
