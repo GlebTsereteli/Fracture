@@ -15,9 +15,6 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 	var _bx = _horizontal ? _w : 0;
 	var _by = _horizontal ? 0 : _h;
 	
-	var _cos = dcos(_angle);
-	var _sin = dsin(_angle);
-	
 	for (var _i = 0; _i < _bodyCount; _i++) {
 		var _pos = (_i >= _bodyCount - 2) ? _fixedB : (_step * (_i + 1)) + random_range(-_jitter, _jitter);
 		var _even = (_i mod 2 == 0);

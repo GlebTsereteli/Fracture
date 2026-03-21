@@ -59,9 +59,9 @@ physics_fixture_set_density(_fx, 0.5);
 __fixture = physics_fixture_bind(_fx, id); \
 physics_fixture_delete(_fx); \
 \
+phy_rotation = _angle; \
 phy_linear_velocity_x = _inst.phy_linear_velocity_x; \
 phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
-phy_angular_velocity = _inst.phy_angular_velocity; \
-phy_rotation = _angle;
+phy_angular_velocity = _inst.phy_angular_velocity;
 
 #endregion

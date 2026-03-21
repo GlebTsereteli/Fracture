@@ -14,18 +14,18 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 	var _bodies = array_create(_bodyCount);
 	
 	var _index = 0;
-	var _prevColX = undefined;
-	var _prevColY = undefined;
+	var _colX = array_create(_rows + 1);
+	var _colY = array_create(_rows + 1);
+	var _prevColX = array_create(_rows + 1);
+	var _prevColY = array_create(_rows + 1);
 	
 	for (var _i = 0; _i <= _cols; _i++) {
-		var _colX = array_create(_rows);
-		var _colY = array_create(_rows);
 		var _iFirst = (_i == 0);
 		var _iOnEdge = (_iFirst or (_i == _cols));
 		
 		for (var _j = 0; _j <= _rows; _j++) {
 			var _x3 = _i * _spacingX;
-		    var _y3 = _j * _spacingY;
+			var _y3 = _j * _spacingY;
 			
 			if (not _iOnEdge) {
 				_x3 += random_range(-_noiseX, _noiseX);
@@ -34,10 +34,10 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 				_y3 += random_range(-_noiseY, _noiseY);
 			}
 			
-		    _colX[_j] = _x3;
-		    _colY[_j] = _y3;
+			_colX[_j] = _x3;
+			_colY[_j] = _y3;
 			
-		    if (_iFirst or (_j == 0)) continue;
+			if (_iFirst or (_j == 0)) continue;
 			
 			var _x1 = _prevColX[_j - 1], _y1 = _prevColY[_j - 1];
 			var _x2 = _colX[_j - 1], _y2 = _colY[_j - 1];
@@ -78,8 +78,13 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 				_bodies[_index++] = id;
 			}
 		}
+		
+		var _tempX = _prevColX;
+		var _tempY = _prevColY;
 		_prevColX = _colX;
 		_prevColY = _colY;
+		_colX = _tempX;
+		_colY = _tempY;
 	}
 	
 	__FRACTURE_END;

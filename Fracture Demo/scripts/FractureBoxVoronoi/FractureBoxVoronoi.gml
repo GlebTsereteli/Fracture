@@ -9,7 +9,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 	var _cellW = _w / _cols;
 	var _cellH = _h / _rows;
 	var _noise = 0.5;
-
+	
 	var _seeds = array_create(_cols * _rows);
 	var _index = 0;
 	for (var _col = 0; _col < _cols; _col++) {
@@ -29,10 +29,10 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 	var _bodies = array_create(_bodyCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
 		var _polygon = [
-			{ x: 0,  y: 0 },
+			{ x: 0, y: 0 },
 			{ x: _w, y: 0 },
 			{ x: _w, y: _h },
-			{ x: 0,  y: _h },
+			{ x: 0, y: _h },
 		];
 		
 		var _iSeed = _seeds[_i];
