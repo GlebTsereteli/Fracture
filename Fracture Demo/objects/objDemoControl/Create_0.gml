@@ -1,15 +1,12 @@
 
 event_user(0);
 
-// type
-types = [
-	new DemoTypeGrid(),
-	new DemoTypeZigzag(),
-	new DemoTypeBrick(),
-	new DemoTypeVoronoi(),
+demos = [
+	new DemoGeneral(),
+	new DemoShowcase(),
 ];
-type = array_first(types);
-prevType = type;
+demo = array_first(demos);
+prevDemo = demo;
 
 // debug
 outlines = false;
@@ -17,5 +14,7 @@ coms = false;
 shapes = false;
 aabb = false;
 
+edgeFixture = undefined;
 view = undefined;
+
 RefreshInterface();

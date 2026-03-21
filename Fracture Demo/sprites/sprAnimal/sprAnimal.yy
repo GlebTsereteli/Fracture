@@ -54,8 +54,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"01. Demo",
-    "path":"folders/01. Demo.yy",
+    "name":"99. Misc",
+    "path":"folders/01. Demo/99. Misc.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

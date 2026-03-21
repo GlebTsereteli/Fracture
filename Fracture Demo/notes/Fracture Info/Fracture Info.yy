@@ -1,7 +1,7 @@
 {
   "$GMNotes":"v1",
-  "%Name":"01. Fracture Info",
-  "name":"01. Fracture Info",
+  "%Name":"Fracture Info",
+  "name":"Fracture Info",
   "parent":{
     "name":"02. Fracture",
     "path":"folders/02. Fracture.yy",

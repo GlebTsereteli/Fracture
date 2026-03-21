@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__FractureUtility",
+  "%Name":"scrDemo",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__FractureUtility",
+  "name":"scrDemo",
   "parent":{
-    "name":"Private",
-    "path":"folders/02. Fracture/Private.yy",
+    "name":"01. Types",
+    "path":"folders/01. Demo/01. Types.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
