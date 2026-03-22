@@ -7,16 +7,6 @@ function DemoGeneralBox() : DemoGeneralShape("Box") constructor {
 			objDemoControl.RefreshInterface();
 		}
 		
-		if (mouse_check_button_pressed(mb_left) and not is_mouse_over_debug_overlay()) {
-			var _shape = instance_position(mouse_x, mouse_y, objShape);
-			if (_shape == noone) {
-				instance_create_depth(mouse_x, mouse_y, -1000, objShape);
-			}
-			else {
-				Fracture(_shape);
-			}
-		}
-		
 		//if (keyboard_check_pressed(ord("3"))) {
 		//	FractureAll();
 		//}
@@ -44,6 +34,15 @@ function DemoGeneralBox() : DemoGeneralShape("Box") constructor {
 			
 		type.Init();
 	};
+	static Fracture = function(_inst) {
+		var _t = get_timer();
+		
+		var _args = type.GetArguments(_inst);
+		array_insert(_args, 0, _inst);
+		method_call(type.func, _args);
+		
+		show_debug_message((get_timer() - _t) / 1000);
+	};
 	
 	// custom
 	types = [
@@ -54,16 +53,6 @@ function DemoGeneralBox() : DemoGeneralShape("Box") constructor {
 	];
 	type = array_first(types);
 	prevType = type;
-	
-	Fracture = function(_inst) {
-		var _t = get_timer();
-		
-		var _args = type.GetArguments(_inst);
-		array_insert(_args, 0, _inst);
-		method_call(type.func, _args);
-		
-		show_debug_message((get_timer() - _t) / 1000);
-	};
 }
 
 function DemoGeneralBoxType(_name) constructor {

@@ -55,11 +55,11 @@ RefreshInterface = function() {
 //	show_debug_message((get_timer() - _t) / 1000);
 //};
 //FractureAll = function() {
-//	with (objShape) {
+//	with (objDemoShapeBox) {
 //		other.Fracture(id);
 //	}
 //};
 //DestroyAll = function() {
-//	instance_destroy(objShape);
+//	instance_destroy(objDemoShapeBox);
 //	instance_destroy(__objFracturePack);
 //};

@@ -51,7 +51,7 @@ var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
-physics_fixture_set_collision_group(_fx, 1); \
+physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP); \
 physics_fixture_set_polygon_shape(_fx); \
 physics_fixture_set_density(_fx, 0.5);
 

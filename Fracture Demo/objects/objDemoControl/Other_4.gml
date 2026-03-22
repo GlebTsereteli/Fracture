@@ -4,7 +4,7 @@ if (edgeFixture != undefined) {
 }
 
 var _fx = physics_fixture_create();
-physics_fixture_set_collision_group(_fx, 1);
+physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP);
 physics_fixture_set_density(_fx, 0);
 physics_fixture_set_chain_shape(_fx, true);
 physics_fixture_add_point(_fx, 1, 1);

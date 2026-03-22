@@ -7,7 +7,7 @@ var _fx = physics_fixture_create(); {
 	var _halfW = sprite_width / 2;
 	var _halfH = sprite_height / 2
 	
-	physics_fixture_set_collision_group(_fx, 1);
+	physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP);
 	physics_fixture_set_box_shape(_fx, _halfW, _halfH);
 	physics_fixture_set_density(_fx, 0.5);
 	physics_fixture_set_restitution(_fx, 0.5);

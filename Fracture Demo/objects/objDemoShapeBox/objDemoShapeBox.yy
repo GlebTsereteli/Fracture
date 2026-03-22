@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"objShape",
+  "%Name":"objDemoShapeBox",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objShape",
+  "name":"objDemoShapeBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"99. Misc",
-    "path":"folders/01. Demo/99. Misc.yy",
+    "name":"02. Shapes",
+    "path":"folders/01. Demo/02. Shapes.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"objDemoShapeParent",
+    "path":"objects/objDemoShapeParent/objDemoShapeParent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprAnimal",
-    "path":"sprites/sprAnimal/sprAnimal.yy",
+    "name":"sprDemoBox",
+    "path":"sprites/sprDemoBox/sprDemoBox.yy",
   },
   "spriteMaskId":null,
   "visible":true,
