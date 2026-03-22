@@ -8,9 +8,6 @@ function DemoGeneralShape(_name) constructor {
 	static Fracture = Noop;
 }
 
-function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
-	
-}
 function DemoGeneralConvexSprite() : DemoGeneralShape("Convex Sprite") constructor {
 	
 }

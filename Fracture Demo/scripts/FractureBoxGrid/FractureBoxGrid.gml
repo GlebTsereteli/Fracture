@@ -3,7 +3,7 @@
 function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 	static _maxNoise = 0.25;
 	
-	__FRACTURE_BOX_START;
+	__FRACTURE_START;
 	
 	var _spacingX = _w / _cols;
 	var _spacingY = _h / _rows;

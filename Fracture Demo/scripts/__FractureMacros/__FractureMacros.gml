@@ -13,6 +13,20 @@
 if (not instance_exists(__objFractureRenderer)) { \
     instance_create_depth(0, 0, 0, __objFractureRenderer); \
 } \
+\
+var _w = _inst.sprite_width; \
+var _h = _inst.sprite_height; \
+var _centerX = _inst.sprite_xoffset; \
+var _centerY = _inst.sprite_yoffset; \
+var _angle = _inst.phy_rotation; \
+var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index); \
+\
+var _uvs = sprite_get_uvs(_inst.sprite_index, _inst.image_index); \
+var _u0 = _uvs[0]; \
+var _v0 = _uvs[1]; \
+var _u1 = _uvs[2]; \
+var _v1 = _uvs[3]; \
+\
 static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
 vertex_begin(_vb, _format);
@@ -33,18 +47,6 @@ return _pack;
 #macro __FRACTURE_MATRIX \
 static _matrix = matrix_build_identity(); \
 return _matrix;
-
-#endregion
-#region shapes
-
-#macro __FRACTURE_BOX_START \
-__FRACTURE_START; \
-var _w = _inst.sprite_width; \
-var _h = _inst.sprite_height; \
-var _centerX = _inst.sprite_xoffset; \
-var _centerY = _inst.sprite_yoffset; \
-var _angle = _inst.phy_rotation; \
-var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index);
 
 #endregion
 #region fixtures

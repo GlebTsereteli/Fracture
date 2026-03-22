@@ -1,7 +1,7 @@
 // feather ignore all
 
 function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
-	__FRACTURE_BOX_START;
+	__FRACTURE_START;
 	
 	var _bodies = array_create(_bodyCount);
 	var _edgeA = 0;

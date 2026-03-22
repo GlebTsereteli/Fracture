@@ -7,7 +7,6 @@ function DemoGeneral() : Demo("General") constructor {
 			objDemoControl.RefreshInterface();
 		}
 		
-		
 		if (not is_mouse_over_debug_overlay()) {
 			// spawn & fracture
 			if (mouse_check_button_pressed(mb_left)) {

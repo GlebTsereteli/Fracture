@@ -1,7 +1,7 @@
 // feather ignore all
 
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
-	__FRACTURE_BOX_START;
+	__FRACTURE_START;
 	
 	var _brickW = _w / _cols;
 	var _brickH = _h / _rows;

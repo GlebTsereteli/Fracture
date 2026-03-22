@@ -1,7 +1,7 @@
 // feather ignore all
 
 function FractureBoxVoronoi(_inst, _bodyCount) {
-	__FRACTURE_BOX_START;
+	__FRACTURE_START;
 	
 	// seeds
 	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
