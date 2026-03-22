@@ -36,10 +36,10 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry1 / _h);
-					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry1 / _h);
-					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx1 / _w, _ry2 / _h);
-					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _bx2 / _w, _ry2 / _h);
+					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx1 / _w), lerp(_v0, _v1, _ry1 / _h));
+					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx2 / _w), lerp(_v0, _v1, _ry1 / _h));
+					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx1 / _w), lerp(_v0, _v1, _ry2 / _h));
+					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx2 / _w), lerp(_v0, _v1, _ry2 / _h));
 					
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
@@ -82,10 +82,10 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by1 / _h); // TL
-					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by1 / _h); // TR
-					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx1 / _w, _by2 / _h); // BL
-					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _rx2 / _w, _by2 / _h); // BR
+					vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _rx1 / _w), lerp(_v0, _v1, _by1 / _h));
+					vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _rx2 / _w), lerp(_v0, _v1, _by1 / _h));
+					vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _rx1 / _w), lerp(_v0, _v1, _by2 / _h));
+					vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _rx2 / _w), lerp(_v0, _v1, _by2 / _h));
 					
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;

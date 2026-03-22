@@ -71,9 +71,9 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 				var _p0 = _polygon[0];
 				var _p2 = _polygon[_j];
 				var _p3 = _polygon[_j + 1];
-				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _p0.x / _w,  _p0.y / _h);
-				vertex_position(_vb, _p2.x - _xl, _p2.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _p2.x / _w,  _p2.y / _h);
-				vertex_position(_vb, _p3.x - _xl, _p3.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _p3.x / _w, _p3.y / _h);
+				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0.x / _w), lerp(_v0, _v1, _p0.y / _h));
+				vertex_position(_vb, _p2.x - _xl, _p2.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2.x / _w), lerp(_v0, _v1, _p2.y / _h));
+				vertex_position(_vb, _p3.x - _xl, _p3.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3.x / _w), lerp(_v0, _v1, _p3.y / _h));
 			}
 			
 			__primitiveType = pr_trianglelist;
