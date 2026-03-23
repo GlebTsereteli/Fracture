@@ -56,8 +56,12 @@ return _matrix;
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
 physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP); \
-physics_fixture_set_polygon_shape(_fx); \
-physics_fixture_set_density(_fx, 0.5);
+physics_fixture_set_density(_fx, FRACTURE_DENSITY); \
+physics_fixture_set_restitution(_fx, FRACTURE_RESTITUTION); \
+physics_fixture_set_friction(_fx, FRACTURE_FRICTION); \
+physics_fixture_set_linear_damping(_fx, FRACTURE_LINEAR_DAMPING); \
+physics_fixture_set_angular_damping(_fx, FRACTURE_ANGULAR_DAMPING); \
+physics_fixture_set_polygon_shape(_fx);
 
 #macro __FRACTURE_FIXTURE_END \
 __fixture = physics_fixture_bind(_fx, id); \
