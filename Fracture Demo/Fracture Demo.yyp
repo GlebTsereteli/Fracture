@@ -45,7 +45,6 @@
     {"id":{"name":"Fracture Info","path":"notes/Fracture Info/Fracture Info.yy",},},
     {"id":{"name":"readme","path":"notes/readme/readme.yy",},},
     {"id":{"name":"__objFractureBody","path":"objects/__objFractureBody/__objFractureBody.yy",},},
-    {"id":{"name":"__objFracturePack","path":"objects/__objFracturePack/__objFracturePack.yy",},},
     {"id":{"name":"__objFractureRenderer","path":"objects/__objFractureRenderer/__objFractureRenderer.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objDemoShapeBox","path":"objects/objDemoShapeBox/objDemoShapeBox.yy",},},

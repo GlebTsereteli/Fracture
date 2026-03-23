@@ -15,7 +15,7 @@ function DemoGeneralBox() : DemoGeneralShape("Box") constructor {
 		//}
 	};
 	static RefreshInterface = function() {
-		var _names = array_map(patterns, function(_type) {
+		var _names = array_map(patterns, function(_pattern) {
 			return _pattern.name;
 		});
 		dbg_drop_down(ref_create(self, "pattern"), patterns, _names, "Pattern");

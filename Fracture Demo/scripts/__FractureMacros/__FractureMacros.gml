@@ -31,20 +31,19 @@ var _v1 = _uvs[3]; \
 \
 static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
-vertex_begin(_vb, _format);
+vertex_begin(_vb, _format); \
+\
+var _state = { \
+	__vb: _vb, \
+	__n: 0, \
+}
 
 #macro __FRACTURE_END \
+instance_destroy(_inst); \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
-\
-var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
-_pack.__vertexBuffer = _vb; \
-_pack.__bodies = _bodies; \
-_pack.__bodyCount = _bodyCount; \
-\
-instance_destroy(_inst); \
-\
-return _pack;
+_state.__n = _bodyCount; \
+return _bodies;
 
 #macro __FRACTURE_MATRIX \
 static _matrix = matrix_build_identity(); \
