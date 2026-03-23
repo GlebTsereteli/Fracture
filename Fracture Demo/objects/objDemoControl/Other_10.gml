@@ -45,21 +45,3 @@ RefreshInterface = function() {
 		room_goto(demo.rm);
 	}
 };
-//Fracture = function(_inst) {
-//	var _t = get_timer();
-	
-//	var _args = type.GetArguments(_inst);
-//	array_insert(_args, 0, _inst);
-//	method_call(type.func, _args);
-	
-//	show_debug_message((get_timer() - _t) / 1000);
-//};
-//FractureAll = function() {
-//	with (objDemoShapeBox) {
-//		other.Fracture(id);
-//	}
-//};
-//DestroyAll = function() {
-//	instance_destroy(objDemoShapeBox);
-//	instance_destroy(__objFracturePack);
-//};

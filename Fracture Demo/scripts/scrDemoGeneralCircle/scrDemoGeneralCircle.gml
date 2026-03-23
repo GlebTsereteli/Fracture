@@ -2,8 +2,8 @@
 function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
 	// shared
 	static Update = function() {
-		if (type != prevType) {
-			prevType = type;
+		if (pattern != prevPattern) {
+			prevPattern = pattern;
 			objDemoControl.RefreshInterface();
 		}
 		
@@ -15,54 +15,45 @@ function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
 		//}
 	};
 	static RefreshInterface = function() {
-		var _names = array_map(types, function(_type) {
-			return _type.name;
+		var _names = array_map(patterns, function(_type) {
+			return _pattern.name;
 		});
-		dbg_drop_down(ref_create(self, "type"), types, _names, "Type");
+		dbg_drop_down(ref_create(self, "pattern"), patterns, _names, "Pattern");
 			
 		dbg_same_line();
 		var _size = 19;
 		dbg_button("-", function() {
-			var _index = Mod2(array_get_index(types, type) - 1, array_length(types));
-			type = types[_index];
+			var _index = Mod2(array_get_index(patterns, pattern) - 1, array_length(patterns));
+			pattern = patterns[_index];
 		}, _size, _size);
 		dbg_same_line();
 		dbg_button("+", function() {
-			var _index = Mod2(array_get_index(types, type) + 1, array_length(types));
-			type = types[_index];
+			var _index = Mod2(array_get_index(patterns, pattern) + 1, array_length(patterns));
+			pattern = patterns[_index];
 		}, _size, _size);
 			
-		type.Init();
+		pattern.Init();
 	};
 	static Fracture = function(_inst) {
 		var _t = get_timer();
 		
-		var _args = type.GetArguments(_inst);
+		var _args = pattern.GetArguments(_inst);
 		array_insert(_args, 0, _inst);
-		method_call(type.func, _args);
+		method_call(pattern.func, _args);
 		
 		show_debug_message((get_timer() - _t) / 1000);
 	};
 	
 	// custom
-	types = [
+	patterns = [
 		new DemoGeneralCircleRadial(),
 		new DemoGeneralCircleVoronoi(),
 	];
-	type = array_first(types);
-	prevType = type;
+	pattern = array_first(patterns);
+	prevPattern = pattern;
 }
 
-function DemoGeneralCircleType(_name) constructor {
-	name = _name;
-	func = asset_get_index($"FractureCircle{name}");
-	
-	static Init = Noop;
-	static GetArguments = function() {
-		return [];
-	};
-}
-function DemoGeneralCircleRadial() : DemoGeneralCircleType("Radial") constructor {
+function DemoGeneralCircleRadial() : DemoGeneralPattern("Radial") constructor {
     slices = 8;
     angleNoise = 0.5;
     centerNoise = 0.15;
@@ -76,7 +67,7 @@ function DemoGeneralCircleRadial() : DemoGeneralCircleType("Radial") constructor
         return [slices, angleNoise, centerNoise];
     };
 }
-function DemoGeneralCircleVoronoi() : DemoGeneralCircleType("Voronoi") constructor {
+function DemoGeneralCircleVoronoi() : DemoGeneralPattern("Voronoi") constructor {
     bodyCount = 10;
 	
     static Init = function() {

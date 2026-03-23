@@ -64,3 +64,12 @@ function DemoGeneral() : Demo("General") constructor {
 	shape = array_first(shapes);
 	prevShape = shape;
 }
+function DemoGeneralPattern(_name) constructor {
+	name = _name;
+	func = asset_get_index($"FractureBox{name}");
+	
+	static Init = Noop;
+	static GetArguments = function() {
+		return [];
+	};
+}
