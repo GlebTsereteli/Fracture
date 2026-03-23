@@ -47,6 +47,7 @@ function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
 	// custom
 	types = [
 		new DemoGeneralCircleRadial(),
+		new DemoGeneralCircleVoronoi(),
 	];
 	type = array_first(types);
 	prevType = type;
@@ -73,5 +74,17 @@ function DemoGeneralCircleRadial() : DemoGeneralCircleType("Radial") constructor
     };
     static GetArguments = function() {
         return [slices, angleNoise, centerNoise];
+    };
+}
+function DemoGeneralCircleVoronoi() : DemoGeneralCircleType("Voronoi") constructor {
+    bodyCount = 10;
+    noise = 0.25;
+	
+    static Init = function() {
+        dbg_slider_int(ref_create(self, "bodyCount"), 3, 50, "Body Count");
+        dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
+    };
+    static GetArguments = function() {
+        return [bodyCount, noise];
     };
 }

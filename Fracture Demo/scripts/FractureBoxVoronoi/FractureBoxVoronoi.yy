@@ -6,7 +6,7 @@
   "name":"FractureBoxVoronoi",
   "parent":{
     "name":"01. Box",
-    "path":"folders/02. Fracture/Public/Shapes/01. Box.yy",
+    "path":"folders/02. Fracture/Public/01. Box.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

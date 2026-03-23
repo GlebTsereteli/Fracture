@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureCircleRadial",
+  "%Name":"FractureCircleVoronoi",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureCircleRadial",
+  "name":"FractureCircleVoronoi",
   "parent":{
     "name":"02. Circle",
     "path":"folders/02. Fracture/Public/02. Circle.yy",
