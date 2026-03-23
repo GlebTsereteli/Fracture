@@ -109,14 +109,12 @@ function DemoGeneralBoxBrick() : DemoGeneralBoxType("Brick") constructor {
 	};
 }
 function DemoGeneralBoxVoronoi() : DemoGeneralBoxType("Voronoi") constructor {
-	count = 10;
-	noise = 0.4;
+	bodyCount = 10;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "count"), 2, 20, "Count");
-		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
+		dbg_slider_int(ref_create(self, "bodyCount"), 2, 20, "Body Count");
 	};
 	static GetArguments = function() {
-		return [count, noise];
+		return [bodyCount];
 	};
 }

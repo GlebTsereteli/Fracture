@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureCircleVoronoi(_inst, _bodyCount, _noise = 0.25) {
+function FractureCircleVoronoi(_inst, _bodyCount) {
 	__FRACTURE_START;
 	
 	var _radius = max(_w, _h) * 0.5;
@@ -12,6 +12,7 @@ function FractureCircleVoronoi(_inst, _bodyCount, _noise = 0.25) {
 	var _cellH = _h / _rows;
 	
 	var _seeds = [];
+	var _noise = 0.3;
 	for (var _col = 0; _col < _cols; _col++) {
 		for (var _row = 0; _row < _rows; _row++) {
 			var _sx = (_col + 0.5 + random_range(-_noise, _noise)) * _cellW;

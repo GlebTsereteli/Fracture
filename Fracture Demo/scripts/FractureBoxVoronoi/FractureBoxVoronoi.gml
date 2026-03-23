@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureBoxVoronoi(_inst, _bodyCount, _noise = 0.5) {
+function FractureBoxVoronoi(_inst, _bodyCount) {
 	__FRACTURE_START;
 	
 	// seeds
@@ -11,6 +11,7 @@ function FractureBoxVoronoi(_inst, _bodyCount, _noise = 0.5) {
 	
 	var _seeds = array_create(_cols * _rows);
 	var _index = 0;
+	var _noise = 0.3;
 	for (var _col = 0; _col < _cols; _col++) {
 		for (var _row = 0; _row < _rows; _row++) {
 	        _seeds[_index++] = {

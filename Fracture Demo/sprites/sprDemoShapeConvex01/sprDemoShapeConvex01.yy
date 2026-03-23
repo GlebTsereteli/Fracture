@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprDemoShapeConvex",
+  "%Name":"sprDemoShapeConvex01",
   "bboxMode":0,
   "bbox_bottom":240,
   "bbox_left":0,
@@ -28,19 +28,19 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"1446d907-eb96-4c7d-8377-2a6ef406e098","blendMode":0,"displayName":"default","isLocked":false,"name":"1446d907-eb96-4c7d-8377-2a6ef406e098","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprDemoShapeConvex",
+  "name":"sprDemoShapeConvex01",
   "nineSlice":null,
   "origin":4,
   "parent":{
     "name":"03. Convex",
-    "path":"folders/01. Demo/01. Types/01. General/03. Convex.yy",
+    "path":"folders/01. Demo/02. Types/01. General/03. Convex.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprDemoShapeConvex",
+    "%Name":"sprDemoShapeConvex01",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -64,7 +64,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprDemoShapeConvex",
+    "name":"sprDemoShapeConvex01",
     "playback":1,
     "playbackSpeed":0.0,
     "playbackSpeedType":0,
@@ -76,28 +76,28 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1652816e-b0d0-4686-8069-cc251bb85e44","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1652816e-b0d0-4686-8069-cc251bb85e44","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f120d3d3-dcd3-412a-93e8-b96ac2622590","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4beac98b-58ca-42d4-858b-319a2e3ab9c3","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4beac98b-58ca-42d4-858b-319a2e3ab9c3","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"ff1c1ac8-a695-4e28-8f2b-bff4bffdcaa6","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d0a28bb5-8b82-44da-8354-86609a3df49f","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d0a28bb5-8b82-44da-8354-86609a3df49f","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f88d0459-7cb9-471e-a72b-e0621f86b239","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1d5da2f4-a9e7-48cf-b692-e1d49c0e5cd8","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1d5da2f4-a9e7-48cf-b692-e1d49c0e5cd8","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f43fef69-b9b4-4942-9407-f8de6cc411cd","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fd20f00d-2fcb-4ce8-ac9b-0031ff4b3de4","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fd20f00d-2fcb-4ce8-ac9b-0031ff4b3de4","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6a59e52d-ef3b-4a6b-8b5d-e906935adf34","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1c92c016-0bbd-4a99-9152-09d4987fbc40","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1c92c016-0bbd-4a99-9152-09d4987fbc40","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"ed274af5-79ce-4002-b6dc-7e3198e759e4","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1476393c-c9d9-4bd2-9eb8-8b571ab2f538","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1476393c-c9d9-4bd2-9eb8-8b571ab2f538","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"bfeb75c4-fb9f-48ec-84df-cc777da12154","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ca592d6-6975-4647-ac22-f892407c1b76","path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ca592d6-6975-4647-ac22-f892407c1b76","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"92172c77-8607-40b6-9223-6eae083de89a","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
@@ -108,6 +108,9 @@
   },
   "swatchColours":null,
   "swfPrecision":0.5,
+  "tags":[
+    "ConvexShape",
+  ],
   "textureGroupId":{
     "name":"Default",
     "path":"texturegroups/Default",

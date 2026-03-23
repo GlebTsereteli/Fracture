@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
   "%Name":"objDemoShapeParent",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "eventList":[],
   "managed":true,
   "name":"objDemoShapeParent",
   "overriddenProperties":[],
   "parent":{
     "name":"01. General",
-    "path":"folders/01. Demo/01. Types/01. General.yy",
+    "path":"folders/01. Demo/02. Types/01. General.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"03. Convex",
-    "path":"folders/01. Demo/01. Types/01. General/03. Convex.yy",
+    "path":"folders/01. Demo/02. Types/01. General/03. Convex.yy",
   },
   "parentObjectId":{
     "name":"objDemoShapeParent",
@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprDemoShapeConvex",
-    "path":"sprites/sprDemoShapeConvex/sprDemoShapeConvex.yy",
+    "name":"sprDemoShapeConvex01",
+    "path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",
   },
   "spriteMaskId":null,
   "visible":true,

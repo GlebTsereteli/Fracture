@@ -6,7 +6,7 @@
   "name":"scrDemoShowcase",
   "parent":{
     "name":"02. Showcase",
-    "path":"folders/01. Demo/01. Types/02. Showcase.yy",
+    "path":"folders/01. Demo/02. Types/02. Showcase.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
