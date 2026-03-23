@@ -64,6 +64,7 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
         var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
         with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+			__state = _state;
             __nVertices = _nArc * 3;
             __vertexIndex = _vertexOffset;
             __vertexBuffer = _vb;

@@ -38,6 +38,7 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
 		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+			__state = _state;
 			__nVertices = 3;
 			__vertexIndex = _i * __nVertices;
 			__vertexBuffer = _vb;

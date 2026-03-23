@@ -88,6 +88,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
 		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+			__state = _state;
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVerticesForBody;
 			__vertexIndex = _vertexOffset;

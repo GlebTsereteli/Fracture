@@ -55,18 +55,26 @@ function DemoGeneral() : Demo("General") constructor {
 	
 	// custom
 	shapes = [
-		new DemoGeneralBox(),
-		new DemoGeneralCircle(),
-		new DemoGeneralConvex(),
-		//new DemoGeneralConcave(),
-		//new DemoGeneralConcave(),
+		new DemoGeneralShape("Box", [
+			new DemoGeneralBoxGrid(),
+			new DemoGeneralBoxZigzag(),
+			new DemoGeneralBoxBrick(),
+			new DemoGeneralBoxVoronoi(),
+		]),
+		new DemoGeneralShape("Circle", [
+			new DemoGeneralCircleRadial(),
+			new DemoGeneralCircleVoronoi(),
+		]),
+		new DemoGeneralShape("Convex", [
+			new DemoGeneralConvexVoronoi(),
+		]),
 	];
 	shape = array_first(shapes);
 	prevShape = shape;
 }
 function DemoGeneralPattern(_name) constructor {
 	name = _name;
-	func = asset_get_index($"FractureBox{name}");
+	func = undefined;
 	
 	static Init = Noop;
 	static GetArguments = function() {

@@ -43,6 +43,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+					__state = _state;
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
@@ -91,6 +92,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 				
 				with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
+					__state = _state;
 					__nVertices = 4;
 					__vertexIndex = _index * __nVertices;
 					__vertexBuffer = _vb;
