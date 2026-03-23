@@ -8,8 +8,8 @@
   "name":"objDemoShapeBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"02. Shapes",
-    "path":"folders/01. Demo/02. Shapes.yy",
+    "name":"01. Box",
+    "path":"folders/01. Demo/01. Types/01. General/01. Box.yy",
   },
   "parentObjectId":{
     "name":"objDemoShapeParent",
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprDemoBox",
-    "path":"sprites/sprDemoBox/sprDemoBox.yy",
+    "name":"sprDemoShapeBox",
+    "path":"sprites/sprDemoShapeBox/sprDemoShapeBox.yy",
   },
   "spriteMaskId":null,
   "visible":true,

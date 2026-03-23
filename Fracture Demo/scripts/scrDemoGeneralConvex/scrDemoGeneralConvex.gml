@@ -1,18 +1,11 @@
 
-function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
+function DemoGeneralConvex() : DemoGeneralShape("Convex") constructor {
 	// shared
 	static Update = function() {
 		if (type != prevType) {
 			prevType = type;
 			objDemoControl.RefreshInterface();
 		}
-		
-		//if (keyboard_check_pressed(ord("3"))) {
-		//	FractureAll();
-		//}
-		//if (keyboard_check_pressed(ord("4"))) {
-		//	DestroyAll();
-		//}
 	};
 	static RefreshInterface = function() {
 		var _names = array_map(types, function(_type) {
@@ -46,37 +39,22 @@ function DemoGeneralCircle() : DemoGeneralShape("Circle") constructor {
 	
 	// custom
 	types = [
-		new DemoGeneralCircleRadial(),
-		new DemoGeneralCircleVoronoi(),
+		new DemoGeneralConvexVoronoi(),
 	];
 	type = array_first(types);
 	prevType = type;
 }
 
-function DemoGeneralCircleType(_name) constructor {
+function DemoGeneralConvexType(_name) constructor {
 	name = _name;
-	func = asset_get_index($"FractureCircle{name}");
+	func = asset_get_index($"FractureConvex{name}");
 	
 	static Init = Noop;
 	static GetArguments = function() {
 		return [];
 	};
 }
-function DemoGeneralCircleRadial() : DemoGeneralCircleType("Radial") constructor {
-    slices = 8;
-    angleNoise = 0.5;
-    centerNoise = 0.15;
-	
-    static Init = function() {
-        dbg_slider_int(ref_create(self, "slices"), 3, 20, "Slices");
-        dbg_slider(ref_create(self, "angleNoise"), 0, 1, "Angle Noise", 0.05);
-        dbg_slider(ref_create(self, "centerNoise"), 0, 0.3, "Center Noise", 0.01);
-    };
-    static GetArguments = function() {
-        return [slices, angleNoise, centerNoise];
-    };
-}
-function DemoGeneralCircleVoronoi() : DemoGeneralCircleType("Voronoi") constructor {
+function DemoGeneralConvexVoronoi() : DemoGeneralConvexType("Voronoi") constructor {
     bodyCount = 10;
     noise = 0.25;
 	

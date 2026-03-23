@@ -8,8 +8,8 @@
   "name":"objDemoShapeParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"02. Shapes",
-    "path":"folders/01. Demo/02. Shapes.yy",
+    "name":"01. General",
+    "path":"folders/01. Demo/01. Types/01. General.yy",
   },
   "parentObjectId":null,
   "persistent":false,

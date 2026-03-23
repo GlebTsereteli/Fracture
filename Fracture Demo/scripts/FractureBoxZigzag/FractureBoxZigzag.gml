@@ -26,16 +26,18 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 		var _xl = min(_ax, _bx, _cx);
 		var _yt = min(_ay, _by, _cy);
 		
+		// vertices
+		vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+		vertex_position(_vb, _bx - _xl, _by - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+		vertex_position(_vb, _cx - _xl, _cy - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
+		
+		// body
 		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
 		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
 		var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
 		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-			vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-			vertex_position(_vb, _bx - _xl, _by - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
-			vertex_position(_vb, _cx - _xl, _cy - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
-			
 			__nVertices = 3;
 			__vertexIndex = _i * __nVertices;
 			__vertexBuffer = _vb;

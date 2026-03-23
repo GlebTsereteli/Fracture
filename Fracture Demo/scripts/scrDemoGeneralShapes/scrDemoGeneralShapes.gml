@@ -7,10 +7,3 @@ function DemoGeneralShape(_name) constructor {
 	static RefreshInterface = Noop;
 	static Fracture = Noop;
 }
-
-function DemoGeneralConvexSprite() : DemoGeneralShape("Convex Sprite") constructor {
-	
-}
-function DemoGeneralConcaveSprite() : DemoGeneralShape("Concave Sprite") constructor {
-	
-}

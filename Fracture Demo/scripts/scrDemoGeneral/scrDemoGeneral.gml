@@ -57,8 +57,9 @@ function DemoGeneral() : Demo("General") constructor {
 	shapes = [
 		new DemoGeneralBox(),
 		new DemoGeneralCircle(),
-		//new DemoGeneralConvexSprite(),
-		//new DemoGeneralConcaveSprite(),
+		new DemoGeneralConvex(),
+		//new DemoGeneralConcave(),
+		//new DemoGeneralConcave(),
 	];
 	shape = array_first(shapes);
 	prevShape = shape;
