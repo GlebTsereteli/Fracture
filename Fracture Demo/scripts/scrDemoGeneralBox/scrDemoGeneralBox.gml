@@ -81,7 +81,7 @@ function DemoGeneralBoxGrid() : DemoGeneralBoxType("Grid") constructor {
 	};
 }
 function DemoGeneralBoxZigzag() : DemoGeneralBoxType("Zigzag") constructor {
-	count = 4;
+	count = 8;
 	horizontal = true;
 	noise = 0.5;
 	

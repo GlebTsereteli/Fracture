@@ -31,65 +31,64 @@ function __FractureMatrixIdentity() {
 }
 
 function __FracturePolygonClipHalfPlane(_polygon, _bisectorX, _bisectorY, _normalX, _normalY) {
-    var _n = array_length(_polygon);
+    var _n = array_length(_polygon) / 2;
     if (_n == 0) return [];
     
     var _result = [];
     
     for (var _i = 0; _i < _n; _i++) {
-        var _v1 = _polygon[_i];
-        var _v2 = _polygon[(_i + 1) mod _n];
+        var _v1x = _polygon[_i * 2];
+        var _v1y = _polygon[_i * 2 + 1];
+        var _v2x = _polygon[((_i + 1) mod _n) * 2];
+        var _v2y = _polygon[((_i + 1) mod _n) * 2 + 1];
         
         // signed distance from each vertex to the bisector line
-        var _v1Dist = ((_v1.x - _bisectorX) * _normalX) + ((_v1.y - _bisectorY) * _normalY);
-        var _v2Dist = ((_v2.x - _bisectorX) * _normalX) + ((_v2.y - _bisectorY) * _normalY);
+        var _v1Dist = ((_v1x - _bisectorX) * _normalX) + ((_v1y - _bisectorY) * _normalY);
+        var _v2Dist = ((_v2x - _bisectorX) * _normalX) + ((_v2y - _bisectorY) * _normalY);
         var _v1Inside = (_v1Dist >= 0);
         
         // keep current vertex if on the correct side
         if (_v1Inside) {
-            array_push(_result, _v1);
+            array_push(_result, _v1x, _v1y);
         }
         
         // if edge straddles the boundary, add the intersection point
         if (_v1Inside != (_v2Dist >= 0)) {
             var _step = _v1Dist / (_v1Dist - _v2Dist);
-            array_push(_result, {
-                x: _v1.x + (_step * (_v2.x - _v1.x)),
-                y: _v1.y + (_step * (_v2.y - _v1.y))
-            });
+            array_push(_result,
+                _v1x + (_step * (_v2x - _v1x)),
+                _v1y + (_step * (_v2y - _v1y))
+            );
         }
     }
     
     return _result;
 }
 function __FracturePolygonCentroid(_polygon) {
-    var _n = array_length(_polygon);
+    var _n = array_length(_polygon) / 2;
     var _signedArea = 0;
     var _centroidX = 0;
     var _centroidY = 0;
-    var _sumX = 0;
-    var _sumY = 0;
     
     for (var _i = 0; _i < _n; _i++) {
-        var _v1 = _polygon[_i];
-        var _v2 = _polygon[(_i + 1) mod _n];
+        var _v1x = _polygon[_i * 2];
+        var _v1y = _polygon[_i * 2 + 1];
+        var _v2x = _polygon[((_i + 1) mod _n) * 2];
+        var _v2y = _polygon[((_i + 1) mod _n) * 2 + 1];
         
         // cross product of consecutive edge pairs, used to weight each vertex pair by area
-        var _crossWeight = (_v1.x * _v2.y) - (_v2.x * _v1.y);
+        var _crossWeight = (_v1x * _v2y) - (_v2x * _v1y);
         _signedArea += _crossWeight;
         
-        _centroidX += (_v1.x + _v2.x) * _crossWeight;
-        _centroidY += (_v1.y + _v2.y) * _crossWeight;
-        
-        _sumX += _v1.x;
-        _sumY += _v1.y;
+        _centroidX += (_v1x + _v2x) * _crossWeight;
+        _centroidY += (_v1y + _v2y) * _crossWeight;
     }
     
     // 1 / (6 * area), derived from the polygon centroid integral
     // _signedArea is 2x true area, so we use 3 instead of 6
     var _invArea = 1 / (3 * _signedArea);
     return {
-		x: _centroidX * _invArea,
-		y: _centroidY * _invArea
+        x: _centroidX * _invArea,
+        y: _centroidY * _invArea,
     };
 }

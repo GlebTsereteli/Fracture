@@ -1,7 +1,7 @@
 
 var _sprites = tag_get_asset_ids("ConvexShape", asset_sprite);
 sprite_index = method_call(choose, _sprites);
-image_xscale = random_range(1, 1.5);
+image_xscale = random_range(1, 1.3);
 image_yscale = image_xscale;
 image_index = irandom(image_number - 1);
 
