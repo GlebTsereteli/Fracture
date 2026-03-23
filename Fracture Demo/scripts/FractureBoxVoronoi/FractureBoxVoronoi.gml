@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureBoxVoronoi(_inst, _bodyCount) {
+function FractureBoxVoronoi(_inst, _bodyCount, _noise = 0.5) {
 	__FRACTURE_START;
 	
 	// seeds
@@ -8,7 +8,6 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 	var _rows = max(1, round(_bodyCount / _cols));
 	var _cellW = _w / _cols;
 	var _cellH = _h / _rows;
-	var _noise = 0.5;
 	
 	var _seeds = array_create(_cols * _rows);
 	var _index = 0;
@@ -35,6 +34,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			{ x: 0, y: _h },
 		];
 		
+		// polygon
 		var _iSeed = _seeds[_i];
 		for (var _j = 0; _j < _nSeeds; _j++) {
 			if (_i == _j) continue;
@@ -49,8 +49,6 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 		}
 		
 		var _nVerts = array_length(_polygon);
-		if (_nVerts < 3) continue;
-		
 		var _nTriangles = _nVerts - 2;
 		var _nVerticesForBody = _nTriangles * 3;
 		
@@ -61,21 +59,23 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			_yt = min(_yt, _polygon[_j].y);
 		}
 		
+		// vertices
+		for (var _j = 1; _j < _nVerts - 1; _j++) {
+			var _p0 = _polygon[0];
+			var _p2 = _polygon[_j];
+			var _p3 = _polygon[_j + 1];
+			vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0.x / _w), lerp(_v0, _v1, _p0.y / _h));
+			vertex_position(_vb, _p2.x - _xl, _p2.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2.x / _w), lerp(_v0, _v1, _p2.y / _h));
+			vertex_position(_vb, _p3.x - _xl, _p3.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3.x / _w), lerp(_v0, _v1, _p3.y / _h));
+		}
+		
+		// body
 		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
 		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
 		var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
 		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
 		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-			for (var _j = 1; _j < _nVerts - 1; _j++) {
-				var _p0 = _polygon[0];
-				var _p2 = _polygon[_j];
-				var _p3 = _polygon[_j + 1];
-				vertex_position(_vb, _p0.x - _xl, _p0.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0.x / _w), lerp(_v0, _v1, _p0.y / _h));
-				vertex_position(_vb, _p2.x - _xl, _p2.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2.x / _w), lerp(_v0, _v1, _p2.y / _h));
-				vertex_position(_vb, _p3.x - _xl, _p3.y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3.x / _w), lerp(_v0, _v1, _p3.y / _h));
-			}
-			
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVerticesForBody;
 			__vertexIndex = _vertexOffset;

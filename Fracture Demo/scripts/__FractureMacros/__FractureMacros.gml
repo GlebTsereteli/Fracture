@@ -18,8 +18,10 @@ var _w = _inst.sprite_width; \
 var _h = _inst.sprite_height; \
 var _centerX = _inst.sprite_xoffset; \
 var _centerY = _inst.sprite_yoffset; \
-var _angle = _inst.phy_rotation; \
 var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index); \
+\
+var _physical = (_inst.phy_active != undefined); \
+var _angle = _physical ? _inst.phy_rotation : -_inst.image_angle; \
 \
 var _uvs = sprite_get_uvs(_inst.sprite_index, _inst.image_index); \
 var _u0 = _uvs[0]; \
@@ -62,8 +64,10 @@ __fixture = physics_fixture_bind(_fx, id); \
 physics_fixture_delete(_fx); \
 \
 phy_rotation = _angle; \
-phy_linear_velocity_x = _inst.phy_linear_velocity_x; \
-phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
-phy_angular_velocity = _inst.phy_angular_velocity;
+if (_physical) { \
+	phy_linear_velocity_x = _inst.phy_linear_velocity_x; \
+	phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
+	phy_angular_velocity = _inst.phy_angular_velocity; \
+}
 
 #endregion

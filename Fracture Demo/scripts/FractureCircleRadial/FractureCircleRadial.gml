@@ -16,6 +16,7 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
 	var _bodies = array_create(_bodyCount);
     var _vertexOffset = 0;
     
+	// angles
     var _angles = array_create(_bodyCount + 1);
     var _weights = array_create(_bodyCount);
     var _totalWeight = 0;
@@ -30,6 +31,7 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
         _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360;
     }
     
+	// main
     for (var _i = 0; _i < _bodyCount; _i++) {
         var _a1 = _angles[_i];
         var _a2 = _angles[_i + 1];
@@ -42,24 +44,26 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
         var _xl = min(_p0x, _p1x, _p2x);
         var _yt = min(_p0y, _p1y, _p2y);
 		
+		// vertices
+		for (var _j = 0; _j < _nArc; _j++) {
+            var _ta1 = lerp(_a1, _a2, _j / _nArc);
+            var _ta2 = lerp(_a1, _a2, (_j + 1) / _nArc);
+            var _ax = _centerX + lengthdir_x(_radius, _ta1);
+            var _ay = _centerY + lengthdir_y(_radius, _ta1);
+            var _bx = _centerX + lengthdir_x(_radius, _ta2);
+            var _by = _centerY + lengthdir_y(_radius, _ta2);
+            vertex_position(_vb, _p0x - _xl, _p0y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
+            vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+            vertex_position(_vb, _bx - _xl, _by - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+        }
+		
+		// body
         var _dist = point_distance(_centerX, _centerY, _xl, _yt);
         var _dir = point_direction(_centerX, _centerY, _xl, _yt);
         var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
         var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
 		
         with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-            for (var _j = 0; _j < _nArc; _j++) {
-                var _ta1 = lerp(_a1, _a2, _j / _nArc);
-                var _ta2 = lerp(_a1, _a2, (_j + 1) / _nArc);
-                var _ax = _centerX + lengthdir_x(_radius, _ta1);
-                var _ay = _centerY + lengthdir_y(_radius, _ta1);
-                var _bx = _centerX + lengthdir_x(_radius, _ta2);
-                var _by = _centerY + lengthdir_y(_radius, _ta2);
-                vertex_position(_vb, _p0x - _xl, _p0y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
-                vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-                vertex_position(_vb, _bx - _xl, _by - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
-            }
-			
             __nVertices = _nArc * 3;
             __vertexIndex = _vertexOffset;
             __vertexBuffer = _vb;
