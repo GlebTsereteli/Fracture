@@ -49,6 +49,16 @@ return _bodies;
 static _matrix = matrix_build_identity(); \
 return _matrix;
 
+#macro __FRACTURE_BODY \
+var _dist = point_distance(_centerX, _centerY, _xl, _yt); \
+var _dir = point_direction(_centerX, _centerY, _xl, _yt); \
+var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
+var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
+with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
+	__state = _state; \
+	__vertexBuffer = _vb; \
+	__texture = _texture;
+
 #endregion
 #region fixtures
 

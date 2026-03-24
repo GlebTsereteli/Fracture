@@ -51,19 +51,11 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
 			vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
 			vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
-			
+						
 			// body
-			var _dist = point_distance(_centerX, _centerY, _xl, _yt);
-			var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-			var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-			var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
-			
-			with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-				__state = _state;
+			__FRACTURE_BODY
 				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;
-				__vertexBuffer = _vb;
-				__texture = _texture;
 				
 				__FRACTURE_FIXTURE_START; {
 					physics_fixture_add_point(_fx, _x1 - _xl, _y1 - _yt);

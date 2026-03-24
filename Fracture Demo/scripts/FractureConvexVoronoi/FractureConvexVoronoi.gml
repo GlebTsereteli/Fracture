@@ -25,7 +25,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 	var _cellH = _h / _rows;
 	
 	var _seeds = [];
-	var _noise = 0.3;
+	var _noise = 0.4;
 	for (var _col = 0; _col < _cols; _col++) {
 		for (var _row = 0; _row < _rows; _row++) {
 			var _sx = (_col + 0.5 + random_range(-_noise, _noise)) * _cellW;
@@ -82,18 +82,10 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 		}
 		
 		// body
-		var _dist = point_distance(_centerX, _centerY, _xl, _yt);
-		var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-		var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-		var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
-		
-		with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-			__state = _state;
+		__FRACTURE_BODY
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVerticesForBody;
 			__vertexIndex = _vertexOffset;
-			__vertexBuffer = _vb;
-			__texture = _texture;
 			
 			__FRACTURE_FIXTURE_START; {
 				for (var _j = 0; _j < _nPts; _j++) {

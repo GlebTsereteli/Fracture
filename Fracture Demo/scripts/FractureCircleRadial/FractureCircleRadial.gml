@@ -35,12 +35,14 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
     for (var _i = 0; _i < _bodyCount; _i++) {
         var _a1 = _angles[_i];
         var _a2 = _angles[_i + 1];
-        var _p0x = _originX;
+        
+		var _p0x = _originX;
         var _p0y = _originY;
         var _p1x = _centerX + lengthdir_x(_radius, _a1);
         var _p1y = _centerY + lengthdir_y(_radius, _a1);
         var _p2x = _centerX + lengthdir_x(_radius, _a2);
         var _p2y = _centerY + lengthdir_y(_radius, _a2);
+		
         var _xl = min(_p0x, _p1x, _p2x);
         var _yt = min(_p0y, _p1y, _p2y);
 		
@@ -58,17 +60,9 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _centerNoise
         }
 		
 		// body
-        var _dist = point_distance(_centerX, _centerY, _xl, _yt);
-        var _dir = point_direction(_centerX, _centerY, _xl, _yt);
-        var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle);
-        var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle);
-		
-        with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) {
-			__state = _state;
+		__FRACTURE_BODY
             __nVertices = _nArc * 3;
             __vertexIndex = _vertexOffset;
-            __vertexBuffer = _vb;
-            __texture = _texture;
 			
             __FRACTURE_FIXTURE_START; {
 			    physics_fixture_add_point(_fx, _originX - _xl, _originY - _yt);
