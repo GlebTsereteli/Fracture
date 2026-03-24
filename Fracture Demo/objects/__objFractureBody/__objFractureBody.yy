@@ -10,8 +10,8 @@
   "name":"__objFractureBody",
   "overriddenProperties":[],
   "parent":{
-    "name":"Private",
-    "path":"folders/02. Fracture/Private.yy",
+    "name":"02 Private",
+    "path":"folders/Fracture/02 Private.yy",
   },
   "parentObjectId":null,
   "persistent":false,

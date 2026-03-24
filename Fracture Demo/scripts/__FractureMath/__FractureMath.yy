@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__FractureUtility",
+  "%Name":"__FractureMath",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__FractureUtility",
+  "name":"__FractureMath",
   "parent":{
     "name":"02 Private",
     "path":"folders/Fracture/02 Private.yy",
