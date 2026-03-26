@@ -7,5 +7,5 @@ if (demo != prevDemo) {
 }
 
 if (keyboard_check_pressed(ord("R"))) {
-	instance_destroy(__objFractureBody)
+	room_restart();
 }
