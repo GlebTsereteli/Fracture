@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"01. General",
-    "path":"folders/Demo/02 Types/01. General.yy",
+    "path":"folders/01 Demo/02 Types/01. General.yy",
   },
   "parentObjectId":null,
   "persistent":false,

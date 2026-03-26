@@ -4,7 +4,7 @@
   "name":"__shdFracture",
   "parent":{
     "name":"02 Private",
-    "path":"folders/Fracture/02 Private.yy",
+    "path":"folders/02 Fracture/02 Private.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

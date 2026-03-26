@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"02 Private",
-    "path":"folders/Fracture/02 Private.yy",
+    "path":"folders/02 Fracture/02 Private.yy",
   },
   "parentObjectId":null,
   "persistent":false,
