@@ -46,8 +46,9 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 		
 		var _nPts = array_length(_polygon) / 2;
 		if (_nPts < 3) continue;
+		
 		var _nTriangles = _nPts - 2;
-		var _nVerticesForBody = _nTriangles * 3;
+		var _nVertices = _nTriangles * 3;
 		
 		var _xl = _polygon[0];
 		var _yt = _polygon[1];
@@ -69,7 +70,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 		// body
 		__FRACTURE_BODY
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nVerticesForBody;
+			__nVertices = _nVertices;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {
@@ -82,7 +83,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			_bodies[_index++] = id;
 		}
 		
-		_vertexOffset += _nVerticesForBody;
+		_vertexOffset += _nVertices;
 	}
 	
 	__FRACTURE_END;

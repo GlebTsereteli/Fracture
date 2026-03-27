@@ -24,8 +24,6 @@ function __FractureFormat() {
 }
 
 function __FractureMatrix() {
-	__FRACTURE_MATRIX;
-}
-function __FractureMatrixIdentity() {
-	__FRACTURE_MATRIX;
+	static _matrix = matrix_build_identity();
+	return _matrix;
 }

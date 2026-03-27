@@ -45,10 +45,6 @@ vertex_freeze(_vb); \
 _state.__n = _bodyCount; \
 return _bodies;
 
-#macro __FRACTURE_MATRIX \
-static _matrix = matrix_build_identity(); \
-return _matrix;
-
 #macro __FRACTURE_BODY \
 var _dist = point_distance(_centerX, _centerY, _xl, _yt); \
 var _dir = point_direction(_centerX, _centerY, _xl, _yt); \

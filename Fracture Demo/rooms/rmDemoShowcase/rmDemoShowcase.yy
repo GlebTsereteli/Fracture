@@ -12,8 +12,8 @@
   ],
   "name":"rmDemoShowcase",
   "parent":{
-    "name":"02. Showcase",
-    "path":"folders/01 Demo/02 Types/02. Showcase.yy",
+    "name":"02 Showcase",
+    "path":"folders/01 Demo/02 Types/02 Showcase.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
