@@ -3,6 +3,7 @@
 physics_fixture_delete(__fixture);
 
 __state.__n--;
+show_debug_message(__state.__n)
 if (__state.__n <= 0) {
     vertex_delete_buffer(__state.__vb);
 }

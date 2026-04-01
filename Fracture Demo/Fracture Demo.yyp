@@ -38,7 +38,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.221",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"Fracture Demo",
   "resources":[
@@ -76,7 +76,7 @@
     {"id":{"name":"scrDemoShowcase","path":"scripts/scrDemoShowcase/scrDemoShowcase.yy",},},
     {"id":{"name":"scrDemoUtility","path":"scripts/scrDemoUtility/scrDemoUtility.yy",},},
     {"id":{"name":"__shdFracture","path":"shaders/__shdFracture/__shdFracture.yy",},},
-    {"id":{"name":"sprDemoBackground","path":"sprites/sprDemoBackground/sprDemoBackground.yy",},},
+    {"id":{"name":"sprDemoGeneralBackground","path":"sprites/sprDemoGeneralBackground/sprDemoGeneralBackground.yy",},},
     {"id":{"name":"sprDemoShapeBox","path":"sprites/sprDemoShapeBox/sprDemoShapeBox.yy",},},
     {"id":{"name":"sprDemoShapeCircle","path":"sprites/sprDemoShapeCircle/sprDemoShapeCircle.yy",},},
     {"id":{"name":"sprDemoShapeConvex01","path":"sprites/sprDemoShapeConvex01/sprDemoShapeConvex01.yy",},},

@@ -9,7 +9,8 @@ RefreshInterface = function() {
 	var _x = _pad;
 	var _y = _pad + 19;
 	var _w = 400;
-	var _h = window_get_height() - _y - _pad;
+	var _totalH = (os_type == os_gxgames) ? browser_height : window_get_height();
+	var _h = _totalH - _y - _pad;
 	var _name = $"{__FRACTURE_NAME} {__FRACTURE_VERSION} Demo: {demo.name}";
 	view = dbg_view(_name, true, _x, _y, _w, _h);
 	window_set_caption(_name);
