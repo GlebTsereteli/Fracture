@@ -37,12 +37,8 @@ function DemoGeneralShape(_name, _patterns) constructor {
 		pattern.Init();
 	};
 	static Fracture = function(_inst) {
-		var _t = get_timer();
-		
 		var _args = pattern.GetArguments(_inst);
 		array_insert(_args, 0, _inst);
 		var _result = method_call(pattern.func, _args);
-		
-		show_debug_message((get_timer() - _t) / 1000);
 	};
 }

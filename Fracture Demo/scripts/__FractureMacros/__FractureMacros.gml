@@ -10,6 +10,10 @@
 #region core
 
 #macro __FRACTURE_START \
+if (FRACTURE_BENCHMARK) { \
+	static _funcName = array_last(string_split(_GMFUNCTION_, "_")); \
+} \
+\
 if (not instance_exists(__objFractureRenderer)) { \
     instance_create_depth(0, 0, 0, __objFractureRenderer); \
 } \
@@ -35,14 +39,18 @@ vertex_begin(_vb, _format); \
 \
 var _state = { \
 	__vb: _vb, \
-	__n: 0, \
-}
+	__count: 0, \
+} \
+var _timer = get_timer();
 
 #macro __FRACTURE_END \
-instance_destroy(_inst); \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
-_state.__n = _bodyCount; \
+_state.__count = _bodyCount; \
+if (FRACTURE_BENCHMARK) { \
+	__FractureLog($"{_funcName}: Fractured \"{_inst}\" of \"{object_get_name(_inst.object_index)}\" into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+} \
+instance_destroy(_inst); \
 return _bodies;
 
 #macro __FRACTURE_BODY \
