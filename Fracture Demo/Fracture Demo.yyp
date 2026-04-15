@@ -59,6 +59,7 @@
     {"id":{"name":"__FractureMath","path":"scripts/__FractureMath/__FractureMath.yy",},},
     {"id":{"name":"__FractureUtility","path":"scripts/__FractureUtility/__FractureUtility.yy",},},
     {"id":{"name":"FractureBoxBrick","path":"scripts/FractureBoxBrick/FractureBoxBrick.yy",},},
+    {"id":{"name":"FractureBoxDiamond","path":"scripts/FractureBoxDiamond/FractureBoxDiamond.yy",},},
     {"id":{"name":"FractureBoxGrid","path":"scripts/FractureBoxGrid/FractureBoxGrid.yy",},},
     {"id":{"name":"FractureBoxVoronoi","path":"scripts/FractureBoxVoronoi/FractureBoxVoronoi.yy",},},
     {"id":{"name":"FractureBoxZigzag","path":"scripts/FractureBoxZigzag/FractureBoxZigzag.yy",},},

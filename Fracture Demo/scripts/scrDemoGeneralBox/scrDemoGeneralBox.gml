@@ -43,6 +43,18 @@ function DemoGeneralBoxBrick() : DemoGeneralPattern("Brick") constructor {
 		return [cols, rows, horizontal];
 	};
 }
+function DemoGeneralBoxDiamond() : DemoGeneralPattern("Diamond") constructor {
+	cols = 3;
+	rows = 3;
+	
+	static Init = function() {
+		dbg_slider_int(ref_create(self, "cols"), 2, 20, "Columns");
+		dbg_slider_int(ref_create(self, "rows"), 2, 20, "Rows");
+	};
+	static GetArguments = function() {
+		return [cols, rows];
+	};
+}
 function DemoGeneralBoxVoronoi() : DemoGeneralPattern("Voronoi") constructor {
 	bodyCount = 10;
 	
