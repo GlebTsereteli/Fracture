@@ -17,22 +17,7 @@ function DemoGeneralShape(_name, _patterns) constructor {
 		}
 	};
 	static RefreshInterface = function() {
-		var _names = array_map(patterns, function(_pattern) {
-			return _pattern.name;
-		});
-		dbg_drop_down(ref_create(self, "pattern"), patterns, _names, "Pattern");
-			
-		dbg_same_line();
-		var _size = 19;
-		dbg_button("-", function() {
-			var _index = Mod2(array_get_index(patterns, pattern) - 1, array_length(patterns));
-			pattern = patterns[_index];
-		}, _size, _size);
-		dbg_same_line();
-		dbg_button("+", function() {
-			var _index = Mod2(array_get_index(patterns, pattern) + 1, array_length(patterns));
-			pattern = patterns[_index];
-		}, _size, _size);
+		DbgSelector("Pattern", patterns);
 		
 		pattern.Init();
 	};

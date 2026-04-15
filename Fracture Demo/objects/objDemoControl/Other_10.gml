@@ -15,22 +15,7 @@ RefreshInterface = function() {
 	view = dbg_view(_name, true, _x, _y, _w, _h);
 	window_set_caption(_name);
 	
-	var _names = array_map(demos, function(_demo) {
-		return _demo.name;
-	});
-	dbg_drop_down(ref_create(self, "demo"), demos, _names, "Demo");
-	
-	dbg_same_line();
-	var _size = 19;
-	dbg_button("-", function() {
-		var _index = Mod2(array_get_index(demos, demo) - 1, array_length(demos));
-		demo = demos[_index];
-	}, _size, _size);
-	dbg_same_line();
-	dbg_button("+", function() {
-		var _index = Mod2(array_get_index(demos, demo) + 1, array_length(demos));
-		demo = demos[_index];
-	}, _size, _size);
+	DbgSelector("Demo", demos);
 	
 	dbg_section(demo.name);
 	demo.RefreshInterface();

@@ -33,22 +33,7 @@ function DemoGeneral() : Demo("General") constructor {
 		shape.Update();
 	};
 	RefreshInterface = function() {
-		var _names = array_map(shapes, function(_shape) {
-			return _shape.name;
-		});
-		dbg_drop_down(ref_create(self, "shape"), shapes, _names, "Shape");
-		
-		dbg_same_line();
-		var _size = 19;
-		dbg_button("-", function() {
-			var _index = Mod2(array_get_index(shapes, shape) - 1, array_length(shapes));
-			shape = shapes[_index];
-		}, _size, _size);
-		dbg_same_line();
-		dbg_button("+", function() {
-			var _index = Mod2(array_get_index(shapes, shape) + 1, array_length(shapes));
-			shape = shapes[_index];
-		}, _size, _size);
+		DbgSelector("Shape", shapes);
 		
 		shape.RefreshInterface();
 	};
