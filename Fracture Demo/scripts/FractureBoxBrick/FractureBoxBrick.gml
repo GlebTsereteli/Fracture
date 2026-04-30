@@ -3,7 +3,7 @@
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_START;
 	
-	// full bricks + half-bricks on staggered edges
+	// F bricks + half-bricks on staggered edges
 	var _bodyCount = _horizontal ? (_cols * _rows + (_rows div 2)) : (_cols * _rows + (_cols div 2));
 	var _bodies = array_create(_bodyCount);
 	var _index = 0;
@@ -40,13 +40,13 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 			var _xl = _x1 + _halfW;
 			var _yt = _y1 + _halfH;
 			
-			// vertices
+			// Vertices
 			vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
 			vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h));
 			vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h));
 			vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
 			
-			// body
+			// Body
 			__FRACTURE_BODY
 				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;

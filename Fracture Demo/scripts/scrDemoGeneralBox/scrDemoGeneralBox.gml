@@ -55,6 +55,20 @@ function DemoGeneralBoxDiamond() : DemoGeneralPattern("Diamond") constructor {
 		return [cols, rows];
 	};
 }
+function DemoGeneralBoxHex() : DemoGeneralPattern("Hex") constructor {
+    cols = 4;
+    rows = 4;
+    pointy = false;
+	
+    static Init = function() {
+        dbg_slider_int(ref_create(self, "cols"), 3, 10, "Columns");
+        dbg_slider_int(ref_create(self, "rows"), 3, 10, "Rows");
+        dbg_checkbox(ref_create(self, "pointy"), "Pointy");
+    };
+    static GetArguments = function() {
+        return [cols, rows, pointy];
+    };
+}
 function DemoGeneralBoxVoronoi() : DemoGeneralPattern("Voronoi") constructor {
 	bodyCount = 10;
 	

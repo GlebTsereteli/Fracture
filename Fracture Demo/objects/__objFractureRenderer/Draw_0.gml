@@ -4,7 +4,7 @@ var _zwrite = gpu_get_zwriteenable();
 var _ztest = gpu_get_ztestenable();
 var _depth = gpu_get_depth();
 var _prevMatrix = matrix_get(matrix_world);
-var _matrix = __FractureMatrix();
+var _matrix = __matrix;
 var _uAlpha = __uAlpha;
 
 gpu_set_zwriteenable(true);

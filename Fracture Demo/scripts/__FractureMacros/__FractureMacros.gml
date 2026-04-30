@@ -1,13 +1,13 @@
 // feather ignore all
 
-#region info
+#region Info
 
 #macro __FRACTURE_NAME "Fracture"
 #macro __FRACTURE_VERSION "v1.0.0" // major.minor.patch
 #macro __FRACTURE_DATE "2026.XX.XX" // year.month.day
 
 #endregion
-#region core
+#region Core
 
 #macro __FRACTURE_START \
 if (FRACTURE_BENCHMARK) { \
@@ -64,7 +64,7 @@ with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
 	__texture = _texture;
 
 #endregion
-#region fixtures
+#region Fixtures
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
@@ -86,5 +86,83 @@ if (_physical) { \
 	phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
 }
+
+#endregion
+#region Common Blocks
+
+#macro __FRACTURE_VERT \
+vertex_position(_vb, _px, _py); \
+vertex_color(_vb, c_white, 1); \
+vertex_texcoord(_vb, lerp(_u0, _u1, (_xl + _px) / _w), lerp(_v0, _v1, (_yt + _py) / _h));
+
+#macro __FRACTURE_BOX_TRI \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _bx; _py = _by; __FRACTURE_VERT; \
+_px = _cx; _py = _cy; __FRACTURE_VERT; \
+__FRACTURE_BODY \
+    __primitiveType = pr_trianglelist; \
+    __nVertices = 3; \
+    __vertexIndex = _vertexOffset; \
+    __FRACTURE_FIXTURE_START; { \
+        physics_fixture_add_point(_fx, _ax, _ay); \
+        physics_fixture_add_point(_fx, _bx, _by); \
+        physics_fixture_add_point(_fx, _cx, _cy); \
+        __FRACTURE_FIXTURE_END; \
+    } \
+    _bodies[_index++] = id; \
+} \
+_vertexOffset += 3;
+
+#macro __FRACTURE_BOX_QUAD \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _bx; _py = _by; __FRACTURE_VERT; \
+_px = _cx; _py = _cy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _cx; _py = _cy; __FRACTURE_VERT; \
+_px = _dx; _py = _dy; __FRACTURE_VERT; \
+__FRACTURE_BODY \
+    __primitiveType = pr_trianglelist; \
+    __nVertices = 6; \
+    __vertexIndex = _vertexOffset; \
+    __FRACTURE_FIXTURE_START; { \
+        physics_fixture_add_point(_fx, _ax, _ay); \
+        physics_fixture_add_point(_fx, _bx, _by); \
+        physics_fixture_add_point(_fx, _cx, _cy); \
+        physics_fixture_add_point(_fx, _dx, _dy); \
+        __FRACTURE_FIXTURE_END; \
+    } \
+    _bodies[_index++] = id; \
+} \
+_vertexOffset += 6;
+
+#macro __FRACTURE_BOX_HEX \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _bx; _py = _by; __FRACTURE_VERT; \
+_px = _cx; _py = _cy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _cx; _py = _cy; __FRACTURE_VERT; \
+_px = _dx; _py = _dy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _dx; _py = _dy; __FRACTURE_VERT; \
+_px = _ex; _py = _ey; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_VERT; \
+_px = _ex; _py = _ey; __FRACTURE_VERT; \
+_px = _gx; _py = _gy; __FRACTURE_VERT; \
+__FRACTURE_BODY \
+    __primitiveType = pr_trianglelist; \
+    __nVertices = 12; \
+    __vertexIndex = _vertexOffset; \
+    __FRACTURE_FIXTURE_START; { \
+        physics_fixture_add_point(_fx, _ax, _ay); \
+        physics_fixture_add_point(_fx, _bx, _by); \
+        physics_fixture_add_point(_fx, _cx, _cy); \
+        physics_fixture_add_point(_fx, _dx, _dy); \
+        physics_fixture_add_point(_fx, _ex, _ey); \
+        physics_fixture_add_point(_fx, _gx, _gy); \
+        __FRACTURE_FIXTURE_END; \
+    } \
+    _bodies[_index++] = id; \
+} \
+_vertexOffset += 12;
 
 #endregion

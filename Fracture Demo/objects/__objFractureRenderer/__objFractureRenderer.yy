@@ -9,8 +9,8 @@
   "name":"__objFractureRenderer",
   "overriddenProperties":[],
   "parent":{
-    "name":"02 Private",
-    "path":"folders/02 Fracture/02 Private.yy",
+    "name":"01 Core",
+    "path":"folders/02 Fracture/02 Private/01 Core.yy",
   },
   "parentObjectId":null,
   "persistent":true,

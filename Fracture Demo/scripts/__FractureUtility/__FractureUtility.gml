@@ -17,8 +17,3 @@ function __FractureFormat() {
 	})();
 	return _format;
 }
-
-function __FractureMatrix() {
-	static _matrix = matrix_build_identity();
-	return _matrix;
-}

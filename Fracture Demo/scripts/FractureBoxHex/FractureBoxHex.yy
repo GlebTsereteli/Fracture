@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__FractureMacros",
+  "%Name":"FractureBoxHex",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__FractureMacros",
+  "name":"FractureBoxHex",
   "parent":{
-    "name":"01 Core",
-    "path":"folders/02 Fracture/02 Private/01 Core.yy",
+    "name":"01. Box",
+    "path":"folders/02 Fracture/01 Public/01. Box.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

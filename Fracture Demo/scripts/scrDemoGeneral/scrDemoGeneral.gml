@@ -45,6 +45,7 @@ function DemoGeneral() : Demo("General") constructor {
 			new DemoGeneralBoxZigzag(),
 			new DemoGeneralBoxBrick(),
 			new DemoGeneralBoxDiamond(),
+			new DemoGeneralBoxHex(),
 			new DemoGeneralBoxVoronoi(),
 		]),
 		new DemoGeneralShape("Circle", [
