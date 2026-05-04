@@ -1,4 +1,4 @@
-/// @desc Fade.
+/// @desc Fade out.
 
 if (FRACTURE_FADE_ENABLED) {
 	if (phy_sleeping) {

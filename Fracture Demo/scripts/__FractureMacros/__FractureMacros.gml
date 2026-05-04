@@ -41,6 +41,7 @@ var _state = { \
 	__vb: _vb, \
 	__count: 0, \
 } \
+var _vertexOffset = 0; \
 var _timer = get_timer();
 
 #macro __FRACTURE_END \
@@ -89,6 +90,21 @@ if (_physical) { \
 
 #endregion
 #region Common Blocks
+
+#macro __FRACTURE_RANDOM_ANGLES \
+var _angles = array_create(_bodyCount + 1); \
+var _weights = array_create(_bodyCount); \
+var _totalWeight = 0; \
+for (var _i = 0; _i < _bodyCount; _i++) { \
+    var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
+    _weights[_i] = _weight; \
+    _totalWeight += _weight; \
+} \
+\
+_angles[0] = random(360); \
+for (var _i = 0; _i < _bodyCount; _i++) { \
+    _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
+}
 
 #macro __FRACTURE_VERT \
 vertex_position(_vb, _px, _py); \

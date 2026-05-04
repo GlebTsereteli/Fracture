@@ -18,7 +18,6 @@ function __FractureBoxHexFlat(_inst, _cols, _rows) {
     var _bodyCount = _cols * _rows + _nOddCols + 2 * _rows + 1 + _oddCols;
     var _bodies = array_create(_bodyCount);
     var _index = 0;
-    var _vertexOffset = 0;
 	var _px, _py, _ax, _ay, _bx, _by, _cx, _cy, _dx, _dy, _ex, _ey, _gx, _gy;
 	
     #region Full cells and half cells

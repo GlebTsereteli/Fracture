@@ -22,7 +22,6 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 	
 	// voronoi
 	var _index = 0;
-	var _vertexOffset = 0;
 	
 	var _bodies = array_create(_bodyCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
