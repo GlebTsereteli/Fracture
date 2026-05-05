@@ -8,6 +8,8 @@
 #macro FRACTURE_LINEAR_DAMPING 0.1
 #macro FRACTURE_ANGULAR_DAMPING 0.1
 
+#macro FRACTURE_AUTO_RESET_PROPERTIES true
+
 #endregion
 #region Shapes
 

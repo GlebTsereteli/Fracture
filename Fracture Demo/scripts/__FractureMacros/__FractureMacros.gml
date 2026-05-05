@@ -67,6 +67,9 @@ with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
 _pack.__bodies = _bodies; \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
+if (FRACTURE_AUTO_RESET_PROPERTIES) { \
+	FractureBodyReset(); \
+} \
 if (FRACTURE_BENCHMARK) { \
 	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
 } \
