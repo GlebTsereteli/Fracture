@@ -54,8 +54,8 @@ var _linearDamping = _bodyParams.linearDamping; \
 var _angularDamping = _bodyParams.angularDamping;
 
 #macro __FRACTURE_BODY \
-var _dist = point_distance(_centerX, _centerY, _xl, _yt); \
-var _dir = point_direction(_centerX, _centerY, _xl, _yt); \
+var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
+var _dir = point_direction(_centerX, _centerY, _ox, _oy); \
 var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
 var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
 with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
@@ -101,7 +101,7 @@ if (_physical) { \
 }
 
 #endregion
-#region Common Blocks
+#region Box Blocks
 
 #macro __FRACTURE_RANDOM_ANGLES \
 var _angles = array_create(_bodyCount + 1); \
@@ -121,9 +121,15 @@ for (var _i = 0; _i < _bodyCount; _i++) { \
 #macro __FRACTURE_VERT \
 vertex_position(_vb, _px, _py); \
 vertex_color(_vb, c_white, 1); \
-vertex_texcoord(_vb, lerp(_u0, _u1, (_xl + _px) / _w), lerp(_v0, _v1, (_yt + _py) / _h));
+vertex_texcoord(_vb, lerp(_u0, _u1, (_ox + _px) / _w), lerp(_v0, _v1, (_oy + _py) / _h));
 
 #macro __FRACTURE_BOX_TRI \
+var _cmx = mean(_ax, _bx, _cx); \
+var _cmy = mean(_ay, _by, _cy); \
+var _ox = _xl + _cmx; \
+var _oy = _yt + _cmy; \
+_ax -= _cmx; _bx -= _cmx; _cx -= _cmx; \
+_ay -= _cmy; _by -= _cmy; _cy -= _cmy; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _bx; _py = _by; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \
@@ -142,6 +148,12 @@ __FRACTURE_BODY \
 _vertexOffset += 3;
 
 #macro __FRACTURE_BOX_QUAD \
+var _cmx = mean(_ax, _bx, _cx, _dx); \
+var _cmy = mean(_ay, _by, _cy, _dy); \
+var _ox = _xl + _cmx; \
+var _oy = _yt + _cmy; \
+_ax -= _cmx; _bx -= _cmx; _cx -= _cmx; _dx -= _cmx; \
+_ay -= _cmy; _by -= _cmy; _cy -= _cmy; _dy -= _cmy; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _bx; _py = _by; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \
@@ -164,6 +176,12 @@ __FRACTURE_BODY \
 _vertexOffset += 6;
 
 #macro __FRACTURE_BOX_HEX \
+var _cmx = mean(_ax, _bx, _cx, _dx, _ex, _gx); \
+var _cmy = mean(_ay, _by, _cy, _dy, _ey, _gy); \
+var _ox = _xl + _cmx; \
+var _oy = _yt + _cmy; \
+_ax -= _cmx; _bx -= _cmx; _cx -= _cmx; _dx -= _cmx; _ex -= _cmx; _gx -= _cmx; \
+_ay -= _cmy; _by -= _cmy; _cy -= _cmy; _dy -= _cmy; _ey -= _cmy; _gy -= _cmy; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _bx; _py = _by; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \

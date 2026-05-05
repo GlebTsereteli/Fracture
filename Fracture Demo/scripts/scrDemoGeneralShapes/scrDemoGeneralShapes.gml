@@ -18,7 +18,6 @@ function DemoGeneralShape(_name, _patterns) constructor {
 	};
 	static RefreshInterface = function() {
 		DbgSelector("Pattern", patterns);
-		
 		pattern.Init();
 	};
 	static Fracture = function(_inst) {

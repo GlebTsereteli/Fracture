@@ -43,32 +43,25 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			var _x2 = _colX[_j - 1], _y2 = _colY[_j - 1];
 			var _x4 = _prevColX[_j], _y4 = _prevColY[_j];
 			
-			var _xl = min(_x1, _x4);
-			var _yt = min(_y1, _y2);
+			var _ox = (_x1 + _x2 + _x3 + _x4) * 0.25;
+			var _oy = (_y1 + _y2 + _y3 + _y4) * 0.25;
 			
-			// Vertices
-			vertex_position(_vb, _x1 - _xl, _y1 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, _x2 - _xl, _y2 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
-			vertex_position(_vb, _x4 - _xl, _y4 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
-			vertex_position(_vb, _x3 - _xl, _y3 - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
+			vertex_position(_vb, _x1 - _ox, _y1 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
+			vertex_position(_vb, _x2 - _ox, _y2 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
+			vertex_position(_vb, _x4 - _ox, _y4 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
+			vertex_position(_vb, _x3 - _ox, _y3 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
 			
-			// Body
 			__FRACTURE_BODY
 				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;
 				
 				__FRACTURE_FIXTURE_START; {
-					physics_fixture_add_point(_fx, _x1 - _xl, _y1 - _yt);
-					physics_fixture_add_point(_fx, _x2 - _xl, _y2 - _yt);
-					physics_fixture_add_point(_fx, _x3 - _xl, _y3 - _yt);
-					physics_fixture_add_point(_fx, _x4 - _xl, _y4 - _yt);
+					physics_fixture_add_point(_fx, _x1 - _ox, _y1 - _oy);
+					physics_fixture_add_point(_fx, _x2 - _ox, _y2 - _oy);
+					physics_fixture_add_point(_fx, _x3 - _ox, _y3 - _oy);
+					physics_fixture_add_point(_fx, _x4 - _ox, _y4 - _oy);
 					__FRACTURE_FIXTURE_END;
 				}
-				
-				//var _force = 0.2;
-				//var _xImpulse = lengthdir_x(_force, _dir);
-				//var _yImpulse = lengthdir_y(_force, _dir);
-				//physics_apply_impulse(x, y, _xImpulse, _yImpulse);
 				
 				_bodies[_index++] = id;
 			}

@@ -3,7 +3,7 @@
 function FractureBoxVoronoi(_inst, _bodyCount) {
 	__FRACTURE_START;
 	
-	// seeds
+	// Seeds
 	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
 	var _rows = max(1, round(_bodyCount / _cols));
 	var _cellW = _w / _cols;
@@ -20,14 +20,14 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 		}
 	}
 	
-	// voronoi
+	// Voronoi
 	var _index = 0;
 	
 	var _bodies = array_create(_bodyCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
 		var _polygon = [0, 0, _w, 0, _w, _h, 0, _h];
 		
-		// polygon
+		// Polygon
 		var _isx = _seeds[_i * 2];
 		var _isy = _seeds[_i * 2 + 1];
 		for (var _j = 0; _j < _nSeeds; _j++) {
@@ -49,24 +49,25 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 		var _nTriangles = _nPts - 2;
 		var _nVertices = _nTriangles * 3;
 		
-		var _xl = _polygon[0];
-		var _yt = _polygon[1];
-		for (var _j = 1; _j < _nPts; _j++) {
-			_xl = min(_xl, _polygon[_j * 2]);
-			_yt = min(_yt, _polygon[_j * 2 + 1]);
+		var _ox = 0, _oy = 0;
+		for (var _j = 0; _j < _nPts; _j++) {
+			_ox += _polygon[_j * 2];
+			_oy += _polygon[_j * 2 + 1];
 		}
+		_ox /= _nPts;
+		_oy /= _nPts;
 		
-		// vertices
+		// Vertices
 		for (var _j = 1; _j < _nPts - 1; _j++) {
 			var _p0x = _polygon[0], _p0y = _polygon[1];
 			var _p2x = _polygon[_j * 2], _p2y = _polygon[_j * 2 + 1];
 			var _p3x = _polygon[(_j + 1) * 2], _p3y = _polygon[(_j + 1) * 2 + 1];
-			vertex_position(_vb, _p0x - _xl, _p0y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
-			vertex_position(_vb, _p2x - _xl, _p2y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
-			vertex_position(_vb, _p3x - _xl, _p3y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
+			vertex_position(_vb, _p0x - _ox, _p0y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
+			vertex_position(_vb, _p2x - _ox, _p2y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
+			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
-		// body
+		// Body
 		__FRACTURE_BODY
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVertices;
@@ -74,7 +75,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			
 			__FRACTURE_FIXTURE_START; {
 				for (var _j = 0; _j < _nPts; _j++) {
-					physics_fixture_add_point(_fx, _polygon[_j * 2] - _xl, _polygon[_j * 2 + 1] - _yt);
+					physics_fixture_add_point(_fx, _polygon[_j * 2] - _ox, _polygon[_j * 2 + 1] - _oy);
 				}
 				__FRACTURE_FIXTURE_END;
 			}

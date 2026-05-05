@@ -60,21 +60,22 @@ function FractureCircleVoronoi(_inst, _bodyCount) {
 		var _nTriangles = _nPts - 2;
 		var _nBodyVertices = _nTriangles * 3;
 		
-		var _xl = _polygon[0];
-		var _yt = _polygon[1];
-		for (var _j = 1; _j < _nPts; _j++) {
-			_xl = min(_xl, _polygon[_j * 2]);
-			_yt = min(_yt, _polygon[_j * 2 + 1]);
+		var _ox = 0, _oy = 0;
+		for (var _j = 0; _j < _nPts; _j++) {
+			_ox += _polygon[_j * 2];
+			_oy += _polygon[_j * 2 + 1];
 		}
+		_ox /= _nPts;
+		_oy /= _nPts;
 		
 		// Vertices
 		for (var _j = 1; _j < _nPts - 1; _j++) {
 			var _p0x = _polygon[0], _p0y = _polygon[1];
 			var _p2x = _polygon[_j * 2], _p2y = _polygon[_j * 2 + 1];
 			var _p3x = _polygon[(_j + 1) * 2], _p3y = _polygon[(_j + 1) * 2 + 1];
-			vertex_position(_vb, _p0x - _xl, _p0y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
-			vertex_position(_vb, _p2x - _xl, _p2y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
-			vertex_position(_vb, _p3x - _xl, _p3y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
+			vertex_position(_vb, _p0x - _ox, _p0y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
+			vertex_position(_vb, _p2x - _ox, _p2y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
+			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
 		// Body
@@ -85,7 +86,7 @@ function FractureCircleVoronoi(_inst, _bodyCount) {
 			
 			__FRACTURE_FIXTURE_START; {
 				for (var _j = 0; _j < _nPts; _j++) {
-					physics_fixture_add_point(_fx, _polygon[_j * 2] - _xl, _polygon[_j * 2 + 1] - _yt);
+					physics_fixture_add_point(_fx, _polygon[_j * 2] - _ox, _polygon[_j * 2 + 1] - _oy);
 				}
 				__FRACTURE_FIXTURE_END;
 			}

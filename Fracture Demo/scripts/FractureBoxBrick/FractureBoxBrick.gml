@@ -3,7 +3,7 @@
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_START;
 	
-	// F bricks + half-bricks on staggered edges
+	// Full bricks + half-bricks on staggered edges
 	var _bodyCount = _horizontal ? (_cols * _rows + (_rows div 2)) : (_cols * _rows + (_cols div 2));
 	var _bodies = array_create(_bodyCount);
 	var _index = 0;
@@ -35,16 +35,16 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 			var _y1 = _horizontal ? _stripA : _brickA;
 			var _y2 = _horizontal ? _stripB : _brickB;
 			
-			var _halfW = (_x2 - _x1) / 2;
-			var _halfH = (_y2 - _y1) / 2;
-			var _xl = _x1 + _halfW;
-			var _yt = _y1 + _halfH;
+			var _hw = (_x2 - _x1) / 2;
+			var _hh = (_y2 - _y1) / 2;
+			var _ox = _x1 + _hw;
+			var _oy = _y1 + _hh;
 			
 			// Vertices
-			vertex_position(_vb, -_halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, _halfW, -_halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, -_halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h));
-			vertex_position(_vb, _halfW, _halfH); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
+			vertex_position(_vb, -_hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
+			vertex_position(_vb, _hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h));
+			vertex_position(_vb, -_hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h));
+			vertex_position(_vb, _hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
 			
 			// Body
 			__FRACTURE_BODY
@@ -52,7 +52,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 				__vertexIndex = _index * __nVertices;
 				
 				__FRACTURE_FIXTURE_START; {
-					physics_fixture_set_box_shape(_fx, _halfW, _halfH);
+					physics_fixture_set_box_shape(_fx, _hw, _hh);
 					__FRACTURE_FIXTURE_END;
 				}
 				

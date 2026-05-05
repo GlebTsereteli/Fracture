@@ -23,28 +23,26 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 		var _cx = _horizontal ? _side : _pos;
 		var _cy = _horizontal ? _pos : _side;
 		
-		var _xl = min(_ax, _bx, _cx);
-		var _yt = min(_ay, _by, _cy);
+		var _ox = mean(_ax, _bx, _cx);
+		var _oy = mean(_ay, _by, _cy);
 		
-		// Vertices
-		vertex_position(_vb, _ax - _xl, _ay - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-		vertex_position(_vb, _bx - _xl, _by - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
-		vertex_position(_vb, _cx - _xl, _cy - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
+		vertex_position(_vb, _ax - _ox, _ay - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+		vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+		vertex_position(_vb, _cx - _ox, _cy - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
 		
-		// Body
 		__FRACTURE_BODY
 			__nVertices = 3;
 			__vertexIndex = _i * __nVertices;
 			
 			__FRACTURE_FIXTURE_START; {
-				physics_fixture_add_point(_fx, _ax - _xl, _ay - _yt);
+				physics_fixture_add_point(_fx, _ax - _ox, _ay - _oy);
 				if (_horizontal == _even) {
-					physics_fixture_add_point(_fx, _bx - _xl, _by - _yt);
-					physics_fixture_add_point(_fx, _cx - _xl, _cy - _yt);
+					physics_fixture_add_point(_fx, _bx - _ox, _by - _oy);
+					physics_fixture_add_point(_fx, _cx - _ox, _cy - _oy);
 				}
 				else {
-					physics_fixture_add_point(_fx, _cx - _xl, _cy - _yt);
-					physics_fixture_add_point(_fx, _bx - _xl, _by - _yt);
+					physics_fixture_add_point(_fx, _cx - _ox, _cy - _oy);
+					physics_fixture_add_point(_fx, _bx - _ox, _by - _oy);
 				}
 				__FRACTURE_FIXTURE_END;
 			}
