@@ -1,6 +1,6 @@
 
 function DemoGeneral() : Demo("General") constructor {
-	// shared
+	// Shared
 	Update = function() {
 		if (shape != prevShape) {
 			prevShape = shape;
@@ -8,7 +8,7 @@ function DemoGeneral() : Demo("General") constructor {
 		}
 		
 		if (not is_mouse_over_debug_overlay()) {
-			// spawn & fracture
+			// Spawn & fracture
 			if (mouse_check_button_pressed(mb_left)) {
 				var _shape = instance_position(mouse_x, mouse_y, objDemoShapeParent);
 				if (_shape == noone) {
@@ -19,10 +19,13 @@ function DemoGeneral() : Demo("General") constructor {
 						return (_shape.object_index == _shapeClass.object);
 					}));
 					var _shapeClass = shapes[_index];
+					
+					var _impulseForce = __FractureSystem().__impulseForce;
 					_shapeClass.Fracture(_shape);
+					FractureImpulse(_impulseForce);
 				}
 			}
-			// destroy
+			// Destroy
 			if (mouse_check_button_pressed(mb_right)) {
 				with (instance_position(mouse_x, mouse_y, objDemoShapeParent)) {
 					instance_destroy();
@@ -34,11 +37,13 @@ function DemoGeneral() : Demo("General") constructor {
 	};
 	RefreshInterface = function() {
 		DbgSelector("Shape", shapes);
-		
 		shape.RefreshInterface();
+		
+		dbg_text_separator("");
+		dbg_slider(ref_create(__FractureSystem(), "__impulseForce"), 0, 2, "Impulse Force", 0.1);
 	};
 	
-	// custom
+	// Custom
 	shapes = [
 		new DemoGeneralShape("Box", [
 			new DemoGeneralBoxGrid(),
@@ -60,6 +65,9 @@ function DemoGeneral() : Demo("General") constructor {
 	];
 	shape = array_first(shapes);
 	prevShape = shape;
+	impulse = {
+		force: 0.5,
+	};
 }
 function DemoGeneralPattern(_name) constructor {
 	name = _name;

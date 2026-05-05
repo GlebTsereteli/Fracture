@@ -13,6 +13,9 @@
 
 #macro __FRACTURE_CIRCLE_PRECISION 32
 
+#macro __FRACTURE_IMPULSE_FORCE 0
+#macro __FRACTURE_IMPULSE_DIR undefined
+
 #endregion
 #region Core
 
@@ -45,13 +48,16 @@ var _vertexOffset = 0; \
 var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
 _pack.__vertexBuffer = _vb; \
 \
-static _bodyParams = __FractureBodyParams(); \
-var _collisionGroup = _bodyParams.collisionGroup; \
-var _density = _bodyParams.density; \
-var _restitution = _bodyParams.restitution; \
-var _friction = _bodyParams.friction; \
-var _linearDamping = _bodyParams.linearDamping; \
-var _angularDamping = _bodyParams.angularDamping;
+static _system = __FractureSystem(); \
+var _collisionGroup = _system.__collisionGroup; \
+var _density = _system.__density; \
+var _restitution = _system.__restitution; \
+var _friction = _system.__friction; \
+var _linearDamping = _system.__linearDamping; \
+var _angularDamping = _system.__angularDamping; \
+\
+var _impulseForce = _system.__impulseForce; \
+var _impulseDir = _system.__impulseDir;
 
 #macro __FRACTURE_BODY \
 var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
@@ -67,8 +73,9 @@ with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
 _pack.__bodies = _bodies; \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
-if (FRACTURE_AUTO_RESET_PROPERTIES) { \
+if (FRACTURE_AUTO_RESET) { \
 	FractureBodyReset(); \
+	FractureImpulseReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \
 	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
@@ -98,6 +105,13 @@ if (_physical) { \
 	phy_linear_velocity_x = _inst.phy_linear_velocity_x; \
 	phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
+} \
+if (_impulseForce != 0) { \
+	var _impDir = _impulseDir ?? _dir; \
+	physics_apply_local_impulse(0, 0, \
+		lengthdir_x(_impulseForce, _impDir), \
+		lengthdir_y(_impulseForce, _impDir) \
+	); \
 }
 
 #endregion

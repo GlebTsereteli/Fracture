@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureBodyProperties",
+  "%Name":"FractureSetup",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureBodyProperties",
+  "name":"FractureSetup",
   "parent":{
     "name":"01 Public",
     "path":"folders/02 Fracture/01 Public.yy",

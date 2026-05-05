@@ -16,12 +16,12 @@ function DemoGeneralBoxGrid() : DemoGeneralPattern("Grid") constructor {
 	};
 }
 function DemoGeneralBoxZigzag() : DemoGeneralPattern("Zigzag") constructor {
-	count = 8;
+	count = 6;
 	horizontal = true;
 	noise = 0.5;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "count"), 2, 20, "Count");
+		dbg_slider_int(ref_create(self, "count"), 3, 20, "Count");
 		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
 		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
 	};

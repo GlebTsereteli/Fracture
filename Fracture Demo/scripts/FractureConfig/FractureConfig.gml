@@ -1,5 +1,5 @@
 
-#region Body Properties
+#region Default Body Properties
 
 #macro FRACTURE_COLLISION_GROUP 1
 #macro FRACTURE_DENSITY 0.5
@@ -7,8 +7,6 @@
 #macro FRACTURE_FRICTION 0.2
 #macro FRACTURE_LINEAR_DAMPING 0.1
 #macro FRACTURE_ANGULAR_DAMPING 0.1
-
-#macro FRACTURE_AUTO_RESET_PROPERTIES true
 
 #endregion
 #region Shapes
@@ -22,6 +20,8 @@
 
 #endregion
 #region Miscellaneous
+
+#macro FRACTURE_AUTO_RESET true
 
 #macro FRACTURE_BENCHMARK true
 
