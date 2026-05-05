@@ -1,5 +1,5 @@
 
-#region Physics Properties
+#region Body Properties
 
 #macro FRACTURE_COLLISION_GROUP 1
 #macro FRACTURE_DENSITY 0.5

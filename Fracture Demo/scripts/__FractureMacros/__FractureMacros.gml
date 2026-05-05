@@ -18,7 +18,7 @@
 
 #macro __FRACTURE_START \
 if (FRACTURE_BENCHMARK) { \
-	static _funcName = array_last(string_split(_GMFUNCTION_, "_")); \
+	static _funcName = string_replace(array_last(string_split(_GMFUNCTION_, "_")), "Fracture", ""); \
 	var _timer = get_timer(); \
 } \
 \
@@ -43,7 +43,15 @@ vertex_begin(_vb, _format); \
 var _vertexOffset = 0; \
 \
 var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
-_pack.__vertexBuffer = _vb; 
+_pack.__vertexBuffer = _vb; \
+\
+static _bodyParams = __FractureBodyParams(); \
+var _collisionGroup = _bodyParams.collisionGroup; \
+var _density = _bodyParams.density; \
+var _restitution = _bodyParams.restitution; \
+var _friction = _bodyParams.friction; \
+var _linearDamping = _bodyParams.linearDamping; \
+var _angularDamping = _bodyParams.angularDamping;
 
 #macro __FRACTURE_BODY \
 var _dist = point_distance(_centerX, _centerY, _xl, _yt); \
@@ -60,7 +68,7 @@ _pack.__bodies = _bodies; \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
 if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured <{_inst}> of <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
 } \
 instance_destroy(_inst); \
 return _bodies;
@@ -70,12 +78,12 @@ return _bodies;
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
-physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP); \
-physics_fixture_set_density(_fx, FRACTURE_DENSITY); \
-physics_fixture_set_restitution(_fx, FRACTURE_RESTITUTION); \
-physics_fixture_set_friction(_fx, FRACTURE_FRICTION); \
-physics_fixture_set_linear_damping(_fx, FRACTURE_LINEAR_DAMPING); \
-physics_fixture_set_angular_damping(_fx, FRACTURE_ANGULAR_DAMPING); \
+physics_fixture_set_collision_group(_fx, _collisionGroup); \
+physics_fixture_set_density(_fx, _density); \
+physics_fixture_set_restitution(_fx, _restitution); \
+physics_fixture_set_friction(_fx, _friction); \
+physics_fixture_set_linear_damping(_fx, _linearDamping); \
+physics_fixture_set_angular_damping(_fx, _angularDamping); \
 physics_fixture_set_polygon_shape(_fx);
 
 #macro __FRACTURE_FIXTURE_END \

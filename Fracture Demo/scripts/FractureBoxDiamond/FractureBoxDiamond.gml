@@ -7,7 +7,7 @@ function FractureBoxDiamond(_inst, _cols, _rows) {
     _rows = round(_rows);
 
     var _cellW = _w / _cols;
-    var _hw = _cellW * 0.5;
+    var _hw = _cellW / 2;
     var _cellH = 2 * _h / (_rows + 1);
     var _hh = _cellH * 0.5;
 

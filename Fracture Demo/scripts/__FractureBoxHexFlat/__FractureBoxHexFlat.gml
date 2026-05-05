@@ -8,10 +8,10 @@ function __FractureBoxHexFlat(_inst, _cols, _rows) {
 	
     var _cw = _w / ((0.75 * _cols) + 0.25);
     var _colSpacing = _cw * 0.75;
-    var _hw = _cw * 0.5;
-    var _qw = _cw * 0.25;
+    var _hw = _cw / 2;
+    var _qw = _cw / 4;
     var _ch = _h / _rows;
-    var _hh = _ch * 0.5;
+    var _hh = _ch / 2;
 	
     var _nOddCols = _cols div 2;
     var _oddCols = ((_cols mod 2) != 0);

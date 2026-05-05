@@ -8,10 +8,10 @@ function __FractureBoxHexPointy(_inst, _cols, _rows) {
 	
     var _ch = _h / ((0.75 * _rows) + 0.25);
     var _rowSpacing = _ch * 0.75;
-    var _hh = _ch * 0.5;
-    var _qh = _ch * 0.25;
+    var _hh = _ch / 2;
+    var _qh = _ch / 4;
     var _cw = _w / _cols;
-    var _hw = _cw * 0.5;
+    var _hw = _cw / 2;
 	
     var _nOddRows = _rows div 2;
     var _oddRows = ((_rows mod 2) != 0);

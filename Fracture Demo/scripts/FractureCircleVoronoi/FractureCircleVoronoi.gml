@@ -3,7 +3,7 @@
 function FractureCircleVoronoi(_inst, _bodyCount) {
 	__FRACTURE_START;
 	
-	var _radius = max(_w, _h) * 0.5;
+	var _radius = max(_w, _h) / 2;
 	
 	// Seeds
 	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
@@ -56,8 +56,9 @@ function FractureCircleVoronoi(_inst, _bodyCount) {
 		
 		var _nPts = array_length(_polygon) / 2;
 		if (_nPts < 3) continue;
+		
 		var _nTriangles = _nPts - 2;
-		var _nVerticesForBody = _nTriangles * 3;
+		var _nBodyVertices = _nTriangles * 3;
 		
 		var _xl = _polygon[0];
 		var _yt = _polygon[1];
@@ -79,7 +80,7 @@ function FractureCircleVoronoi(_inst, _bodyCount) {
 		// Body
 		__FRACTURE_BODY
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nVerticesForBody;
+			__nVertices = _nBodyVertices;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {
@@ -92,7 +93,7 @@ function FractureCircleVoronoi(_inst, _bodyCount) {
 			_bodies[_index++] = id;
 		}
 		
-		_vertexOffset += _nVerticesForBody;
+		_vertexOffset += _nBodyVertices;
 	}
 	
 	__FRACTURE_END;
