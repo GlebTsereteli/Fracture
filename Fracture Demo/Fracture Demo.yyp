@@ -47,7 +47,7 @@
     {"id":{"name":"Fracture Info","path":"notes/Fracture Info/Fracture Info.yy",},},
     {"id":{"name":"README","path":"notes/README/README.yy",},},
     {"id":{"name":"__objFractureBody","path":"objects/__objFractureBody/__objFractureBody.yy",},},
-    {"id":{"name":"__objFractureRenderer","path":"objects/__objFractureRenderer/__objFractureRenderer.yy",},},
+    {"id":{"name":"__objFracturePack","path":"objects/__objFracturePack/__objFracturePack.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objDemoShapeBox","path":"objects/objDemoShapeBox/objDemoShapeBox.yy",},},
     {"id":{"name":"objDemoShapeCircle","path":"objects/objDemoShapeCircle/objDemoShapeCircle.yy",},},

@@ -9,6 +9,8 @@
 #endregion
 #region Constants
 
+#macro __FRACTURE_SHADER __shdFracture
+
 #macro __FRACTURE_CIRCLE_PRECISION 32
 
 #endregion
@@ -17,10 +19,7 @@
 #macro __FRACTURE_START \
 if (FRACTURE_BENCHMARK) { \
 	static _funcName = array_last(string_split(_GMFUNCTION_, "_")); \
-} \
-\
-if (not instance_exists(__objFractureRenderer)) { \
-    instance_create_depth(0, 0, 0, __objFractureRenderer); \
+	var _timer = get_timer(); \
 } \
 \
 var _w = _inst.sprite_width; \
@@ -41,23 +40,10 @@ var _v1 = _uvs[3]; \
 static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
 vertex_begin(_vb, _format); \
-\
-var _state = { \
-	__vb: _vb, \
-	__count: 0, \
-} \
 var _vertexOffset = 0; \
-var _timer = get_timer();
-
-#macro __FRACTURE_END \
-vertex_end(_vb); \
-vertex_freeze(_vb); \
-_state.__count = _bodyCount; \
-if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured <{_inst}> of <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
-} \
-instance_destroy(_inst); \
-return _bodies;
+\
+var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
+_pack.__vertexBuffer = _vb; 
 
 #macro __FRACTURE_BODY \
 var _dist = point_distance(_centerX, _centerY, _xl, _yt); \
@@ -65,9 +51,19 @@ var _dir = point_direction(_centerX, _centerY, _xl, _yt); \
 var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
 var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
 with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
-	__state = _state; \
 	__vertexBuffer = _vb; \
-	__texture = _texture;
+	__texture = _texture; \
+	__pack = _pack;
+
+#macro __FRACTURE_END \
+_pack.__bodies = _bodies; \
+vertex_end(_vb); \
+vertex_freeze(_vb); \
+if (FRACTURE_BENCHMARK) { \
+	__FractureLog($"{_funcName}: Fractured <{_inst}> of <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+} \
+instance_destroy(_inst); \
+return _bodies;
 
 #endregion
 #region Fixtures
