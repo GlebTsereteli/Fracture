@@ -6,20 +6,19 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = u
     var _radius = max(_w, _h) * 0.5;
 	
     // Map origin to local space
-   if (_originX != undefined and _originY != undefined) {
+	if (_originX != undefined and _originY != undefined) {
         var _dist = min(point_distance(_inst.x, _inst.y, _originX, _originY), _radius - 1);
         var _dir = point_direction(_inst.x, _inst.y, _originX, _originY);
-        _originX = _centerX + lengthdir_x(_dist, _dir - _inst.image_angle);
-        _originY = _centerY + lengthdir_y(_dist, _dir - _inst.image_angle);
+        _originX = _centerX + lengthdir_x(_dist, _dir + _angle);
+        _originY = _centerY + lengthdir_y(_dist, _dir + _angle);
     }
     else {
         _originX = _centerX;
         _originY = _centerY;
     }
 	
-    var _nArc = max(1, round(64 / _bodyCount));
+    var _nArc = max(1, round(__FRACTURE_CIRCLE_PRECISION / _bodyCount));
     var _nArcFx = min(_nArc, 6);
-	
     var _bodies = array_create(_bodyCount);
 	
     __FRACTURE_RANDOM_ANGLES;
@@ -54,7 +53,7 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = u
         __FRACTURE_BODY
             __nVertices = _nArc * 3;
             __vertexIndex = _vertexOffset;
-
+			
             __FRACTURE_FIXTURE_START; {
                 physics_fixture_add_point(_fx, _originX - _xl, _originY - _yt);
                 for (var _j = _nArcFx; _j >= 0; _j--) {

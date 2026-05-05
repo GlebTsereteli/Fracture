@@ -81,6 +81,18 @@ function DemoGeneralBoxRadial() : DemoGeneralPattern("Radial") constructor {
         return [bodyCount, angleNoise, mouse_x, mouse_y];
     };
 }
+function DemoGeneralBoxSlice() : DemoGeneralPattern("Slice") constructor {
+    count = 8;
+    angle = 45;
+    
+    static Init = function() {
+        dbg_slider_int(ref_create(self, "count"), 2, 20, "Count");
+        dbg_slider_int(ref_create(self, "angle"), 0, 180, "Angle", 5);
+    };
+    static GetArguments = function() {
+        return [count, angle];
+    };
+}
 function DemoGeneralBoxVoronoi() : DemoGeneralPattern("Voronoi") constructor {
 	bodyCount = 10;
 	

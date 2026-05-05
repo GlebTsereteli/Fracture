@@ -1,6 +1,4 @@
 
-#macro FRACTURE_BENCHMARK true
-
 #region Physics Properties
 
 #macro FRACTURE_COLLISION_GROUP 1
@@ -11,7 +9,7 @@
 #macro FRACTURE_ANGULAR_DAMPING 0.1
 
 #endregion
-#region Fade
+#region Shapes
 
 #macro FRACTURE_FADE_ENABLED true
 #macro FRACTURE_FADE_SETTLED true
@@ -19,5 +17,10 @@
 #macro FRACTURE_FADE_DELAY_TO 45
 #macro FRACTURE_FADE_SPEED_FROM 0.01
 #macro FRACTURE_FADE_SPEED_TO 0.02
+
+#endregion
+#region Miscellaneous
+
+#macro FRACTURE_BENCHMARK true
 
 #endregion

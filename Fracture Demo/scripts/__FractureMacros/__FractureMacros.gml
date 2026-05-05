@@ -7,6 +7,11 @@
 #macro __FRACTURE_DATE "2026.XX.XX" // year.month.day
 
 #endregion
+#region Constants
+
+#macro __FRACTURE_CIRCLE_PRECISION 32
+
+#endregion
 #region Core
 
 #macro __FRACTURE_START \
@@ -49,7 +54,7 @@ vertex_end(_vb); \
 vertex_freeze(_vb); \
 _state.__count = _bodyCount; \
 if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured \"{_inst}\" of \"{object_get_name(_inst.object_index)}\" into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+	__FractureLog($"{_funcName}: Fractured <{_inst}> of <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
 } \
 instance_destroy(_inst); \
 return _bodies;

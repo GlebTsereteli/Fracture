@@ -9,7 +9,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 	_hulls[$ _key] ??= sprite_get_convex_hull(_inst.sprite_index, undefined, _inst.image_index);
 	var _hull = _hulls[$ _key];
 	
-	// convert flat CCW hull to CW flat array
+	// Convert flat CCW hull to CW flat array
 	var _nHullPts = array_length(_hull) / 2;
 	var _clipPolygon = array_create(_nHullPts * 2);
 	for (var _i = 0; _i < _nHullPts; _i++) {
@@ -18,7 +18,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 		_clipPolygon[_i * 2 + 1] = _hull[_k * 2 + 1] * _inst.image_yscale;
 	}
 	
-	// seeds
+	// Seeds
 	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
 	var _rows = max(1, round(_bodyCount / _cols));
 	var _cellW = _w / _cols;
@@ -34,10 +34,9 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 		}
 	}
 	
-	// voronoi
+	// Main
 	var _nSeeds = array_length(_seeds) / 2;
 	var _index = 0;
-	var _vertexOffset = 0;
 	
 	var _bodies = array_create(_bodyCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
@@ -71,7 +70,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 			_yt = min(_yt, _polygon[_j * 2 + 1]);
 		}
 		
-		// vertices
+		// Vertices
 		for (var _j = 1; _j < _nPts - 1; _j++) {
 			var _p0x = _polygon[0], _p0y = _polygon[1];
 			var _p2x = _polygon[_j * 2], _p2y = _polygon[_j * 2 + 1];
@@ -81,7 +80,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 			vertex_position(_vb, _p3x - _xl, _p3y - _yt); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
-		// body
+		// Body
 		__FRACTURE_BODY
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVerticesForBody;
