@@ -9,7 +9,7 @@
 #macro FRACTURE_ANGULAR_DAMPING 0.1
 
 #endregion
-#region Shapes
+#region Body Fade
 
 #macro FRACTURE_FADE_ENABLED true
 #macro FRACTURE_FADE_SETTLED true

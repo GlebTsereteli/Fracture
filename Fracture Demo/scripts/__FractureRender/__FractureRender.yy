@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureBoxGrid",
+  "%Name":"__FractureRender",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureBoxGrid",
+  "name":"__FractureRender",
   "parent":{
-    "name":"01. Box",
-    "path":"folders/02 Fracture/01 Public/Shapes/01. Box.yy",
+    "name":"01 Core",
+    "path":"folders/02 Fracture/02 Private/01 Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

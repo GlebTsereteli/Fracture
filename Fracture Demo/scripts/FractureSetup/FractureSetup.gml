@@ -1,5 +1,15 @@
 // feather ignore all
 
+function FractureDepth(_depth) {
+	__FRACTURE_CATCH_RENDERER;
+	__objFractureRenderer.depth = _depth;
+}
+
+function FractureLayer(_layer) {
+	__FRACTURE_CATCH_RENDERER;
+	__objFractureRenderer.layer = _layer;
+}
+
 function FractureBodyConfig(_config) {
 	with (__FractureSystem()) {
 		__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
@@ -25,13 +35,13 @@ function FractureBodyReset() {
 function FractureImpulse(_force, _direction = undefined) {
 	with (__FractureSystem()) {
 		__impulseForce = _force;
-		__impulseDirection = _direction;
+		__impulseDir = _direction;
 	}
 }
 
 function FractureImpulseReset() {
 	with (__FractureSystem()) {
 		__impulseForce = __FRACTURE_IMPULSE_FORCE;
-		__impulseDirection = __FRACTURE_IMPULSE_DIR;
+		__impulseDir = __FRACTURE_IMPULSE_DIR;
 	}
 }

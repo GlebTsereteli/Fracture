@@ -19,7 +19,13 @@
 #endregion
 #region Core
 
+#macro __FRACTURE_CATCH_RENDERER \
+if (not instance_exists(__objFractureRenderer)) { \
+    instance_create_depth(0, 0, 0, __objFractureRenderer); \
+}
+
 #macro __FRACTURE_START \
+__FRACTURE_CATCH_RENDERER; \
 if (FRACTURE_BENCHMARK) { \
 	static _funcName = string_replace(array_last(string_split(_GMFUNCTION_, "_")), "Fracture", ""); \
 	var _timer = get_timer(); \
@@ -45,8 +51,10 @@ var _vb = vertex_create_buffer(); \
 vertex_begin(_vb, _format); \
 var _vertexOffset = 0; \
 \
-var _pack = instance_create_depth(0, 0, _inst.depth, __objFracturePack); \
-_pack.__vertexBuffer = _vb; \
+var _state = { \
+	__vb: _vb, \
+	__count: 0, \
+} \
 \
 static _system = __FractureSystem(); \
 var _collisionGroup = _system.__collisionGroup; \
@@ -67,12 +75,12 @@ var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
 with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
 	__vertexBuffer = _vb; \
 	__texture = _texture; \
-	__pack = _pack;
+	__state = _state;
 
 #macro __FRACTURE_END \
-_pack.__bodies = _bodies; \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
+_state.__count = _bodyCount; \
 if (FRACTURE_AUTO_RESET) { \
 	FractureBodyReset(); \
 	FractureImpulseReset(); \
