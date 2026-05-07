@@ -6,8 +6,8 @@ function DemoGeneralBoxGrid() : DemoGeneralPattern("Grid") constructor {
 	noiseY = noiseX;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "cols"), 2, 20, "Columns");
-		dbg_slider_int(ref_create(self, "rows"), 2, 20, "Rows");
+		dbg_slider_int(ref_create(self, "cols"), 2, 10, "Columns");
+		dbg_slider_int(ref_create(self, "rows"), 2, 10, "Rows");
 		dbg_slider(ref_create(self, "noiseX"), 0, 1, "Noise X", 0.05);
 		dbg_slider(ref_create(self, "noiseY"), 0, 1, "Noise Y", 0.05);
 	};
@@ -21,7 +21,7 @@ function DemoGeneralBoxZigzag() : DemoGeneralPattern("Zigzag") constructor {
 	noise = 0.5;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "count"), 3, 20, "Count");
+		dbg_slider_int(ref_create(self, "count"), 3, 10, "Count");
 		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
 		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
 	};
@@ -35,8 +35,8 @@ function DemoGeneralBoxBrick() : DemoGeneralPattern("Brick") constructor {
 	horizontal = true;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "cols"), 2, 20, "Columns");
-		dbg_slider_int(ref_create(self, "rows"), 2, 20, "Rows");
+		dbg_slider_int(ref_create(self, "cols"), 2, 10, "Columns");
+		dbg_slider_int(ref_create(self, "rows"), 2, 10, "Rows");
 		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
 	};
 	static GetArguments = function() {
@@ -48,8 +48,8 @@ function DemoGeneralBoxDiamond() : DemoGeneralPattern("Diamond") constructor {
 	rows = 3;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "cols"), 2, 20, "Columns");
-		dbg_slider_int(ref_create(self, "rows"), 2, 20, "Rows");
+		dbg_slider_int(ref_create(self, "cols"), 2, 10, "Columns");
+		dbg_slider_int(ref_create(self, "rows"), 2, 10, "Rows");
 	};
 	static GetArguments = function() {
 		return [cols, rows];
@@ -74,7 +74,7 @@ function DemoGeneralBoxRadial() : DemoGeneralPattern("Radial") constructor {
     angleNoise = 0.5;
     
     static Init = function() {
-        dbg_slider_int(ref_create(self, "pieceCount"), 3, 20, "Piece Count");
+        dbg_slider_int(ref_create(self, "pieceCount"), 3, 15, "Piece Count");
         dbg_slider(ref_create(self, "angleNoise"), 0, 1, "Angle Noise", 0.05);
     };
     static GetArguments = function() {

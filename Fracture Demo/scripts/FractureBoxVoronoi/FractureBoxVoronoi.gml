@@ -15,7 +15,7 @@ function FractureBoxVoronoi(_inst, _pieceCount) {
 	var _noise = 0.4;
 	for (var _col = 0; _col < _cols; _col++) {
 		for (var _row = 0; _row < _rows; _row++) {
-			_seeds[_index++] = (_col + 0.5 + random_range(-_noise, _noise)) * _cellW;
+			_seeds[_index++] = (_col + 0.5 + (_row mod 2) * 0.5 + random_range(-_noise, _noise)) * _cellW;
 			_seeds[_index++] = (_row + 0.5 + random_range(-_noise, _noise)) * _cellH;
 		}
 	}
