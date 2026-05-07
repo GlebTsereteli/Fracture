@@ -10,8 +10,8 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 	_noiseX = clamp(_noiseX, 0, 1) * _maxNoise * _spacingX;
 	_noiseY = clamp(_noiseY, 0, 1) * _maxNoise * _spacingY;
 	
-	var _bodyCount = _rows * _cols;
-	var _bodies = array_create(_bodyCount);
+	var _pieceCount = _rows * _cols;
+	var _pieces = array_create(_pieceCount);
 	
 	var _index = 0;
 	var _colX = array_create(_rows + 1);
@@ -51,7 +51,7 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			vertex_position(_vb, _x4 - _ox, _y4 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
 			vertex_position(_vb, _x3 - _ox, _y3 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
 			
-			__FRACTURE_BODY
+			__FRACTURE_PIECE
 				__nVertices = 4;
 				__vertexIndex = _index * __nVertices;
 				
@@ -63,7 +63,7 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 					__FRACTURE_FIXTURE_END;
 				}
 				
-				_bodies[_index++] = id;
+				_pieces[_index++] = id;
 			}
 		}
 		

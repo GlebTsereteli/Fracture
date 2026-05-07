@@ -1,3 +1,3 @@
-/// @desc Render bodies.
+/// @desc Render pieces.
 
 __FractureRender();

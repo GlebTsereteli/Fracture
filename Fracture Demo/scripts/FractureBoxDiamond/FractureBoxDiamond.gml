@@ -13,8 +13,8 @@ function FractureBoxDiamond(_inst, _cols, _rows) {
 
     var _nOddRows = _rows div 2;
     var _oddBottom = (_rows mod 2 != 0);
-    var _bodyCount = _rows * _cols + _nOddRows + 2 * _cols + 1 + (_oddBottom ? 1 : 0);
-    var _bodies = array_create(_bodyCount);
+    var _pieceCount = _rows * _cols + _nOddRows + 2 * _cols + 1 + (_oddBottom ? 1 : 0);
+    var _pieces = array_create(_pieceCount);
 	
     var _index = 0;
     var _px = 0, _py = 0;

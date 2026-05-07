@@ -70,15 +70,15 @@ function DemoGeneralBoxHex() : DemoGeneralPattern("Hex") constructor {
     };
 }
 function DemoGeneralBoxRadial() : DemoGeneralPattern("Radial") constructor {
-    bodyCount = 8;
+    pieceCount = 8;
     angleNoise = 0.5;
     
     static Init = function() {
-        dbg_slider_int(ref_create(self, "bodyCount"), 3, 20, "Body Count");
+        dbg_slider_int(ref_create(self, "pieceCount"), 3, 20, "Piece Count");
         dbg_slider(ref_create(self, "angleNoise"), 0, 1, "Angle Noise", 0.05);
     };
     static GetArguments = function() {
-        return [bodyCount, angleNoise, mouse_x, mouse_y];
+        return [pieceCount, angleNoise, mouse_x, mouse_y];
     };
 }
 function DemoGeneralBoxSlice() : DemoGeneralPattern("Slice") constructor {
@@ -94,12 +94,12 @@ function DemoGeneralBoxSlice() : DemoGeneralPattern("Slice") constructor {
     };
 }
 function DemoGeneralBoxVoronoi() : DemoGeneralPattern("Voronoi") constructor {
-	bodyCount = 10;
+	pieceCount = 10;
 	
 	static Init = function() {
-		dbg_slider_int(ref_create(self, "bodyCount"), 2, 20, "Body Count");
+		dbg_slider_int(ref_create(self, "pieceCount"), 2, 20, "Piece Count");
 	};
 	static GetArguments = function() {
-		return [bodyCount];
+		return [pieceCount];
 	};
 }

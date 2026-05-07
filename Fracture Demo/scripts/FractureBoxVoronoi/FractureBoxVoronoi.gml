@@ -1,11 +1,11 @@
 // feather ignore all
 
-function FractureBoxVoronoi(_inst, _bodyCount) {
+function FractureBoxVoronoi(_inst, _pieceCount) {
 	__FRACTURE_START;
 	
 	// Seeds
-	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
-	var _rows = max(1, round(_bodyCount / _cols));
+	var _cols = max(1, round(sqrt(_pieceCount * _w / _h)));
+	var _rows = max(1, round(_pieceCount / _cols));
 	var _cellW = _w / _cols;
 	var _cellH = _h / _rows;
 	
@@ -23,23 +23,23 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 	// Voronoi
 	var _index = 0;
 	
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
 		var _polygon = [0, 0, _w, 0, _w, _h, 0, _h];
 		
 		// Polygon
-		var _isx = _seeds[_i * 2];
-		var _isy = _seeds[_i * 2 + 1];
+		var _iSeedX = _seeds[_i * 2];
+		var _iSeedY = _seeds[_i * 2 + 1];
 		for (var _j = 0; _j < _nSeeds; _j++) {
 			if (_i == _j) continue;
 			if (array_length(_polygon) == 0) break;
 			
-			var _jsx = _seeds[_j * 2];
-			var _jsy = _seeds[_j * 2 + 1];
-			var _midX = mean(_isx, _jsx);
-			var _midY = mean(_isy, _jsy);
-			var _normalX = _isx - _jsx;
-			var _normalY = _isy - _jsy;
+			var _jSeedX = _seeds[_j * 2];
+			var _jSeedY = _seeds[_j * 2 + 1];
+			var _midX = mean(_iSeedX, _jSeedX);
+			var _midY = mean(_iSeedY, _jSeedY);
+			var _normalX = _iSeedX - _jSeedX;
+			var _normalY = _iSeedY - _jSeedY;
 			_polygon = __FracturePolygonClipHalfPlane(_polygon, _midX, _midY, _normalX, _normalY);
 		}
 		
@@ -67,8 +67,8 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
-		// Body
-		__FRACTURE_BODY
+		// Piece
+		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
 			__nVertices = _nVertices;
 			__vertexIndex = _vertexOffset;
@@ -80,7 +80,7 @@ function FractureBoxVoronoi(_inst, _bodyCount) {
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_index++] = id;
+			_pieces[_index++] = id;
 		}
 		
 		_vertexOffset += _nVertices;

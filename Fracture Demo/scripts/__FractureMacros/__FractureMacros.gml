@@ -9,8 +9,6 @@
 #endregion
 #region Constants
 
-#macro __FRACTURE_SHADER __shdFracture
-
 #macro __FRACTURE_CIRCLE_PRECISION 32
 
 #macro __FRACTURE_IMPULSE_FORCE 0
@@ -67,12 +65,12 @@ var _angularDamping = _system.__angularDamping; \
 var _impulseForce = _system.__impulseForce; \
 var _impulseDir = _system.__impulseDir;
 
-#macro __FRACTURE_BODY \
+#macro __FRACTURE_PIECE \
 var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
 var _dir = point_direction(_centerX, _centerY, _ox, _oy); \
-var _bodyX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
-var _bodyY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
-with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
+var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
+var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
+with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) { \
 	__vertexBuffer = _vb; \
 	__texture = _texture; \
 	__state = _state;
@@ -80,16 +78,16 @@ with (instance_create_depth(_bodyX, _bodyY, _inst.depth, __objFractureBody)) { \
 #macro __FRACTURE_END \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
-_state.__count = _bodyCount; \
+_state.__count = _pieceCount; \
 if (FRACTURE_AUTO_RESET) { \
-	FractureBodyReset(); \
+	FracturePieceReset(); \
 	FractureImpulseReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_bodyCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
 } \
 instance_destroy(_inst); \
-return _bodies;
+return _pieces;
 
 #endregion
 #region Fixtures
@@ -126,17 +124,17 @@ if (_impulseForce != 0) { \
 #region Box Blocks
 
 #macro __FRACTURE_RANDOM_ANGLES \
-var _angles = array_create(_bodyCount + 1); \
-var _weights = array_create(_bodyCount); \
+var _angles = array_create(_pieceCount + 1); \
+var _weights = array_create(_pieceCount); \
 var _totalWeight = 0; \
-for (var _i = 0; _i < _bodyCount; _i++) { \
+for (var _i = 0; _i < _pieceCount; _i++) { \
     var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
     _weights[_i] = _weight; \
     _totalWeight += _weight; \
 } \
 \
 _angles[0] = random(360); \
-for (var _i = 0; _i < _bodyCount; _i++) { \
+for (var _i = 0; _i < _pieceCount; _i++) { \
     _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
 }
 
@@ -155,7 +153,7 @@ _ay -= _cmy; _by -= _cmy; _cy -= _cmy; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _bx; _py = _by; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \
-__FRACTURE_BODY \
+__FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __nVertices = 3; \
     __vertexIndex = _vertexOffset; \
@@ -165,7 +163,7 @@ __FRACTURE_BODY \
         physics_fixture_add_point(_fx, _cx, _cy); \
         __FRACTURE_FIXTURE_END; \
     } \
-    _bodies[_index++] = id; \
+    _pieces[_index++] = id; \
 } \
 _vertexOffset += 3;
 
@@ -182,7 +180,7 @@ _px = _cx; _py = _cy; __FRACTURE_VERT; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \
 _px = _dx; _py = _dy; __FRACTURE_VERT; \
-__FRACTURE_BODY \
+__FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __nVertices = 6; \
     __vertexIndex = _vertexOffset; \
@@ -193,7 +191,7 @@ __FRACTURE_BODY \
         physics_fixture_add_point(_fx, _dx, _dy); \
         __FRACTURE_FIXTURE_END; \
     } \
-    _bodies[_index++] = id; \
+    _pieces[_index++] = id; \
 } \
 _vertexOffset += 6;
 
@@ -216,7 +214,7 @@ _px = _ex; _py = _ey; __FRACTURE_VERT; \
 _px = _ax; _py = _ay; __FRACTURE_VERT; \
 _px = _ex; _py = _ey; __FRACTURE_VERT; \
 _px = _gx; _py = _gy; __FRACTURE_VERT; \
-__FRACTURE_BODY \
+__FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __nVertices = 12; \
     __vertexIndex = _vertexOffset; \
@@ -229,7 +227,7 @@ __FRACTURE_BODY \
         physics_fixture_add_point(_fx, _gx, _gy); \
         __FRACTURE_FIXTURE_END; \
     } \
-    _bodies[_index++] = id; \
+    _pieces[_index++] = id; \
 } \
 _vertexOffset += 12;
 

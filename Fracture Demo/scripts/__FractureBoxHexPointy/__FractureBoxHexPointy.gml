@@ -15,8 +15,8 @@ function __FractureBoxHexPointy(_inst, _cols, _rows) {
 	
     var _nOddRows = _rows div 2;
     var _oddRows = ((_rows mod 2) != 0);
-    var _bodyCount = _rows * _cols + _nOddRows + 2 * _cols + 1 + _oddRows;
-    var _bodies = array_create(_bodyCount);
+    var _pieceCount = _rows * _cols + _nOddRows + 2 * _cols + 1 + _oddRows;
+    var _pieces = array_create(_pieceCount);
     var _index = 0;
     var _px, _py, _ax, _ay, _bx, _by, _cx, _cy, _dx, _dy, _ex, _ey, _gx, _gy;
 	

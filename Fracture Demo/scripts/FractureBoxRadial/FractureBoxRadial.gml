@@ -1,8 +1,8 @@
 // feather ignore all
 
-function FractureBoxRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = undefined, _originY = undefined) {
+function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = undefined, _originY = undefined) {
 	__FRACTURE_START;
-	_bodyCount = max(3, _bodyCount);
+	_pieceCount = max(3, _pieceCount);
 	
 	// Map origin to local space
 	if (_originX != undefined and _originY != undefined) {
@@ -24,14 +24,14 @@ function FractureBoxRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = unde
 	var _cornerX = [_w, 0, 0, _w];
 	var _cornerY = [0, 0, _h, _h];
 	
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	__FRACTURE_RANDOM_ANGLES;
 	
 	// Cast each ray from origin to bbox
-	var _hitsX = array_create(_bodyCount + 1);
-	var _hitsY = array_create(_bodyCount + 1);
-	var _edgePositions = array_create(_bodyCount + 1);
-	for (var _i = 0; _i <= _bodyCount; _i++) {
+	var _hitsX = array_create(_pieceCount + 1);
+	var _hitsY = array_create(_pieceCount + 1);
+	var _edgePositions = array_create(_pieceCount + 1);
+	for (var _i = 0; _i <= _pieceCount; _i++) {
 		var _rayAngle = _angles[_i];
 		var _rayDirX = lengthdir_x(1, _rayAngle);
 		var _rayDirY = lengthdir_y(1, _rayAngle);
@@ -74,7 +74,7 @@ function FractureBoxRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = unde
 	var _fanX = array_create(6);
 	var _fanY = array_create(6);
 	
-	for (var _i = 0; _i < _bodyCount; _i++) {
+	for (var _i = 0; _i < _pieceCount; _i++) {
 		var _hit1X = _hitsX[_i], _hit1Y = _hitsY[_i];
 		var _hit2X = _hitsX[_i + 1], _hit2Y = _hitsY[_i + 1];
 		var _edgePos1 = _edgePositions[_i];
@@ -119,8 +119,8 @@ function FractureBoxRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = unde
 			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Body
-		__FRACTURE_BODY
+		// Piece
+		__FRACTURE_PIECE
 			__nVertices = _nTris * 3;
 			__vertexIndex = _vertexOffset;
 			
@@ -132,7 +132,7 @@ function FractureBoxRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = unde
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_i] = id;
+			_pieces[_i] = id;
 		}
 		_vertexOffset += _nTris * 3;
 	}

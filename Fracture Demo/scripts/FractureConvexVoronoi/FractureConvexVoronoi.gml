@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureConvexVoronoi(_inst, _bodyCount) {
+function FractureConvexVoronoi(_inst, _pieceCount) {
 	static _hulls = {};
 		
 	__FRACTURE_START;
@@ -19,8 +19,8 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 	}
 	
 	// Seeds
-	var _cols = max(1, round(sqrt(_bodyCount * _w / _h)));
-	var _rows = max(1, round(_bodyCount / _cols));
+	var _cols = max(1, round(sqrt(_pieceCount * _w / _h)));
+	var _rows = max(1, round(_pieceCount / _cols));
 	var _cellW = _w / _cols;
 	var _cellH = _h / _rows;
 	
@@ -38,7 +38,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 	var _nSeeds = array_length(_seeds) / 2;
 	var _index = 0;
 	
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
 		var _polygon = _clipPolygon;
 		
@@ -61,7 +61,7 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 		if (_nPts < 3) continue;
 		
 		var _nTriangles = _nPts - 2;
-		var _nVerticesForBody = _nTriangles * 3;
+		var _nVerticesForPiece = _nTriangles * 3;
 		
 		var _ox = 0, _oy = 0;
 		for (var _j = 0; _j < _nPts; _j++) {
@@ -81,10 +81,10 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
-		// Body
-		__FRACTURE_BODY
+		// Piece
+		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nVerticesForBody;
+			__nVertices = _nVerticesForPiece;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {
@@ -94,10 +94,10 @@ function FractureConvexVoronoi(_inst, _bodyCount) {
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_index++] = id;
+			_pieces[_index++] = id;
 		}
 		
-		_vertexOffset += _nVerticesForBody;
+		_vertexOffset += _nVerticesForPiece;
 	}
 	
 	__FRACTURE_END;

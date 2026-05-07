@@ -1,5 +1,5 @@
 
-#region Default Body Properties
+#region Default Piece Properties
 
 #macro FRACTURE_COLLISION_GROUP 1
 #macro FRACTURE_DENSITY 0.5
@@ -9,7 +9,7 @@
 #macro FRACTURE_ANGULAR_DAMPING 0.1
 
 #endregion
-#region Body Fade
+#region Piece Fade
 
 #macro FRACTURE_FADE_ENABLED true
 #macro FRACTURE_FADE_SETTLED true

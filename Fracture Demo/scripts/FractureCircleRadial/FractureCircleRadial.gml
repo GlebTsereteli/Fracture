@@ -1,8 +1,8 @@
 // feather ignore all
 
-function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = undefined, _originY = undefined) {
+function FractureCircleRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = undefined, _originY = undefined) {
 	__FRACTURE_START;
-	_bodyCount = max(3, _bodyCount);
+	_pieceCount = max(3, _pieceCount);
 	
 	var _radius = max(_w, _h) * 0.5;
 	
@@ -18,14 +18,14 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = u
 		_originY = _centerY;
 	}
 	
-	var _nArc = max(1, round(__FRACTURE_CIRCLE_PRECISION / _bodyCount));
+	var _nArc = max(1, round(__FRACTURE_CIRCLE_PRECISION / _pieceCount));
 	var _nArcFx = min(_nArc, 6);
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	
 	__FRACTURE_RANDOM_ANGLES;
 	
 	// Main
-	for (var _i = 0; _i < _bodyCount; _i++) {
+	for (var _i = 0; _i < _pieceCount; _i++) {
 		var _a1 = _angles[_i];
 		var _a2 = _angles[_i + 1];
 		
@@ -50,8 +50,8 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = u
 			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Body
-		__FRACTURE_BODY
+		// Piece
+		__FRACTURE_PIECE
 			__nVertices = _nArc * 3;
 			__vertexIndex = _vertexOffset;
 			
@@ -67,7 +67,7 @@ function FractureCircleRadial(_inst, _bodyCount, _angleNoise = 0.5, _originX = u
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_i] = id;
+			_pieces[_i] = id;
 		}
 		_vertexOffset += _nArc * 3;
 	}

@@ -10,7 +10,7 @@ function FractureLayer(_layer) {
 	__objFractureRenderer.layer = _layer;
 }
 
-function FractureBodyConfig(_config) {
+function FracturePieceConfig(_config) {
 	with (__FractureSystem()) {
 		__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
 		__density = _config[$ "density"] ?? __density;
@@ -21,7 +21,7 @@ function FractureBodyConfig(_config) {
 	}
 }
 
-function FractureBodyReset() {
+function FracturePieceReset() {
 	with (__FractureSystem()) {
 		__collisionGroup = FRACTURE_COLLISION_GROUP;
 		__density = FRACTURE_DENSITY;

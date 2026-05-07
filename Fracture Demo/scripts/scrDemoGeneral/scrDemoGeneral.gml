@@ -48,7 +48,7 @@ function DemoGeneral() : Demo("General") constructor {
 		dbg_same_line();
 		dbg_button("Clear", function() {
 			instance_destroy(objDemoShapeParent);
-			instance_destroy(__objFractureBody);
+			instance_destroy(__objFracturePiece);
 		}, _w, _h);
 		
 		DbgSelector("Shape", shapes);

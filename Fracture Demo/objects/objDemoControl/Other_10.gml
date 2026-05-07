@@ -24,7 +24,6 @@ RefreshInterface = function() {
 		dbg_checkbox(ref_create(self, "outlines"), "Outlines");
 		dbg_checkbox(ref_create(self, "coms"), "Coms");
 		dbg_checkbox(ref_create(self, "shapes"), "Shapes");
-		dbg_checkbox(ref_create(self, "aabb"), "AABB");
 	}
 	
 	if (room != demo.rm) {

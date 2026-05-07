@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureBoxSlice(_inst, _bodyCount, _cutAngle = 45) {
+function FractureBoxSlice(_inst, _pieceCount, _cutAngle = 45) {
 	__FRACTURE_START;
 	
 	var _dx = lengthdir_x(1, _cutAngle + 90);
@@ -12,20 +12,20 @@ function FractureBoxSlice(_inst, _bodyCount, _cutAngle = 45) {
 	var _projBL = _h * _dy;
 	
 	var _minProj = min(_projTL, _projTR, _projBR, _projBL);
-	var _step = (max(_projTL, _projTR, _projBR, _projBL) - _minProj) / _bodyCount;
+	var _step = (max(_projTL, _projTR, _projBR, _projBL) - _minProj) / _pieceCount;
 	
 	// CW corners: TL, TR, BR, BL
 	var _cornerX = [0, _w, _w, 0];
 	var _cornerY = [0, 0, _h, _h];
 	var _cornerProj = [_projTL, _projTR, _projBR, _projBL];
 	
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	
 	// Max 6 verts per strip (convex quad + 2 cut planes), reused each iteration
 	var _vertX = array_create(6);
 	var _vertY = array_create(6);
 	
-	for (var _i = 0; _i < _bodyCount; _i++) {
+	for (var _i = 0; _i < _pieceCount; _i++) {
 		var _near = _minProj + (_step * _i);
 		var _far = _minProj + (_step * (_i + 1));
 		var _vertCount = 0;
@@ -82,8 +82,8 @@ function FractureBoxSlice(_inst, _bodyCount, _cutAngle = 45) {
 			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Body
-		__FRACTURE_BODY
+		// Piece
+		__FRACTURE_PIECE
 			__nVertices = _nTris * 3;
 			__vertexIndex = _vertexOffset;
 			
@@ -94,7 +94,7 @@ function FractureBoxSlice(_inst, _bodyCount, _cutAngle = 45) {
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_i] = id;
+			_pieces[_i] = id;
 		}
 		_vertexOffset += _nTris * 3;
 	}

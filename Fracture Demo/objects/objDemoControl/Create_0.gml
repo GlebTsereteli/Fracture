@@ -8,11 +8,10 @@ demos = [
 demo = array_first(demos);
 prevDemo = demo;
 
-// debug
+// Debug
 outlines = false;
 coms = false;
 shapes = false;
-aabb = false;
 
 edgeFixture = undefined;
 view = undefined;

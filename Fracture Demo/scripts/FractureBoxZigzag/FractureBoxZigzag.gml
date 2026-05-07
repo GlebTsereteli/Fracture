@@ -1,13 +1,13 @@
 // feather ignore all
 
-function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
+function FractureBoxZigzag(_inst, _pieceCount, _horizontal, _noise = 0.5) {
 	__FRACTURE_START;
 	
-	var _bodies = array_create(_bodyCount);
+	var _pieces = array_create(_pieceCount);
 	var _edgeA = 0;
 	var _edgeB = _horizontal ? _w : _h;
 	var _fixedB = _horizontal ? _h : _w;
-	var _step = _fixedB / (_bodyCount - 1);
+	var _step = _fixedB / (_pieceCount - 1);
 	var _jitter = _noise * _step;
 	
 	var _ax = 0;
@@ -15,8 +15,8 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 	var _bx = _horizontal ? _w : 0;
 	var _by = _horizontal ? 0 : _h;
 	
-	for (var _i = 0; _i < _bodyCount; _i++) {
-		var _pos = (_i >= _bodyCount - 2) ? _fixedB : (_step * (_i + 1)) + random_range(-_jitter, _jitter);
+	for (var _i = 0; _i < _pieceCount; _i++) {
+		var _pos = (_i >= _pieceCount - 2) ? _fixedB : (_step * (_i + 1)) + random_range(-_jitter, _jitter);
 		var _even = (_i mod 2 == 0);
 		var _side = _even ? _edgeA : _edgeB;
 		
@@ -30,7 +30,7 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 		vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		vertex_position(_vb, _cx - _ox, _cy - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
 		
-		__FRACTURE_BODY
+		__FRACTURE_PIECE
 			__nVertices = 3;
 			__vertexIndex = _i * __nVertices;
 			
@@ -47,7 +47,7 @@ function FractureBoxZigzag(_inst, _bodyCount, _horizontal, _noise = 0.5) {
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_bodies[_i] = id;
+			_pieces[_i] = id;
 		}
 		
 		_ax = _bx; _ay = _by;
