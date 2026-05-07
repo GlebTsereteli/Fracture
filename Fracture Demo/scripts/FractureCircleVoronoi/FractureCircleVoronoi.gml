@@ -1,34 +1,29 @@
 // feather ignore all
 
 function FractureCircleVoronoi(_inst, _pieceCount) {
+	static _goldenAngle = 180 * (3 - sqrt(5));
+	
 	__FRACTURE_START;
 	
 	var _radius = max(_w, _h) / 2;
 	
 	// Seeds
-	var _cols = max(1, round(sqrt(_pieceCount * _w / _h)));
-	var _rows = max(1, round(_pieceCount / _cols));
-	var _cellW = _w / _cols;
-	var _cellH = _h / _rows;
+	var _nSeeds = _pieceCount;
+	var _seeds = array_create(_nSeeds * 2);
 	
-	var _seeds = [];
-	var _noise = 0.4;
-	for (var _col = 0; _col < _cols; _col++) {
-		for (var _row = 0; _row < _rows; _row++) {
-			var _sx = (_col + 0.5 + random_range(-_noise, _noise)) * _cellW;
-			var _sy = (_row + 0.5 + random_range(-_noise, _noise)) * _cellH;
-			if (point_distance(_centerX, _centerY, _sx, _sy) <= _radius) {
-				array_push(_seeds, _sx, _sy);
-			}
-		}
+	for (var _i = 0; _i < _nSeeds; _i++) {
+	    var _a = _i * _goldenAngle;
+	    var _r = _radius * sqrt(_i / _nSeeds);
+	    _seeds[_i * 2] = _centerX + lengthdir_x(_r, _a);
+	    _seeds[_i * 2 + 1] = _centerY + lengthdir_y(_r, _a);
 	}
 	
 	// Initial clipping polygon
 	var _clipPolygon = array_create(__FRACTURE_CIRCLE_PRECISION * 2);
 	for (var _i = 0; _i < __FRACTURE_CIRCLE_PRECISION; _i++) {
-		var _a = -(_i / __FRACTURE_CIRCLE_PRECISION) * 360;
-		_clipPolygon[_i * 2] = _centerX + lengthdir_x(_radius, _a);
-		_clipPolygon[_i * 2 + 1] = _centerY + lengthdir_y(_radius, _a);
+	    var _a = -(_i / __FRACTURE_CIRCLE_PRECISION) * 360;
+	    _clipPolygon[_i * 2] = _centerX + lengthdir_x(_radius, _a);
+	    _clipPolygon[_i * 2 + 1] = _centerY + lengthdir_y(_radius, _a);
 	}
 	
 	// Main
