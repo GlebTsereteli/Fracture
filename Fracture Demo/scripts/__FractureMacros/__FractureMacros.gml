@@ -74,22 +74,6 @@ with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) 
 	__texture = _texture; \
 	__state = _state;
 
-#macro __FRACTURE_END \
-vertex_end(_vb); \
-vertex_freeze(_vb); \
-_state.__count = _pieceCount; \
-if (FRACTURE_AUTO_RESET) { \
-	FracturePieceReset(); \
-	FractureImpulseReset(); \
-} \
-if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
-} \
-instance_destroy(_inst); \
-return _pieces;
-
-#endregion
-#region Fixtures
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
@@ -121,8 +105,26 @@ if (_impulseForce != 0) { \
 	); \
 }
 
+#macro __FRACTURE_END \
+vertex_end(_vb); \
+vertex_freeze(_vb); \
+_state.__count = _pieceCount; \
+if (FRACTURE_AUTO_RESET) { \
+	FracturePieceReset(); \
+	FractureImpulseReset(); \
+} \
+if (FRACTURE_BENCHMARK) { \
+	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+} \
+instance_destroy(_inst); \
+return _pieces;
+
 #endregion
-#region Box Blocks
+#region Misc
+
+#macro __FRACTURE_PARAMS \
+static _params = __FractureParams(); \
+with (_params)
 
 #macro __FRACTURE_RANDOM_ANGLES \
 var _angles = array_create(_pieceCount + 1); \

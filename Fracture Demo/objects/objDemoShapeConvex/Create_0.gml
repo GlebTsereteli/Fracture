@@ -1,3 +1,4 @@
+event_inherited();
 
 var _sprites = tag_get_asset_ids("ConvexShape", asset_sprite);
 sprite_index = method_call(choose, _sprites);
