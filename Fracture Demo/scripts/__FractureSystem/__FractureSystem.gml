@@ -10,9 +10,8 @@ function __FractureSystem() {
 		__angularDamping: FRACTURE_ANGULAR_DAMPING,
 		
 		__impulseForce: __FRACTURE_IMPULSE_FORCE,
-		__impulseDir: __FRACTURE_IMPULSE_DIR,
-		__impulseOriginX: __FRACTURE_IMPULSE_ORIGIN_X,
-		__impulseOriginY: __FRACTURE_IMPULSE_ORIGIN_Y,
+		__impulseX: __FRACTURE_IMPULSE_X,
+		__impulseY: __FRACTURE_IMPULSE_Y,
 	}
 	return _system;
 }

@@ -32,20 +32,18 @@ function FracturePieceReset() {
 	}
 }
 
-function FractureImpulse(_force, _originX = undefined, _originY = undefined, _direction = undefined) {
+function FractureImpulse(_force, _x = undefined, _y = undefined) {
 	with (__FractureSystem()) {
 		__impulseForce = _force;
-		__impulseOriginX = _originX;
-		__impulseOriginY = _originY;
-		__impulseDir = _direction;
+		__impulseX = _x;
+		__impulseY = _y;
 	}
 }
 
 function FractureImpulseReset() {
 	with (__FractureSystem()) {
 		__impulseForce = __FRACTURE_IMPULSE_FORCE;
-		__impulseDir = __FRACTURE_IMPULSE_DIR;
-		__impulseOriginX = __FRACTURE_IMPULSE_ORIGIN_X;
-		__impulseOriginY = __FRACTURE_IMPULSE_ORIGIN_Y;
+		__impulseX = __FRACTURE_IMPULSE_X;
+		__impulseY = __FRACTURE_IMPULSE_Y;
 	}
 }
