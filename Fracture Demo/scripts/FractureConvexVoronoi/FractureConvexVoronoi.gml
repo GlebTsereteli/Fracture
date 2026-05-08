@@ -1,37 +1,25 @@
 // feather ignore all
 
 function FractureConvexVoronoi(_inst, _pieceCount) {
-	static _hulls = {};
-		
 	__FRACTURE_START;
 	
-	var _key = $"{_inst.sprite_index},{_inst.image_index}";
-	_hulls[$ _key] ??= sprite_get_convex_hull(_inst.sprite_index, undefined, _inst.image_index);
-	var _hull = _hulls[$ _key];
-	
-	// Convert flat CCW hull to CW flat array
-	var _nHullPts = array_length(_hull) / 2;
-	var _clipPolygon = array_create(_nHullPts * 2);
-	for (var _i = 0; _i < _nHullPts; _i++) {
-		var _k = _nHullPts - 1 - _i;
-		_clipPolygon[_i * 2] = _hull[_k * 2] * _inst.image_xscale;
-		_clipPolygon[_i * 2 + 1] = _hull[_k * 2 + 1] * _inst.image_yscale;
-	}
+	var _hull = __FractureGetConvexHull(_inst);
+	var _nHull = array_length(_hull) / 2;
 	
 	// Seeds
 	var _centroidX = 0, _centroidY = 0;
-	for (var _i = 0; _i < _nHullPts; _i++) {
-	    _centroidX += _clipPolygon[_i * 2];
-	    _centroidY += _clipPolygon[_i * 2 + 1];
+	for (var _i = 0; _i < _nHull; _i++) {
+	    _centroidX += _hull[_i * 2];
+	    _centroidY += _hull[_i * 2 + 1];
 	}
-	_centroidX /= _nHullPts;
-	_centroidY /= _nHullPts;
+	_centroidX /= _nHull;
+	_centroidY /= _nHull;
 
 	var _seeds = array_create(_pieceCount * 2);
 	for (var _i = 0; _i < _pieceCount; _i++) {
-	    var _vi = (_i * _nHullPts div _pieceCount) mod _nHullPts;
-	    var _vx = _clipPolygon[_vi * 2];
-	    var _vy = _clipPolygon[_vi * 2 + 1];
+	    var _vi = (_i * _nHull div _pieceCount) mod _nHull;
+	    var _vx = _hull[_vi * 2];
+	    var _vy = _hull[_vi * 2 + 1];
 	    var _t = random_range(0.2, 0.8);
 	    _seeds[_i * 2] = lerp(_centroidX, _vx, _t);
 	    _seeds[_i * 2 + 1] = lerp(_centroidY, _vy, _t);
@@ -43,7 +31,7 @@ function FractureConvexVoronoi(_inst, _pieceCount) {
 	
 	var _pieces = array_create(_pieceCount);
 	for (var _i = 0; _i < _nSeeds; _i++) {
-		var _polygon = _clipPolygon;
+		var _polygon = _hull;
 		
 		var _iSeedX = _seeds[_i * 2];
 		var _iSeedY = _seeds[_i * 2 + 1];

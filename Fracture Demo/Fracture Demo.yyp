@@ -61,6 +61,7 @@
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"__FractureBoxHexFlat","path":"scripts/__FractureBoxHexFlat/__FractureBoxHexFlat.yy",},},
     {"id":{"name":"__FractureBoxHexPointy","path":"scripts/__FractureBoxHexPointy/__FractureBoxHexPointy.yy",},},
+    {"id":{"name":"__FractureGetConvexHull","path":"scripts/__FractureGetConvexHull/__FractureGetConvexHull.yy",},},
     {"id":{"name":"__FractureInit","path":"scripts/__FractureInit/__FractureInit.yy",},},
     {"id":{"name":"__FractureMacros","path":"scripts/__FractureMacros/__FractureMacros.yy",},},
     {"id":{"name":"__FractureMath","path":"scripts/__FractureMath/__FractureMath.yy",},},
