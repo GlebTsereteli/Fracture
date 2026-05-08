@@ -19,19 +19,22 @@ function FractureConvexVoronoi(_inst, _pieceCount) {
 	}
 	
 	// Seeds
-	var _cols = max(1, round(sqrt(_pieceCount * _w / _h)));
-	var _rows = max(1, round(_pieceCount / _cols));
-	var _cellW = _w / _cols;
-	var _cellH = _h / _rows;
-	
-	var _seeds = [];
-	var _noise = 0.4;
-	for (var _col = 0; _col < _cols; _col++) {
-		for (var _row = 0; _row < _rows; _row++) {
-			var _sx = (_col + 0.5 + random_range(-_noise, _noise)) * _cellW;
-			var _sy = (_row + 0.5 + random_range(-_noise, _noise)) * _cellH;
-			array_push(_seeds, _sx, _sy);
-		}
+	var _centroidX = 0, _centroidY = 0;
+	for (var _i = 0; _i < _nHullPts; _i++) {
+	    _centroidX += _clipPolygon[_i * 2];
+	    _centroidY += _clipPolygon[_i * 2 + 1];
+	}
+	_centroidX /= _nHullPts;
+	_centroidY /= _nHullPts;
+
+	var _seeds = array_create(_pieceCount * 2);
+	for (var _i = 0; _i < _pieceCount; _i++) {
+	    var _vi = (_i * _nHullPts div _pieceCount) mod _nHullPts;
+	    var _vx = _clipPolygon[_vi * 2];
+	    var _vy = _clipPolygon[_vi * 2 + 1];
+	    var _t = random_range(0.2, 0.8);
+	    _seeds[_i * 2] = lerp(_centroidX, _vx, _t);
+	    _seeds[_i * 2 + 1] = lerp(_centroidY, _vy, _t);
 	}
 	
 	// Main
@@ -84,7 +87,7 @@ function FractureConvexVoronoi(_inst, _pieceCount) {
 		// Piece
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nVerticesForPiece;
+			__vertexCount = _nVerticesForPiece;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {

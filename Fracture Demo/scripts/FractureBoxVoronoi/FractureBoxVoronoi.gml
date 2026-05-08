@@ -70,7 +70,7 @@ function FractureBoxVoronoi(_inst, _pieceCount) {
 		// Piece
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nVertices;
+			__vertexCount = _nVertices;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {

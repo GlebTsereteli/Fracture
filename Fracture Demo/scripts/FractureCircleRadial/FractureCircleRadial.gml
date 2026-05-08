@@ -52,7 +52,7 @@ function FractureCircleRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 		
 		// Piece
 		__FRACTURE_PIECE
-			__nVertices = _nArc * 3;
+			__vertexCount = _nArc * 3;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {

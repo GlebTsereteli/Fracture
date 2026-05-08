@@ -84,7 +84,7 @@ function FractureBoxSlice(_inst, _pieceCount, _cutAngle = 45) {
 		
 		// Piece
 		__FRACTURE_PIECE
-			__nVertices = _nTris * 3;
+			__vertexCount = _nTris * 3;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {

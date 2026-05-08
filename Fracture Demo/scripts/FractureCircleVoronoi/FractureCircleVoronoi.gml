@@ -76,7 +76,7 @@ function FractureCircleVoronoi(_inst, _pieceCount) {
 		// Piece
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
-			__nVertices = _nPieceVertices;
+			__vertexCount = _nPieceVertices;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {

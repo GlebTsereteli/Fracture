@@ -156,7 +156,7 @@ _px = _bx; _py = _by; __FRACTURE_VERT; \
 _px = _cx; _py = _cy; __FRACTURE_VERT; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
-    __nVertices = 3; \
+    __vertexCount = 3; \
     __vertexIndex = _vertexOffset; \
     __FRACTURE_FIXTURE_START; { \
         physics_fixture_add_point(_fx, _ax, _ay); \
@@ -183,7 +183,7 @@ _px = _cx; _py = _cy; __FRACTURE_VERT; \
 _px = _dx; _py = _dy; __FRACTURE_VERT; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
-    __nVertices = 6; \
+    __vertexCount = 6; \
     __vertexIndex = _vertexOffset; \
     __FRACTURE_FIXTURE_START; { \
         physics_fixture_add_point(_fx, _ax, _ay); \
@@ -217,7 +217,7 @@ _px = _ex; _py = _ey; __FRACTURE_VERT; \
 _px = _gx; _py = _gy; __FRACTURE_VERT; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
-    __nVertices = 12; \
+    __vertexCount = 12; \
     __vertexIndex = _vertexOffset; \
     __FRACTURE_FIXTURE_START; { \
         physics_fixture_add_point(_fx, _ax, _ay); \

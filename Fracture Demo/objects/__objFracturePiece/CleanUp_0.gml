@@ -1,4 +1,4 @@
-/// @desc Delete fixture & vertex buffer.
+/// @desc Delete fixture & vertex buffer
 
 physics_fixture_delete(__fixture);
 

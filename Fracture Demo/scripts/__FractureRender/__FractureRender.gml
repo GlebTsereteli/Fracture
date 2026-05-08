@@ -17,7 +17,7 @@ function __FractureRender() {
 			shader_set_uniform_f(_uAlpha, image_alpha);
 		}
 		
-		vertex_submit_ext(__vertexBuffer, __primitiveType, __texture, __vertexIndex, __nVertices);
+		vertex_submit_ext(__vertexBuffer, __primitiveType, __texture, __vertexIndex, __vertexCount);
 	}
 	
 	matrix_set(matrix_world, _prevMatrix);

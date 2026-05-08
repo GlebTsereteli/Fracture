@@ -48,8 +48,8 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 			
 			// Piece
 			__FRACTURE_PIECE
-				__nVertices = 4;
-				__vertexIndex = _index * __nVertices;
+				__vertexCount = 4;
+				__vertexIndex = _index * __vertexCount;
 				
 				__FRACTURE_FIXTURE_START; {
 					physics_fixture_set_box_shape(_fx, _hw, _hh);

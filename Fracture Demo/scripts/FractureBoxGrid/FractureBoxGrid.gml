@@ -52,8 +52,8 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			vertex_position(_vb, _x3 - _ox, _y3 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
 			
 			__FRACTURE_PIECE
-				__nVertices = 4;
-				__vertexIndex = _index * __nVertices;
+				__vertexCount = 4;
+				__vertexIndex = _index * __vertexCount;
 				
 				__FRACTURE_FIXTURE_START; {
 					physics_fixture_add_point(_fx, _x1 - _ox, _y1 - _oy);

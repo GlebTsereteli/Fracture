@@ -31,8 +31,8 @@ function FractureBoxZigzag(_inst, _pieceCount, _horizontal, _noise = 0.5) {
 		vertex_position(_vb, _cx - _ox, _cy - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
 		
 		__FRACTURE_PIECE
-			__nVertices = 3;
-			__vertexIndex = _i * __nVertices;
+			__vertexCount = 3;
+			__vertexIndex = _i * __vertexCount;
 			
 			__FRACTURE_FIXTURE_START; {
 				physics_fixture_add_point(_fx, _ax - _ox, _ay - _oy);
