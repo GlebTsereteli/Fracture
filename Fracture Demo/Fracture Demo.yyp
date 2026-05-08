@@ -28,10 +28,10 @@
     {"$GMFolder":"","%Name":"03 Convex","folderPath":"folders/02 Fracture/01 Public/01 Shapes/03 Convex.yy","name":"03 Convex","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"04 Concave","folderPath":"folders/02 Fracture/01 Public/01 Shapes/04 Concave.yy","name":"04 Concave","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Parameters","folderPath":"folders/02 Fracture/01 Public/02 Parameters.yy","name":"02 Parameters","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"03 Caching","folderPath":"folders/02 Fracture/01 Public/03 Caching.yy","name":"03 Caching","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Private","folderPath":"folders/02 Fracture/02 Private.yy","name":"02 Private","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01 Core","folderPath":"folders/02 Fracture/02 Private/01 Core.yy","name":"01 Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Functions","folderPath":"folders/02 Fracture/02 Private/02 Functions.yy","name":"02 Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"03 Caching","folderPath":"folders/02 Fracture/01 Public/03 Caching.yy","name":"03 Caching","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
