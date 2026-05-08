@@ -1,3 +1,4 @@
+/// @desc Create screen edge fixture
 
 if (edgeFixture != undefined) {
 	physics_fixture_delete(edgeFixture);

@@ -10,7 +10,7 @@ function FractureLayer(_layer) {
 	__objFractureRenderer.layer = _layer;
 }
 
-function FracturePieceConfig(_config) {
+function FracturePiece(_config) {
 	with (__FractureSystem()) {
 		__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
 		__density = _config[$ "density"] ?? __density;
@@ -32,9 +32,11 @@ function FracturePieceReset() {
 	}
 }
 
-function FractureImpulse(_force, _direction = undefined) {
+function FractureImpulse(_force, _originX = undefined, _originY = undefined, _direction = undefined) {
 	with (__FractureSystem()) {
 		__impulseForce = _force;
+		__impulseOriginX = _originX;
+		__impulseOriginY = _originY;
 		__impulseDir = _direction;
 	}
 }
@@ -43,5 +45,7 @@ function FractureImpulseReset() {
 	with (__FractureSystem()) {
 		__impulseForce = __FRACTURE_IMPULSE_FORCE;
 		__impulseDir = __FRACTURE_IMPULSE_DIR;
+		__impulseOriginX = __FRACTURE_IMPULSE_ORIGIN_X;
+		__impulseOriginY = __FRACTURE_IMPULSE_ORIGIN_Y;
 	}
 }

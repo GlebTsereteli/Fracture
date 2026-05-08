@@ -13,6 +13,8 @@
 
 #macro __FRACTURE_IMPULSE_FORCE 0
 #macro __FRACTURE_IMPULSE_DIR undefined
+#macro __FRACTURE_IMPULSE_ORIGIN_X undefined
+#macro __FRACTURE_IMPULSE_ORIGIN_Y undefined
 
 #endregion
 #region Core
@@ -63,6 +65,9 @@ var _linearDamping = _system.__linearDamping; \
 var _angularDamping = _system.__angularDamping; \
 \
 var _impulseForce = _system.__impulseForce; \
+var _impulseOriginX = _system.__impulseOriginX; \
+var _impulseOriginY = _system.__impulseOriginY; \
+var _impulseHasOrigin = (_impulseOriginX != undefined and _impulseOriginY != undefined); \
 var _impulseDir = _system.__impulseDir;
 
 #macro __FRACTURE_PIECE \
@@ -113,10 +118,12 @@ if (_physical) { \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
 } \
 if (_impulseForce != 0) { \
-	var _impDir = _impulseDir ?? _dir; \
-	physics_apply_local_impulse(0, 0, \
-		lengthdir_x(_impulseForce, _impDir), \
-		lengthdir_y(_impulseForce, _impDir) \
+    var _impDir = _impulseDir ?? (_impulseHasOrigin ? point_direction(_impulseOriginX, _impulseOriginY, x, y) : _dir); \
+    var _impX = _impulseHasOrigin ? _impulseOriginX : x; \
+	var _impY = _impulseHasOrigin ? _impulseOriginY : y; \
+	physics_apply_impulse(_impX, _impY, \
+	    lengthdir_x(_impulseForce, _impDir), \
+	    lengthdir_y(_impulseForce, _impDir) \
 	); \
 }
 

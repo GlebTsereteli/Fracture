@@ -11,6 +11,8 @@ function __FractureSystem() {
 		
 		__impulseForce: __FRACTURE_IMPULSE_FORCE,
 		__impulseDir: __FRACTURE_IMPULSE_DIR,
+		__impulseOriginX: __FRACTURE_IMPULSE_ORIGIN_X,
+		__impulseOriginY: __FRACTURE_IMPULSE_ORIGIN_Y,
 	}
 	return _system;
 }

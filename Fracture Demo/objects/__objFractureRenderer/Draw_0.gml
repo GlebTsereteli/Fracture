@@ -1,3 +1,3 @@
-/// @desc Render pieces.
+/// @desc Render pieces
 
 __FractureRender();
