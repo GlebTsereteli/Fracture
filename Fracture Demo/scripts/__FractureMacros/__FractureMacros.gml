@@ -51,17 +51,17 @@ var _state = { \
 	__count: 0, \
 } \
 \
-static _system = __FractureSystem(); \
-var _collisionGroup = _system.__collisionGroup; \
-var _density = _system.__density; \
-var _restitution = _system.__restitution; \
-var _friction = _system.__friction; \
-var _linearDamping = _system.__linearDamping; \
-var _angularDamping = _system.__angularDamping; \
+static _params = __FractureParams(); \
+var _collisionGroup = _params.__collisionGroup; \
+var _density = _params.__density; \
+var _restitution = _params.__restitution; \
+var _friction = _params.__friction; \
+var _linearDamping = _params.__linearDamping; \
+var _angularDamping = _params.__angularDamping; \
 \
-var _impulseForce = _system.__impulseForce; \
-var _impulseX = _system.__impulseX; \
-var _impulseY = _system.__impulseY; \
+var _impulseForce = _params.__impulseForce; \
+var _impulseX = _params.__impulseX; \
+var _impulseY = _params.__impulseY; \
 var _impulseHasOrigin = (_impulseX != undefined and _impulseY != undefined);
 
 #macro __FRACTURE_PIECE \

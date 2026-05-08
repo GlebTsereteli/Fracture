@@ -1,7 +1,7 @@
 // feather ignore all
 
 function FracturePiece(_config) {
-	with (__FractureSystem()) {
+	with (__FractureParams()) {
 		__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
 		__density = _config[$ "density"] ?? __density;
 		__restitution = _config[$ "restitution"] ?? __restitution;
@@ -12,7 +12,7 @@ function FracturePiece(_config) {
 }
 
 function FracturePieceReset() {
-	with (__FractureSystem()) {
+	with (__FractureParams()) {
 		__collisionGroup = FRACTURE_COLLISION_GROUP;
 		__density = FRACTURE_DENSITY;
 		__restitution = FRACTURE_RESTITUTION;

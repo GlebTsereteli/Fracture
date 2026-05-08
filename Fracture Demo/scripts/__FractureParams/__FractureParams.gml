@@ -1,7 +1,7 @@
 // feather ignore all
 
-function __FractureSystem() {
-	static _system = {
+function __FractureParams() {
+	static _params = {
 		__collisionGroup: FRACTURE_COLLISION_GROUP,
 		__density: FRACTURE_DENSITY,
 		__restitution: FRACTURE_RESTITUTION,
@@ -13,5 +13,5 @@ function __FractureSystem() {
 		__impulseX: undefined,
 		__impulseY: undefined,
 	}
-	return _system;
+	return _params;
 }
