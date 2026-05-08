@@ -10,8 +10,8 @@ function FractureImpulse(_force, _x = undefined, _y = undefined) {
 
 function FractureImpulseReset() {
 	with (__FractureSystem()) {
-		__impulseForce = __FRACTURE_IMPULSE_FORCE;
-		__impulseX = __FRACTURE_IMPULSE_X;
-		__impulseY = __FRACTURE_IMPULSE_Y;
+		__impulseForce = FRACTURE_IMPULSE_FORCE;
+		__impulseX = undefined;
+		__impulseY = undefined;
 	}
 }

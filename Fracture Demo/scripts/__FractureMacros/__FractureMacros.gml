@@ -11,10 +11,6 @@
 
 #macro __FRACTURE_CIRCLE_PRECISION 32
 
-#macro __FRACTURE_IMPULSE_FORCE 0
-#macro __FRACTURE_IMPULSE_X undefined
-#macro __FRACTURE_IMPULSE_Y undefined
-
 #endregion
 #region Core
 

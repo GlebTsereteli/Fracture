@@ -9,9 +9,9 @@ function __FractureSystem() {
 		__linearDamping: FRACTURE_LINEAR_DAMPING,
 		__angularDamping: FRACTURE_ANGULAR_DAMPING,
 		
-		__impulseForce: __FRACTURE_IMPULSE_FORCE,
-		__impulseX: __FRACTURE_IMPULSE_X,
-		__impulseY: __FRACTURE_IMPULSE_Y,
+		__impulseForce: FRACTURE_IMPULSE_FORCE,
+		__impulseX: undefined,
+		__impulseY: undefined,
 	}
 	return _system;
 }

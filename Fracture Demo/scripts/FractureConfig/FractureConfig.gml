@@ -8,6 +8,8 @@
 #macro FRACTURE_LINEAR_DAMPING 0.1
 #macro FRACTURE_ANGULAR_DAMPING 0.1
 
+#macro FRACTURE_IMPULSE_FORCE 0
+
 #endregion
 #region Piece Fade
 
