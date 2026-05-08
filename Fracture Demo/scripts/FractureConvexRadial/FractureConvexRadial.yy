@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrDemoGeneralConvex",
+  "%Name":"FractureConvexRadial",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrDemoGeneralConvex",
+  "name":"FractureConvexRadial",
   "parent":{
     "name":"03 Convex",
-    "path":"folders/01 Demo/02 Types/01 General/03 Convex.yy",
+    "path":"folders/02 Fracture/01 Public/01 Shapes/03 Convex.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

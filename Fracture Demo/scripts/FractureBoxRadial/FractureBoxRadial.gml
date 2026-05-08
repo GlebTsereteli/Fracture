@@ -6,18 +6,9 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 	
 	// Map origin to local space
 	if (_originX != undefined and _originY != undefined) {
-		var _offsetX = _originX - _inst.x;
-		var _offsetY = _originY - _inst.y;
-		var _offsetDist = point_distance(0, 0, _offsetX, _offsetY);
-		var _offsetDir = point_direction(0, 0, _offsetX, _offsetY);
-		_originX = _inst.x + lengthdir_x(_offsetDist, _offsetDir + _angle);
-		_originY = _inst.y + lengthdir_y(_offsetDist, _offsetDir + _angle);
-		_originX = clamp(_originX - (_inst.x - _centerX), 1, _w - 1);
-		_originY = clamp(_originY - (_inst.y - _centerY), 1, _h - 1);
-	}
-	else {
-		_originX = _centerX;
-		_originY = _centerY;
+		__FRACTURE_MAP_ORIGIN;
+		_originX = clamp(_originX, 1, _w - 1);
+		_originY = clamp(_originY, 1, _h - 1);
 	}
 	
 	// CCW perimeter walk: TR, TL, BL, BR, TR
@@ -32,9 +23,8 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 	var _hitsY = array_create(_pieceCount + 1);
 	var _edgePositions = array_create(_pieceCount + 1);
 	for (var _i = 0; _i <= _pieceCount; _i++) {
-		var _rayAngle = _angles[_i];
-		var _rayDirX = lengthdir_x(1, _rayAngle);
-		var _rayDirY = lengthdir_y(1, _rayAngle);
+		var _rayDirX = dcos(_angles[_i]);
+		var _rayDirY = -dsin(_angles[_i]);
 		
 		var _distTop = infinity, _distBot = infinity, _distLeft = infinity, _distRight = infinity;
 		if (_rayDirY < 0) _distTop = -_originY / _rayDirY;

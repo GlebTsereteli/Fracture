@@ -76,6 +76,7 @@ function DemoGeneral() : Demo("General") constructor {
 			new DemoGeneralCircleVoronoi(),
 		]),
 		new DemoGeneralShape("Convex", [
+			new DemoGeneralConvexRadial(),
 			new DemoGeneralConvexVoronoi(),
 		]),
 	];

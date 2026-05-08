@@ -8,8 +8,8 @@
   "name":"objDemoShapeConvex",
   "overriddenProperties":[],
   "parent":{
-    "name":"03. Convex",
-    "path":"folders/01 Demo/02 Types/01 General/03. Convex.yy",
+    "name":"03 Convex",
+    "path":"folders/01 Demo/02 Types/01 General/03 Convex.yy",
   },
   "parentObjectId":{
     "name":"objDemoShapeParent",

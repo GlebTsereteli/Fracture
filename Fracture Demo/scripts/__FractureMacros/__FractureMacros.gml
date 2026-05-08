@@ -74,7 +74,6 @@ with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) 
 	__texture = _texture; \
 	__state = _state;
 
-
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
 physics_fixture_set_collision_group(_fx, _collisionGroup); \
@@ -140,6 +139,16 @@ _angles[0] = random(360); \
 for (var _i = 0; _i < _pieceCount; _i++) { \
     _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
 }
+
+#macro __FRACTURE_MAP_ORIGIN \
+var _offsetX = _originX - _inst.x; \
+var _offsetY = _originY - _inst.y; \
+var _offsetDist = point_distance(0, 0, _offsetX, _offsetY); \
+var _offsetDir = point_direction(0, 0, _offsetX, _offsetY); \
+_originX = _inst.x + lengthdir_x(_offsetDist, _offsetDir + _angle); \
+_originY = _inst.y + lengthdir_y(_offsetDist, _offsetDir + _angle); \
+_originX -= _inst.x - _centerX; \
+_originY -= _inst.y - _centerY;
 
 #macro __FRACTURE_VERT \
 vertex_position(_vb, _px, _py); \

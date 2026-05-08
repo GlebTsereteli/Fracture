@@ -54,8 +54,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"02. Circle",
-    "path":"folders/01 Demo/02 Types/01 General/02. Circle.yy",
+    "name":"02 Circle",
+    "path":"folders/01 Demo/02 Types/01 General/02 Circle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
