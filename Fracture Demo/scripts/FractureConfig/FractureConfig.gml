@@ -1,5 +1,5 @@
 
-#region Default Piece Properties
+#region Default Parameters
 
 #macro FRACTURE_COLLISION_GROUP 1
 #macro FRACTURE_DENSITY 0.5
