@@ -14,7 +14,7 @@ function FractureConvexVoronoi(_inst, _pieceCount) {
 	}
 	_centroidX /= _nHull;
 	_centroidY /= _nHull;
-
+	
 	var _seeds = array_create(_pieceCount * 2);
 	for (var _i = 0; _i < _pieceCount; _i++) {
 	    var _vi = (_i * _nHull div _pieceCount) mod _nHull;

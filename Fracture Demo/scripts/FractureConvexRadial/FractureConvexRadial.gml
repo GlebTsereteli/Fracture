@@ -87,7 +87,9 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 			var _vx = _hull[_j * 2];
 			var _vy = _hull[_j * 2 + 1];
 			var _va = point_direction(_originX, _originY, _vx, _vy);
-			if (_va < _a1) _va += 360;
+			while (_va < _a1) {
+				_va += 360;
+			}
 			if (_va < _a2) {
 				_cornerAngles[_cornerCount] = _va;
 				_cornerIndices[_cornerCount] = _j;
