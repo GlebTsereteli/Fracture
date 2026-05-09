@@ -41,9 +41,14 @@ function DemoGeneral() : Demo("General") constructor {
 		}, _w, _h);
 		dbg_same_line();
 		dbg_button("Fracture", function() {
+			var _prevOnMouse = impulse.onMouse;
+			impulse.onMouse = false;
+			
 			with (objDemoShapeParent) {
 				other.Fracture(id);
 			}
+			
+			impulse.onMouse = _prevOnMouse;
 		}, _w, _h);
 		dbg_same_line();
 		dbg_button("Clear", function() {
@@ -56,7 +61,7 @@ function DemoGeneral() : Demo("General") constructor {
 		
 		dbg_text_separator("Impulse");
 		dbg_slider(ref_create(impulse, "force"), 0, 2, "Force", 0.1);
-		dbg_checkbox(ref_create(impulse, "mouseOrigin"), "Mouse Origin?");
+		dbg_checkbox(ref_create(impulse, "onMouse"), "Mouse Origin?");
 	};
 	
 	// Custom
@@ -84,7 +89,7 @@ function DemoGeneral() : Demo("General") constructor {
 	prevShape = shape;
 	impulse = {
 		force: 0,
-		mouseOrigin: true,
+		onMouse: true,
 	};
 	
 	Fracture = function(_shape) {
@@ -93,8 +98,8 @@ function DemoGeneral() : Demo("General") constructor {
 		}));
 		var _shapeClass = shapes[_index];
 		
-		var _impulseX = impulse.mouseOrigin ? mouse_x : undefined;
-		var _impulseY = impulse.mouseOrigin ? mouse_y : undefined;
+		var _impulseX = impulse.onMouse ? mouse_x : undefined;
+		var _impulseY = impulse.onMouse ? mouse_y : undefined;
 		FractureImpulse(impulse.force, _impulseX, _impulseY);
 		_shapeClass.Fracture(_shape);
 	};
