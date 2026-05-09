@@ -2,19 +2,7 @@
 
 function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_START;
-	
-	// Full bricks + half-bricks on staggered edges
-	var _pieceCount = _horizontal ? (_cols * _rows + (_rows div 2)) : (_cols * _rows + (_cols div 2));
-	var _pieces = array_create(_pieceCount);
-	var _index = 0;
-	
-	var _stripCount = _horizontal ? _rows : _cols;
-	var _brickCount = _horizontal ? _cols : _rows;
-	var _brickW = _w / _cols;
-	var _brickH = _h / _rows;
-	var _stripSize = _horizontal ? _brickH : _brickW;
-	var _brickSize = _horizontal ? _brickW : _brickH;
-	var _axisLen = _horizontal ? _w : _h;
+	__FRACTURE_BRICK_SETUP;
 	
 	for (var _strip = 0; _strip < _stripCount; _strip++) {
 		var _even = (_strip mod 2 == 0);
@@ -35,27 +23,7 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 			var _y1 = _horizontal ? _stripA : _brickA;
 			var _y2 = _horizontal ? _stripB : _brickB;
 			
-			var _hw = (_x2 - _x1) / 2;
-			var _hh = (_y2 - _y1) / 2;
-			var _ox = _x1 + _hw;
-			var _oy = _y1 + _hh;
-			
-			vertex_position(_vb, -_hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, _hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, -_hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h));
-			vertex_position(_vb, _hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
-			
-			__FRACTURE_PIECE
-				__vertexCount = 4;
-				__vertexIndex = _index * __vertexCount;
-				
-				__FRACTURE_FIXTURE_START; {
-					physics_fixture_set_box_shape(_fx, _hw, _hh);
-					__FRACTURE_FIXTURE_END;
-				}
-				
-				_pieces[_index++] = id;
-			}
+			__FRACTURE_BRICK_QUAD;
 		}
 	}
 	

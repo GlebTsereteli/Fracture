@@ -76,6 +76,7 @@
     {"id":{"name":"FractureBoxSlice","path":"scripts/FractureBoxSlice/FractureBoxSlice.yy",},},
     {"id":{"name":"FractureBoxVoronoi","path":"scripts/FractureBoxVoronoi/FractureBoxVoronoi.yy",},},
     {"id":{"name":"FractureBoxZigzag","path":"scripts/FractureBoxZigzag/FractureBoxZigzag.yy",},},
+    {"id":{"name":"FractureCircleBrick","path":"scripts/FractureCircleBrick/FractureCircleBrick.yy",},},
     {"id":{"name":"FractureCircleRadial","path":"scripts/FractureCircleRadial/FractureCircleRadial.yy",},},
     {"id":{"name":"FractureCircleVoronoi","path":"scripts/FractureCircleVoronoi/FractureCircleVoronoi.yy",},},
     {"id":{"name":"FractureConfig","path":"scripts/FractureConfig/FractureConfig.yy",},},
