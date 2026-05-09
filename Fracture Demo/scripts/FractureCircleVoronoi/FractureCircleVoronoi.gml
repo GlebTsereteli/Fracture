@@ -68,9 +68,9 @@ function FractureCircleVoronoi(_inst, _pieceCount) {
 			var _p0x = _polygon[0], _p0y = _polygon[1];
 			var _p2x = _polygon[_j * 2], _p2y = _polygon[_j * 2 + 1];
 			var _p3x = _polygon[(_j + 1) * 2], _p3y = _polygon[(_j + 1) * 2 + 1];
-			vertex_position(_vb, _p0x - _ox, _p0y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
-			vertex_position(_vb, _p2x - _ox, _p2y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
-			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
+			vertex_position(_vb, _p0x - _ox, _p0y - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _p0x / _w), lerp(_v0, _v1, _p0y / _h));
+			vertex_position(_vb, _p2x - _ox, _p2y - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _p2x / _w), lerp(_v0, _v1, _p2y / _h));
+			vertex_position(_vb, _p3x - _ox, _p3y - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
 		// Piece

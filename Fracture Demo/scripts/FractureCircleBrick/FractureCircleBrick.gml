@@ -79,9 +79,9 @@ function FractureCircleBrick(_inst, _cols, _rows, _horizontal) {
 				// Vertices
 				var _triCount = _vertCount - 2;
 				for (var _t = 0; _t < _triCount; _t++) {
-					_px = _clipped[0]; _py = _clipped[1]; __FRACTURE_VERT;
-					_px = _clipped[(_t + 1) * 2]; _py = _clipped[(_t + 1) * 2 + 1]; __FRACTURE_VERT;
-					_px = _clipped[(_t + 2) * 2]; _py = _clipped[(_t + 2) * 2 + 1]; __FRACTURE_VERT;
+					_px = _clipped[0]; _py = _clipped[1]; __FRACTURE_V;
+					_px = _clipped[(_t + 1) * 2]; _py = _clipped[(_t + 1) * 2 + 1]; __FRACTURE_V;
+					_px = _clipped[(_t + 2) * 2]; _py = _clipped[(_t + 2) * 2 + 1]; __FRACTURE_V;
 				}
 				
 				// Piece

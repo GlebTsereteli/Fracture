@@ -76,9 +76,9 @@ function FractureBoxSlice(_inst, _pieceCount, _cutAngle = 45) {
 		for (var _j = 0; _j < _nTris; _j++) {
 			var _ax = _vertX[_j], _ay = _vertY[_j];
 			var _bx = _vertX[(_j + 1) mod _vertCount], _by = _vertY[(_j + 1) mod _vertCount];
-			vertex_position(_vb, 0, 0); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _cu, _cv);
-			vertex_position(_vb, _ax - _ox, _ay - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+			vertex_position(_vb, 0, 0); __FRACTURE_VCOLOR; vertex_texcoord(_vb, _cu, _cv);
+			vertex_position(_vb, _ax - _ox, _ay - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+			vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
 		__FRACTURE_PIECE

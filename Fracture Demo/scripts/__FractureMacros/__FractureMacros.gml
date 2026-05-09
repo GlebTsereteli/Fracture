@@ -150,9 +150,14 @@ _originY = _inst.y + lengthdir_y(_offsetDist, _offsetDir + _angle); \
 _originX -= _inst.x - _centerX; \
 _originY -= _inst.y - _centerY;
 
-#macro __FRACTURE_VERT \
+#endregion
+#region Vertices
+
+#macro __FRACTURE_VCOLOR vertex_color(_vb, c_white, 1);
+
+#macro __FRACTURE_V \
 vertex_position(_vb, _px, _py); \
-vertex_color(_vb, c_white, 1); \
+__FRACTURE_VCOLOR; \
 vertex_texcoord(_vb, lerp(_u0, _u1, (_ox + _px) / _w), lerp(_v0, _v1, (_oy + _py) / _h));
 
 #macro __FRACTURE_BOX_TRI \
@@ -162,9 +167,9 @@ var _ox = _xl + _cmx; \
 var _oy = _yt + _cmy; \
 _ax -= _cmx; _bx -= _cmx; _cx -= _cmx; \
 _ay -= _cmy; _by -= _cmy; _cy -= _cmy; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _bx; _py = _by; __FRACTURE_VERT; \
-_px = _cx; _py = _cy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _bx; _py = _by; __FRACTURE_V; \
+_px = _cx; _py = _cy; __FRACTURE_V; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __vertexCount = 3; \
@@ -186,12 +191,12 @@ var _ox = _xl + _cmx; \
 var _oy = _yt + _cmy; \
 _ax -= _cmx; _bx -= _cmx; _cx -= _cmx; _dx -= _cmx; \
 _ay -= _cmy; _by -= _cmy; _cy -= _cmy; _dy -= _cmy; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _bx; _py = _by; __FRACTURE_VERT; \
-_px = _cx; _py = _cy; __FRACTURE_VERT; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _cx; _py = _cy; __FRACTURE_VERT; \
-_px = _dx; _py = _dy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _bx; _py = _by; __FRACTURE_V; \
+_px = _cx; _py = _cy; __FRACTURE_V; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _cx; _py = _cy; __FRACTURE_V; \
+_px = _dx; _py = _dy; __FRACTURE_V; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __vertexCount = 6; \
@@ -214,18 +219,18 @@ var _ox = _xl + _cmx; \
 var _oy = _yt + _cmy; \
 _ax -= _cmx; _bx -= _cmx; _cx -= _cmx; _dx -= _cmx; _ex -= _cmx; _gx -= _cmx; \
 _ay -= _cmy; _by -= _cmy; _cy -= _cmy; _dy -= _cmy; _ey -= _cmy; _gy -= _cmy; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _bx; _py = _by; __FRACTURE_VERT; \
-_px = _cx; _py = _cy; __FRACTURE_VERT; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _cx; _py = _cy; __FRACTURE_VERT; \
-_px = _dx; _py = _dy; __FRACTURE_VERT; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _dx; _py = _dy; __FRACTURE_VERT; \
-_px = _ex; _py = _ey; __FRACTURE_VERT; \
-_px = _ax; _py = _ay; __FRACTURE_VERT; \
-_px = _ex; _py = _ey; __FRACTURE_VERT; \
-_px = _gx; _py = _gy; __FRACTURE_VERT; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _bx; _py = _by; __FRACTURE_V; \
+_px = _cx; _py = _cy; __FRACTURE_V; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _cx; _py = _cy; __FRACTURE_V; \
+_px = _dx; _py = _dy; __FRACTURE_V; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _dx; _py = _dy; __FRACTURE_V; \
+_px = _ex; _py = _ey; __FRACTURE_V; \
+_px = _ax; _py = _ay; __FRACTURE_V; \
+_px = _ex; _py = _ey; __FRACTURE_V; \
+_px = _gx; _py = _gy; __FRACTURE_V; \
 __FRACTURE_PIECE \
     __primitiveType = pr_trianglelist; \
     __vertexCount = 12; \
@@ -264,10 +269,10 @@ var _hw = (_x2 - _x1) / 2; \
 var _hh = (_y2 - _y1) / 2; \
 var _ox = _x1 + _hw; \
 var _oy = _y1 + _hh; \
-vertex_position(_vb, -_hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h)); \
-vertex_position(_vb, _hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h)); \
-vertex_position(_vb, -_hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h)); \
-vertex_position(_vb, _hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h)); \
+vertex_position(_vb, -_hw, -_hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h)); \
+vertex_position(_vb, _hw, -_hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h)); \
+vertex_position(_vb, -_hw, _hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h)); \
+vertex_position(_vb, _hw, _hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h)); \
 __FRACTURE_PIECE \
     __vertexCount = 4; \
     __vertexIndex = _vertexOffset; \

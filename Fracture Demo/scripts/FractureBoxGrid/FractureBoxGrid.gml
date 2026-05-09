@@ -46,10 +46,10 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			var _ox = (_x1 + _x2 + _x3 + _x4) * 0.25;
 			var _oy = (_y1 + _y2 + _y3 + _y4) * 0.25;
 			
-			vertex_position(_vb, _x1 - _ox, _y1 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
-			vertex_position(_vb, _x2 - _ox, _y2 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
-			vertex_position(_vb, _x4 - _ox, _y4 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
-			vertex_position(_vb, _x3 - _ox, _y3 - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
+			vertex_position(_vb, _x1 - _ox, _y1 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
+			vertex_position(_vb, _x2 - _ox, _y2 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
+			vertex_position(_vb, _x4 - _ox, _y4 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h));
+			vertex_position(_vb, _x3 - _ox, _y3 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h));
 			
 			__FRACTURE_PIECE
 				__vertexCount = 4;

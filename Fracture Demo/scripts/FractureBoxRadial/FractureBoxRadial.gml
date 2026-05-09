@@ -103,9 +103,9 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 		for (var _j = 0; _j < _nTris; _j++) {
 			var _ax = _fanX[_j], _ay = _fanY[_j];
 			var _bx = _fanX[_j + 1], _by = _fanY[_j + 1];
-			vertex_position(_vb, _localOriginX, _localOriginY); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, _ou, _ov);
-			vertex_position(_vb, _ax - _ox, _ay - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+			vertex_position(_vb, _localOriginX, _localOriginY); __FRACTURE_VCOLOR; vertex_texcoord(_vb, _ou, _ov);
+			vertex_position(_vb, _ax - _ox, _ay - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+			vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
 		__FRACTURE_PIECE

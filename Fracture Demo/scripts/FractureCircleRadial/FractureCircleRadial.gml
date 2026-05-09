@@ -45,9 +45,9 @@ function FractureCircleRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 			var _ay = _centerY + lengthdir_y(_radius, _ta1);
 			var _bx = _centerX + lengthdir_x(_radius, _ta2);
 			var _by = _centerY + lengthdir_y(_radius, _ta2);
-			vertex_position(_vb, _originX - _ox, _originY - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _originX / _w), lerp(_v0, _v1, _originY / _h));
-			vertex_position(_vb, _ax - _ox, _ay - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+			vertex_position(_vb, _originX - _ox, _originY - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _originX / _w), lerp(_v0, _v1, _originY / _h));
+			vertex_position(_vb, _ax - _ox, _ay - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+			vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
 		// Piece

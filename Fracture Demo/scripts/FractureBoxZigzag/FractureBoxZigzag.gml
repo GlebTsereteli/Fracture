@@ -26,9 +26,9 @@ function FractureBoxZigzag(_inst, _pieceCount, _horizontal, _noise = 0.5) {
 		var _ox = mean(_ax, _bx, _cx);
 		var _oy = mean(_ay, _by, _cy);
 		
-		vertex_position(_vb, _ax - _ox, _ay - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
-		vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
-		vertex_position(_vb, _cx - _ox, _cy - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
+		vertex_position(_vb, _ax - _ox, _ay - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _ax / _w), lerp(_v0, _v1, _ay / _h));
+		vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
+		vertex_position(_vb, _cx - _ox, _cy - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _cx / _w), lerp(_v0, _v1, _cy / _h));
 		
 		__FRACTURE_PIECE
 			__vertexCount = 3;
