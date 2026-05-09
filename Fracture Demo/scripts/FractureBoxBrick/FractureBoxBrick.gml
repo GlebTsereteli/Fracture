@@ -40,13 +40,11 @@ function FractureBoxBrick(_inst, _cols, _rows, _horizontal) {
 			var _ox = _x1 + _hw;
 			var _oy = _y1 + _hh;
 			
-			// Vertices
 			vertex_position(_vb, -_hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h));
 			vertex_position(_vb, _hw, -_hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h));
 			vertex_position(_vb, -_hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h));
 			vertex_position(_vb, _hw, _hh); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h));
 			
-			// Piece
 			__FRACTURE_PIECE
 				__vertexCount = 4;
 				__vertexIndex = _index * __vertexCount;

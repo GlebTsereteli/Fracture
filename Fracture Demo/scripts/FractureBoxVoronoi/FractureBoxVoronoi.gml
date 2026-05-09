@@ -57,7 +57,6 @@ function FractureBoxVoronoi(_inst, _pieceCount) {
 		_ox /= _nPts;
 		_oy /= _nPts;
 		
-		// Vertices
 		for (var _j = 1; _j < _nPts - 1; _j++) {
 			var _p0x = _polygon[0], _p0y = _polygon[1];
 			var _p2x = _polygon[_j * 2], _p2y = _polygon[_j * 2 + 1];
@@ -67,7 +66,6 @@ function FractureBoxVoronoi(_inst, _pieceCount) {
 			vertex_position(_vb, _p3x - _ox, _p3y - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _p3x / _w), lerp(_v0, _v1, _p3y / _h));
 		}
 		
-		// Piece
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
 			__vertexCount = _nVertices;

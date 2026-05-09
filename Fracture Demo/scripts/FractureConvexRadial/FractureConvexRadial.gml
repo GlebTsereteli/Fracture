@@ -7,25 +7,46 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 	var _hull = __FractureGetConvexHull(_inst);
 	var _nHull = array_length(_hull) / 2;
 	
-	// Default origin to hull centroid
+	#region Map origin
+	
+	var _centroidX = 0;
+	var _centroidY = 0;
+	for (var _i = 0; _i < _nHull; _i++) {
+		_centroidX += _hull[_i * 2];
+		_centroidY += _hull[_i * 2 + 1];
+	}
+	_centroidX /= _nHull;
+	_centroidY /= _nHull;
+	
 	if (_originX == undefined and _originY == undefined) {
-		_originX = 0;
-		_originY = 0;
-		for (var _i = 0; _i < _nHull; _i++) {
-			_originX += _hull[_i * 2];
-			_originY += _hull[_i * 2 + 1];
-		}
-		_originX /= _nHull;
-		_originY /= _nHull;
+		_originX = _centroidX;
+		_originY = _centroidY;
 	}
 	else {
 		__FRACTURE_MAP_ORIGIN;
+		
+		// Reset to centroid if custom origin falls outside the hull
+		var _outside = false;
+		for (var _i = 0; _i < _nHull; _i++) {
+			var _ax = _hull[_i * 2];
+			var _ay = _hull[_i * 2 + 1];
+			var _bx = _hull[((_i + 1) mod _nHull) * 2];
+			var _by = _hull[((_i + 1) mod _nHull) * 2 + 1];
+			var _cross = (_bx - _ax) * (_originY - _ay) - (_by - _ay) * (_originX - _ax);
+			if (_cross < 0) {
+				_originX = _centroidX;
+				_originY = _centroidY;
+				break;
+			}
+		}
 	}
+	
+	#endregion
+	#region Cast rays to hull
 	
 	var _pieces = array_create(_pieceCount);
 	__FRACTURE_RANDOM_ANGLES;
 	
-	// Cast each ray from origin to hull, store hit points
 	var _hitsX = array_create(_pieceCount + 1);
 	var _hitsY = array_create(_pieceCount + 1);
 	for (var _i = 0; _i <= _pieceCount; _i++) {
@@ -61,9 +82,13 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 		_hitsY[_i] = _bestHitY;
 	}
 	
+	#endregion
+	#region Build pieces
+	
 	// Reused per piece: perimeter arc from hit1 to hit2
 	var _fanX = array_create(_nHull + 2);
 	var _fanY = array_create(_nHull + 2);
+	
 	// Reused per piece: hull vertices falling inside this sector
 	var _cornerAngles = array_create(_nHull);
 	var _cornerIndices = array_create(_nHull);
@@ -76,13 +101,13 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 		var _a1 = _angles[_i];
 		var _a2 = _angles[_i + 1];
 		
-		// Fan starts at the first ray hit
+		#region Collect and sort hull corners in sector
+		
 		_fanX[0] = _hitsX[_i];
 		_fanY[0] = _hitsY[_i];
 		var _fanCount = 1;
 		var _cornerCount = 0;
 		
-		// Collect hull vertices whose angle from origin falls in this sector
 		for (var _j = 0; _j < _nHull; _j++) {
 			var _vx = _hull[_j * 2];
 			var _vy = _hull[_j * 2 + 1];
@@ -97,20 +122,18 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 			}
 		}
 		
-		// Sort corners by angle (Insertion Sort)
+		// Insertion sort by angle
 		for (var _j = 1; _j < _cornerCount; _j++) {
 			var _key = _cornerAngles[_j];
-			var _keyIdx = _cornerIndices[_j];
-			
+			var _keyIndex = _cornerIndices[_j];
 			var _k = _j - 1;
 			while (_k >= 0 and _cornerAngles[_k] > _key) {
 				_cornerAngles[_k + 1] = _cornerAngles[_k];
 				_cornerIndices[_k + 1] = _cornerIndices[_k];
 				_k--;
 			}
-			
 			_cornerAngles[_k + 1] = _key;
-			_cornerIndices[_k + 1] = _keyIdx;
+			_cornerIndices[_k + 1] = _keyIndex;
 		}
 		
 		// Append sorted corners then second hit to close the arc
@@ -123,7 +146,9 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 		_fanY[_fanCount] = _hitsY[_i + 1];
 		_fanCount++;
 		
-		// Centroid over origin + all fan points
+		#endregion
+		#region Compute piece centroid and UV origin
+		
 		var _ox = _originX, _oy = _originY;
 		for (var _j = 0; _j < _fanCount; _j++) {
 			_ox += _fanX[_j];
@@ -138,7 +163,9 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 		var _ov = lerp(_v0, _v1, _originY / _h);
 		var _nTris = _fanCount - 1;
 		
-		// Vertices: triangle fan from local origin to each arc edge
+		#endregion
+		
+		// Vertices
 		for (var _j = 0; _j < _nTris; _j++) {
 			var _ax = _fanX[_j], _ay = _fanY[_j];
 			var _bx = _fanX[_j + 1], _by = _fanY[_j + 1];
@@ -169,8 +196,11 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 			
 			_pieces[_index++] = id;
 		}
+		
 		_vertexOffset += _nTris * 3;
 	}
+	
+	#endregion
 	
 	__FRACTURE_END;
 }

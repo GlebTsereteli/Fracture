@@ -70,7 +70,6 @@ function FractureBoxSlice(_inst, _pieceCount, _cutAngle = 45) {
 		var _ox = _sumX / _vertCount;
 		var _oy = _sumY / _vertCount;
 		
-		// Vertices — fan from centroid through closed polygon boundary
 		var _nTris = _vertCount;
 		var _cu = lerp(_u0, _u1, _ox / _w);
 		var _cv = lerp(_v0, _v1, _oy / _h);
@@ -82,7 +81,6 @@ function FractureBoxSlice(_inst, _pieceCount, _cutAngle = 45) {
 			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Piece
 		__FRACTURE_PIECE
 			__vertexCount = _nTris * 3;
 			__vertexIndex = _vertexOffset;

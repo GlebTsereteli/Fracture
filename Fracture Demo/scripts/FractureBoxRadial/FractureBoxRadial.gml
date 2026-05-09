@@ -95,7 +95,6 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 		_ox /= (_fanCount + 1);
 		_oy /= (_fanCount + 1);
 		
-		// Vertices
 		var _localOriginX = _originX - _ox;
 		var _localOriginY = _originY - _oy;
 		var _ou = lerp(_u0, _u1, _originX / _w);
@@ -109,7 +108,6 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 			vertex_position(_vb, _bx - _ox, _by - _oy); vertex_color(_vb, c_white, 1); vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Piece
 		__FRACTURE_PIECE
 			__vertexCount = _nTris * 3;
 			__vertexIndex = _vertexOffset;
