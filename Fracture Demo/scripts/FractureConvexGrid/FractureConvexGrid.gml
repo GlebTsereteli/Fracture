@@ -4,34 +4,8 @@ function FractureConvexGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX)
 	static _cell = array_create(8);
 	
 	__FRACTURE_START;
+	__FRACTURE_CONVEX_HULL;
 	__FRACTURE_GRID_SETUP;
-	
-	var _hull = __FractureGetConvexHull(_inst);
-	var _nHull = array_length(_hull) / 2;
-	
-	// Precompute hull edges and bbox
-	var _edgesX1 = array_create(_nHull);
-	var _edgesY1 = array_create(_nHull);
-	var _edgesDx = array_create(_nHull);
-	var _edgesDy = array_create(_nHull);
-	var _hullX1 = infinity, _hullX2 = -infinity;
-	var _hullY1 = infinity, _hullY2 = -infinity;
-	
-	for (var _i = 0; _i < _nHull; _i++) {
-		var _ni = (_i + 1) mod _nHull;
-		var _hx = _hull[_i * 2];
-		var _hy = _hull[_i * 2 + 1];
-		
-		_edgesX1[_i] = _hx;
-		_edgesY1[_i] = _hy;
-		_edgesDx[_i] = _hull[_ni * 2] - _hx;
-		_edgesDy[_i] = _hull[_ni * 2 + 1] - _hy;
-		
-		if (_hx < _hullX1) _hullX1 = _hx;
-		if (_hx > _hullX2) _hullX2 = _hx;
-		if (_hy < _hullY1) _hullY1 = _hy;
-		if (_hy > _hullY2) _hullY2 = _hy;
-	}
 	
 	var _px = 0, _py = 0;
 	
@@ -64,7 +38,7 @@ function FractureConvexGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX)
 			if (max(_x1, _x2, _x3, _x4) < _hullX1 or min(_x1, _x2, _x3, _x4) > _hullX2 or
 				max(_y1, _y2, _y3, _y4) < _hullY1 or min(_y1, _y2, _y3, _y4) > _hullY2) continue;
 			
-			// For each edge, check all 4 corners at once. Break if any corner is outside the hull
+			// Check all corners for each edge. Break if any corner is outside the hull
 			var _fullyInside = true;
 			for (var _e = 0; _e < _nHull; _e++) {
 			    var _edgeX1 = _edgesX1[_e], _edgeY1 = _edgesY1[_e];

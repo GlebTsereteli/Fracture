@@ -17,6 +17,21 @@ function DemoGeneralConvexGrid() : DemoGeneralPattern("Grid") constructor {
 		return [cols, rows, noiseX, noiseY];
 	}
 }
+function DemoGeneralConvexBrick() : DemoGeneralPattern("Brick") constructor {
+	static Init = function() {
+		cols = 4;
+		rows = 8;
+		horizontal = true;
+		
+		dbg_slider_int(ref_create(self, "cols"), 1, 20, "Cols");
+		dbg_slider_int(ref_create(self, "rows"), 1, 20, "Rows");
+		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
+	}
+	
+	static GetArguments = function() {
+		return [cols, rows, horizontal];
+	}
+}
 function DemoGeneralConvexRadial() : DemoGeneralPattern("Radial") constructor {
 	pieceCount = 8;
 	angleNoise = 0.5;

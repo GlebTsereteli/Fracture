@@ -262,6 +262,36 @@ for (var _i = 0; _i < __FRACTURE_CIRCLE_PRECISION; _i++) { \
 }
 
 #endregion
+#region Convex
+
+#macro __FRACTURE_CONVEX_HULL \
+var _hull = __FractureGetConvexHull(_inst); \
+var _nHull = array_length(_hull) / 2; \
+\
+var _edgesX1 = array_create(_nHull); \
+var _edgesY1 = array_create(_nHull); \
+var _edgesDx = array_create(_nHull); \
+var _edgesDy = array_create(_nHull); \
+var _hullX1 = infinity, _hullX2 = -infinity; \
+var _hullY1 = infinity, _hullY2 = -infinity; \
+\
+for (var _i = 0; _i < _nHull; _i++) { \
+	var _ni = (_i + 1) mod _nHull; \
+	var _hx = _hull[_i * 2]; \
+	var _hy = _hull[_i * 2 + 1]; \
+	\
+	_edgesX1[_i] = _hx; \
+	_edgesY1[_i] = _hy; \
+	_edgesDx[_i] = _hull[_ni * 2] - _hx; \
+	_edgesDy[_i] = _hull[_ni * 2 + 1] - _hy; \
+	\
+	if (_hx < _hullX1) _hullX1 = _hx; \
+	if (_hx > _hullX2) _hullX2 = _hx; \
+	if (_hy < _hullY1) _hullY1 = _hy; \
+	if (_hy > _hullY2) _hullY2 = _hy; \
+}
+
+#endregion
 #region Grid
 
 #macro __FRACTURE_GRID_SETUP \

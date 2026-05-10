@@ -1,6 +1,8 @@
 // feather ignore all
 
 function FractureCircleGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
+	static _cell = array_create(8);
+	
 	__FRACTURE_START;
 	__FRACTURE_GRID_SETUP;
 	__FRACTURE_CIRCLE_HULL;
@@ -54,7 +56,10 @@ function FractureCircleGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX)
 				__FRACTURE_GRID_QUAD;
 			}
 			else {
-				var _cell = [_x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4];
+				_cell[0] = _x1; _cell[1] = _y1;
+				_cell[2] = _x2; _cell[3] = _y2;
+				_cell[4] = _x3; _cell[5] = _y3;
+				_cell[6] = _x4; _cell[7] = _y4;
 				__FRACTURE_CLIP_PIECE;
 			}
 		}

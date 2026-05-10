@@ -80,12 +80,21 @@ function DemoGeneral() : Demo("General") constructor {
 		new DemoGeneralShape("Circle", [
 			new DemoGeneralCircleGrid(),
 			new DemoGeneralCircleBrick(),
+			//new DemoGeneralCircleZigzag(),
+			//new DemoGeneralCircleDiamond(),
+			//new DemoGeneralCircleHex(),
 			new DemoGeneralCircleRadial(),
+			//new DemoGeneralCircleSlice(),
 			new DemoGeneralCircleVoronoi(),
 		]),
 		new DemoGeneralShape("Convex", [
 			new DemoGeneralConvexGrid(),
+			new DemoGeneralConvexBrick(),
+			//new DemoGeneralConvexZigzag(),
+			//new DemoGeneralConvexDiamond(),
+			//new DemoGeneralConvexHex(),
 			new DemoGeneralConvexRadial(),
+			//new DemoGeneralConvexSlice(),
 			new DemoGeneralConvexVoronoi(),
 		]),
 	];

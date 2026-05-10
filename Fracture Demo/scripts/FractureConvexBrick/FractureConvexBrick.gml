@@ -1,10 +1,10 @@
 // feather ignore all
 
-function FractureCircleBrick(_inst, _cols, _rows, _horizontal) {
+function FractureConvexBrick(_inst, _cols, _rows, _horizontal) {
 	static _cell = array_create(8);
 	
 	__FRACTURE_START;
-	__FRACTURE_CIRCLE_HULL;
+	__FRACTURE_CONVEX_HULL;
 	__FRACTURE_BRICK_SETUP;
 	
 	var _px = 0, _py = 0;
@@ -29,22 +29,22 @@ function FractureCircleBrick(_inst, _cols, _rows, _horizontal) {
 			var _y1 = _horizontal ? _stripA : _brickA;
 			var _y2 = _horizontal ? _stripB : _brickB;
 			
-			// Reject bricks outside radius
-			var _nearX = clamp(_centerX, _x1, _x2);
-			var _nearY = clamp(_centerY, _y1, _y2);
-			var _nearDx = _nearX - _centerX;
-			var _nearDy = _nearY - _centerY;
-			if (_nearDx * _nearDx + _nearDy * _nearDy > _radiusSq) continue;
+			// Bbox reject before the hull test
+			if (_x2 < _hullX1 or _x1 > _hullX2 or _y2 < _hullY1 or _y1 > _hullY2) continue;
 			
-			// Check if all 4 corners are inside the circle
-			var _dx1 = _x1 - _centerX, _dy1 = _y1 - _centerY;
-			var _dx2 = _x2 - _centerX, _dy2 = _y2 - _centerY;
-			var _fullyInside = (
-				_dx1 * _dx1 + _dy1 * _dy1 <= _radiusSq and
-				_dx2 * _dx2 + _dy1 * _dy1 <= _radiusSq and
-				_dx1 * _dx1 + _dy2 * _dy2 <= _radiusSq and
-				_dx2 * _dx2 + _dy2 * _dy2 <= _radiusSq
-			);
+			// Check all corners for each edge. Break if any corner is outside the hull
+			var _fullyInside = true;
+			for (var _e = 0; _e < _nHull; _e++) {
+				var _edgeX1 = _edgesX1[_e], _edgeY1 = _edgesY1[_e];
+				var _edgeDx = _edgesDx[_e], _edgeDy = _edgesDy[_e];
+				if ((_edgeDx * (_y1 - _edgeY1) - _edgeDy * (_x1 - _edgeX1)) < 0 or
+					(_edgeDx * (_y1 - _edgeY1) - _edgeDy * (_x2 - _edgeX1)) < 0 or
+					(_edgeDx * (_y2 - _edgeY1) - _edgeDy * (_x1 - _edgeX1)) < 0 or
+					(_edgeDx * (_y2 - _edgeY1) - _edgeDy * (_x2 - _edgeX1)) < 0) {
+					_fullyInside = false;
+					break;
+				}
+			}
 			
 			if (_fullyInside) {
 				__FRACTURE_BRICK_QUAD;
@@ -61,5 +61,6 @@ function FractureCircleBrick(_inst, _cols, _rows, _horizontal) {
 	
 	_pieceCount = _index;
 	array_resize(_pieces, _pieceCount);
+	
 	__FRACTURE_END;
 }
