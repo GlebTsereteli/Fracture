@@ -4,18 +4,19 @@ function FractureCircleRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 	__FRACTURE_START;
 	_pieceCount = max(3, _pieceCount);
 	
-	var _radius = max(_w, _h) * 0.5;
+	var _radius = max(_w, _h) / 2;
 	
 	// Map origin to local space
-	if (_originX != undefined and _originY != undefined) {
-		var _dist = min(point_distance(_inst.x, _inst.y, _originX, _originY), _radius - 1);
-		var _dir = point_direction(_inst.x, _inst.y, _originX, _originY);
-		_originX = _centerX + lengthdir_x(_dist, _dir + _angle);
-		_originY = _centerY + lengthdir_y(_dist, _dir + _angle);
+	if (_originX == undefined or _originY == undefined) {
+	    _originX = _centerX;
+	    _originY = _centerY;
 	}
 	else {
-		_originX = _centerX;
-		_originY = _centerY;
+	    __FRACTURE_MAP_ORIGIN;
+	    if (point_distance(_centerX, _centerY, _originX, _originY) >= _radius) {
+		    _originX = _centerX;
+		    _originY = _centerY;
+		}
 	}
 	
 	var _nArc = max(1, round(__FRACTURE_CIRCLE_PRECISION / _pieceCount));

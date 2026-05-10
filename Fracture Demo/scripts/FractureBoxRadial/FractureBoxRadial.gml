@@ -5,10 +5,16 @@ function FractureBoxRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = und
 	_pieceCount = max(3, _pieceCount);
 	
 	// Map origin to local space
-	if (_originX != undefined and _originY != undefined) {
-		__FRACTURE_MAP_ORIGIN;
-		_originX = clamp(_originX, 1, _w - 1);
-		_originY = clamp(_originY, 1, _h - 1);
+	if (_originX == undefined or _originY == undefined) {
+	    _originX = _w / 2;
+	    _originY = _h / 2;
+	}
+	else {
+	    __FRACTURE_MAP_ORIGIN;
+	    if (_originX <= 0 or _originX >= _w or _originY <= 0 or _originY >= _h) {
+	        _originX = _w / 2;
+	        _originY = _h / 2;
+	    }
 	}
 	
 	// CCW perimeter walk: TR, TL, BL, BR, TR
