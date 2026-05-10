@@ -68,8 +68,8 @@ function DemoGeneral() : Demo("General") constructor {
 	shapes = [
 		new DemoGeneralShape("Box", [
 			new DemoGeneralBoxGrid(),
-			new DemoGeneralBoxZigzag(),
 			new DemoGeneralBoxBrick(),
+			new DemoGeneralBoxZigzag(),
 			new DemoGeneralBoxDiamond(),
 			new DemoGeneralBoxHex(),
 			new DemoGeneralBoxRadial(),
@@ -77,8 +77,9 @@ function DemoGeneral() : Demo("General") constructor {
 			new DemoGeneralBoxVoronoi(),
 		]),
 		new DemoGeneralShape("Circle", [
-			new DemoGeneralCircleRadial(),
+			new DemoGeneralCircleGrid(),
 			new DemoGeneralCircleBrick(),
+			new DemoGeneralCircleRadial(),
 			new DemoGeneralCircleVoronoi(),
 		]),
 		new DemoGeneralShape("Convex", [

@@ -15,20 +15,6 @@ function DemoGeneralBoxGrid() : DemoGeneralPattern("Grid") constructor {
 		return [cols, rows, noiseX, noiseY];
 	};
 }
-function DemoGeneralBoxZigzag() : DemoGeneralPattern("Zigzag") constructor {
-	count = 6;
-	horizontal = true;
-	noise = 0.5;
-	
-	static Init = function() {
-		dbg_slider_int(ref_create(self, "count"), 3, 10, "Count");
-		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
-		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
-	};
-	static GetArguments = function() {
-		return [count, horizontal, noise];
-	};
-}
 function DemoGeneralBoxBrick() : DemoGeneralPattern("Brick") constructor {
 	cols = 4;
 	rows = 8;
@@ -41,6 +27,20 @@ function DemoGeneralBoxBrick() : DemoGeneralPattern("Brick") constructor {
 	};
 	static GetArguments = function() {
 		return [cols, rows, horizontal];
+	};
+}
+function DemoGeneralBoxZigzag() : DemoGeneralPattern("Zigzag") constructor {
+	count = 6;
+	horizontal = true;
+	noise = 0.5;
+	
+	static Init = function() {
+		dbg_slider_int(ref_create(self, "count"), 3, 10, "Count");
+		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
+		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
+	};
+	static GetArguments = function() {
+		return [count, horizontal, noise];
 	};
 }
 function DemoGeneralBoxDiamond() : DemoGeneralPattern("Diamond") constructor {
