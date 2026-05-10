@@ -79,8 +79,8 @@ function FractureConvexVoronoi(_inst, _pieceCount) {
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {
-				for (var _j = 0; _j < _nPts; _j++) {
-					physics_fixture_add_point(_fx, _polygon[_j * 2] - _ox, _polygon[_j * 2 + 1] - _oy);
+				for (var _j = _nPts - 1; _j >= 0; _j--) {
+				    physics_fixture_add_point(_fx, _polygon[_j * 2] - _ox, _polygon[_j * 2 + 1] - _oy);
 				}
 				__FRACTURE_FIXTURE_END;
 			}
