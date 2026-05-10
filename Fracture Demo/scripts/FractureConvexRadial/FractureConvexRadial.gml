@@ -33,7 +33,7 @@ function FractureConvexRadial(_inst, _pieceCount, _angleNoise = 0.5, _originX = 
 			var _bx = _hull[((_i + 1) mod _nHull) * 2];
 			var _by = _hull[((_i + 1) mod _nHull) * 2 + 1];
 			var _cross = (_bx - _ax) * (_originY - _ay) - (_by - _ay) * (_originX - _ax);
-			if (_cross < 0) {
+			if (_cross > 0) {
 				_originX = _centroidX;
 				_originY = _centroidY;
 				break;

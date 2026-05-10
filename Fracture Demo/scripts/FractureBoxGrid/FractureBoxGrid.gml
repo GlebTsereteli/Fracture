@@ -28,18 +28,10 @@ function FractureBoxGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 			var _x2 = _colX[_j - 1], _y2 = _colY[_j - 1];
 			var _x4 = _prevColX[_j], _y4 = _prevColY[_j];
 			
-			var _ox = (_x1 + _x2 + _x3 + _x4) * 0.25;
-			var _oy = (_y1 + _y2 + _y3 + _y4) * 0.25;
-			
 			__FRACTURE_GRID_QUAD;
 		}
 		
-		var _tempX = _prevColX;
-		var _tempY = _prevColY;
-		_prevColX = _colX;
-		_prevColY = _colY;
-		_colX = _tempX;
-		_colY = _tempY;
+		__FRACTURE_GRID_SWAP;
 	}
 	
 	__FRACTURE_END;

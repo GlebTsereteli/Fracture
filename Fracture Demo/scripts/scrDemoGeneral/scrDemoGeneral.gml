@@ -1,3 +1,4 @@
+// feather ignore all
 
 function DemoGeneral() : Demo("General") constructor {
 	// Shared
@@ -83,6 +84,7 @@ function DemoGeneral() : Demo("General") constructor {
 			new DemoGeneralCircleVoronoi(),
 		]),
 		new DemoGeneralShape("Convex", [
+			new DemoGeneralConvexGrid(),
 			new DemoGeneralConvexRadial(),
 			new DemoGeneralConvexVoronoi(),
 		]),

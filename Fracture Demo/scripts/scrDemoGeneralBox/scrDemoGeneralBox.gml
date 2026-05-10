@@ -1,3 +1,4 @@
+// feather ignore all
 
 function DemoGeneralBoxGrid() : DemoGeneralPattern("Grid") constructor {
 	cols = 4;

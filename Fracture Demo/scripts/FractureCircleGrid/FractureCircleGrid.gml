@@ -38,9 +38,6 @@ function FractureCircleGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX)
 			var _nearDy = _nearY - _centerY;
 			if (_nearDx * _nearDx + _nearDy * _nearDy > _radiusSq) continue;
 			
-			var _ox = (_x1 + _x2 + _x3 + _x4) * 0.25;
-			var _oy = (_y1 + _y2 + _y3 + _y4) * 0.25;
-			
 			// Check if all 4 corners are inside the circle
 			var _dx1 = _x1 - _centerX, _dy1 = _y1 - _centerY;
 			var _dx2 = _x2 - _centerX, _dy2 = _y2 - _centerY;
@@ -62,12 +59,7 @@ function FractureCircleGrid(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX)
 			}
 		}
 		
-		var _tempX = _prevColX;
-		var _tempY = _prevColY;
-		_prevColX = _colX;
-		_prevColY = _colY;
-		_colX = _tempX;
-		_colY = _tempY;
+		__FRACTURE_GRID_SWAP;
 	}
 	
 	_pieceCount = _index;

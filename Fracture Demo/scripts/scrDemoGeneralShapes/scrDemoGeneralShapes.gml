@@ -1,3 +1,4 @@
+// feather ignore all
 
 function DemoGeneralShape(_name, _patterns) constructor {
 	name = _name;

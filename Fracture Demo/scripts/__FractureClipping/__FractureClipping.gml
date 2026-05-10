@@ -19,16 +19,16 @@ function __FracturePolygonClip(_polygon, _clipPolygon) {
 			_i2 = 0;
 		}
 		
-		var _ax = _clipPolygon[_i * 2];
-		var _ay = _clipPolygon[_i * 2 + 1];
-		var _nx = _clipPolygon[_i2 * 2 + 1] - _ay;
-		var _ny = _ax - _clipPolygon[_i2 * 2];
+		var _ex = _clipPolygon[_i * 2];
+		var _ey = _clipPolygon[_i * 2 + 1];
+		var _nx = _clipPolygon[_i2 * 2 + 1] - _ey;
+		var _ny = _ex - _clipPolygon[_i2 * 2];
 		
 		// Precompute distances and check for simple cases
 		var _allInside = true;
 		var _allOutside = true;
 		for (var _j = 0; _j < _inCount; _j++) {
-			var _dist = (_ping[_j * 2] - _ax) * _nx + (_ping[_j * 2 + 1] - _ay) * _ny;
+			var _dist = (_ping[_j * 2] - _ex) * _nx + (_ping[_j * 2 + 1] - _ey) * _ny;
 			_dists[_j] = _dist;
 			if (_dist >= 0) {
 				_allOutside = false;
