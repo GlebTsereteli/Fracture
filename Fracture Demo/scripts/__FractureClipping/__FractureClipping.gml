@@ -1,7 +1,7 @@
 // feather ignore all
 
 function __FracturePolygonClip(_polygon, _clipPolygon) {
-	static _maxVerts = __FRACTURE_CIRCLE_PRECISION + 4;
+	static _maxVerts = max(__FRACTURE_CIRCLE_PRECISION, __FRACTURE_CONVEX_HULL_PRECISION) + 4;
 	static _bufferA = array_create(_maxVerts * 2, 0);
 	static _bufferB = array_create(_maxVerts * 2, 0);
 	static _dists = array_create(_maxVerts, 0);

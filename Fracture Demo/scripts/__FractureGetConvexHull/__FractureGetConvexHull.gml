@@ -4,7 +4,7 @@ function __FractureGetConvexHull(_inst) {
 	static _hulls = {};
 	
 	var _key = $"{_inst.sprite_index},{_inst.image_index}";
-	_hulls[$ _key] ??= sprite_get_convex_hull(_inst.sprite_index, undefined, _inst.image_index);
+	_hulls[$ _key] ??= sprite_get_convex_hull(_inst.sprite_index, __FRACTURE_CONVEX_HULL_PRECISION, _inst.image_index);
 	var _hull = _hulls[$ _key];
 	
 	var _n = array_length(_hull) / 2;

@@ -10,6 +10,7 @@
 #region Constants
 
 #macro __FRACTURE_CIRCLE_PRECISION 24
+#macro __FRACTURE_CONVEX_HULL_PRECISION 24
 
 #endregion
 #region Core
