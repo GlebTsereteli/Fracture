@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ActiveConfig="Default" Platform="Windows" Runtime="VM" Device="Default">
+	<Desktop x="0" y="29" width="1920" height="1001" id="19" title="Fracture Demo - GameMaker" windowState="Maximized" dpi="120">
+		<Workspaces>
+			<Workspace active="True" chain="True" title=" " localise_title="" user_edited_title="True" workspace_offset="[14309, 59900]" workspace_scale="1" />
+			<Workspace active="False" chain="False" title="CONTROL" localise_title="" user_edited_title="True" workspace_offset="[0, 0]" workspace_scale="1">
+				<Module Command="DocumentWindow_RestoreLayout" WorkspaceOwner="true">
+					<DocumentWindow columns="1" fullscreen="True" activeTab="4" isActive="False">
+						<Script column="0" file="${project_dir}\objects\objDemoControl\Create_0.gml" resource="objDemoControl" subResource="0_0" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\objects\objDemoControl\Step_0.gml" resource="objDemoControl" subResource="3_0" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\objects\objDemoControl\Draw_0.gml" resource="objDemoControl" subResource="8_0" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\objects\objDemoControl\Other_4.gml" resource="objDemoControl" subResource="7_4" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\objects\objDemoControl\Other_10.gml" resource="objDemoControl" subResource="7_10" overridden_title="False" view_readonly="False" />
+					</DocumentWindow>
+				</Module>
+			</Workspace>
+			<Workspace active="False" chain="False" title="GENERAL" localise_title="" user_edited_title="True" workspace_offset="[0, 0]" workspace_scale="1">
+				<Module Command="DocumentWindow_RestoreLayout" WorkspaceOwner="true">
+					<DocumentWindow columns="1" fullscreen="True" activeTab="2" isActive="False">
+						<Script column="0" file="${project_dir}\scripts\scrDemoGeneral\scrDemoGeneral.gml" resource="scrDemoGeneral" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\scripts\scrDemoGeneralPatterns\scrDemoGeneralPatterns.gml" resource="scrDemoGeneralPatterns" overridden_title="False" view_readonly="False" />
+						<Script column="0" file="${project_dir}\scripts\scrDemoGeneralShape\scrDemoGeneralShape.gml" resource="scrDemoGeneralShape" overridden_title="False" view_readonly="False" />
+					</DocumentWindow>
+				</Module>
+			</Workspace>
+			<Workspace active="False" chain="False" title="SHOWCASE" localise_title="" user_edited_title="True" workspace_offset="[0, 0]" workspace_scale="1">
+				<Module Command="DocumentWindow_RestoreLayout" WorkspaceOwner="true">
+					<DocumentWindow columns="1" fullscreen="True" activeTab="0" isActive="False">
+						<Script column="0" file="${project_dir}\scripts\scrDemoShowcase\scrDemoShowcase.gml" resource="scrDemoShowcase" overridden_title="False" view_readonly="False" />
+					</DocumentWindow>
+				</Module>
+			</Workspace>
+		</Workspaces>
+		<Dock state="Collapsed" type="eLeft" restore_size="304.8dpi_px" active_tab="0">
+			<DockTab localise_title="Inspector_WindowTitle" localise_arguments="[&quot;1&quot;]" cell_sizes="[718]" layout_id="dock_tab_1" layout_guid="e9618e09-831b-49b2-99b4-e5cf86ea6e2d">
+				<Module Command="open_inspector">
+					<Inspector resName="objDemoShapeParent">
+						<Window left="366dpi_px" right="" top="157dpi_px" bottom="" width="340dpi_px" height="600dpi_px" flags="Default" title="Inspector: objDemoShapeParent" localise_title="Inspector_WindowTitleArg" />
+					</Inspector>
+				</Module>
+			</DockTab>
+		</Dock>
+		<Dock state="Expanded" type="eRight" restore_size="419.19995dpi_px" active_tab="0">
+			<DockTab title="ALL" cell_sizes="[1000]" layout_id="dock_tab_1" layout_guid="2b10a2bc-a585-4aff-9241-6ac7927baef1">
+				<Module Command="open_asset_browser">
+					<AssetBrowser sort="AtoZ" foldersFirst="True" zoom="100">
+						<Window left="" right="" top="" bottom="" width="370dpi_px" height="463dpi_px" flags="Default" title="Asset Browser" localise_title="AssetBrowser_Title" />
+					</AssetBrowser>
+				</Module>
+			</DockTab>
+			<DockTab title="PATT" cell_sizes="[1000]" layout_id="dock_tab_3" layout_guid="fe7b9b33-2b2e-4ead-a21a-f8e36182af80">
+				<Module Command="open_asset_browser">
+					<AssetBrowser rootPath="folders/02 Fracture/01 Public/01 Patterns.yy" rootName="01 Patterns" sort="AtoZ" foldersFirst="True" zoom="100">
+						<Window left="1422.75px" right="" top="74.125px" bottom="" width="370dpi_px" height="463dpi_px" flags="Default" title="Asset Browser: 02 Fracture/01 Public/01 Patterns" localise_title="AssetBrowser_Title_Arg" />
+					</AssetBrowser>
+				</Module>
+			</DockTab>
+			<DockTab title="PRIV" cell_sizes="[500]" layout_id="dock_tab_2" layout_guid="76f51bf3-c0ef-4ba1-9fc1-80af9383c0fd">
+				<Module Command="open_asset_browser">
+					<AssetBrowser rootPath="folders/02 Fracture/02 Private.yy" rootName="02 Private" sort="AtoZ" foldersFirst="True" zoom="100">
+						<Window left="1715.75px" right="" top="73.125px" bottom="" width="370dpi_px" height="463dpi_px" flags="Default" title="Asset Browser: 02 Fracture/02 Private" localise_title="AssetBrowser_Title_Arg" />
+					</AssetBrowser>
+				</Module>
+			</DockTab>
+		</Dock>
+		<Dock state="Collapsed" type="eBottom" restore_size="303.19998dpi_px" active_tab="0">
+			<DockTab localise_title="OutputPanel_Output" cell_sizes="[1000]" layout_id="dock_tab_1" layout_guid="a714032d-d729-4ee6-8a17-6104f0927035">
+				<Module Command="open_output_panel">
+					<Window left="0dpi_px" right="" top="0dpi_px" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Output" localise_title="OutputPanel_Title" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="OutputPanel_SearchResults" cell_sizes="[1000]" layout_id="dock_tab_2" layout_guid="29447164-0375-47e9-899d-51536e0cec4e">
+				<Module Command="open_search_output_panel">
+					<Window left="0dpi_px" right="" top="0dpi_px" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Search Results" localise_title="OutputPanel_SearchResults" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="OutputPanel_SourceControl" cell_sizes="[1000]" layout_id="dock_tab_3" layout_guid="7df33290-c314-4cf8-88bc-9b8a66402ec5">
+				<Module Command="open_sc_output_panel">
+					<Window left="0dpi_px" right="" top="0dpi_px" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Source Control" localise_title="OutputPanel_SourceControl" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="Breakpoints" cell_sizes="[1000]" layout_id="dock_tab_4" layout_guid="1b9d8b42-d5a1-4a84-9e4a-1e3d537c2130">
+				<Module Command="open_breakpoint_mgr">
+					<Window left="0dpi_px" right="" top="0dpi_px" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Breakpoints" localise_title="Breakpoints" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="CompileErrors" cell_sizes="[1000]" layout_id="dock_tab_5" layout_guid="ea7a8209-c598-4cd6-b566-3d6ac047bada">
+				<Module Command="show_compile_errors">
+					<Window left="0dpi_px" right="" top="0dpi_px" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Compile Errors" localise_title="CompileErrors" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="Feather_LintMessages_Title" cell_sizes="[1000]" layout_id="Diagnostics" layout_guid="13f3a856-20cf-4df7-bf40-384595430c96">
+				<Module Command="feather_lint_messages_initialized">
+					<Window left="" right="" top="" bottom="" width="800dpi_px" height="600dpi_px" flags="Default" title="Feather Messages" localise_title="Feather_LintMessages_Title" />
+				</Module>
+			</DockTab>
+			<DockTab localise_title="PrefabLibrary" cell_sizes="[1000]" layout_id="Prefabs" layout_guid="e74c3654-3502-4029-b509-f66788c243f6">
+				<Module Command="open_prefab_library">
+					<PrefabLibrary>
+						<Window left="" right="" top="" bottom="" width="930dpi_px" height="600dpi_px" flags="Default" title="Prefab Library - Available Prefabs" localise_title="PrefabLibrary" />
+					</PrefabLibrary>
+				</Module>
+			</DockTab>
+			<DockTab localise_title="OutputPanel_ProjectTool" cell_sizes="[1000]" layout_id="dock_tab_8" layout_guid="98028e72-542b-4031-8d9d-8bec06c0289b">
+				<Module Command="yy_popup_project_tool_output">
+					<Window left="" right="" top="" bottom="" width="900dpi_px" height="240dpi_px" flags="Default" title="Project Tool" localise_title="OutputPanel_ProjectTool" />
+				</Module>
+			</DockTab>
+		</Dock>
+	</Desktop>
+	<Modules>
+		<YoYoStudio.Plugins.RoomEditor.RoomEditorModule>
+			<RoomEditor>
+				<Layers left="" right="" top="" bottom="" width="377dpi_px" height="310dpi_px" flags="CloseButton, MinimizeButton, ResizeButton" title="Layers - rmDemoShowcase" localise_title="RoomEditor_Layers" dock_type="eLeft" dock_tab_index="0" dock_list_index="0" dock_proportion="0.56318516" dock_tab_name="Inspector" dock_tab_localise_name="Inspector_WindowTitle" dock_tab_localise_arguments="[&#xD;&#xA;    &quot;1&quot;&#xD;&#xA;]" dock_tab_id="dock_tab_1" dock_tab_guid="e9618e09-831b-49b2-99b4-e5cf86ea6e2d" />
+				<UIPreview enabled="False" preset="Room" clip="True" x="0" y="0" w="3840" h="2160" />
+			</RoomEditor>
+		</YoYoStudio.Plugins.RoomEditor.RoomEditorModule>
+	</Modules>
+	<FoldRegions>
+		<FoldState docFile="scripts/scr_macros/scr_macros.gml" foldedRegions="0,1,2" />
+		<FoldState docFile="scripts/scr_save_functions/scr_save_functions.gml" foldedRegions="1,2,3,4,7,8,9" />
+		<FoldState docFile="scripts/scr_pauseOptions/scr_pauseOptions.gml" foldedRegions="0,18,21,24" />
+		<FoldState docFile="scripts/scrFractureMain/scrFractureMain.gml" foldedRegions="1,2" />
+		<FoldState docFile="scripts/scrDemoGeneralPatterns/scrDemoGeneralPatterns.gml" foldedRegions="3,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28" />
+		<FoldState docFile="objects/objDemoControl/Other_10.gml" foldedRegions="1" />
+		<FoldState docFile="scripts/__FractureUtility/__FractureUtility.gml" foldedRegions="0,1" />
+		<FoldState docFile="scripts/scrDemoGeneral/scrDemoGeneral.gml" foldedRegions="10,11,14,16" />
+		<FoldState docFile="scripts/FractureRadialConvex/FractureRadialConvex.gml" foldedRegions="13,14,15,16,17,18,19,20,21,22,23,24,25" />
+		<FoldState docFile="scripts/FractureRadialBox/FractureRadialBox.gml" foldedRegions="4,5,6,7,8,9,10,11,12,13,14,15" />
+		<FoldState docFile="scripts/scrDemoGeneralCircle/scrDemoGeneralCircle.gml" foldedRegions="6,7,8,9,10,11" />
+		<FoldState docFile="scripts/__FractureClipping/__FractureClipping.gml" foldedRegions="7,10,11,12,13" />
+		<FoldState docFile="scripts/FractureConfig/FractureConfig.gml" foldedRegions="0,1" />
+	</FoldRegions>
+</Project>

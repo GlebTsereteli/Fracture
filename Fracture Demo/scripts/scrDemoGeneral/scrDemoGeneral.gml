@@ -20,11 +20,11 @@ function DemoGeneral() : Demo("General") constructor {
 				}
 			}
 			// Destroy
-			//if (mouse_check_button_pressed(mb_right)) {
-			//	with (instance_position(mouse_x, mouse_y, objDemoShapeParent)) {
-			//		instance_destroy();
-			//	}
-			//}
+			if (mouse_check_button_pressed(mb_right)) {
+				with (instance_position(mouse_x, mouse_y, objDemoShapeParent)) {
+					instance_destroy();
+				}
+			}
 		}
 	};
 	RefreshInterface = function() {
