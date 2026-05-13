@@ -1,6 +1,6 @@
 // feather ignore all
 
-function FractureConvexBrick(_inst, _cols, _rows, _horizontal) {
+function FractureBrickConvex(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_START;
 	__FRACTURE_BRICK_SETUP;
 	__FRACTURE_CONVEX_HULL;

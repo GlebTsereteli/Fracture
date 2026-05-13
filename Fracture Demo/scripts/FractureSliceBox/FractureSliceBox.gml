@@ -94,6 +94,7 @@ function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
 			
 			_pieces[_i] = id;
 		}
+		
 		_vertexOffset += _nTris * 3;
 	}
 	

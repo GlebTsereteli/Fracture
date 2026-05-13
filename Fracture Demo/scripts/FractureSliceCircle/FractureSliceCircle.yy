@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TODO_FractureSliceCircle",
+  "%Name":"FractureSliceCircle",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TODO_FractureSliceCircle",
+  "name":"FractureSliceCircle",
   "parent":{
     "name":"07 Slice",
     "path":"folders/02 Fracture/01 Public/01 Patterns/07 Slice.yy",
