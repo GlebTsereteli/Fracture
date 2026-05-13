@@ -5,13 +5,13 @@ function Mod2(_dividend, _divisor) {
     return (_dividend - floor(_dividend / _divisor) * _divisor);
 }
 
-function DbgSelector(_name, _pool) {
+function DbgSelector(_name, _pool, _names) {
 	with ({}) {
 		scope = other;
 		varName = string_lower(_name);
 		pool = _pool;
 		
-		var _names = array_map(pool, function(_thing) {
+		_names ??= array_map(pool, function(_thing) {
 			return _thing.name;
 		});
 		dbg_drop_down(ref_create(scope, varName), pool, _names, _name);

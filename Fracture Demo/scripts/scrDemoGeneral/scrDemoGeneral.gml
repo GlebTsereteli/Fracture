@@ -3,8 +3,8 @@
 function DemoGeneral() : Demo("General") constructor {
 	// Shared
 	Update = function() {
-		if (shape != prevShape) {
-			prevShape = shape;
+		if (pattern != prevPattern) {
+			prevPattern = pattern;
 			objDemoControl.RefreshInterface();
 		}
 		
@@ -20,14 +20,12 @@ function DemoGeneral() : Demo("General") constructor {
 				}
 			}
 			// Destroy
-			if (mouse_check_button_pressed(mb_right)) {
-				with (instance_position(mouse_x, mouse_y, objDemoShapeParent)) {
-					instance_destroy();
-				}
-			}
+			//if (mouse_check_button_pressed(mb_right)) {
+			//	with (instance_position(mouse_x, mouse_y, objDemoShapeParent)) {
+			//		instance_destroy();
+			//	}
+			//}
 		}
-		
-		shape.Update();
 	};
 	RefreshInterface = function() {
 		var _w = 123;
@@ -57,8 +55,9 @@ function DemoGeneral() : Demo("General") constructor {
 			instance_destroy(__objFracturePiece);
 		}, _w, _h);
 		
+		DbgSelector("Pattern", patterns);
 		DbgSelector("Shape", shapes);
-		shape.RefreshInterface();
+		pattern.RefreshInterface();
 		
 		dbg_text_separator("Impulse");
 		dbg_slider(ref_create(impulse, "force"), 0, 2, "Force", 0.1);
@@ -66,63 +65,43 @@ function DemoGeneral() : Demo("General") constructor {
 	};
 	
 	// Custom
+	patterns = [
+		new DemoGeneralPatternGrid(),
+		new DemoGeneralPatternBrick(),
+		new DemoGeneralPatternZigzag(),
+		new DemoGeneralPatternDiamond(),
+		new DemoGeneralPatternHex(),
+		new DemoGeneralPatternRadial(),
+		new DemoGeneralPatternSlice(),
+		new DemoGeneralPatternVoronoi(),
+	];
+	pattern = array_first(patterns);
+	prevPattern = pattern;
+
 	shapes = [
-		new DemoGeneralShape("Box", [
-			new DemoGeneralBoxGrid(),
-			new DemoGeneralBoxBrick(),
-			new DemoGeneralBoxZigzag(),
-			new DemoGeneralBoxDiamond(),
-			new DemoGeneralBoxHex(),
-			new DemoGeneralBoxRadial(),
-			new DemoGeneralBoxSlice(),
-			new DemoGeneralBoxVoronoi(),
-		]),
-		new DemoGeneralShape("Circle", [
-			new DemoGeneralCircleGrid(),
-			new DemoGeneralCircleBrick(),
-			//new DemoGeneralCircleZigzag(),
-			//new DemoGeneralCircleDiamond(),
-			//new DemoGeneralCircleHex(),
-			new DemoGeneralCircleRadial(),
-			//new DemoGeneralCircleSlice(),
-			new DemoGeneralCircleVoronoi(),
-		]),
-		new DemoGeneralShape("Convex", [
-			new DemoGeneralConvexGrid(),
-			new DemoGeneralConvexBrick(),
-			//new DemoGeneralConvexZigzag(),
-			//new DemoGeneralConvexDiamond(),
-			//new DemoGeneralConvexHex(),
-			new DemoGeneralConvexRadial(),
-			//new DemoGeneralConvexSlice(),
-			new DemoGeneralConvexVoronoi(),
-		]),
+		new DemoGeneralShape("Box"),
+		new DemoGeneralShape("Circle"),
+		new DemoGeneralShape("Convex"),
 	];
 	shape = array_first(shapes);
-	prevShape = shape;
+	
+	array_foreach(patterns, function(_pattern) {
+		_pattern.Init();
+	});
+	
 	impulse = {
 		force: 0,
 		onMouse: true,
 	};
 	
 	Fracture = function(_shape) {
-		var _index = array_find_index(shapes, method({_shape}, function(_shapeClass) {
-			return (_shape.object_index == _shapeClass.object);
-		}));
-		var _shapeClass = shapes[_index];
-		
 		var _impulseX = impulse.onMouse ? mouse_x : undefined;
 		var _impulseY = impulse.onMouse ? mouse_y : undefined;
 		FractureImpulse(impulse.force, _impulseX, _impulseY);
-		_shapeClass.Fracture(_shape);
-	};
-}
-function DemoGeneralPattern(_name) constructor {
-	name = _name;
-	func = undefined;
-	
-	static Init = Noop;
-	static GetArguments = function() {
-		return [];
+		
+		var _index = array_find_index(shapes, method({_shape}, function(_shapeClass) {
+			return (_shape.object_index == _shapeClass.object);
+		}));
+		pattern.Fracture(shapes[_index], _shape);
 	};
 }

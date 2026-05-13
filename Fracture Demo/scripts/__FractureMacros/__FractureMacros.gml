@@ -11,6 +11,7 @@
 
 #macro __FRACTURE_CIRCLE_PRECISION 24
 #macro __FRACTURE_CONVEX_HULL_PRECISION 24
+#macro __FRACTURE_GOLDEN_ANGLE (180 * (3 - sqrt(5)));
 
 #endregion
 #region Core
@@ -21,6 +22,9 @@ if (not instance_exists(__objFractureRenderer)) { \
 }
 
 #macro __FRACTURE_START \
+static _cell = array_create(8); \
+var _px = 0, _py = 0; \
+\
 __FRACTURE_CATCH_RENDERER; \
 if (FRACTURE_BENCHMARK) { \
 	static _funcName = string_replace(array_last(string_split(_GMFUNCTION_, "_")), "Fracture", ""); \
