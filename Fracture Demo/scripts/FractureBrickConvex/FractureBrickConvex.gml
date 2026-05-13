@@ -25,7 +25,7 @@ function FractureBrickConvex(_inst, _cols, _rows, _horizontal) {
 			var _y1 = _horizontal ? _stripA : _brickA;
 			var _y2 = _horizontal ? _stripB : _brickB;
 			
-			// Bbox reject before the hull test
+			// Reject bricks outside hull
 			if (_x2 < _hullX1 or _x1 > _hullX2 or _y2 < _hullY1 or _y1 > _hullY2) continue;
 			
 			// Check all corners for each edge. Break if any corner is outside the hull

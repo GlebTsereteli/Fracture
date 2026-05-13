@@ -1,23 +1,15 @@
 // feather ignore all
 
 function FractureSliceCircle(_inst, _pieceCount, _cutAngle = 45) {
+	// Arc sample buffers. 7 per side, 14 verts per slice
+	static _polyX = array_create(14);
+	static _polyY = array_create(14);
+	static _arcSteps = 6;
+	
 	__FRACTURE_START;
 	
 	var _radius = min(_w, _h) / 2;
-	var _radiusSq = _radius * _radius;
-	
-	// Cut normal
-	var _nx = dcos(_cutAngle);
-	var _ny = -dsin(_cutAngle);
-	
-	// Project circle center onto cut normal and divide the diameter into equal slices
-	var _centerProj = _centerX * _nx + _centerY * _ny;
 	var _step = (_radius * 2) / _pieceCount;
-	
-	// Arc sample buffers. 7 per side, 14 verts per slice
-	static _arcSteps = 6;
-	static _polyX = array_create(14);
-	static _polyY = array_create(14);
 	
 	var _pieces = array_create(_pieceCount);
 	var _index = 0;
@@ -34,20 +26,20 @@ function FractureSliceCircle(_inst, _pieceCount, _cutAngle = 45) {
 		
 		// A-side arc: sweeping from nearA to farA
 		for (var _s = 0; _s <= _arcSteps; _s++) {
-			var _acos = lerp(_nearAcos, _farAcos, _s / _arcSteps);
-			var _a = _cutAngle + 90 - _acos;
-			_polyX[_vertCount] = _centerX + _radius * dcos(_a);
-			_polyY[_vertCount] = _centerY + _radius * -dsin(_a);
-			_vertCount++;
+		    var _acos = lerp(_nearAcos, _farAcos, _s / _arcSteps);
+		    var _a = -_cutAngle - 90 - _acos;
+		    _polyX[_vertCount] = _centerX + _radius * dcos(_a);
+		    _polyY[_vertCount] = _centerY + _radius * -dsin(_a);
+		    _vertCount++;
 		}
-		
+
 		// B-side arc, sweeping from farB to nearB
 		for (var _s = 0; _s <= _arcSteps; _s++) {
-			var _acos = lerp(_farAcos, _nearAcos, _s / _arcSteps);
-			var _a = _cutAngle + 90 + _acos;
-			_polyX[_vertCount] = _centerX + _radius * dcos(_a);
-			_polyY[_vertCount] = _centerY + _radius * -dsin(_a);
-			_vertCount++;
+		    var _acos = lerp(_farAcos, _nearAcos, _s / _arcSteps);
+		    var _a = -_cutAngle - 90 + _acos;
+		    _polyX[_vertCount] = _centerX + _radius * dcos(_a);
+		    _polyY[_vertCount] = _centerY + _radius * -dsin(_a);
+		    _vertCount++;
 		}
 		
 		// Centroid

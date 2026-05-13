@@ -1,33 +1,32 @@
 // feather ignore all
 
 function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
+	static _vertX = array_create(6);
+	static _vertY = array_create(6);
+	
 	__FRACTURE_START;
 	
-	var _dx = lengthdir_x(1, _cutAngle + 90);
-	var _dy = lengthdir_y(1, _cutAngle + 90);
+	var _nx = -dsin(_cutAngle);
+	var _ny = -dcos(_cutAngle);
 	
 	var _projTL = 0;
-	var _projTR = _w * _dx;
-	var _projBR = _w * _dx + _h * _dy;
-	var _projBL = _h * _dy;
+	var _projTR = _w * _nx;
+	var _projBR = _w * _nx + _h * _ny;
+	var _projBL = _h * _ny;
 	
 	var _minProj = min(_projTL, _projTR, _projBR, _projBL);
 	var _step = (max(_projTL, _projTR, _projBR, _projBL) - _minProj) / _pieceCount;
 	
-	// CW corners: TL, TR, BR, BL
 	var _cornerX = [0, _w, _w, 0];
 	var _cornerY = [0, 0, _h, _h];
 	var _cornerProj = [_projTL, _projTR, _projBR, _projBL];
 	
 	var _pieces = array_create(_pieceCount);
-	
-	// Max 6 verts per strip (convex quad + 2 cut planes), reused each iteration
-	var _vertX = array_create(6);
-	var _vertY = array_create(6);
+	var _index = 0;
 	
 	for (var _i = 0; _i < _pieceCount; _i++) {
-		var _near = _minProj + (_step * _i);
-		var _far = _minProj + (_step * (_i + 1));
+		var _near = _minProj + _step * _i;
+		var _far = _near + _step;
 		var _vertCount = 0;
 		
 		for (var _edge1 = 0; _edge1 < 4; _edge1++) {
@@ -53,7 +52,6 @@ function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
 					_vertY[_vertCount] = lerp(_ay, _by, _t1);
 					_vertCount++;
 				}
-				
 				if (_t2 != _t1 and _t2 > 0 and _t2 < 1) {
 					_vertX[_vertCount] = lerp(_ax, _bx, _t2);
 					_vertY[_vertCount] = lerp(_ay, _by, _t2);
@@ -61,7 +59,9 @@ function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
 				}
 			}
 		}
+		if (_vertCount < 3) continue;
 		
+		// Centroid
 		var _sumX = 0, _sumY = 0;
 		for (var _v = 0; _v < _vertCount; _v++) {
 			_sumX += _vertX[_v];
@@ -70,6 +70,7 @@ function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
 		var _ox = _sumX / _vertCount;
 		var _oy = _sumY / _vertCount;
 		
+		// Vertices. Triangle fan from centroid
 		var _nTris = _vertCount;
 		var _cu = lerp(_u0, _u1, _ox / _w);
 		var _cv = lerp(_v0, _v1, _oy / _h);
@@ -81,22 +82,27 @@ function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
 			vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
+		// Fixture
 		__FRACTURE_PIECE
+			__primitiveType = pr_trianglelist;
 			__vertexCount = _nTris * 3;
 			__vertexIndex = _vertexOffset;
 			
 			__FRACTURE_FIXTURE_START; {
-				for (var _j = 0; _j < _vertCount; _j++) {
-					physics_fixture_add_point(_fx, _vertX[_j] - _ox, _vertY[_j] - _oy);
+				for (var _f = 0; _f < _vertCount; _f++) {
+					physics_fixture_add_point(_fx, _vertX[_f] - _ox, _vertY[_f] - _oy);
 				}
 				__FRACTURE_FIXTURE_END;
 			}
 			
-			_pieces[_i] = id;
+			_pieces[_index++] = id;
 		}
 		
 		_vertexOffset += _nTris * 3;
 	}
+	
+	_pieceCount = _index;
+	array_resize(_pieces, _pieceCount);
 	
 	__FRACTURE_END;
 }

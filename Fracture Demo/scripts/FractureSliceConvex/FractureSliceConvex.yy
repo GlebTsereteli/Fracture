@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TODO_FractureSliceConvex",
+  "%Name":"FractureSliceConvex",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TODO_FractureSliceConvex",
+  "name":"FractureSliceConvex",
   "parent":{
     "name":"07 Slice",
     "path":"folders/02 Fracture/01 Public/01 Patterns/07 Slice.yy",
