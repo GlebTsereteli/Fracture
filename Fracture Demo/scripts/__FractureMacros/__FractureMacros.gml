@@ -13,6 +13,9 @@
 #macro __FRACTURE_CONVEX_HULL_PRECISION 24
 #macro __FRACTURE_GOLDEN_ANGLE (180 * (3 - sqrt(5)));
 
+#macro __FRACTURE_GRID_MAX_NOISE 0.3
+#macro __FRACTURE_VORONOI_BOX_MAX_NOISE 0.4
+
 #endregion
 #region Core
 
@@ -254,10 +257,10 @@ __FRACTURE_PIECE \
 _vertexOffset += 12;
 
 #endregion
-#region Circle
+#region Hulls
 
 #macro __FRACTURE_CIRCLE_HULL \
-var _radius = min(_w, _h) / 2; \
+var _radius = max(_w, _h) / 2; \
 var _radiusSq = _radius * _radius; \
 var _hull = array_create(__FRACTURE_CIRCLE_PRECISION * 2); \
 for (var _i = 0; _i < __FRACTURE_CIRCLE_PRECISION; _i++) { \
@@ -265,9 +268,6 @@ for (var _i = 0; _i < __FRACTURE_CIRCLE_PRECISION; _i++) { \
 	_hull[_i * 2] = _centerX + lengthdir_x(_radius, _a); \
 	_hull[_i * 2 + 1] = _centerY + lengthdir_y(_radius, _a); \
 }
-
-#endregion
-#region Convex
 
 #macro __FRACTURE_CONVEX_HULL \
 var _hull = __FractureGetConvexHull(_inst); \
@@ -295,93 +295,6 @@ for (var _i = 0; _i < _nHull; _i++) { \
 	if (_hy < _hullY1) _hullY1 = _hy; \
 	if (_hy > _hullY2) _hullY2 = _hy; \
 }
-
-#endregion
-#region Grid
-
-#macro __FRACTURE_GRID_SETUP \
-static _maxNoise = 0.3; \
-\
-var _spacingX = _w / _cols; \
-var _spacingY = _h / _rows; \
-_noiseX = clamp(_noiseX, 0, 1) * _maxNoise * _spacingX; \
-_noiseY = clamp(_noiseY, 0, 1) * _maxNoise * _spacingY; \
-\
-var _pieceCount = _rows * _cols; \
-var _pieces = array_create(_pieceCount); \
-var _index = 0; \
-\
-var _colX = array_create(_rows + 1); \
-var _colY = array_create(_rows + 1); \
-var _prevColX = array_create(_rows + 1); \
-var _prevColY = array_create(_rows + 1);
-
-#macro __FRACTURE_GRID_QUAD \
-var _ox = (_x1 + _x2 + _x3 + _x4) / 4; \
-var _oy = (_y1 + _y2 + _y3 + _y4) / 4; \
-\
-vertex_position(_vb, _x1 - _ox, _y1 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h)); \
-vertex_position(_vb, _x2 - _ox, _y2 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h)); \
-vertex_position(_vb, _x4 - _ox, _y4 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x4 / _w), lerp(_v0, _v1, _y4 / _h)); \
-vertex_position(_vb, _x3 - _ox, _y3 - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x3 / _w), lerp(_v0, _v1, _y3 / _h)); \
-\
-__FRACTURE_PIECE \
-	__vertexCount = 4; \
-	__vertexIndex = _vertexOffset; \
-	__FRACTURE_FIXTURE_START; { \
-		physics_fixture_add_point(_fx, _x1 - _ox, _y1 - _oy); \
-		physics_fixture_add_point(_fx, _x2 - _ox, _y2 - _oy); \
-		physics_fixture_add_point(_fx, _x3 - _ox, _y3 - _oy); \
-		physics_fixture_add_point(_fx, _x4 - _ox, _y4 - _oy); \
-		__FRACTURE_FIXTURE_END; \
-	} \
-	_pieces[_index++] = id; \
-} \
-_vertexOffset += 4;
-
-#macro __FRACTURE_GRID_SWAP \
-var _tempX = _prevColX; \
-var _tempY = _prevColY; \
-_prevColX = _colX; \
-_prevColY = _colY; \
-_colX = _tempX; \
-_colY = _tempY;
-
-#endregion
-#region Brick
-
-#macro __FRACTURE_BRICK_SETUP \
-var _pieceCount = _horizontal ? (_cols * _rows + (_rows div 2)) : (_cols * _rows + (_cols div 2)); \
-var _pieces = array_create(_pieceCount); \
-\
-var _index = 0; \
-var _stripCount = _horizontal ? _rows : _cols; \
-var _brickCount = _horizontal ? _cols : _rows; \
-var _brickW = _w / _cols; \
-var _brickH = _h / _rows; \
-var _stripSize = _horizontal ? _brickH : _brickW; \
-var _brickSize = _horizontal ? _brickW : _brickH; \
-var _axisLen = _horizontal ? _w : _h;
-
-#macro __FRACTURE_BRICK_QUAD \
-var _hw = (_x2 - _x1) / 2; \
-var _hh = (_y2 - _y1) / 2; \
-var _ox = _x1 + _hw; \
-var _oy = _y1 + _hh; \
-vertex_position(_vb, -_hw, -_hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y1 / _h)); \
-vertex_position(_vb, _hw, -_hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y1 / _h)); \
-vertex_position(_vb, -_hw, _hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x1 / _w), lerp(_v0, _v1, _y2 / _h)); \
-vertex_position(_vb, _hw, _hh); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _x2 / _w), lerp(_v0, _v1, _y2 / _h)); \
-__FRACTURE_PIECE \
-    __vertexCount = 4; \
-    __vertexIndex = _vertexOffset; \
-    __FRACTURE_FIXTURE_START; { \
-        physics_fixture_set_box_shape(_fx, _hw, _hh); \
-        __FRACTURE_FIXTURE_END; \
-    } \
-    _pieces[_index++] = id; \
-} \
-_vertexOffset += 4;
 
 #endregion
 #region Clip

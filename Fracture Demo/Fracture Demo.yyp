@@ -35,6 +35,7 @@
     {"$GMFolder":"","%Name":"02 Private","folderPath":"folders/02 Fracture/02 Private.yy","name":"02 Private","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01 Core","folderPath":"folders/02 Fracture/02 Private/01 Core.yy","name":"01 Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Functions","folderPath":"folders/02 Fracture/02 Private/02 Functions.yy","name":"02 Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"03 Macros","folderPath":"folders/02 Fracture/02 Private/03 Macros.yy","name":"03 Macros","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
@@ -69,6 +70,9 @@
     {"id":{"name":"__FractureGetConvexHull","path":"scripts/__FractureGetConvexHull/__FractureGetConvexHull.yy",},},
     {"id":{"name":"__FractureInit","path":"scripts/__FractureInit/__FractureInit.yy",},},
     {"id":{"name":"__FractureMacros","path":"scripts/__FractureMacros/__FractureMacros.yy",},},
+    {"id":{"name":"__FractureMacrosBrick","path":"scripts/__FractureMacrosBrick/__FractureMacrosBrick.yy",},},
+    {"id":{"name":"__FractureMacrosGrid","path":"scripts/__FractureMacrosGrid/__FractureMacrosGrid.yy",},},
+    {"id":{"name":"__FractureMacrosVoronoi","path":"scripts/__FractureMacrosVoronoi/__FractureMacrosVoronoi.yy",},},
     {"id":{"name":"__FractureParams","path":"scripts/__FractureParams/__FractureParams.yy",},},
     {"id":{"name":"__FracturePointInHull","path":"scripts/__FracturePointInHull/__FracturePointInHull.yy",},},
     {"id":{"name":"__FractureRender","path":"scripts/__FractureRender/__FractureRender.yy",},},

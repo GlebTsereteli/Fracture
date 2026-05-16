@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__FractureMacros",
+  "%Name":"__FractureMacrosGrid",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__FractureMacros",
+  "name":"__FractureMacrosGrid",
   "parent":{
     "name":"03 Macros",
     "path":"folders/02 Fracture/02 Private/03 Macros.yy",
