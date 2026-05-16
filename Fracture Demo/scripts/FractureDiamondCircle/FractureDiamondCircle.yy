@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TODO_FractureDiamondCircle",
+  "%Name":"FractureDiamondCircle",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TODO_FractureDiamondCircle",
+  "name":"FractureDiamondCircle",
   "parent":{
     "name":"03 Diamond",
     "path":"folders/02 Fracture/01 Public/01 Patterns/03 Diamond.yy",

@@ -302,41 +302,47 @@ for (var _i = 0; _i < _nHull; _i++) { \
 #macro __FRACTURE_CLIP_PIECE \
 var _clipped = __FracturePolygonClip(_cell, _hull); \
 var _vertCount = array_length(_clipped) / 2; \
-if (_vertCount < 3) continue; \
-\
-var _sumX = 0, _sumY = 0; \
-for (var _v = 0; _v < _vertCount; _v++) { \
-	_sumX += _clipped[_v * 2]; \
-	_sumY += _clipped[_v * 2 + 1]; \
-} \
-var _ox = _sumX / _vertCount; \
-var _oy = _sumY / _vertCount; \
-\
-for (var _v = 0; _v < _vertCount; _v++) { \
-	_clipped[_v * 2] -= _ox; \
-	_clipped[_v * 2 + 1] -= _oy; \
-} \
-\
-var _triCount = _vertCount - 2; \
-for (var _t = 0; _t < _triCount; _t++) { \
-	_px = _clipped[0]; _py = _clipped[1]; __FRACTURE_V; \
-	_px = _clipped[(_t + 1) * 2]; _py = _clipped[(_t + 1) * 2 + 1]; __FRACTURE_V; \
-	_px = _clipped[(_t + 2) * 2]; _py = _clipped[(_t + 2) * 2 + 1]; __FRACTURE_V; \
-} \
-\
-var _fixtureCount = min(_vertCount, 8); \
-__FRACTURE_PIECE \
-	__primitiveType = pr_trianglelist; \
-	__vertexCount = _triCount * 3; \
-	__vertexIndex = _vertexOffset; \
-	__FRACTURE_FIXTURE_START; { \
-		for (var _f = 0; _f < _fixtureCount; _f++) { \
-			physics_fixture_add_point(_fx, _clipped[_f * 2], _clipped[_f * 2 + 1]); \
-		} \
-		__FRACTURE_FIXTURE_END; \
+if (_vertCount >= 3) { \
+	\
+	var _sumX = 0, _sumY = 0; \
+	for (var _v = 0; _v < _vertCount; _v++) { \
+		_sumX += _clipped[_v * 2]; \
+		_sumY += _clipped[_v * 2 + 1]; \
 	} \
-	_pieces[_index++] = id; \
-} \
-_vertexOffset += _triCount * 3;
+	var _ox = _sumX / _vertCount; \
+	var _oy = _sumY / _vertCount; \
+	\
+	for (var _v = 0; _v < _vertCount; _v++) { \
+		_clipped[_v * 2] -= _ox; \
+		_clipped[_v * 2 + 1] -= _oy; \
+	} \
+	\
+	var _triCount = _vertCount - 2; \
+	for (var _t = 0; _t < _triCount; _t++) { \
+		_px = _clipped[0]; _py = _clipped[1]; __FRACTURE_V; \
+		_px = _clipped[(_t + 1) * 2]; _py = _clipped[(_t + 1) * 2 + 1]; __FRACTURE_V; \
+		_px = _clipped[(_t + 2) * 2]; _py = _clipped[(_t + 2) * 2 + 1]; __FRACTURE_V; \
+	} \
+	\
+	var _fixtureCount = min(_vertCount, 8); \
+	__FRACTURE_PIECE \
+		__primitiveType = pr_trianglelist; \
+		__vertexCount = _triCount * 3; \
+		__vertexIndex = _vertexOffset; \
+		__FRACTURE_FIXTURE_START; { \
+			for (var _f = 0; _f < _fixtureCount; _f++) { \
+				physics_fixture_add_point(_fx, _clipped[_f * 2], _clipped[_f * 2 + 1]); \
+			} \
+			__FRACTURE_FIXTURE_END; \
+		} \
+		_pieces[_index++] = id; \
+	} \
+	_vertexOffset += _triCount * 3; \
+}
+
+#endregion
+#region Circle
+
+#macro __FRACTURE_CIRCLE_HIT_BBOX ((_ndx = clamp(_centerX, _minX, _maxX) - _centerX) * _ndx + (_ndy = clamp(_centerY, _minY, _maxY) - _centerY) * _ndy <= _radiusSq)
 
 #endregion
