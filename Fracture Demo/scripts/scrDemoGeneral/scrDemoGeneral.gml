@@ -68,7 +68,6 @@ function DemoGeneral() : Demo("General") constructor {
 	patterns = [
 		new DemoGeneralPatternGrid(),
 		new DemoGeneralPatternBrick(),
-		new DemoGeneralPatternZigzag(),
 		new DemoGeneralPatternDiamond(),
 		new DemoGeneralPatternHex(),
 		new DemoGeneralPatternRadial(),

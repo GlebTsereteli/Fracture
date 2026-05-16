@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FractureVoronoiBox",
   "parent":{
-    "name":"08 Voronoi",
-    "path":"folders/02 Fracture/01 Public/01 Patterns/08 Voronoi.yy",
+    "name":"07 Voronoi",
+    "path":"folders/02 Fracture/01 Public/01 Patterns/07 Voronoi.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

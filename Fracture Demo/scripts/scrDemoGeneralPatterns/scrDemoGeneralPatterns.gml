@@ -44,26 +44,12 @@ function DemoGeneralPatternBrick() : DemoGeneralPattern("Brick") constructor {
 	horizontal = true;
 	
 	static RefreshInterface = function() {
-		dbg_slider_int(ref_create(self, "cols"), 2, 10, "Columns");
-		dbg_slider_int(ref_create(self, "rows"), 2, 10, "Rows");
+		dbg_slider_int(ref_create(self, "cols"), 1, 10, "Columns");
+		dbg_slider_int(ref_create(self, "rows"), 1, 10, "Rows");
 		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
 	};
 	static GetArguments = function() {
 		return [cols, rows, horizontal];
-	};
-}
-function DemoGeneralPatternZigzag() : DemoGeneralPattern("Zigzag") constructor {
-	count = 6;
-	horizontal = true;
-	noise = 0.5;
-	
-	static RefreshInterface = function() {
-		dbg_slider_int(ref_create(self, "count"), 3, 10, "Count");
-		dbg_checkbox(ref_create(self, "horizontal"), "Horizontal");
-		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
-	};
-	static GetArguments = function() {
-		return [count, horizontal, noise];
 	};
 }
 function DemoGeneralPatternDiamond() : DemoGeneralPattern("Diamond") constructor {
