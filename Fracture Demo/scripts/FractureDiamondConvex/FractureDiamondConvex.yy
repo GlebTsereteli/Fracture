@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TODO_FractureDiamondConvex",
+  "%Name":"FractureDiamondConvex",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TODO_FractureDiamondConvex",
+  "name":"FractureDiamondConvex",
   "parent":{
     "name":"03 Diamond",
     "path":"folders/02 Fracture/01 Public/01 Patterns/03 Diamond.yy",

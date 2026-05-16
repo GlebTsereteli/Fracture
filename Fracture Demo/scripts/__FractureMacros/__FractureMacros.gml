@@ -341,8 +341,9 @@ if (_vertCount >= 3) { \
 }
 
 #endregion
-#region Circle
+#region Checks
 
 #macro __FRACTURE_CIRCLE_HIT_BBOX ((_ndx = clamp(_centerX, _minX, _maxX) - _centerX) * _ndx + (_ndy = clamp(_centerY, _minY, _maxY) - _centerY) * _ndy <= _radiusSq)
+#macro __FRACTURE_CONVEX_HIT_BBOX (not (_maxX < _hullX1 or _minX > _hullX2 or _maxY < _hullY1 or _minY > _hullY2))
 
 #endregion
