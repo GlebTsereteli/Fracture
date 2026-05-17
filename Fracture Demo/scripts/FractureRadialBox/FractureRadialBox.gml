@@ -1,5 +1,20 @@
 // feather ignore all
 
+/// @func FractureRadialBox()
+/// 
+/// @param {Id.Instance} inst The instance to fracture.
+/// @param {Real} pieceCount The number of radial pieces.
+/// @param {Real} angleNoise The angle noise intensity, from 0 to 1. [Default: 0.5]
+/// @param {Real} originX The x origin of the radial pattern in world space. [Default: instance center]
+/// @param {Real} originY The y origin of the radial pattern in world space. [Default: instance center]
+/// 
+/// @desc Fractures the given rectangle-shaped instance into a radial pattern filling the full sprite area, defined by the number of pieces.
+/// Optional angle noise randomizes the slice angles to produce more organic-looking pieces.
+/// If both originX and originY are provided, the radial pattern originates from that point. Otherwise the instance center is used.
+/// The instance is destroyed automatically after fracturing.
+/// Returns an array of the created Piece instances.
+/// 
+/// @return {Array<Id.Instance of __objFracturePiece>}
 function FractureRadialBox(_inst, _pieceCount, _angleNoise = 0.5, _originX = undefined, _originY = undefined) {
 	__FRACTURE_START;
 	_pieceCount = max(3, _pieceCount);

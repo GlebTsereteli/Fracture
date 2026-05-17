@@ -5,7 +5,7 @@
 /// @param {Id.Instance} inst The instance to fracture.
 /// @param {Real} cols The number of columns.
 /// @param {Real} rows The number of rows.
-/// @param {Bool} horizontal Whether the bricks are laid horizontally or vertically.
+/// @param {Bool} horizontal Whether the bricks are laid horizontally (true) or vertically (false).
 /// 
 /// @desc Fractures the given convex-shaped instance into a brick pattern clipped to the convex hull, defined by the number of columns and rows.
 /// Alternating rows or columns are offset by half a brick width to produce the interlocking brick layout.

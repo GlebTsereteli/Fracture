@@ -31,7 +31,6 @@
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/02 Fracture/01 Public/01 Patterns/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/02 Fracture/01 Public/01 Patterns/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Parameters","folderPath":"folders/02 Fracture/01 Public/02 Parameters.yy","name":"02 Parameters","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"03 Cache","folderPath":"folders/02 Fracture/01 Public/03 Cache.yy","name":"03 Cache","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Private","folderPath":"folders/02 Fracture/02 Private.yy","name":"02 Private","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01 Core","folderPath":"folders/02 Fracture/02 Private/01 Core.yy","name":"01 Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Functions","folderPath":"folders/02 Fracture/02 Private/02 Functions.yy","name":"02 Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
