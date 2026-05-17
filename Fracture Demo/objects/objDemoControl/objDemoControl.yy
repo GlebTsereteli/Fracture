@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"01 Core",
-    "path":"folders/01 Demo/01 Core.yy",
+    "path":"folders/Demo/01 Core.yy",
   },
   "parentObjectId":null,
   "persistent":true,

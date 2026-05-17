@@ -6,7 +6,7 @@
   "name":"__FractureMacrosGrid",
   "parent":{
     "name":"03 Macros",
-    "path":"folders/02 Fracture/02 Private/03 Macros.yy",
+    "path":"folders/Fracture/02 Private/03 Macros.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

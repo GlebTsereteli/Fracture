@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"01 Box",
-    "path":"folders/01 Demo/02 Types/01 General/01 Box.yy",
+    "path":"folders/Demo/02 Types/01 General/01 Box.yy",
   },
   "parentObjectId":{
     "name":"objDemoShapeParent",

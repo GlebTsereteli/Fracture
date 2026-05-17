@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"02 Circle",
-    "path":"folders/01 Demo/02 Types/01 General/02 Circle.yy",
+    "path":"folders/Demo/02 Types/01 General/02 Circle.yy",
   },
   "parentObjectId":{
     "name":"objDemoShapeParent",

@@ -6,7 +6,7 @@
   "name":"FractureDiamondBox",
   "parent":{
     "name":"03 Diamond",
-    "path":"folders/02 Fracture/01 Public/01 Patterns/03 Diamond.yy",
+    "path":"folders/Fracture/01 Public/01 Patterns/03 Diamond.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

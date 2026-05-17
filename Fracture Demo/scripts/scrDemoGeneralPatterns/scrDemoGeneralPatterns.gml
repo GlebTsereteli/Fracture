@@ -67,15 +67,15 @@ function DemoGeneralPatternDiamond() : DemoGeneralPattern("Diamond") constructor
 function DemoGeneralPatternHex() : DemoGeneralPattern("Hex") constructor {
     cols = 4;
     rows = 4;
-    pointy = false;
+    flat = true;
 	
     static RefreshInterface = function() {
         dbg_slider_int(ref_create(self, "cols"), 3, 10, "Columns");
         dbg_slider_int(ref_create(self, "rows"), 3, 10, "Rows");
-        dbg_checkbox(ref_create(self, "pointy"), "Pointy");
+        dbg_checkbox(ref_create(self, "flat"), "Flat");
     };
     static GetArguments = function() {
-        return [cols, rows, pointy];
+        return [cols, rows, flat];
     };
 }
 function DemoGeneralPatternRadial() : DemoGeneralPattern("Radial") constructor {

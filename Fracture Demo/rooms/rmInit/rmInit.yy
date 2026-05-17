@@ -11,7 +11,7 @@
   "name":"rmInit",
   "parent":{
     "name":"00 Init",
-    "path":"folders/01 Demo/00 Init.yy",
+    "path":"folders/Demo/00 Init.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
