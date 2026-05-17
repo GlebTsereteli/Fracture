@@ -1,5 +1,18 @@
 // feather ignore all
 
+/// @func FractureBrickBox()
+/// 
+/// @param {Id.Instance} inst The instance to fracture.
+/// @param {Real} cols The number of columns.
+/// @param {Real} rows The number of rows.
+/// @param {Bool} horizontal Whether the bricks are laid horizontally or vertically.
+/// 
+/// @desc Fractures the given rectangle-shaped instance into a brick pattern filling the sprite bounding box, defined by the number of columns and rows.
+/// Alternating rows or columns are offset by half a brick width to produce the interlocking brick layout.
+/// The instance is destroyed automatically after fracturing.
+/// Returns an array of the created Piece instances.
+/// 
+/// @return {Array<Id.Instance of __objFracturePiece>}
 function FractureBrickBox(_inst, _cols, _rows, _horizontal) {
 	__FRACTURE_START;
 	__FRACTURE_BRICK_SETUP;

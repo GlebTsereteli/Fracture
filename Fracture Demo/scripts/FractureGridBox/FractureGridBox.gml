@@ -13,7 +13,7 @@
 /// The instance is destroyed automatically after fracturing.
 /// Returns an array of the created Piece instances.
 /// 
-/// @return {Array<Id.Instance<__objFracturePiece>>}
+/// @return {Array<Id.Instance of __objFracturePiece>}
 function FractureGridBox(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 	__FRACTURE_START;
 	__FRACTURE_GRID_SETUP;
