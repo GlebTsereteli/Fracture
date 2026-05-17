@@ -1,5 +1,19 @@
 // feather ignore all
 
+/// @func FractureGridBox()
+/// 
+/// @param {Id.Instance} inst The instance to fracture.
+/// @param {Real} cols The number of columns.
+/// @param {Real} rows The number of rows.
+/// @param {Real} noiseX The horizontal grid noise intensity, from 0 to 1. [Default: 1]
+/// @param {Real} noiseY The vertical grid noise intensity, from 0 to 1. [Default: noiseX]
+/// 
+/// @desc Fractures the given rectangle-shaped instance into a grid of quads filling the sprite bounding box, defined by the number of columns and rows.
+/// Optional noise offsets the grid vertices to produce more organic-looking pieces.
+/// The instance is destroyed automatically after fracturing.
+/// Returns an array of the created Piece instances.
+/// 
+/// @return {Array<Id.Instance<__objFracturePiece>>}
 function FractureGridBox(_inst, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 	__FRACTURE_START;
 	__FRACTURE_GRID_SETUP;
