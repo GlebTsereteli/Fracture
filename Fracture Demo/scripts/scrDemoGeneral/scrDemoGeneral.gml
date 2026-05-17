@@ -8,6 +8,8 @@ function DemoGeneral() : Demo("General") constructor {
 			objDemoControl.RefreshInterface();
 		}
 		
+		blast.Update();
+		
 		if (not is_mouse_over_debug_overlay()) {
 			// Spawn & fracture
 			if (mouse_check_button_pressed(mb_left)) {
@@ -26,6 +28,9 @@ function DemoGeneral() : Demo("General") constructor {
 				}
 			}
 		}
+	};
+	Draw = function() {
+		blast.Draw();
 	};
 	RefreshInterface = function() {
 		var _w = 123;
@@ -62,6 +67,8 @@ function DemoGeneral() : Demo("General") constructor {
 		dbg_text_separator("Impulse");
 		dbg_slider(ref_create(impulse, "force"), 0, 2, "Force", 0.1);
 		dbg_checkbox(ref_create(impulse, "onMouse"), "Mouse Origin?");
+		
+		blast.RefreshInterface();
 	};
 	
 	// Custom
@@ -83,15 +90,15 @@ function DemoGeneral() : Demo("General") constructor {
 		new DemoGeneralShape("Convex"),
 	];
 	shape = array_first(shapes);
-	
-	array_foreach(patterns, function(_pattern) {
-		_pattern.Init();
-	});
-	
 	impulse = {
 		force: 0,
 		onMouse: true,
 	};
+	blast = new DemoGeneralBlast();
+	
+	array_foreach(patterns, function(_pattern) {
+		_pattern.Init();
+	});
 	
 	Fracture = function(_shape) {
 		var _impulseX = impulse.onMouse ? mouse_x : undefined;

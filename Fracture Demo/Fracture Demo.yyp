@@ -108,6 +108,7 @@
     {"id":{"name":"FractureVoronoiConvex","path":"scripts/FractureVoronoiConvex/FractureVoronoiConvex.yy",},},
     {"id":{"name":"scrDemo","path":"scripts/scrDemo/scrDemo.yy",},},
     {"id":{"name":"scrDemoGeneral","path":"scripts/scrDemoGeneral/scrDemoGeneral.yy",},},
+    {"id":{"name":"scrDemoGeneralBlast","path":"scripts/scrDemoGeneralBlast/scrDemoGeneralBlast.yy",},},
     {"id":{"name":"scrDemoGeneralPatterns","path":"scripts/scrDemoGeneralPatterns/scrDemoGeneralPatterns.yy",},},
     {"id":{"name":"scrDemoGeneralShape","path":"scripts/scrDemoGeneralShape/scrDemoGeneralShape.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
