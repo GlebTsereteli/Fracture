@@ -8,7 +8,7 @@
 /// @param {Real} noiseX The horizontal grid noise intensity, from 0 to 1. [Default: 1]
 /// @param {Real} noiseY The vertical grid noise intensity, from 0 to 1. [Default: noiseX]
 /// 
-/// @desc Fractures the given rectangle-shaped instance into a grid of quads filling the sprite bounding box, defined by the number of columns and rows.
+/// @desc Fractures the given rectangle-shaped instance into a grid of quads filling the full sprite area, defined by the number of columns and rows.
 /// Optional noise offsets the grid vertices to produce more organic-looking pieces.
 /// The instance is destroyed automatically after fracturing.
 /// Returns an array of the created Piece instances.
