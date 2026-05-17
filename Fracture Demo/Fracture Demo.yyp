@@ -31,6 +31,7 @@
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/Fracture/01 Public/01 Patterns/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/Fracture/01 Public/01 Patterns/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Parameters","folderPath":"folders/Fracture/01 Public/02 Parameters.yy","name":"02 Parameters","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"03 Affectors","folderPath":"folders/Fracture/01 Public/03 Affectors.yy","name":"03 Affectors","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Private","folderPath":"folders/Fracture/02 Private.yy","name":"02 Private","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01 Core","folderPath":"folders/Fracture/02 Private/01 Core.yy","name":"01 Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Functions","folderPath":"folders/Fracture/02 Private/02 Functions.yy","name":"02 Functions","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -54,6 +55,7 @@
   "resources":[
     {"id":{"name":"Fracture Info","path":"notes/Fracture Info/Fracture Info.yy",},},
     {"id":{"name":"README","path":"notes/README/README.yy",},},
+    {"id":{"name":"__objFractureBlast","path":"objects/__objFractureBlast/__objFractureBlast.yy",},},
     {"id":{"name":"__objFracturePiece","path":"objects/__objFracturePiece/__objFracturePiece.yy",},},
     {"id":{"name":"__objFractureRenderer","path":"objects/__objFractureRenderer/__objFractureRenderer.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
@@ -79,6 +81,7 @@
     {"id":{"name":"__FracturePointInHull","path":"scripts/__FracturePointInHull/__FracturePointInHull.yy",},},
     {"id":{"name":"__FractureRender","path":"scripts/__FractureRender/__FractureRender.yy",},},
     {"id":{"name":"__FractureUtility","path":"scripts/__FractureUtility/__FractureUtility.yy",},},
+    {"id":{"name":"FractureBlast","path":"scripts/FractureBlast/FractureBlast.yy",},},
     {"id":{"name":"FractureBrickBox","path":"scripts/FractureBrickBox/FractureBrickBox.yy",},},
     {"id":{"name":"FractureBrickCircle","path":"scripts/FractureBrickCircle/FractureBrickCircle.yy",},},
     {"id":{"name":"FractureBrickConvex","path":"scripts/FractureBrickConvex/FractureBrickConvex.yy",},},
