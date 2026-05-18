@@ -2,6 +2,13 @@
 function DemoWalls() : Demo("Walls") constructor {
 	// Shared
 	Update = function() {
+		if (skin != prevSkin) {
+			var _sprite = skin.sprite;
+			with (obj) {
+				sprite_index = _sprite;
+			}
+		}
+		
 		x = clamp(x1 + ((mouse_x - x1) div size) * size, x1, x2 - size);
 		y = clamp(y1 + ((mouse_y - y1) div size) * size, y1, y2 - size);
 		
@@ -30,7 +37,9 @@ function DemoWalls() : Demo("Walls") constructor {
 		draw_rectangle(x, y, x + size, y + size, true);
 	};
 	RefreshInterface = function() {
-		
+		DbgSelector("Skin", skins, array_map(skins, function(_skin) {
+			return _skin.name;
+		}));
 	};
 	
 	// Custom
@@ -46,18 +55,32 @@ function DemoWalls() : Demo("Walls") constructor {
 	x = -size;
 	y = -size;
 	
+	skins = [
+		new DemoWallsSkin("Blank"),
+		new DemoWallsSkin("Water"),
+		new DemoWallsSkin("Ice"),
+		new DemoWallsSkin("Lava"),
+	];
+	skin = skins[1];
+	prevSkin = skin;
+	
 	Create = function(_x, _y) {
-		return instance_create_depth(_x, _y, 0, obj);	
+		with (instance_create_depth(_x, _y, 0, obj)) {
+			sprite_index = other.skin.sprite;
+			image_index = image_number - 1;
+			
+			return id;
+		}
 	};
 	AutoTile = function(_x, _y) {
 		static _GetIndex = function(_x, _y) {
 			static _lookup = [
-				-001, 255, 247, 253, 245, 127, 119, 125,
-				 117, 223, 215, 221, 213, 095, 087, 093,
-				 085, 199, 197, 071, 069, 241, 113, 209,
-				 081, 124, 092, 116, 084, 031, 023, 029,
-				 021, 068, 017, 193, 065, 112, 080, 028,
-				 020, 007, 005, 064, 001, 004, 016, 000,
+			   -001, 255, 247, 253, 245, 127, 119, 125,
+				117, 223, 215, 221, 213, 095, 087, 093,
+				085, 199, 197, 071, 069, 241, 113, 209,
+				081, 124, 092, 116, 084, 031, 023, 029,
+				021, 068, 017, 193, 065, 112, 080, 028,
+				020, 007, 005, 064, 001, 004, 016, 000,
 			];
 			var _r = _x + size;
 			var _u = _y - size;
@@ -75,15 +98,16 @@ function DemoWalls() : Demo("Walls") constructor {
 			
 			return array_get_index(_lookup, _index);
 		};
-		static _offsets = [[0, 0], [1, 0], [1, -1], [0, -1], [-1, -1], [-1 ,0], [-1,1], [0, 1], [1, 1]];
+		static _offsets = [0, 0, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, -1, 1, 0, 1, 1, 1];
 		
 		for (var _i = 0; _i < 9; _i++) {
-			var _ix = _x + (_offsets[_i][0] * size);
-			var _iy = _y + (_offsets[_i][1] * size);
-			var _tile = Get(_ix, _iy);
-			if (_tile != noone) {
-				_tile.image_index = _GetIndex(_ix, _iy);
-			}
+		    var _ix = _x + (_offsets[_i * 2] * size);
+		    var _iy = _y + (_offsets[_i * 2 + 1] * size);
+			
+		    var _tile = Get(_ix, _iy);
+		    if (_tile != noone) {
+		        _tile.image_index = _GetIndex(_ix, _iy);
+		    }
 		}
 	};
 	
