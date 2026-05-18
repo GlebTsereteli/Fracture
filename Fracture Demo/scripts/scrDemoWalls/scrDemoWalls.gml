@@ -18,7 +18,8 @@ function DemoWalls() : Demo("Walls") constructor {
 			if (mouse_check_button(mb_right)) {
 				var _tile = Get(x, y);
 				if (_tile != noone) {
-					instance_destroy(_tile);
+					FractureImpulse(0.2);
+					FractureGridBox(_tile, 3, 3);
 					AutoTile(x, y);
 				}
 			}
