@@ -39,6 +39,8 @@ var _h = _inst.sprite_height; \
 var _centerX = _inst.sprite_xoffset; \
 var _centerY = _inst.sprite_yoffset; \
 var _texture = sprite_get_texture(_inst.sprite_index, _inst.image_index); \
+var _color = _inst.image_blend; \
+var _alpha = _inst.image_alpha; \
 \
 var _physical = (_inst.phy_active != undefined); \
 var _angle = _physical ? _inst.phy_rotation : -_inst.image_angle; \
@@ -80,7 +82,8 @@ var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
 with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) { \
 	__vertexBuffer = _vb; \
 	__texture = _texture; \
-	__state = _state;
+	__state = _state; \
+	image_alpha = _alpha;
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
@@ -161,7 +164,7 @@ _originY -= _inst.y - _centerY;
 #endregion
 #region Vertices
 
-#macro __FRACTURE_VCOLOR vertex_color(_vb, c_white, 1);
+#macro __FRACTURE_VCOLOR vertex_color(_vb, _color, 1);
 
 #macro __FRACTURE_V \
 vertex_position(_vb, _px, _py); \

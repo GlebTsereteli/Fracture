@@ -18,8 +18,8 @@ function DemoWalls() : Demo("Walls") constructor {
 			if (mouse_check_button(mb_right)) {
 				var _tile = Get(x, y);
 				if (_tile != noone) {
-					FractureImpulse(0.2);
-					FractureGridBox(_tile, 3, 3);
+					FractureImpulse(1, x + size / 2, y + size / 2);
+					FractureGridBox(_tile, 2, 2);
 					AutoTile(x, y);
 				}
 			}
@@ -34,7 +34,7 @@ function DemoWalls() : Demo("Walls") constructor {
 	};
 	
 	// Custom
-	size = 64;
+	size = 100;
 	obj = objDemoWallsTile;
 	
 	var _pad = size / 2;
