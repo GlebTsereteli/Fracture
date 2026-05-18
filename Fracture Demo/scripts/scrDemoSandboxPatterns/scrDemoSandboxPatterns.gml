@@ -107,7 +107,7 @@ function DemoSandboxPatternVoronoi() : DemoSandboxPattern("Voronoi") constructor
 	noise = 1;
 	
 	static RefreshInterface = function() {
-		dbg_slider_int(ref_create(self, "pieceCount"), 2, 20, "Piece Count");
+		dbg_slider_int(ref_create(self, "pieceCount"), 2, 30, "Piece Count");
 		dbg_slider(ref_create(self, "noise"), 0, 1, "Noise", 0.05);
 	};
 	static GetArguments = function() {

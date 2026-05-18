@@ -3,7 +3,7 @@ event_user(0);
 
 demos = [
 	new DemoSandbox(),
-	new DemoAutoTile(),
+	new DemoWalls(),
 ];
 demo = array_first(demos);
 prevDemo = demo;
@@ -22,4 +22,5 @@ convexPoints = {
 	sprDemoSandboxShapeConvex04: [-60, -120, 60, -120, 89, -90, 89, 90, 60, 121, -60, 121, -90, 90, -90, -90],
 };
 
+FractureDepth(-1000);
 RefreshInterface();

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrDemoAutoTile",
+  "%Name":"scrDemoWalls",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrDemoAutoTile",
+  "name":"scrDemoWalls",
   "parent":{
-    "name":"02 Showcase",
-    "path":"folders/Demo/02 Types/02 Showcase.yy",
+    "name":"02 Walls",
+    "path":"folders/Demo/02 Types/02 Walls.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
