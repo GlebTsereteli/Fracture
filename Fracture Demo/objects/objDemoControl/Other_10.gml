@@ -24,10 +24,9 @@ RefreshInterface = function() {
 		dbg_checkbox(ref_create(self, "outlines"), "Outlines");
 		dbg_checkbox(ref_create(self, "coms"), "Coms");
 		dbg_checkbox(ref_create(self, "shapes"), "Shapes");
-	}
-	
-	if (FRACTURE_BENCHMARK) {
-		dbg_section("Performance"); {
+		
+		if (FRACTURE_BENCHMARK) {
+			dbg_text_separator("");
 			dbg_text(ref_create(self, "performanceNote"));
 		}
 	}

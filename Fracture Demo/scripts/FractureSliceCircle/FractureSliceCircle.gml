@@ -4,7 +4,7 @@
 /// 
 /// @param {Id.Instance} inst The instance to fracture.
 /// @param {Real} pieceCount The number of slices.
-/// @param {Real} cutAngle The angle of the cuts. [Default: 45]
+/// @param {Real} cutAngle The angle of the cuts. [Default: random]
 /// 
 /// @desc Fractures the given circle-shaped instance into parallel slices clipped to the circle boundary, defined by the number of pieces.
 /// The cut angle controls the orientation of the slices.
@@ -12,7 +12,7 @@
 /// Returns an array of the created Piece instances.
 /// 
 /// @return {Array<Id.Instance of __objFracturePiece>}
-function FractureSliceCircle(_inst, _pieceCount, _cutAngle = 45) {
+function FractureSliceCircle(_inst, _pieceCount, _cutAngle = random(360)) {
 	// Arc sample buffers. 7 per side, 14 verts per slice
 	static _polyX = array_create(14);
 	static _polyY = array_create(14);

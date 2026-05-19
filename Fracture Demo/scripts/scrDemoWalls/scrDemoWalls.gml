@@ -25,8 +25,8 @@ function DemoWalls() : Demo("Walls") constructor {
 			if (mouse_check_button(mb_right)) {
 				var _tile = Get(x, y);
 				if (_tile != noone) {
-					FractureImpulse(1, x + size / 2, y + size / 2);
-					FractureGridBox(_tile, 2, 2);
+					FractureImpulse(0.25, x + size / 2, y + size / 2);
+					FractureRadialBox(_tile, 6);
 					AutoTile(x, y);
 				}
 			}

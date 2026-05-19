@@ -4,7 +4,7 @@
 /// 
 /// @param {Id.Instance} inst The instance to fracture.
 /// @param {Real} pieceCount The number of slices.
-/// @param {Real} cutAngle The angle of the cuts. [Default: 45]
+/// @param {Real} cutAngle The angle of the cuts. [Default: random]
 /// 
 /// @desc Fractures the given rectangle-shaped instance into parallel slices filling the full sprite area, defined by the number of pieces.
 /// The cut angle controls the orientation of the slices.
@@ -12,7 +12,7 @@
 /// Returns an array of the created Piece instances.
 /// 
 /// @return {Array<Id.Instance of __objFracturePiece>}
-function FractureSliceBox(_inst, _pieceCount, _cutAngle = 45) {
+function FractureSliceBox(_inst, _pieceCount, _cutAngle = random(360)) {
 	static _vertX = array_create(6);
 	static _vertY = array_create(6);
 	
