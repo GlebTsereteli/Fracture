@@ -13,7 +13,7 @@ function DemoWalls() : Demo("Walls") constructor {
 		y = clamp(y1 + ((mouse_y - y1) div size) * size, y1, y2 - size);
 		
 		if (not is_mouse_over_debug_overlay()) {
-			// Add
+			// Paint
 			if (mouse_check_button(mb_left)) {
 				if (not IsColliding(x, y)) {
 				    Create(x, y);
@@ -21,12 +21,12 @@ function DemoWalls() : Demo("Walls") constructor {
 				}
 			}
 			
-			// Remove
+			// Erase
 			if (mouse_check_button(mb_right)) {
 				var _tile = Get(x, y);
 				if (_tile != noone) {
-					FractureImpulse(0.25, x + size / 2, y + size / 2);
-					FractureRadialBox(_tile, 6);
+					impulse.Set(x + size / 2, y + size / 2);
+					FractureBoxRadial(_tile, 6);
 					AutoTile(x, y);
 				}
 			}
@@ -40,6 +40,8 @@ function DemoWalls() : Demo("Walls") constructor {
 		DbgSelector("Skin", skins, array_map(skins, function(_skin) {
 			return _skin.name;
 		}));
+		
+		impulse.RefreshInterface();
 	};
 	
 	// Custom
@@ -62,6 +64,8 @@ function DemoWalls() : Demo("Walls") constructor {
 	];
 	skin = array_first(skins);
 	prevSkin = skin;
+	
+	impulse = new DemoImpulse(0.5);
 	
 	Create = function(_x, _y) {
 		with (instance_create_depth(_x, _y, 0, obj)) {

@@ -3,8 +3,10 @@
 function DemoSandbox() : Demo("Sandbox") constructor {
 	// Shared
 	Update = function() {
-		if (pattern != prevPattern) {
-			prevPattern = pattern;
+		shape.Update();
+		
+		if (shape != prevShape) {
+			prevShape = shape;
 			objDemoControl.RefreshInterface();
 		}
 		
@@ -21,6 +23,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
 					Fracture(_shape);
 				}
 			}
+			
 			// Destroy
 			if (mouse_check_button_pressed(mb_right)) {
 				with (instance_position(mouse_x, mouse_y, objDemoSandboxShapeParent)) {
@@ -60,54 +63,37 @@ function DemoSandbox() : Demo("Sandbox") constructor {
 			instance_destroy(__objFracturePiece);
 		}, _w, _h);
 		
-		DbgSelector("Pattern", patterns);
 		DbgSelector("Shape", shapes);
-		pattern.RefreshInterface();
+		shape.RefreshInterface();
 		
-		dbg_text_separator("Impulse");
-		dbg_slider(ref_create(impulse, "force"), 0, 2, "Force", 0.1);
-		dbg_checkbox(ref_create(impulse, "onMouse"), "Mouse Origin?");
-		
+		impulse.RefreshInterface();
 		blast.RefreshInterface();
 	};
 	
 	// Custom
-	patterns = [
-		new DemoSandboxPatternGrid(),
-		new DemoSandboxPatternBrick(),
-		new DemoSandboxPatternDiamond(),
-		new DemoSandboxPatternHex(),
-		new DemoSandboxPatternRadial(),
-		new DemoSandboxPatternSlice(),
-		new DemoSandboxPatternVoronoi(),
-	];
-	pattern = array_first(patterns);
-	prevPattern = pattern;
-
 	shapes = [
-		new DemoSandboxShape("Box"),
-		new DemoSandboxShape("Circle"),
-		new DemoSandboxShape("Convex"),
+		new DemoSandboxShapeBox(),
+		new DemoSandboxShapeCircle(),
+		new DemoSandboxShapeConvex(),
 	];
 	shape = array_first(shapes);
-	impulse = {
-		force: 0,
-		onMouse: true,
-	};
+	prevShape = shape;
+	
+	impulse = new DemoImpulse();
 	blast = new DemoSandboxBlast();
 	
-	array_foreach(patterns, function(_pattern) {
-		_pattern.Init();
+	array_foreach(shapes, function(_shape) {
+		_shape.Init();
 	});
 	
-	Fracture = function(_shape) {
-		var _impulseX = impulse.onMouse ? mouse_x : undefined;
-		var _impulseY = impulse.onMouse ? mouse_y : undefined;
-		FractureImpulse(impulse.force, _impulseX, _impulseY);
+	Fracture = function(_inst) {
+		impulse.Set(mouse_x, mouse_y);
 		
-		var _index = array_find_index(shapes, method({_shape}, function(_shapeClass) {
-			return (_shape.object_index == _shapeClass.object);
+		var _index = array_find_index(shapes, method({_inst}, function(_shapeClass) {
+			return (_inst.object_index == _shapeClass.object);
 		}));
-		pattern.Fracture(shapes[_index], _shape);
+		with (shapes[_index]) {
+			Fracture(_inst);
+		}
 	};
 }

@@ -1,25 +1,17 @@
 
 function DemoSandboxPattern(_name) constructor {
-	demo = other;
 	name = _name;
-	funcs = {};
+	func = asset_get_index($"Fracture{other.name}{name}");
 	
-	static Init = function() {
-		array_foreach(demo.shapes, function(_shape) {
-			funcs[$ _shape.name] = asset_get_index($"Fracture{name}{_shape.name}");
-		});
-	};
 	static RefreshInterface = Noop;
 	static GetArguments = function() {
 		return [];
 	};
-
-	static Fracture = function(_shape, _inst) {
-		var _func = funcs[$ _shape.name];
+	
+	static Fracture = function(_inst) {
 		var _args = GetArguments(_inst);
 		array_insert(_args, 0, _inst);
-		
-		var _result = method_call(_func, _args);
+		method_call(func, _args);
 	};
 }
 function DemoSandboxPatternGrid() : DemoSandboxPattern("Grid") constructor {

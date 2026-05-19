@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scrDemoSandboxShape",
   "parent":{
-    "name":"01 Sandbox",
-    "path":"folders/Demo/02 Types/01 Sandbox.yy",
+    "name":"Shapes",
+    "path":"folders/Demo/02 Types/01 Sandbox/Shapes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

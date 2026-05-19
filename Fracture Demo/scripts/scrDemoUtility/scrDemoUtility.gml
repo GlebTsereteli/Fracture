@@ -5,7 +5,7 @@ function Mod2(_dividend, _divisor) {
     return (_dividend - floor(_dividend / _divisor) * _divisor);
 }
 
-function DbgSelector(_name, _pool, _names) {
+function DbgSelector(_name, _pool, _names = undefined) {
 	with ({}) {
 		scope = other;
 		varName = string_lower(_name);

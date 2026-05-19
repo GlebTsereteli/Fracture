@@ -1,6 +1,7 @@
 
 function DemoInit() {
 	randomize();
+	window_enable_borderless_fullscreen(true);
 	texture_prefetch("Default");
 	
 	FractureDepth(-10000);
