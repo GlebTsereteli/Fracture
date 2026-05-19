@@ -56,12 +56,11 @@ function DemoWalls() : Demo("Walls") constructor {
 	y = -size;
 	
 	skins = [
-		new DemoWallsSkin("Blank"),
 		new DemoWallsSkin("Water"),
-		new DemoWallsSkin("Ice"),
 		new DemoWallsSkin("Lava"),
+		new DemoWallsSkin("Ice"),
 	];
-	skin = skins[1];
+	skin = array_first(skins);
 	prevSkin = skin;
 	
 	Create = function(_x, _y) {

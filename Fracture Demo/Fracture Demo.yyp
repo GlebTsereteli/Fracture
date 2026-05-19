@@ -44,6 +44,7 @@
     {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
     {"link":"io.gamemaker.gm_filter_edgedetect-1.0.0","name":"io.gamemaker.gm_filter_edgedetect-1.0.0","path":"io.gamemaker.gm_filter_edgedetect-1.0.0.yyp",},
     {"link":"io.gamemaker.incidentalsjewelsandgems-1.0.0","name":"io.gamemaker.incidentalsjewelsandgems-1.0.0","path":"io.gamemaker.incidentalsjewelsandgems-1.0.0.yyp",},
+    {"link":"io.gamemaker.gm_filter_vignette-1.0.0","name":"io.gamemaker.gm_filter_vignette-1.0.0","path":"io.gamemaker.gm_filter_vignette-1.0.0.yyp",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"Fracture License.txt","CopyToMask":-1,"filePath":"datafiles","name":"Fracture License.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -129,7 +130,7 @@
     {"id":{"name":"sprDemoSandboxShapeConvex02","path":"sprites/sprDemoSandboxShapeConvex02/sprDemoSandboxShapeConvex02.yy",},},
     {"id":{"name":"sprDemoSandboxShapeConvex03","path":"sprites/sprDemoSandboxShapeConvex03/sprDemoSandboxShapeConvex03.yy",},},
     {"id":{"name":"sprDemoSandboxShapeConvex04","path":"sprites/sprDemoSandboxShapeConvex04/sprDemoSandboxShapeConvex04.yy",},},
-    {"id":{"name":"sprDemoWallsTileBlank","path":"sprites/sprDemoWallsTileBlank/sprDemoWallsTileBlank.yy",},},
+    {"id":{"name":"sprDemoWallsBackground","path":"sprites/sprDemoWallsBackground/sprDemoWallsBackground.yy",},},
     {"id":{"name":"sprDemoWallsTileIce","path":"sprites/sprDemoWallsTileIce/sprDemoWallsTileIce.yy",},},
     {"id":{"name":"sprDemoWallsTileLava","path":"sprites/sprDemoWallsTileLava/sprDemoWallsTileLava.yy",},},
     {"id":{"name":"sprDemoWallsTileWater","path":"sprites/sprDemoWallsTileWater/sprDemoWallsTileWater.yy",},},

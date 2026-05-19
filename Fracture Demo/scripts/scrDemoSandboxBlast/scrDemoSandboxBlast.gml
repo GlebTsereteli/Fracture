@@ -32,5 +32,6 @@ function DemoSandboxBlast() constructor {
 		
 		dbg_slider_int(ref_create(self, "radius"), 50, 300, "Radius", 25);
 		dbg_slider(ref_create(self, "force"), -2, 2, "Force", 0.1);
+		dbg_text(" Press [B] to Blast Pieces around the mouse.");
 	};
 }

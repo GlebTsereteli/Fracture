@@ -26,6 +26,12 @@ RefreshInterface = function() {
 		dbg_checkbox(ref_create(self, "shapes"), "Shapes");
 	}
 	
+	if (FRACTURE_BENCHMARK) {
+		dbg_section("Performance"); {
+			dbg_text(ref_create(self, "performanceNote"));
+		}
+	}
+	
 	if (room != demo.rm) {
 		room_goto(demo.rm);
 	}

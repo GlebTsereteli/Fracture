@@ -1,12 +1,14 @@
+// feather ignore all
 
 function __FractureRender() {
 	static _matrix = matrix_build_identity();
 	static _uAlpha = shader_get_uniform(__shdFracture, "uAlpha");
 	
-	var _prevMatrix = matrix_get(matrix_world);
-	var _shaderActive = FRACTURE_FADE_ENABLED and instance_exists(__objFracturePiece);
+	if (not instance_exists(__objFracturePiece)) return;
 	
-	if (_shaderActive) {
+	var _prevMatrix = matrix_get(matrix_world);
+	
+	if (FRACTURE_FADE_ENABLED) {
 		shader_set(__shdFracture);
 	}
 	
@@ -23,7 +25,7 @@ function __FractureRender() {
 	
 	matrix_set(matrix_world, _prevMatrix);
 	
-	if (_shaderActive) {
+	if (FRACTURE_FADE_ENABLED) {
 		shader_reset();
 	}
 }

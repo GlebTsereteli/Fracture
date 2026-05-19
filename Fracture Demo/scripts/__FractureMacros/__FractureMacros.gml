@@ -31,7 +31,7 @@ var _px = 0, _py = 0; \
 __FRACTURE_CATCH_RENDERER; \
 if (FRACTURE_BENCHMARK) { \
 	static _funcName = string_replace(array_last(string_split(_GMFUNCTION_, "_")), "Fracture", ""); \
-	var _timer = get_timer(); \
+	__FRACTURE_BENCH_START; \
 } \
 \
 var _w = _inst.sprite_width; \
@@ -124,7 +124,7 @@ if (FRACTURE_AUTO_RESET) { \
 	FractureImpulseReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \
-	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {(get_timer() - _timer) / 1000}ms"); \
+	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {__FRACTURE_BENCH_END}ms"); \
 } \
 instance_destroy(_inst); \
 return _pieces;
@@ -348,5 +348,11 @@ if (_vertCount >= 3) { \
 
 #macro __FRACTURE_CIRCLE_HIT_BBOX ((_ndx = clamp(_centerX, _minX, _maxX) - _centerX) * _ndx + (_ndy = clamp(_centerY, _minY, _maxY) - _centerY) * _ndy <= _radiusSq)
 #macro __FRACTURE_CONVEX_HIT_BBOX (not (_maxX < _hullX1 or _minX > _hullX2 or _maxY < _hullY1 or _minY > _hullY2))
+
+#endregion
+#region Benchmark
+
+#macro __FRACTURE_BENCH_START var _benchTime = get_timer();
+#macro __FRACTURE_BENCH_END ((get_timer() - _benchTime) / 1000)
 
 #endregion
