@@ -36,19 +36,14 @@
     {"$GMFolder":"","%Name":"Hex","folderPath":"folders/Fracture/02 Private/02 Functions/Hex.yy","name":"Hex","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"03 Macros","folderPath":"folders/Fracture/02 Private/03 Macros.yy","name":"03 Macros","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[
-    {"link":"io.gamemaker.gm_effect_glow-1.0.0","name":"io.gamemaker.gm_effect_glow-1.0.0","path":"io.gamemaker.gm_effect_glow-1.0.0.yyp",},
-    {"link":"io.gamemaker.gm_filter_edgedetect-1.0.0","name":"io.gamemaker.gm_filter_edgedetect-1.0.0","path":"io.gamemaker.gm_filter_edgedetect-1.0.0.yyp",},
-    {"link":"io.gamemaker.incidentalsjewelsandgems-1.0.0","name":"io.gamemaker.incidentalsjewelsandgems-1.0.0","path":"io.gamemaker.incidentalsjewelsandgems-1.0.0.yyp",},
-    {"link":"io.gamemaker.gm_filter_vignette-1.0.0","name":"io.gamemaker.gm_filter_vignette-1.0.0","path":"io.gamemaker.gm_filter_vignette-1.0.0.yyp",},
-  ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"Fracture License.txt","CopyToMask":-1,"filePath":"datafiles","name":"Fracture License.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.222",
+    "IDEVersion":"2026.0.0.15",
   },
   "name":"Fracture Demo",
   "resources":[

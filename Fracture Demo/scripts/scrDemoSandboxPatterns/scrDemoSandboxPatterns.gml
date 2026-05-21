@@ -3,6 +3,9 @@ function DemoSandboxPattern(_name) constructor {
 	name = _name;
 	func = asset_get_index($"Fracture{other.name}{name}");
 	
+	static Update = Noop;
+	static Draw = Noop;
+	
 	static RefreshInterface = Noop;
 	static GetArguments = function() {
 		return [];
@@ -14,6 +17,7 @@ function DemoSandboxPattern(_name) constructor {
 		method_call(func, _args);
 	};
 }
+
 function DemoSandboxPatternGrid() : DemoSandboxPattern("Grid") constructor {
 	cols = 4;
 	rows = 4;
@@ -105,4 +109,44 @@ function DemoSandboxPatternVoronoi() : DemoSandboxPattern("Voronoi") constructor
 	static GetArguments = function() {
 		return [pieceCount, noise];
 	};
+}
+
+function DemoSandboxPatternCut() : DemoSandboxPattern("Cut") constructor {
+	// Shared
+	static Update = function() {
+		if (not plotting) {
+			if (mouse_check_button_pressed(mb_right) and not is_mouse_over_debug_overlay()) {
+				x1 = mouse_x;
+				y1 = mouse_y;
+				x2 = x1;
+				y2 = y1;
+				plotting = true;
+			}
+		}
+		else {
+			x2 = mouse_x;
+			y2 = mouse_y;
+			
+			if (mouse_check_button_released(mb_right)) {
+				plotting = false;
+				// Cut here
+			}
+		}
+	};
+	static Draw = function() {
+		if (plotting) {
+			draw_line_width_color(x1, y1, x2, y2, 4, #00FF00, #00FF00);
+			draw_circle_color(x1, y1, 8, c_red, c_red, false);
+			draw_circle_color(x2, y2, 8, c_red, c_red, false);
+		}
+	};
+	
+	static Fracture = Noop;
+	
+	// Custom
+	x1 = undefined;
+	y1 = undefined;
+	x2 = undefined;
+	y2 = undefined;
+	plotting = false;
 }

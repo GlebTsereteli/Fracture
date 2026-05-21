@@ -8,5 +8,6 @@ function DemoSandboxShapeBox() : DemoSandboxShape("Box") constructor {
 		new DemoSandboxPatternRadial(),
 		new DemoSandboxPatternSlice(),
 		new DemoSandboxPatternVoronoi(),
+		new DemoSandboxPatternCut(),
 	];
 }

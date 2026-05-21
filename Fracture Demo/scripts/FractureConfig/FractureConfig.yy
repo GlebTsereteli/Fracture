@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FractureConfig",
   "parent":{
-    "name":"01 Public",
-    "path":"folders/Fracture/01 Public.yy",
+    "name":"Fracture",
+    "path":"folders/Fracture.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -16,7 +16,12 @@ function DemoSandboxShape(_name, _patterns) constructor {
 			prevPattern = pattern;
 			objDemoControl.RefreshInterface();
 		}
+		pattern.Update();
 	};
+	static Draw = function() {
+		pattern.Draw();
+	};
+	
 	static Fracture = function(_inst) {
 		pattern.Fracture(_inst);
 	};

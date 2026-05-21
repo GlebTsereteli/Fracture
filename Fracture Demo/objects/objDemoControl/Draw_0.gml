@@ -10,4 +10,3 @@ if (outlines) {
 		physics_draw_debug();
 	}
 }
-

@@ -3,36 +3,30 @@
 function DemoSandbox() : Demo("Sandbox") constructor {
 	// Shared
 	Update = function() {
-		shape.Update();
-		
 		if (shape != prevShape) {
 			prevShape = shape;
 			objDemoControl.RefreshInterface();
 		}
 		
+		shape.Update();
 		blast.Update();
 		
 		if (not is_mouse_over_debug_overlay()) {
-			// Spawn & fracture
+			// Spawn
 			if (mouse_check_button_pressed(mb_left)) {
-				var _shape = instance_position(mouse_x, mouse_y, objDemoSandboxShapeParent);
-				if (_shape == noone) {
-					instance_create_depth(mouse_x, mouse_y, -1000, shape.object);
-				}
-				else {
-					Fracture(_shape);
-				}
+				instance_create_depth(mouse_x, mouse_y, -1000, shape.object);
 			}
 			
-			// Destroy
+			// Fracture
 			if (mouse_check_button_pressed(mb_right)) {
 				with (instance_position(mouse_x, mouse_y, objDemoSandboxShapeParent)) {
-					instance_destroy();
+					other.Fracture(id);
 				}
 			}
 		}
 	};
 	Draw = function() {
+		shape.Draw();
 		blast.Draw();
 	};
 	RefreshInterface = function() {
@@ -62,6 +56,10 @@ function DemoSandbox() : Demo("Sandbox") constructor {
 			instance_destroy(objDemoSandboxShapeParent);
 			instance_destroy(__objFracturePiece);
 		}, _w, _h);
+		
+		dbg_text(" Press [LMB] to spawn a shape.");
+		dbg_text(" Press [RMB] on a shape to fracture it.");
+		dbg_text_separator("");
 		
 		DbgSelector("Shape", shapes);
 		shape.RefreshInterface();

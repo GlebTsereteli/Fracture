@@ -3,8 +3,8 @@
   "%Name":"Fracture Info",
   "name":"Fracture Info",
   "parent":{
-    "name":"Fracture",
-    "path":"folders/Fracture.yy",
+    "name":"01 Public",
+    "path":"folders/Fracture/01 Public.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
