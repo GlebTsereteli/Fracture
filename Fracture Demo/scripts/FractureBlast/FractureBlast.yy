@@ -6,7 +6,7 @@
   "name":"FractureBlast",
   "parent":{
     "name":"03 Affectors",
-    "path":"folders/Fracture/01 Public/03 Affectors.yy",
+    "path":"folders/Fracture/03 Affectors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

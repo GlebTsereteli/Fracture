@@ -135,9 +135,12 @@ function DemoSandboxPatternCut() : DemoSandboxPattern("Cut") constructor {
 	};
 	static Draw = function() {
 		if (plotting) {
-			draw_line_width_color(x1, y1, x2, y2, 4, #00FF00, #00FF00);
-			draw_circle_color(x1, y1, 8, c_red, c_red, false);
-			draw_circle_color(x2, y2, 8, c_red, c_red, false);
+			var _lineColor = c_aqua;
+			draw_line_width_color(x1, y1, x2, y2, 4, _lineColor, _lineColor);
+			
+			var _circleColor = c_fuchsia;
+			draw_circle_color(x1, y1, 8, _circleColor, _circleColor, false);
+			draw_circle_color(x2, y2, 8, _circleColor, _circleColor, false);
 		}
 	};
 	

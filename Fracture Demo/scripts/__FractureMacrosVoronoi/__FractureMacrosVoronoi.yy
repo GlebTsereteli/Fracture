@@ -6,7 +6,7 @@
   "name":"__FractureMacrosVoronoi",
   "parent":{
     "name":"03 Macros",
-    "path":"folders/Fracture/02 Private/03 Macros.yy",
+    "path":"folders/Fracture/(System)/03 Macros.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

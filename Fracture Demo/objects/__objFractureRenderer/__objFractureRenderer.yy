@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"01 Core",
-    "path":"folders/Fracture/02 Private/01 Core.yy",
+    "path":"folders/Fracture/(System)/01 Core.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -6,7 +6,7 @@
   "name":"__FracturePointInHull",
   "parent":{
     "name":"02 Functions",
-    "path":"folders/Fracture/02 Private/02 Functions.yy",
+    "path":"folders/Fracture/(System)/02 Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
