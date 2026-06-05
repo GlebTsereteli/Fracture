@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__FractureInit",
   "parent":{
-    "name":"01 Core",
-    "path":"folders/Fracture/(System)/01 Core.yy",
+    "name":"Core",
+    "path":"folders/Fracture/(System)/Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

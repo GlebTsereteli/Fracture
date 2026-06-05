@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FractureBlast",
   "parent":{
-    "name":"03 Affectors",
-    "path":"folders/Fracture/03 Affectors.yy",
+    "name":"Affectors",
+    "path":"folders/Fracture/Affectors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

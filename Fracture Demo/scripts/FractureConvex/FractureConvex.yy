@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"FractureConvex",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"FractureConvex",
+  "parent":{
+    "name":"Fracture",
+    "path":"folders/Fracture.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

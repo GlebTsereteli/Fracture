@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__FractureParams",
   "parent":{
-    "name":"02 Functions",
-    "path":"folders/Fracture/(System)/02 Functions.yy",
+    "name":"Utilities",
+    "path":"folders/Fracture/(System)/Utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

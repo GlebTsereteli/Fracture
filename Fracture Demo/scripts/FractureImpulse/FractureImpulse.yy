@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FractureImpulse",
   "parent":{
-    "name":"02 Parameters",
-    "path":"folders/Fracture/02 Parameters.yy",
+    "name":"Parameters",
+    "path":"folders/Fracture/Parameters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
