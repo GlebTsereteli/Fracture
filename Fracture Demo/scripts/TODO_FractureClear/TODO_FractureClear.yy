@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TODO_FractureClear",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TODO_FractureClear",
+  "parent":{
+    "name":"Affectors",
+    "path":"folders/Fracture/Affectors.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

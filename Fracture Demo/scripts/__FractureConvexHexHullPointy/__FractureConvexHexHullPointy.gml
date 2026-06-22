@@ -1,7 +1,7 @@
 // feather ignore all
 
 /// @ignore
-function __FractureConvexHexPointy(_inst, _cols, _rows) {
+function __FractureConvexHexHullPointy(_inst, _cols, _rows) {
     __FRACTURE_START;
     __FRACTURE_CONVEX_HULL;
     

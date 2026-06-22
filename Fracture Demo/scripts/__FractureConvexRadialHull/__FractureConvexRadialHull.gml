@@ -5,7 +5,7 @@ function __FractureConvexRadialHull(_inst, _pieceCount, _angleNoise = 0.5, _orig
 	__FRACTURE_START;
 	_pieceCount = max(3, _pieceCount);
 	
-	var _hull = __FractureGetConvexHull(_inst);
+	var _hull = __FractureConvexGetHull(_inst);
 	var _nHull = array_length(_hull) / 2;
 	
 	#region Map origin

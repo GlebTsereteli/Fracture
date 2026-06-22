@@ -273,7 +273,7 @@ for (var _i = 0; _i < __FRACTURE_CIRCLE_PRECISION; _i++) { \
 }
 
 #macro __FRACTURE_CONVEX_HULL \
-var _hull = __FractureGetConvexHull(_inst); \
+var _hull = __FractureConvexGetHull(_inst); \
 var _nHull = array_length(_hull) / 2; \
 \
 var _edgesX1 = array_create(_nHull); \

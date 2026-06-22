@@ -4,7 +4,7 @@
 function __FractureConvexVoronoiHull(_inst, _pieceCount) {
 	__FRACTURE_START;
 	
-	var _hull = __FractureGetConvexHull(_inst);
+	var _hull = __FractureConvexGetHull(_inst);
 	var _nHull = array_length(_hull) / 2;
 	
 	// Seeds
