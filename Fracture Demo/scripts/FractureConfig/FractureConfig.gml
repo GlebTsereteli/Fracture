@@ -30,7 +30,7 @@
 #endregion
 #region Piece Fade
 
-// Automatically fade out and destroy Pieces over time (true) or not (false).
+// Automatically fade out Pieces over time and destroy them when faded (true) or not (false).
 #macro FRACTURE_FADE_ENABLED true
 
 // Begin fading only once a Piece has come to rest (true) or immediately after its delay (false).

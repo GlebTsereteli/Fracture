@@ -26,7 +26,7 @@ function DemoWalls() : Demo("Walls") constructor {
 				var _tile = Get(x, y);
 				if (_tile != noone) {
 					impulse.Set(x + size / 2, y + size / 2);
-					FractureBoxRadial(_tile, 6);
+					Fracture.ConvexRadial(_tile, FRACTURE_CONVEX_BOX, 6);
 					AutoTile(x, y);
 				}
 			}

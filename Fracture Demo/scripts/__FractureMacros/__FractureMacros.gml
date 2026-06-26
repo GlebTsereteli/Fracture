@@ -119,7 +119,7 @@ vertex_end(_vb); \
 vertex_freeze(_vb); \
 _state.__count = _pieceCount; \
 if (FRACTURE_AUTO_RESET) { \
-	Fracture.PieceReset(); \
+	Fracture.PhysicsReset(); \
 	Fracture.ImpulseReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \

@@ -171,41 +171,41 @@ function Fracture() {
 	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// Accepted fields: collisionGroup, density, restitution, friction, linearDamping, and angularDamping.
 	/// Any omitted fields remain at their current values.
-	/// If FRACTURE_AUTO_RESET is enabled, Piece properties reset automatically after any core Fracture method.
+	/// If FRACTURE_AUTO_RESET is enabled, physics properties reset automatically after any core Fracture method.
 	/// 
 	/// @param {Struct} config The physics configuration struct for Fracture Pieces.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Piece = function(_config) {
-		__FRACTURE_PARAMS {
-			__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
-			__density = _config[$ "density"] ?? __density;
-			__restitution = _config[$ "restitution"] ?? __restitution;
-			__friction = _config[$ "friction"] ?? __friction;
-			__linearDamping = _config[$ "linearDamping"] ?? __linearDamping;
-			__angularDamping = _config[$ "angularDamping"] ?? __angularDamping;
-		}
+	static Physics = function(_config) {
+	    __FRACTURE_PARAMS {
+	        __collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
+	        __density = _config[$ "density"] ?? __density;
+	        __restitution = _config[$ "restitution"] ?? __restitution;
+	        __friction = _config[$ "friction"] ?? __friction;
+	        __linearDamping = _config[$ "linearDamping"] ?? __linearDamping;
+	        __angularDamping = _config[$ "angularDamping"] ?? __angularDamping;
+	    }
 		
-		return self;
+	    return self;
 	}
-	
-	/// Resets all Fracture Piece physics properties to their default values. Existing Pieces are not affected.
+
+	/// Resets all Fracture physics properties to their default values. Existing Pieces are not affected.
 	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static PieceReset = function() {
-		__FRACTURE_PARAMS {
-			__collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
-			__density = FRACTURE_DEFAULT_DENSITY;
-			__restitution = FRACTURE_DEFAULT_RESTITUTION;
-			__friction = FRACTURE_DEFAULT_FRICTION;
-			__linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
-			__angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
-		}
+	static PhysicsReset = function() {
+	    __FRACTURE_PARAMS {
+	        __collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
+	        __density = FRACTURE_DEFAULT_DENSITY;
+	        __restitution = FRACTURE_DEFAULT_RESTITUTION;
+	        __friction = FRACTURE_DEFAULT_FRICTION;
+	        __linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
+	        __angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
+	    }
 		
-		return self;
+	    return self;
 	}
 	
 	/// Sets the layer to render all Fracture Pieces on.
@@ -264,6 +264,28 @@ function Fracture() {
 		
 		return self;
 	}
+	
+	/// TODO description
+	/// TODO params
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Push = function(_x, _y, _radius, _force) { // TODO
+		
+		
+		return self;
+	};
+	
+	/// TODO description
+	/// TODO params
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Erase = function(_x, _y, _radius) { // TODO
+		
+		
+		return self;
+	};
 	
 	#endregion
 	
