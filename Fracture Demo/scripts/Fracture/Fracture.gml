@@ -160,7 +160,7 @@ function Fracture() {
 	/// @self Fracture
 	static ImpulseReset = function() {
 		__FRACTURE_PARAMS {
-			__impulseForce = FRACTURE_IMPULSE_FORCE;
+			__impulseForce = FRACTURE_DEFAULT_IMPULSE_FORCE;
 			__impulseX = undefined;
 			__impulseY = undefined;
 		}
@@ -197,12 +197,12 @@ function Fracture() {
 	/// @self Fracture
 	static PieceReset = function() {
 		__FRACTURE_PARAMS {
-			__collisionGroup = FRACTURE_COLLISION_GROUP;
-			__density = FRACTURE_DENSITY;
-			__restitution = FRACTURE_RESTITUTION;
-			__friction = FRACTURE_FRICTION;
-			__linearDamping = FRACTURE_LINEAR_DAMPING;
-			__angularDamping = FRACTURE_ANGULAR_DAMPING;
+			__collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
+			__density = FRACTURE_DEFAULT_DENSITY;
+			__restitution = FRACTURE_DEFAULT_RESTITUTION;
+			__friction = FRACTURE_DEFAULT_FRICTION;
+			__linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
+			__angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
 		}
 		
 		return self;
@@ -277,14 +277,14 @@ function Fracture() {
 		return vertex_format_end();
 	})();
 	static __params = {
-		__collisionGroup: FRACTURE_COLLISION_GROUP,
-		__density: FRACTURE_DENSITY,
-		__restitution: FRACTURE_RESTITUTION,
-		__friction: FRACTURE_FRICTION,
-		__linearDamping: FRACTURE_LINEAR_DAMPING,
-		__angularDamping: FRACTURE_ANGULAR_DAMPING,
+		__collisionGroup: FRACTURE_DEFAULT_COLLISION_GROUP,
+		__density: FRACTURE_DEFAULT_DENSITY,
+		__restitution: FRACTURE_DEFAULT_RESTITUTION,
+		__friction: FRACTURE_DEFAULT_FRICTION,
+		__linearDamping: FRACTURE_DEFAULT_LINEAR_DAMPING,
+		__angularDamping: FRACTURE_DEFAULT_ANGULAR_DAMPING,
 		
-		__impulseForce: FRACTURE_IMPULSE_FORCE,
+		__impulseForce: FRACTURE_DEFAULT_IMPULSE_FORCE,
 		__impulseX: undefined,
 		__impulseY: undefined,
 	};

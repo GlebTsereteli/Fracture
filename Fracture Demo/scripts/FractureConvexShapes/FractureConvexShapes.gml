@@ -1,17 +1,16 @@
 // feather ignore all
 
-// This script defines the shape constants for the Convex module.
-// It is used internally by the library, and its contents should not be modified.
+// This script defines the shape constants for the Convex fracturing module.
+// They are used internally by the library, and their values MUST NOT be modified.
+// Pass these as the 'shape' argument to 'Fracture.Convex<Pattern>()' methods.
 
-// Passed as the shape argument to FractureConvex<Pattern>() functions.
-// Use the shape that best matches the target sprite. BOX is fastest and suits rectangles, CIRCLE suits
-// circular areas, and HULL suits convex polygons that are neither.
-
-// Rectangle, fills the full sprite area. No clipping, fastest.
+// Rectangle, fills the full sprite area. No clipping, fastest. Best for rectangular sprites.
 #macro FRACTURE_CONVEX_BOX 0
 
-// Circle, radius is half the largest sprite dimension. Clips pieces to the circle boundary, slower than BOX.
+// Circle, radius is half the largest sprite dimension.
+// Clips pieces to the circle boundary, slower than Box. Best for circular sprites.
 #macro FRACTURE_CONVEX_CIRCLE 1
 
-// Convex polygon, clipped to the sprite's convex hull. Clips pieces to the hull boundary, slowest.
+// Convex polygon. Clips pieces to the sprite's convex hull, slower than Box and Circle.
+// Best for sprites that are neither rectangular nor circular.
 #macro FRACTURE_CONVEX_HULL 2

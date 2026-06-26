@@ -7,7 +7,7 @@ image_yscale = image_xscale;
 image_index = irandom(image_number - 1);
 
 var _fx = physics_fixture_create(); {
-	physics_fixture_set_collision_group(_fx, FRACTURE_COLLISION_GROUP);
+	physics_fixture_set_collision_group(_fx, FRACTURE_DEFAULT_COLLISION_GROUP);
 	physics_fixture_set_polygon_shape(_fx);
 	
 	var _points = objDemoControl.convexPoints[$ sprite_get_name(sprite_index)];

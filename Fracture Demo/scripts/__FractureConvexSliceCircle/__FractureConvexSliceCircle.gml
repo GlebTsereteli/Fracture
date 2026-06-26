@@ -9,7 +9,7 @@ function __FractureConvexSliceCircle(_inst, _pieceCount, _cutAngle) {
 	
 	__FRACTURE_START;
 	
-	var _radius = min(_w, _h) / 2;
+	var _radius = max(_w, _h) / 2;
 	var _step = (_radius * 2) / _pieceCount;
 	
 	var _pieces = array_create(_pieceCount);
