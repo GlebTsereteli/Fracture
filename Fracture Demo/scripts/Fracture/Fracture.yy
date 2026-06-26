@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"TODO_FracturePush",
+  "%Name":"Fracture",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TODO_FracturePush",
+  "name":"Fracture",
   "parent":{
-    "name":"Affectors",
-    "path":"folders/Fracture/Affectors.yy",
+    "name":"Fracture",
+    "path":"folders/Fracture.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

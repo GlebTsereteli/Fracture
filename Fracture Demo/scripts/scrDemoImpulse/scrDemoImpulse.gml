@@ -4,7 +4,7 @@ function DemoImpulse(_force = 0) constructor {
 	onMouse = true;
 	
 	static Set = function(_x, _y) {
-		FractureImpulse(force,
+		Fracture.Impulse(force,
 			onMouse ? _x : undefined,
 			onMouse ? _y : undefined
 		);

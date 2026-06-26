@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__FractureMacros",
   "parent":{
-    "name":"Macros",
-    "path":"folders/Fracture/(System)/Macros.yy",
+    "name":"(System)",
+    "path":"folders/Fracture/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

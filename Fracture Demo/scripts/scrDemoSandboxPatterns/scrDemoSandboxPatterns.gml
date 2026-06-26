@@ -2,7 +2,7 @@
 
 function DemoSandboxPattern(_name) constructor {
     name = _name;
-    func = asset_get_index($"FractureConvex{name}");
+    methodName = $"Convex{name}";
     
     static Update = Noop;
     static Draw = Noop;
@@ -13,9 +13,11 @@ function DemoSandboxPattern(_name) constructor {
     };
     
     static Fracture = function(_inst, _shape) {
-        var _args = GetArguments();
+		var _args = GetArguments();
         array_insert(_args, 0, _inst, _shape);
-        method_call(func, _args);
+		
+		var _method = static_get(Fracture)[$ methodName];
+        method_call(_method, _args);
     };
 }
 

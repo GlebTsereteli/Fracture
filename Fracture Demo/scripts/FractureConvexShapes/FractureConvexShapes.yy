@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"FractureConvexShapes",
   "parent":{
-    "name":"01 Convex",
-    "path":"folders/Fracture/Modules/01 Convex.yy",
+    "name":"Fracture",
+    "path":"folders/Fracture.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -51,9 +51,8 @@ var _v0 = _uvs[1]; \
 var _u1 = _uvs[2]; \
 var _v1 = _uvs[3]; \
 \
-static _format = __FractureFormat(); \
 var _vb = vertex_create_buffer(); \
-vertex_begin(_vb, _format); \
+vertex_begin(_vb, Fracture.__format); \
 var _vertexOffset = 0; \
 \
 var _state = { \
@@ -61,7 +60,7 @@ var _state = { \
 	__count: 0, \
 } \
 \
-static _params = __FractureParams(); \
+static _params = Fracture.__params; \
 var _collisionGroup = _params.__collisionGroup; \
 var _density = _params.__density; \
 var _restitution = _params.__restitution; \
@@ -120,8 +119,8 @@ vertex_end(_vb); \
 vertex_freeze(_vb); \
 _state.__count = _pieceCount; \
 if (FRACTURE_AUTO_RESET) { \
-	FracturePieceReset(); \
-	FractureImpulseReset(); \
+	Fracture.PieceReset(); \
+	Fracture.ImpulseReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \
 	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {__FRACTURE_BENCH_END}ms"); \
@@ -133,7 +132,7 @@ return _pieces;
 #region Misc
 
 #macro __FRACTURE_PARAMS \
-static _params = __FractureParams(); \
+static _params = Fracture.__params; \
 with (_params)
 
 #macro __FRACTURE_RANDOM_ANGLES \

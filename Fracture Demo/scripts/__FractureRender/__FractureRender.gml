@@ -1,5 +1,6 @@
 // feather ignore all
 
+/// @ignore
 function __FractureRender() {
 	static _matrix = matrix_build_identity();
 	static _uAlpha = shader_get_uniform(__shdFracture, "uAlpha");
