@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__FractureConvexClipping",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__FractureConvexClipping",
+  "parent":{
+    "name":"Convex",
+    "path":"folders/Fracture/(System)/Convex.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

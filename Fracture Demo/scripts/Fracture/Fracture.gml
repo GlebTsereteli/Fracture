@@ -133,41 +133,6 @@ function Fracture() {
 	#endregion
 	#region Settings
 	
-	/// Sets the impulse force and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
-	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
-	/// 
-	/// @param {Real} force The force of the impulse applied to Fracture Pieces.
-	/// @param {Real} x The world x position of the impulse origin. [Default: undefined, instance center]
-	/// @param {Real} y The world y position of the impulse origin. [Default: undefined, instance center]
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static Impulse = function(_force, _x = undefined, _y = undefined) {
-		__FRACTURE_PARAMS {
-			__impulseForce = _force;
-			__impulseX = _x;
-			__impulseY = _y;
-		}
-		
-		return self;
-	}
-	
-	/// Resets the impulse force and origin to their default values. Existing Pieces are not affected.
-	/// When undefined, the impulse originates from the center of the fractured instance.
-	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static ImpulseReset = function() {
-		__FRACTURE_PARAMS {
-			__impulseForce = FRACTURE_DEFAULT_IMPULSE_FORCE;
-			__impulseX = undefined;
-			__impulseY = undefined;
-		}
-		
-		return self;
-	}
-	
 	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// Accepted fields: collisionGroup, density, restitution, friction, linearDamping, and angularDamping.
 	/// Any omitted fields remain at their current values.
@@ -178,7 +143,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static Physics = function(_config) {
-	    __FRACTURE_PARAMS {
+		with (__physics) {
 	        __collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
 	        __density = _config[$ "density"] ?? __density;
 	        __restitution = _config[$ "restitution"] ?? __restitution;
@@ -196,7 +161,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static PhysicsReset = function() {
-	    __FRACTURE_PARAMS {
+	    with (__physics) {
 	        __collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
 	        __density = FRACTURE_DEFAULT_DENSITY;
 	        __restitution = FRACTURE_DEFAULT_RESTITUTION;
@@ -206,6 +171,41 @@ function Fracture() {
 	    }
 		
 	    return self;
+	}
+	
+	/// Sets the impulse force and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
+	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
+	/// 
+	/// @param {Real} power The power of the impulse applied to Fracture Pieces.
+	/// @param {Real} x The world x position of the impulse origin. [Default: undefined, instance center]
+	/// @param {Real} y The world y position of the impulse origin. [Default: undefined, instance center]
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Impulse = function(_power, _x = undefined, _y = undefined) {
+		with (__impulse) {
+			__power = _power;
+			__x = _x;
+			__y = _y;
+		}
+		
+		return self;
+	}
+	
+	/// Resets the impulse force and origin to their default values. Existing Pieces are not affected.
+	/// When undefined, the impulse originates from the center of the fractured instance.
+	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static ImpulseReset = function() {
+		with (__impulse) {
+			__force = FRACTURE_DEFAULT_IMPULSE_POWER;
+			__x = undefined;
+			__y = undefined;
+		}
+		
+		return self;
 	}
 	
 	/// Sets the layer to render all Fracture Pieces on.
@@ -244,22 +244,14 @@ function Fracture() {
 	/// @param {Real} x The x position of the blast.
 	/// @param {Real} y The y position of the blast.
 	/// @param {Real} radius The radius of the blast area.
-	/// @param {Real} force The impulse force applied to each affected Piece. Passing a negative value pulls Pieces towards the blast position.
+	/// @param {Real} power The impulse power applied to each affected Piece. Passing a negative value pulls Pieces towards the blast position.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Blast = function(_x, _y, _radius, _force) {
-		static _tempFx = (function() {
-			var _fx = physics_fixture_create();
-			physics_fixture_set_sensor(_fx, true);
-			return _fx;
-		})();
-		
-		with (instance_create_depth(_x, _y, 0, __objFractureBlast)) {
-			physics_fixture_set_circle_shape(_tempFx, _radius);
-			physics_fixture_set_collision_group(_tempFx, __params.__collisionGroup);
-			__fixture = physics_fixture_bind(_tempFx, id);
-			__force = _force;
+	static Blast = function(_x, _y, _radius, _power) {
+		var _obj = __objFractureBlast;
+		__FRACTURE_AFFECTOR
+			__power = _power;
 		}
 		
 		return self;
@@ -291,6 +283,7 @@ function Fracture() {
 	
 	#region __private
 	
+	/// @ignore
 	static __format = (function() {
 		vertex_format_begin();
 		vertex_format_add_position();
@@ -298,17 +291,22 @@ function Fracture() {
 		vertex_format_add_texcoord();
 		return vertex_format_end();
 	})();
-	static __params = {
+	
+	/// @ignore
+	static __physics = {
 		__collisionGroup: FRACTURE_DEFAULT_COLLISION_GROUP,
 		__density: FRACTURE_DEFAULT_DENSITY,
 		__restitution: FRACTURE_DEFAULT_RESTITUTION,
 		__friction: FRACTURE_DEFAULT_FRICTION,
 		__linearDamping: FRACTURE_DEFAULT_LINEAR_DAMPING,
 		__angularDamping: FRACTURE_DEFAULT_ANGULAR_DAMPING,
-		
-		__impulseForce: FRACTURE_DEFAULT_IMPULSE_FORCE,
-		__impulseX: undefined,
-		__impulseY: undefined,
+	};
+	
+	/// @ignore
+	static __impulse = {
+		__power: FRACTURE_DEFAULT_IMPULSE_POWER,
+		__x: undefined,
+		__y: undefined,
 	};
 	
 	#endregion

@@ -3,8 +3,8 @@
   "%Name":"__shdFracture",
   "name":"__shdFracture",
   "parent":{
-    "name":"Core",
-    "path":"folders/Fracture/(System)/Core.yy",
+    "name":"(System)",
+    "path":"folders/Fracture/(System).yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

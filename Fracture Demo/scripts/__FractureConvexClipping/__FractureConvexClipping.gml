@@ -1,5 +1,6 @@
 // feather ignore all
 
+/// @ignore
 function __FracturePolygonClip(_polygon, _clipPolygon) {
 	static _maxVerts = max(__FRACTURE_CIRCLE_PRECISION, __FRACTURE_CONVEX_HULL_PRECISION) + 4;
 	static _bufferA = array_create(_maxVerts * 2, 0);
@@ -86,6 +87,8 @@ function __FracturePolygonClip(_polygon, _clipPolygon) {
 	
 	return _result;
 }
+
+/// @ignore
 function __FracturePolygonClipHalfPlane(_polygon, _bisectorX, _bisectorY, _normalX, _normalY) {
 	var _n = array_length(_polygon) / 2;
 	if (_n == 0) return [];

@@ -60,18 +60,19 @@ var _state = { \
 	__count: 0, \
 } \
 \
-static _params = Fracture.__params; \
-var _collisionGroup = _params.__collisionGroup; \
-var _density = _params.__density; \
-var _restitution = _params.__restitution; \
-var _friction = _params.__friction; \
-var _linearDamping = _params.__linearDamping; \
-var _angularDamping = _params.__angularDamping; \
+static _physics = Fracture.__physics; \
+var _collisionGroup = _physics.__collisionGroup; \
+var _density = _physics.__density; \
+var _restitution = _physics.__restitution; \
+var _friction = _physics.__friction; \
+var _linearDamping = _physics.__linearDamping; \
+var _angularDamping = _physics.__angularDamping; \
 \
-var _impulseForce = _params.__impulseForce; \
-var _impulseX = _params.__impulseX; \
-var _impulseY = _params.__impulseY; \
-var _impulseHasOrigin = (_impulseX != undefined and _impulseY != undefined);
+static _impulse = Fracture.__impulse; \
+var _impulsePower = _impulse.__power; \
+var _impulseX = _impulse.__x; \
+var _impulseY = _impulse.__y; \
+var _impulseHasOrigin = (_impulseX != undefined) and (_impulseY != undefined);
 
 #macro __FRACTURE_PIECE \
 var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
@@ -104,13 +105,13 @@ if (_physical) { \
 	phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
 } \
-if (_impulseForce != 0) { \
+if (_impulsePower != 0) { \
     var _impDir = _impulseHasOrigin ? point_direction(_impulseX, _impulseY, x, y) : _dir; \
 	physics_apply_impulse( \
 		_impulseHasOrigin ? _impulseX : x, \
 		_impulseHasOrigin ? _impulseY : y, \
-	    lengthdir_x(_impulseForce, _impDir), \
-	    lengthdir_y(_impulseForce, _impDir) \
+	    lengthdir_x(_impulsePower, _impDir), \
+	    lengthdir_y(_impulsePower, _impDir) \
 	); \
 }
 
@@ -128,39 +129,17 @@ if (FRACTURE_BENCHMARK) { \
 instance_destroy(_inst); \
 return _pieces;
 
-#endregion
-#region Misc
-
-#macro __FRACTURE_PARAMS \
-static _params = Fracture.__params; \
-with (_params)
-
-#macro __FRACTURE_RANDOM_ANGLES \
-var _angles = array_create(_pieceCount + 1); \
-var _weights = array_create(_pieceCount); \
-var _totalWeight = 0; \
-for (var _i = 0; _i < _pieceCount; _i++) { \
-    var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
-    _weights[_i] = _weight; \
-    _totalWeight += _weight; \
-} \
+#macro __FRACTURE_AFFECTOR \
+static _fx = __affectorFixture; \
+static _physics = __physics; \
 \
-_angles[0] = random(360); \
-for (var _i = 0; _i < _pieceCount; _i++) { \
-    _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
-}
-
-#macro __FRACTURE_MAP_ORIGIN \
-var _offsetX = _originX - _inst.x; \
-var _offsetY = _originY - _inst.y; \
-var _offsetDist = point_distance(0, 0, _offsetX, _offsetY); \
-var _offsetDir = point_direction(0, 0, _offsetX, _offsetY); \
-_originX = _inst.x + lengthdir_x(_offsetDist, _offsetDir + _angle); \
-_originY = _inst.y + lengthdir_y(_offsetDist, _offsetDir + _angle); \
-_originX -= _inst.x - _centerX; \
-_originY -= _inst.y - _centerY;
+with (instance_create_depth(_x, _y, 0, _obj)) { \
+	physics_fixture_set_circle_shape(_fx, _radius); \
+	physics_fixture_set_collision_group(_fx, _physics.__collisionGroup); \
+	__fixture = physics_fixture_bind(_fx, id);
 
 #endregion
+
 #region Vertices
 
 #macro __FRACTURE_VCOLOR vertex_color(_vb, _color, 1);
@@ -169,6 +148,9 @@ _originY -= _inst.y - _centerY;
 vertex_position(_vb, _px, _py); \
 __FRACTURE_VCOLOR; \
 vertex_texcoord(_vb, lerp(_u0, _u1, (_ox + _px) / _w), lerp(_v0, _v1, (_oy + _py) / _h));
+
+#endregion
+#region Box
 
 #macro __FRACTURE_BOX_TRI \
 var _cmx = mean(_ax, _bx, _cx); \
@@ -353,5 +335,33 @@ if (_vertCount >= 3) { \
 
 #macro __FRACTURE_BENCH_START var _benchTime = get_timer();
 #macro __FRACTURE_BENCH_END ((get_timer() - _benchTime) / 1000)
+
+#endregion
+#region Misc
+
+#macro __FRACTURE_RANDOM_ANGLES \
+var _angles = array_create(_pieceCount + 1); \
+var _weights = array_create(_pieceCount); \
+var _totalWeight = 0; \
+for (var _i = 0; _i < _pieceCount; _i++) { \
+    var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
+    _weights[_i] = _weight; \
+    _totalWeight += _weight; \
+} \
+\
+_angles[0] = random(360); \
+for (var _i = 0; _i < _pieceCount; _i++) { \
+    _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
+}
+
+#macro __FRACTURE_MAP_ORIGIN \
+var _offsetX = _originX - _inst.x; \
+var _offsetY = _originY - _inst.y; \
+var _offsetDist = point_distance(0, 0, _offsetX, _offsetY); \
+var _offsetDir = point_direction(0, 0, _offsetX, _offsetY); \
+_originX = _inst.x + lengthdir_x(_offsetDist, _offsetDir + _angle); \
+_originY = _inst.y + lengthdir_y(_offsetDist, _offsetDir + _angle); \
+_originX -= _inst.x - _centerX; \
+_originY -= _inst.y - _centerY;
 
 #endregion

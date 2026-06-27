@@ -1,6 +1,10 @@
 
 # Fracture v1.0.0 Demo
 
+TODO about demo
+TODO help
+TODO first open
+
 # Credits
 
 - [runtile-for-gamemaker](https://github.com/attic-stuff/runtile-for-gamemaker) by [attic-stuff](https://github.com/attic-stuff), adapted to work with objects instead of tiles in the `Walls` demo.

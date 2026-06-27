@@ -10,8 +10,8 @@ function DemoSandboxBlast() constructor {
 		showTimer = max(showTimer - 1, 0);
 		
 		if (keyboard_check_pressed(ord("B"))) {
-			FractureBlast(mouse_x, mouse_y, radius, force);
-
+			Fracture.Blast(mouse_x, mouse_y, radius, force);
+			
 			x = mouse_x;
 			y = mouse_y;
 			showTimer = 5;

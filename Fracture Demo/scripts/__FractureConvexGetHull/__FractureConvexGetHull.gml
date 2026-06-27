@@ -1,5 +1,6 @@
 // feather ignore all
 
+/// @ignore
 function __FractureConvexGetHull(_inst) {
 	static _hulls = {};
 	

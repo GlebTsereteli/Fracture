@@ -10,8 +10,8 @@
   "name":"__objFractureBlast",
   "overriddenProperties":[],
   "parent":{
-    "name":"Core",
-    "path":"folders/Fracture/(System)/Core.yy",
+    "name":"(System)",
+    "path":"folders/Fracture/(System).yy",
   },
   "parentObjectId":null,
   "persistent":false,
