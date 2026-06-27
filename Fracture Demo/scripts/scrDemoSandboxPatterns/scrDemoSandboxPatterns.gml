@@ -136,10 +136,10 @@ function DemoSandboxPatternCut() : DemoSandboxPattern("Cut") constructor {
     };
     static Draw = function() {
         if (plotting) {
-            var _lineColor = c_aqua;
+            var _lineColor = c_black;
             draw_line_width_color(x1, y1, x2, y2, 4, _lineColor, _lineColor);
             
-            var _circleColor = c_fuchsia;
+            var _circleColor = c_black;
             draw_circle_color(x1, y1, 8, _circleColor, _circleColor, false);
             draw_circle_color(x2, y2, 8, _circleColor, _circleColor, false);
         }

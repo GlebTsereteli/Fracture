@@ -309,5 +309,12 @@ function Fracture() {
 		__y: undefined,
 	};
 	
+	/// @ignore
+	static __affectorFixture = (function() {
+		var _fx = physics_fixture_create();
+		physics_fixture_set_sensor(_fx, true);
+		return _fx;
+	})();
+	
 	#endregion
 }
