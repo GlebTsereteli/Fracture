@@ -24,7 +24,7 @@
 // Default outward impulse strength applied to each Piece after fracturing.
 #macro FRACTURE_DEFAULT_IMPULSE_STRENGTH 0
 
-// Automatically reset Piece and Impulse parameters after each fracture call (true) or not (false).
+// Automatically reset Physics and Impulse parameters after each fracture call (true) or not (false).
 #macro FRACTURE_AUTO_RESET true
 
 #endregion
@@ -52,6 +52,7 @@
 #region Miscellaneous
 
 // Log the time taken for each fracture call to the Output window (true) or not (false).
-#macro FRACTURE_BENCHMARK true
+// Defaults to enabled when running the game from the IDE.
+#macro FRACTURE_BENCHMARK FRACTURE_IN_IDE
 
 #endregion

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"FractureConvexShapes",
+  "%Name":"FractureConstants",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"FractureConvexShapes",
+  "name":"FractureConstants",
   "parent":{
     "name":"Fracture",
     "path":"folders/Fracture.yy",

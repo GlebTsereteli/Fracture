@@ -90,7 +90,7 @@ function Fracture() {
 	}
 	
 	/// Fractures the given convex instance into a radial pattern of Pieces clipped to the shape boundary, defined by the number of Pieces.
-	/// Optional noise varies the angular size of each Piece and an optional origin sets the radial origin.
+	/// Optional noise varies the angular size of each Piece, and an optional point sets the radial origin.
 	/// The instance is destroyed automatically after fracturing.
 	/// Returns an array of the created Piece instances.
 	/// 
@@ -176,7 +176,7 @@ function Fracture() {
 		
 		return self;
 	}
-
+	
 	/// Resets all Fracture physics properties to their default values. Existing Pieces are not affected.
 	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
 	/// 
@@ -202,8 +202,8 @@ function Fracture() {
 	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
 	/// 
 	/// @param {Real} strength The strength of the impulse applied to Fracture Pieces.
-	/// @param {Real} x The world x position of the impulse origin. [Default: undefined, instance center]
-	/// @param {Real} y The world y position of the impulse origin. [Default: undefined, instance center]
+	/// @param {Real} x The world x position of the impulse origin. [Default: center]
+	/// @param {Real} y The world y position of the impulse origin. [Default: center]
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
@@ -218,7 +218,6 @@ function Fracture() {
 	}
 	
 	/// Resets the impulse strength and origin to their default values. Existing Pieces are not affected.
-	/// When undefined, the impulse originates from the center of the fractured instance.
 	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
 	/// 
 	/// @return {Struct.Fracture}

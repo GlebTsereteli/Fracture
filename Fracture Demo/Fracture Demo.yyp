@@ -102,7 +102,7 @@
     {"id":{"name":"DemoWallsSkin","path":"scripts/DemoWallsSkin/DemoWallsSkin.yy",},},
     {"id":{"name":"Fracture","path":"scripts/Fracture/Fracture.yy",},},
     {"id":{"name":"FractureConfig","path":"scripts/FractureConfig/FractureConfig.yy",},},
-    {"id":{"name":"FractureConvexShapes","path":"scripts/FractureConvexShapes/FractureConvexShapes.yy",},},
+    {"id":{"name":"FractureConstants","path":"scripts/FractureConstants/FractureConstants.yy",},},
     {"id":{"name":"scrDemo","path":"scripts/scrDemo/scrDemo.yy",},},
     {"id":{"name":"scrDemoBlast","path":"scripts/scrDemoBlast/scrDemoBlast.yy",},},
     {"id":{"name":"scrDemoImpulse","path":"scripts/scrDemoImpulse/scrDemoImpulse.yy",},},
