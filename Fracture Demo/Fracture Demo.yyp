@@ -35,7 +35,6 @@
     {"$GMFolder":"","%Name":"05 Radial","folderPath":"folders/Fracture/(System)/Convex/05 Radial.yy","name":"05 Radial","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/Fracture/(System)/Convex/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/Fracture/(System)/Convex/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"08 Cut","folderPath":"folders/Fracture/(System)/Convex/08 Cut.yy","name":"08 Cut","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Blast","folderPath":"folders/Demo/Misc/Blast.yy","name":"Blast","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],

@@ -83,7 +83,6 @@ function DemoSandbox() : Demo("Sandbox") constructor {
         new DemoSandboxPatternRadial(),
         new DemoSandboxPatternSlice(),
         new DemoSandboxPatternVoronoi(),
-        new DemoSandboxPatternCut(),
     ];
     pattern = array_first(patterns);
     prevPattern = pattern;
