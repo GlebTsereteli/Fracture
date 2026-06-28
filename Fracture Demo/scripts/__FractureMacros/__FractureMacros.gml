@@ -60,7 +60,7 @@ var _state = { \
 	__count: 0, \
 } \
 \
-static _physics = Fracture.__physics; \
+/*@ignore*/ static _physics = Fracture.__physics; \
 var _collisionGroup = _physics.__collisionGroup; \
 var _density = _physics.__density; \
 var _restitution = _physics.__restitution; \
@@ -68,8 +68,8 @@ var _friction = _physics.__friction; \
 var _linearDamping = _physics.__linearDamping; \
 var _angularDamping = _physics.__angularDamping; \
 \
-static _impulse = Fracture.__impulse; \
-var _impulsePower = _impulse.__power; \
+/*@ignore*/ static _impulse = Fracture.__impulse; \
+var _impulseStrength = _impulse.__strength; \
 var _impulseX = _impulse.__x; \
 var _impulseY = _impulse.__y; \
 var _impulseHasOrigin = (_impulseX != undefined) and (_impulseY != undefined);
@@ -105,13 +105,13 @@ if (_physical) { \
 	phy_linear_velocity_y = _inst.phy_linear_velocity_y; \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
 } \
-if (_impulsePower != 0) { \
+if (_impulseStrength != 0) { \
     var _impDir = _impulseHasOrigin ? point_direction(_impulseX, _impulseY, x, y) : _dir; \
 	physics_apply_impulse( \
 		_impulseHasOrigin ? _impulseX : x, \
 		_impulseHasOrigin ? _impulseY : y, \
-	    lengthdir_x(_impulsePower, _impDir), \
-	    lengthdir_y(_impulsePower, _impDir) \
+	    lengthdir_x(_impulseStrength, _impDir), \
+	    lengthdir_y(_impulseStrength, _impDir) \
 	); \
 }
 
@@ -130,8 +130,8 @@ instance_destroy(_inst); \
 return _pieces;
 
 #macro __FRACTURE_AFFECTOR \
-static _fx = __affectorFixture; \
-static _physics = __physics; \
+/*@ignore*/ static _fx = __affectorFixture; \
+/*@ignore*/ static _physics = __physics; \
 \
 with (instance_create_depth(_x, _y, 0, _obj)) { \
 	physics_fixture_set_circle_shape(_fx, _radius); \

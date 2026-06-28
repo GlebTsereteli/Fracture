@@ -5,5 +5,4 @@ if (os_browser != browser_not_a_browser) {
 }
 
 Fracture();
-
 __FractureLog($"You're using {__FRACTURE_NAME} {__FRACTURE_VERSION} ({__FRACTURE_DATE}) by Gleb Tsereteli");

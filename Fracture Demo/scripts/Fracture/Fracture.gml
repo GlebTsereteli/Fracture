@@ -22,7 +22,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexGrid = function(_inst, _shape, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
-		static _funcs = [__FractureConvexGridBox, __FractureConvexGridCircle, __FractureConvexGridHull];
+		/*@ignore*/ static _funcs = [__FractureConvexGridBox, __FractureConvexGridCircle, __FractureConvexGridHull];
 		return _funcs[_shape](_inst, _cols, _rows, _noiseX, _noiseY);
 	}
 	
@@ -40,7 +40,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexBrick = function(_inst, _shape, _cols, _rows, _horizontal = true) {
-		static _funcs = [__FractureConvexBrickBox, __FractureConvexBrickCircle, __FractureConvexBrickHull];
+		/*@ignore*/ static _funcs = [__FractureConvexBrickBox, __FractureConvexBrickCircle, __FractureConvexBrickHull];
 		return _funcs[_shape](_inst, _cols, _rows, _horizontal);
 	}
 	
@@ -56,7 +56,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexDiamond = function(_inst, _shape, _cols, _rows) {
-		static _funcs = [__FractureConvexDiamondBox, __FractureConvexDiamondCircle, __FractureConvexDiamondHull];
+		/*@ignore*/ static _funcs = [__FractureConvexDiamondBox, __FractureConvexDiamondCircle, __FractureConvexDiamondHull];
 		return _funcs[_shape](_inst, _cols, _rows);
 	}
 	
@@ -73,7 +73,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexHex = function(_inst, _shape, _cols, _rows, _flat = true) {
-		static _funcs = [__FractureConvexHexBox, __FractureConvexHexCircle, __FractureConvexHexHull];
+		/*@ignore*/ static _funcs = [__FractureConvexHexBox, __FractureConvexHexCircle, __FractureConvexHexHull];
 		return _funcs[_shape](_inst, _cols, _rows, _flat);
 	}
 	
@@ -92,7 +92,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexRadial = function(_inst, _shape, _pieceCount, _angleNoise = 0, _originX = undefined, _originY = undefined) {
-		static _funcs = [__FractureConvexRadialBox, __FractureConvexRadialCircle, __FractureConvexRadialHull];
+		/*@ignore*/ static _funcs = [__FractureConvexRadialBox, __FractureConvexRadialCircle, __FractureConvexRadialHull];
 		return _funcs[_shape](_inst, _pieceCount, _angleNoise, _originX, _originY);
 	}
 	
@@ -109,7 +109,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexSlice = function(_inst, _shape, _pieceCount, _cutAngle = random(360)) {
-		static _funcs = [__FractureConvexSliceBox, __FractureConvexSliceCircle, __FractureConvexSliceHull];
+		/*@ignore*/ static _funcs = [__FractureConvexSliceBox, __FractureConvexSliceCircle, __FractureConvexSliceHull];
 		return _funcs[_shape](_inst, _pieceCount, _cutAngle);
 	}
 	
@@ -126,7 +126,7 @@ function Fracture() {
 	/// @return {Array<Id.Instance of __objFracturePiece>}
 	/// @self Fracture
 	static ConvexVoronoi = function(_inst, _shape, _pieceCount, _noise = 1) {
-		static _funcs = [__FractureConvexVoronoiBox, __FractureConvexVoronoiCircle, __FractureConvexVoronoiHull];
+		/*@ignore*/ static _funcs = [__FractureConvexVoronoiBox, __FractureConvexVoronoiCircle, __FractureConvexVoronoiHull];
 		return _funcs[_shape](_inst, _pieceCount, _noise);
 	}
 	
@@ -173,18 +173,18 @@ function Fracture() {
 	    return self;
 	}
 	
-	/// Sets the impulse force and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
+	/// Sets the impulse strength and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
 	/// 
-	/// @param {Real} power The power of the impulse applied to Fracture Pieces.
+	/// @param {Real} strength The strength of the impulse applied to Fracture Pieces.
 	/// @param {Real} x The world x position of the impulse origin. [Default: undefined, instance center]
 	/// @param {Real} y The world y position of the impulse origin. [Default: undefined, instance center]
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Impulse = function(_power, _x = undefined, _y = undefined) {
+	static Impulse = function(_strength, _x = undefined, _y = undefined) {
 		with (__impulse) {
-			__power = _power;
+			__strength = _strength;
 			__x = _x;
 			__y = _y;
 		}
@@ -192,7 +192,7 @@ function Fracture() {
 		return self;
 	}
 	
-	/// Resets the impulse force and origin to their default values. Existing Pieces are not affected.
+	/// Resets the impulse strength and origin to their default values. Existing Pieces are not affected.
 	/// When undefined, the impulse originates from the center of the fractured instance.
 	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
 	/// 
@@ -200,7 +200,7 @@ function Fracture() {
 	/// @self Fracture
 	static ImpulseReset = function() {
 		with (__impulse) {
-			__force = FRACTURE_DEFAULT_IMPULSE_POWER;
+			__strength = FRACTURE_DEFAULT_IMPULSE_STRENGTH;
 			__x = undefined;
 			__y = undefined;
 		}
@@ -239,19 +239,19 @@ function Fracture() {
 	#endregion
 	#region Affectors
 	
-	/// Applies an impulse to all Fracture Pieces within the given radius. Positive force pushes Pieces away, negative force pulls them in.
+	/// Applies an impulse to all Fracture Pieces within the given radius. Positive strength pushes Pieces away, negative strength pulls them in.
 	/// 
 	/// @param {Real} x The x position of the blast.
 	/// @param {Real} y The y position of the blast.
 	/// @param {Real} radius The radius of the blast area.
-	/// @param {Real} power The impulse power applied to each affected Piece. Passing a negative value pulls Pieces towards the blast position.
+	/// @param {Real} strength The impulse strength applied to each affected Piece. Passing a negative value pulls Pieces towards the blast position.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Blast = function(_x, _y, _radius, _power) {
+	static Blast = function(_x, _y, _radius, _strength) {
 		var _obj = __objFractureBlast;
 		__FRACTURE_AFFECTOR
-			__power = _power;
+			__strength = _strength;
 		}
 		
 		return self;
@@ -304,7 +304,7 @@ function Fracture() {
 	
 	/// @ignore
 	static __impulse = {
-		__power: FRACTURE_DEFAULT_IMPULSE_POWER,
+		__strength: FRACTURE_DEFAULT_IMPULSE_STRENGTH,
 		__x: undefined,
 		__y: undefined,
 	};

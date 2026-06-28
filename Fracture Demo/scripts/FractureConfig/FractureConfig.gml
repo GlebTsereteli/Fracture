@@ -21,8 +21,8 @@
 // Default angular damping assigned to all Piece fixtures.
 #macro FRACTURE_DEFAULT_ANGULAR_DAMPING 0.1
 
-// Default outward impulse power applied to each Piece after fracturing.
-#macro FRACTURE_DEFAULT_IMPULSE_POWER 0
+// Default outward impulse strength applied to each Piece after fracturing.
+#macro FRACTURE_DEFAULT_IMPULSE_STRENGTH 0
 
 // Automatically reset Piece and Impulse parameters after each fracture call (true) or not (false).
 #macro FRACTURE_AUTO_RESET true
