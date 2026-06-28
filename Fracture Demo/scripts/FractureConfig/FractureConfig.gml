@@ -53,6 +53,6 @@
 
 // Log the time taken for each fracture call to the Output window (true) or not (false).
 // Defaults to enabled when running the game from the IDE.
-#macro FRACTURE_BENCHMARK FRACTURE_IN_IDE
+#macro FRACTURE_BENCHMARK (GM_build_type == "run")
 
 #endregion

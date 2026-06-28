@@ -4,13 +4,7 @@
 // This script defines constants used internally by the Fracture library.
 // Their values MUST NOT be modified.
 
-#region General
-
-// Whether the game is running in the IDE (true) or a compiled EXE build (false).
-#macro FRACTURE_IN_IDE (GM_build_type == "run")
-
-#endregion
-#region Convex
+#region Convex Shapes
 
 // Shape constants passed as the 'shape' argument to 'Fracture.Convex<Pattern>()' methods.
 

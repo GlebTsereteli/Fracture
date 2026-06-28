@@ -31,8 +31,8 @@ function DemoSandbox() : Demo("Sandbox") constructor {
         blast.Draw();
     };
     RefreshInterface = function() {
-        var _w = 123;
-        var _h = 25;
+        var _w = 90;
+        var _h = 20;
         dbg_button("Spawn", function() {
             var _pad = 150;
             repeat (5) {
@@ -53,9 +53,13 @@ function DemoSandbox() : Demo("Sandbox") constructor {
             impulse.onMouse = _prevOnMouse;
         }, _w, _h);
         dbg_same_line();
+        dbg_button("Fade", function() {
+			Fracture.Fade();
+        }, _w, _h);
+        dbg_same_line();
         dbg_button("Clear", function() {
             instance_destroy(objDemoSandboxShapeParent);
-            instance_destroy(__objFracturePiece);
+			Fracture.Clear();
         }, _w, _h);
         
         dbg_text(" Press [LMB] to spawn a shape.");

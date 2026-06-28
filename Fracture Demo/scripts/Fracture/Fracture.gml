@@ -265,6 +265,38 @@ function Fracture() {
 	
 	#endregion
 	
+	#region Lifecycle
+	
+	/// Destroys all existing Fracture Pieces immediately.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Clear = function() {
+		instance_destroy(__objFracturePiece);
+		
+		return self;
+	}
+	
+	/// Begins fading out all existing Fracture Pieces immediately.
+	/// Requires FRACTURE_FADE_ENABLED to be true.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Fade = function() {
+		if (not FRACTURE_FADE_ENABLED) {
+			__FractureError("Fade(): FRACTURE_FADE_ENABLED must be enabled to fade Pieces");
+		}
+		
+		with (__objFracturePiece) {
+			__settled = true;
+			__fadeDelay = 0;
+		}
+		
+		return self;
+	}
+	
+	#endregion
+	
 	#region __private
 	
 	/// @ignore
