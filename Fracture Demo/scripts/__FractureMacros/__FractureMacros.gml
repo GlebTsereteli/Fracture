@@ -24,6 +24,11 @@ if (not instance_exists(__objFractureRenderer)) { \
     instance_create_depth(0, 0, 0, __objFractureRenderer); \
 }
 
+#macro __FRACTURE_VALIDATE_SHAPE \
+if (_shape != FRACTURE_CONVEX_BOX and _shape != FRACTURE_CONVEX_CIRCLE and _shape != FRACTURE_CONVEX_HULL) { \
+	__FractureError($"Invalid shape constant <{_shape}>. Expected FRACTURE_CONVEX_BOX, FRACTURE_CONVEX_CIRCLE, or FRACTURE_CONVEX_HULL"); \
+}
+
 #macro __FRACTURE_START \
 static _cell = array_create(8); \
 var _px = 0, _py = 0; \

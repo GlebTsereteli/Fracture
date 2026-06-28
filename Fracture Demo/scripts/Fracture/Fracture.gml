@@ -1,11 +1,11 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
 
-/// Main Fracture interface. Manages Fracturing, Physics and Impulse Settings, and Renderering Layer/Depth.
+/// Main Fracture interface. Manages Fracturing, Physics and Impulse Settings, and Rendering Layer/Depth.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the Fracture.MethodName(<arguments>); syntax.
 function Fracture() {
-	#region Convex Fracturing
+	#region Fracturing: Convex
 	
 	/// Fractures the given convex instance into a grid of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 	/// Optional noise offsets the grid vertices to produce more organic-looking pieces.
@@ -23,6 +23,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexGrid = function(_inst, _shape, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 		/*@ignore*/ static _funcs = [__FractureConvexGridBox, __FractureConvexGridCircle, __FractureConvexGridHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _cols, _rows, _noiseX, _noiseY);
 	}
 	
@@ -41,6 +44,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexBrick = function(_inst, _shape, _cols, _rows, _horizontal = true) {
 		/*@ignore*/ static _funcs = [__FractureConvexBrickBox, __FractureConvexBrickCircle, __FractureConvexBrickHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _cols, _rows, _horizontal);
 	}
 	
@@ -57,6 +63,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexDiamond = function(_inst, _shape, _cols, _rows) {
 		/*@ignore*/ static _funcs = [__FractureConvexDiamondBox, __FractureConvexDiamondCircle, __FractureConvexDiamondHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _cols, _rows);
 	}
 	
@@ -74,6 +83,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexHex = function(_inst, _shape, _cols, _rows, _flat = true) {
 		/*@ignore*/ static _funcs = [__FractureConvexHexBox, __FractureConvexHexCircle, __FractureConvexHexHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _cols, _rows, _flat);
 	}
 	
@@ -93,6 +105,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexRadial = function(_inst, _shape, _pieceCount, _angleNoise = 0, _originX = undefined, _originY = undefined) {
 		/*@ignore*/ static _funcs = [__FractureConvexRadialBox, __FractureConvexRadialCircle, __FractureConvexRadialHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _pieceCount, _angleNoise, _originX, _originY);
 	}
 	
@@ -110,6 +125,9 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexSlice = function(_inst, _shape, _pieceCount, _cutAngle = random(360)) {
 		/*@ignore*/ static _funcs = [__FractureConvexSliceBox, __FractureConvexSliceCircle, __FractureConvexSliceHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _pieceCount, _cutAngle);
 	}
 	
@@ -127,11 +145,15 @@ function Fracture() {
 	/// @self Fracture
 	static ConvexVoronoi = function(_inst, _shape, _pieceCount, _noise = 1) {
 		/*@ignore*/ static _funcs = [__FractureConvexVoronoiBox, __FractureConvexVoronoiCircle, __FractureConvexVoronoiHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		
 		return _funcs[_shape](_inst, _pieceCount, _noise);
 	}
 	
 	#endregion
-	#region Settings
+	
+	#region Settings: Physics
 	
 	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// Accepted fields: collisionGroup, density, restitution, friction, linearDamping, and angularDamping.
@@ -144,15 +166,15 @@ function Fracture() {
 	/// @self Fracture
 	static Physics = function(_config) {
 		with (__physics) {
-	        __collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
-	        __density = _config[$ "density"] ?? __density;
-	        __restitution = _config[$ "restitution"] ?? __restitution;
-	        __friction = _config[$ "friction"] ?? __friction;
-	        __linearDamping = _config[$ "linearDamping"] ?? __linearDamping;
-	        __angularDamping = _config[$ "angularDamping"] ?? __angularDamping;
-	    }
+			__collisionGroup = _config[$ "collisionGroup"] ?? __collisionGroup;
+			__density = _config[$ "density"] ?? __density;
+			__restitution = _config[$ "restitution"] ?? __restitution;
+			__friction = _config[$ "friction"] ?? __friction;
+			__linearDamping = _config[$ "linearDamping"] ?? __linearDamping;
+			__angularDamping = _config[$ "angularDamping"] ?? __angularDamping;
+		}
 		
-	    return self;
+		return self;
 	}
 
 	/// Resets all Fracture physics properties to their default values. Existing Pieces are not affected.
@@ -161,17 +183,20 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static PhysicsReset = function() {
-	    with (__physics) {
-	        __collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
-	        __density = FRACTURE_DEFAULT_DENSITY;
-	        __restitution = FRACTURE_DEFAULT_RESTITUTION;
-	        __friction = FRACTURE_DEFAULT_FRICTION;
-	        __linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
-	        __angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
-	    }
+		with (__physics) {
+			__collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
+			__density = FRACTURE_DEFAULT_DENSITY;
+			__restitution = FRACTURE_DEFAULT_RESTITUTION;
+			__friction = FRACTURE_DEFAULT_FRICTION;
+			__linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
+			__angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
+		}
 		
-	    return self;
+		return self;
 	}
+	
+	#endregion
+	#region Settings: Impulse
 	
 	/// Sets the impulse strength and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
@@ -207,6 +232,9 @@ function Fracture() {
 		
 		return self;
 	}
+	
+	#endregion
+	#region Settings: Rendering
 	
 	/// Sets the layer to render all Fracture Pieces on.
 	/// All Fracture Pieces share a single layer.
