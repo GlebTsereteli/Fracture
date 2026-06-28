@@ -93,7 +93,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
     prevShape = shape;
     
     impulse = new DemoImpulse();
-    blast = new DemoSandboxBlast();
+	blast = new DemoBlast();
     
     Fracture = function(_inst) {
         impulse.Set(mouse_x, mouse_y);

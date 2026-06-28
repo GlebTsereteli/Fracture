@@ -6,7 +6,7 @@
   "name":"scrDemoSandboxShape",
   "parent":{
     "name":"Shapes",
-    "path":"folders/Demo/02 Types/01 Sandbox/Shapes.yy",
+    "path":"folders/Demo/Types/01 Sandbox/Shapes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

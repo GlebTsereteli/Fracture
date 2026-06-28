@@ -129,15 +129,6 @@ if (FRACTURE_BENCHMARK) { \
 instance_destroy(_inst); \
 return _pieces;
 
-#macro __FRACTURE_AFFECTOR \
-/*@ignore*/ static _fx = __affectorFixture; \
-/*@ignore*/ static _physics = __physics; \
-\
-with (instance_create_depth(_x, _y, 0, _obj)) { \
-	physics_fixture_set_circle_shape(_fx, _radius); \
-	physics_fixture_set_collision_group(_fx, _physics.__collisionGroup); \
-	__fixture = physics_fixture_bind(_fx, id);
-
 #endregion
 
 #region Vertices

@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Tile",
-    "path":"folders/Demo/02 Types/02 Walls/Tile.yy",
+    "path":"folders/Demo/Types/02 Walls/Tile.yy",
   },
   "parentObjectId":null,
   "persistent":false,

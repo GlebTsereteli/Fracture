@@ -1,7 +1,7 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
 
-/// Main Fracture interface. Manages Fracturing, Piece Settings, Renderer Layer and Depth, and Piece Affectors.
+/// Main Fracture interface. Manages Fracturing, Physics and Impulse Settings, and Renderering Layer/Depth.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the Fracture.MethodName(<arguments>); syntax.
 function Fracture() {
@@ -78,7 +78,7 @@ function Fracture() {
 	}
 	
 	/// Fractures the given convex instance into a radial pattern of Pieces clipped to the shape boundary, defined by the number of Pieces.
-	/// Optional noise varies the angular size of each Piece and an optional origin sets the fracture origin.
+	/// Optional noise varies the angular size of each Piece and an optional origin sets the radial origin.
 	/// The instance is destroyed automatically after fracturing.
 	/// Returns an array of the created Piece instances.
 	/// 
@@ -237,49 +237,6 @@ function Fracture() {
 	}
 	
 	#endregion
-	#region Affectors
-	
-	/// Applies an impulse to all Fracture Pieces within the given radius. Positive strength pushes Pieces away, negative strength pulls them in.
-	/// 
-	/// @param {Real} x The x position of the blast.
-	/// @param {Real} y The y position of the blast.
-	/// @param {Real} radius The radius of the blast area.
-	/// @param {Real} strength The impulse strength applied to each affected Piece. Passing a negative value pulls Pieces towards the blast position.
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static Blast = function(_x, _y, _radius, _strength) {
-		var _obj = __objFractureBlast;
-		__FRACTURE_AFFECTOR
-			__strength = _strength;
-		}
-		
-		return self;
-	}
-	
-	/// TODO description
-	/// TODO params
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static Push = function(_x, _y, _radius, _force) { // TODO
-		
-		
-		return self;
-	};
-	
-	/// TODO description
-	/// TODO params
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static Erase = function(_x, _y, _radius) { // TODO
-		
-		
-		return self;
-	};
-	
-	#endregion
 	
 	#region __private
 	
@@ -308,13 +265,6 @@ function Fracture() {
 		__x: undefined,
 		__y: undefined,
 	};
-	
-	/// @ignore
-	static __affectorFixture = (function() {
-		var _fx = physics_fixture_create();
-		physics_fixture_set_sensor(_fx, true);
-		return _fx;
-	})();
 	
 	#endregion
 }

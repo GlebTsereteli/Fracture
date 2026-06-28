@@ -55,7 +55,7 @@
   "origin":4,
   "parent":{
     "name":"02 Circle",
-    "path":"folders/Demo/02 Types/01 Sandbox/Shapes/02 Circle.yy",
+    "path":"folders/Demo/Types/01 Sandbox/Shapes/02 Circle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"03 Convex",
-    "path":"folders/Demo/02 Types/01 Sandbox/Shapes/03 Convex.yy",
+    "path":"folders/Demo/Types/01 Sandbox/Shapes/03 Convex.yy",
   },
   "parentObjectId":{
     "name":"objDemoSandboxShapeParent",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scrDemoSandboxBlast",
+  "%Name":"scrDemoBlast",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scrDemoSandboxBlast",
+  "name":"scrDemoBlast",
   "parent":{
-    "name":"01 Sandbox",
-    "path":"folders/Demo/02 Types/01 Sandbox.yy",
+    "name":"Blast",
+    "path":"folders/Demo/Misc/Blast.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

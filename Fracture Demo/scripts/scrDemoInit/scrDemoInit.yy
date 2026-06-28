@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scrDemoInit",
   "parent":{
-    "name":"00 Init",
-    "path":"folders/Demo/00 Init.yy",
+    "name":"Init",
+    "path":"folders/Demo/Init.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

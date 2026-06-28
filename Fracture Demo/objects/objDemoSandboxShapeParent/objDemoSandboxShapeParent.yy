@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Shapes",
-    "path":"folders/Demo/02 Types/01 Sandbox/Shapes.yy",
+    "path":"folders/Demo/Types/01 Sandbox/Shapes.yy",
   },
   "parentObjectId":null,
   "persistent":false,

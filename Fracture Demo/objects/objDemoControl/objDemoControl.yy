@@ -12,8 +12,8 @@
   "name":"objDemoControl",
   "overriddenProperties":[],
   "parent":{
-    "name":"01 Core",
-    "path":"folders/Demo/01 Core.yy",
+    "name":"Core",
+    "path":"folders/Demo/Core.yy",
   },
   "parentObjectId":null,
   "persistent":true,

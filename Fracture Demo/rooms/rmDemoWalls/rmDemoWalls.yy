@@ -14,7 +14,7 @@
   "name":"rmDemoWalls",
   "parent":{
     "name":"02 Walls",
-    "path":"folders/Demo/02 Types/02 Walls.yy",
+    "path":"folders/Demo/Types/02 Walls.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
