@@ -295,6 +295,33 @@ function Fracture() {
 		return self;
 	}
 	
+	/// Pauses fade processing on all existing Fracture Pieces.
+	/// Does not pause the physics world itself, which remains under your control.
+	/// Pair with 'physics_pause_enable(true)' to completely freeze Pieces.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Pause = function() {
+		with (__objFracturePiece) {
+			__paused = true;
+		}
+	
+		return self;
+	}
+	
+	/// Resumes fade processing on all paused Fracture Pieces.
+	/// Pair with 'physics_pause_enable(false)' to resume physics simulation.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Resume = function() {
+		with (__objFracturePiece) {
+			__paused = false;
+		}
+	
+		return self;
+	}
+	
 	#endregion
 	
 	#region __private

@@ -82,17 +82,13 @@ export default defineConfig({
         text: 'API',
         activeMatch: '^/api/',
         items: [
-          { text: '📖 Overview', link: '/api/overview' },
           { 
-            text: '🧩 Fracturing',
+            text: '🧩 Fracture',
             items: [
-              { text: 'Overview', link: '/api/fracturing/overview' },
-              { text: 'Convex', link: '/api/fracturing/convex' },
+              { text: 'Convex Fracturing', link: '/api/fracture/convexFracturing' },
+              { text: 'Settings', link: '/api/fracture/settings' },
+              { text: 'Lifecycle', link: '/api/fracture/lifecycle' },
             ]
-          },
-          { 
-            text: '⚙️ Settings',
-            link: '/api/settings',
           },
           { text: '🔧 Configuration', link: '/api/config', },
         ]
@@ -122,16 +118,16 @@ export default defineConfig({
       },
       {
         text: '💻 API',
-        link: '/api/overview',
         items: [
           {
-            text: 'Fracturing',
-            link: '/api/fracturing/overview',
+            text: 'Fracture',
+            link: '/api/fracture/overview',
             items: [
-              { text: 'Convex', link: '/api/fracturing/convex' },
+              { text: 'Convex Fracturing', link: '/api/fracture/convexFracturing' },
+              { text: 'Settings', link: '/api/fracture/settings' },
+              { text: 'Lifecycle', link: '/api/fracture/lifecycle' },
             ]
           },
-          { text: 'Settings', link: '/api/settings' },
           { text: 'Configuration', link: '/api/config' },
         ]
       },
@@ -213,31 +209,35 @@ export default defineConfig({
         'FAQ': '/home/faq',
         'Getting Started': '/home/gettingStarted/gettingStarted',
         'Upcoming Features': '/others/upcomingFeatures',
-        'Fracture': '/api/overview',
+        'Fracture': '/api/fracture/overview',
 
         // Shapes
-        'FRACTURE_CONVEX_BOX': '/api/fracturing/convex#shapes',
-        'FRACTURE_CONVEX_CIRCLE': '/api/fracturing/convex#shapes',
-        'FRACTURE_CONVEX_HULL': '/api/fracturing/convex#shapes',
+        'FRACTURE_CONVEX_BOX': '/api/fracture/convexFracturing#shapes',
+        'FRACTURE_CONVEX_CIRCLE': '/api/fracture/convexFracturing#shapes',
+        'FRACTURE_CONVEX_HULL': '/api/fracture/convexFracturing#shapes',
 
         // Patterns
-        'ConvexGrid': '/api/fracturing/convex#grid',
-        'ConvexBrick': '/api/fracturing/convex#brick',
-        'ConvexDiamond': '/api/fracturing/convex#diamond',
-        'ConvexHex': '/api/fracturing/convex#hex',
-        'ConvexRadial': '/api/fracturing/convex#radial',
-        'ConvexSlice': '/api/fracturing/convex#slice',
-        'ConvexVoronoi': '/api/fracturing/convex#voronoi',
+        'ConvexGrid': '/api/fracture/convexFracturing#grid',
+        'ConvexBrick': '/api/fracture/convexFracturing#brick',
+        'ConvexDiamond': '/api/fracture/convexFracturing#diamond',
+        'ConvexHex': '/api/fracture/convexFracturing#hex',
+        'ConvexRadial': '/api/fracture/convexFracturing#radial',
+        'ConvexSlice': '/api/fracture/convexFracturing#slice',
+        'ConvexVoronoi': '/api/fracture/convexFracturing#voronoi',
 
         // Settings
-        'Physics()': '/api/settings#physics',
-        'PhysicsReset': '/api/settings#physicsreset',
-        'Impulse()': '/api/settings#impulse',
-        'ImpulseReset': '/api/settings#impulsereset',
-        'Layer': '/api/settings#layer',
-        'Depth': '/api/settings#depth',
-        'Clear': '/api/settings#clear',
-        'Fade': '/api/settings#fade',
+        'Physics()': '/api/fracture/settings#physics',
+        'PhysicsReset': '/api/fracture/settings#physicsreset',
+        'Impulse()': '/api/fracture/settings#impulse',
+        'ImpulseReset': '/api/fracture/settings#impulsereset',
+        'Layer': '/api/fracture/settings#layer',
+        'Depth': '/api/fracture/settings#depth',
+
+        // Lifecycle
+        'Clear': '/api/fracture/lifecycle#clear',
+        'Fade': '/api/fracture/lifecycle#fade',
+        'Pause': '/api/fracture/lifecycle#pause',
+        'Resume': '/api/fracture/lifecycle#resume',
 
         // Config
         'FRACTURE_DEFAULT_COLLISION_GROUP': '/api/config#fracture-default-collision-group',
