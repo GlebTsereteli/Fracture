@@ -1,0 +1,41 @@
+
+.VPHomeHero .title {
+    font-size: 2rem;
+    line-height: 1.2;
+}
+.VPHomeHero .text {
+    font-size: 2rem;
+    line-height: 1.2;
+    /* color: #B7D8E6 */
+}
+.VPHomeHero .tagline {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+.VPHero .VPImage {
+  filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.3));
+  padding: 18px;
+}
+html.dark:has(.VPHome) body {
+  background: url('/background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #ED493D);
+  --vp-home-hero-tagline-color: #B7D8E6;
+
+  --vp-button-brand-bg: #ED493D;
+  --vp-button-brand-hover-bg: #87599e;
+  --vp-button-brand-active-bg: #87599e;
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    rgba(95, 62, 111, 0.4) 60%,
+    rgba(229, 55, 52, 0.6) 40%
+  );
+  --vp-home-hero-image-filter: blur(50px);
+}
+/* .main {
+    margin-left: -30px;
+    margin-right: -30px;
+} */
