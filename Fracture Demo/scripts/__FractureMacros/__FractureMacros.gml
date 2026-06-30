@@ -36,6 +36,9 @@ var _px = 0, _py = 0; \
 if (not sprite_exists(_inst.sprite_index)) { \
 	__FractureError($"Can't fracture <{object_get_name(_inst.object_index)}>, instance has no sprite assigned"); \
 } \
+if ((_inst.image_xscale < 0) or (_inst.image_yscale < 0)) { \
+	__FractureError($"Can't fracture <{object_get_name(_inst.object_index)}>, negative 'image_xscale' or 'image_yscale' is not supported"); \
+} \
 \
 __FRACTURE_CATCH_RENDERER; \
 if (FRACTURE_BENCHMARK) { \
