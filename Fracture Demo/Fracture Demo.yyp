@@ -11,8 +11,10 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Init","folderPath":"folders/Demo/Init.yy","name":"Init","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Core","folderPath":"folders/Demo/Core.yy","name":"Core","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Init","folderPath":"folders/Demo/Init.yy","name":"Init","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Misc","folderPath":"folders/Demo/Misc.yy","name":"Misc","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Blast","folderPath":"folders/Demo/Misc/Blast.yy","name":"Blast","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Types","folderPath":"folders/Demo/Types.yy","name":"Types","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"01 Sandbox","folderPath":"folders/Demo/Types/01 Sandbox.yy","name":"01 Sandbox","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shapes","folderPath":"folders/Demo/Types/01 Sandbox/Shapes.yy","name":"Shapes","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -21,7 +23,6 @@
     {"$GMFolder":"","%Name":"03 Convex","folderPath":"folders/Demo/Types/01 Sandbox/Shapes/03 Convex.yy","name":"03 Convex","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"02 Walls","folderPath":"folders/Demo/Types/02 Walls.yy","name":"02 Walls","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile","folderPath":"folders/Demo/Types/02 Walls/Tile.yy","name":"Tile","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Misc","folderPath":"folders/Demo/Misc.yy","name":"Misc","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fracture","folderPath":"folders/Fracture.yy","name":"Fracture","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Fracture/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Convex","folderPath":"folders/Fracture/(System)/Convex.yy","name":"Convex","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -35,7 +36,6 @@
     {"$GMFolder":"","%Name":"05 Radial","folderPath":"folders/Fracture/(System)/Convex/05 Radial.yy","name":"05 Radial","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/Fracture/(System)/Convex/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/Fracture/(System)/Convex/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Blast","folderPath":"folders/Demo/Misc/Blast.yy","name":"Blast","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[

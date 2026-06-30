@@ -33,6 +33,10 @@ if (_shape != FRACTURE_CONVEX_BOX and _shape != FRACTURE_CONVEX_CIRCLE and _shap
 static _cell = array_create(8); \
 var _px = 0, _py = 0; \
 \
+if (not sprite_exists(_inst.sprite_index)) { \
+	__FractureError($"Can't fracture <{object_get_name(_inst.object_index)}>, instance has no sprite assigned"); \
+} \
+\
 __FRACTURE_CATCH_RENDERER; \
 if (FRACTURE_BENCHMARK) { \
 	static _funcName = string_replace(array_last(string_split(_GMFUNCTION_, "_")), "Fracture", ""); \
