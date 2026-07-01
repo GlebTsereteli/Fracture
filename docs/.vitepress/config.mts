@@ -230,8 +230,8 @@ export default defineConfig({
         'PhysicsReset': '/api/fracture/settings#physicsreset',
         'Impulse()': '/api/fracture/settings#impulse',
         'ImpulseReset': '/api/fracture/settings#impulsereset',
-        'Layer': '/api/fracture/settings#layer',
-        'Depth': '/api/fracture/settings#depth',
+        'Layer()': '/api/fracture/settings#layer',
+        'Depth()': '/api/fracture/settings#depth',
 
         // Lifecycle
         'Clear': '/api/fracture/lifecycle#clear',
