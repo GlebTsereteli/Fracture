@@ -41,6 +41,12 @@ Fracture follows Semantic Versioning using the `vMAJOR.MINOR.PATCH` format, wher
 3. Repeat the [Installation](/pages/home/gettingStarted/gettingStarted#installation) process.
 4. Reapply your config changes in the `FractureConfig` script.
 
+## Can I use Fracture without physics?
+
+No. Fracture is a physics-centric library at this time. Every fracture call creates physics-powered :Piece: instances, and there's no mode that skips physics and returns only the generated geometry.
+
+This may be extended in the future to also expose just piece geometry for custom processing, but that's not a guarantee.
+
 ## Do my objects need to be physics-enabled to fracture them?
 
 No. Fracture works on any instance regardless of its physics state, scale, or rotation, and creates the physics bodies for you. If the source instance is itself physics-enabled, its linear and angular velocity carry over to the resulting :Pieces:.
