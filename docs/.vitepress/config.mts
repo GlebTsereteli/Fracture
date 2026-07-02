@@ -66,6 +66,7 @@ export default defineConfig({
               { text: 'Requirements', link: '/topics/requirements' },
               { text: 'Pieces', link: '/topics/pieces' },
               { text: 'Rendering', link: '/topics/rendering' },
+              { text: 'Performance', link: '/topics/performance' },
             ]
           },
           {
@@ -114,6 +115,7 @@ export default defineConfig({
           { text: 'Requirements', link: '/topics/requirements' },
           { text: 'Pieces', link: '/topics/pieces' },
           { text: 'Rendering', link: '/topics/rendering' },
+          { text: 'Performance', link: '/topics/performance' },
         ]
       },
       {
@@ -200,10 +202,11 @@ export default defineConfig({
         'New Issue': 'https://github.com/glebtsereteli/Fracture/issues/new',
 
         // Shortcuts
+        'Requirements': '/topics/requirements',
         'Pieces': '/topics/pieces',
         'Piece': '/topics/pieces',
         'Rendering': '/topics/rendering',
-        'Requirements': '/topics/requirements',
+        'Performance': '/topics/performance',
         'Demo': '/home/demo/demo',
         'Demos': '/home/demo/demo',
         'FAQ': '/home/faq',

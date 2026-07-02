@@ -1,12 +1,8 @@
 # Pieces
 
-## Overview
-
-Every fracture call produces multiple `__objFracturePiece` instances that take the place of the original instance once it's fractured. This page covers what a Piece is, how its Settings are applied, and how its lifecycle works by default.
-
 ## What Is a Piece?
 
-A Piece is a physics-enabled instance created by all fracturing methods. Each Piece gets a Box2D fixture matching the region it was clipped to, and draws its own portion of the [shared vertex buffer](/topics/rendering#the-vertex-buffer) built at fracture time.
+A Piece is a physics-enabled `__objFracturePiece` instance created by all fracturing methods. Each Piece gets a Box2D fixture matching the region it was clipped to, and draws its own portion of the [shared vertex buffer](/topics/rendering#the-vertex-buffer) built at fracture time.
 
 Piece behaviors are controlled through :Settings:, :Lifecycle:, and :Config:.
 
