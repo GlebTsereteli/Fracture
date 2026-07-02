@@ -21,7 +21,7 @@
 
 #macro __FRACTURE_CATCH_RENDERER \
 if (not instance_exists(__objFractureRenderer)) { \
-    instance_create_depth(0, 0, 0, __objFractureRenderer); \
+    instance_create_depth(0, 0, FRACTURE_DEFAULT_DEPTH, __objFractureRenderer); \
 }
 
 #macro __FRACTURE_VALIDATE_SHAPE \

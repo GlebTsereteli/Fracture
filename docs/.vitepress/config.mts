@@ -224,6 +224,13 @@ export default defineConfig({
         'ConvexRadial': '/api/fracture/convexFracturing#radial',
         'ConvexSlice': '/api/fracture/convexFracturing#slice',
         'ConvexVoronoi': '/api/fracture/convexFracturing#voronoi',
+        'Grid': '/api/fracture/convexFracturing#grid',
+        'Brick': '/api/fracture/convexFracturing#brick',
+        'Diamond': '/api/fracture/convexFracturing#diamond',
+        'Hex': '/api/fracture/convexFracturing#hex',
+        'Radial': '/api/fracture/convexFracturing#radial',
+        'Slice': '/api/fracture/convexFracturing#slice',
+        'Voronoi': '/api/fracture/convexFracturing#voronoi',
 
         // Settings
         '.Physics()': '/api/fracture/settings#physics',
