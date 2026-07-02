@@ -10,12 +10,12 @@ This page contains answers to frequently asked questions about Fracture.
 | macOS | ✅ Fully supported |
 | Linux | ✅ Fully supported |
 | GX.games | ✅ Fully supported |
+| HTML5 | ❌ Not planned |
 | Android | 🚧 Untested |
 | iOS | 🚧 Untested |
 | PS5 | 🚧 Untested |
 | Xbox | 🚧 Untested |
 | Nintendo Switch | 🚧 Untested |
-| HTML5 | ❌ Not planned |
 
 ## What versions of GameMaker does Fracture support?
 

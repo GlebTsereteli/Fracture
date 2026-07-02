@@ -226,18 +226,18 @@ export default defineConfig({
         'ConvexVoronoi': '/api/fracture/convexFracturing#voronoi',
 
         // Settings
-        'Physics()': '/api/fracture/settings#physics',
-        'PhysicsReset': '/api/fracture/settings#physicsreset',
-        'Impulse()': '/api/fracture/settings#impulse',
-        'ImpulseReset': '/api/fracture/settings#impulsereset',
-        'Layer()': '/api/fracture/settings#layer',
-        'Depth()': '/api/fracture/settings#depth',
+        '.Physics()': '/api/fracture/settings#physics',
+        '.PhysicsReset()': '/api/fracture/settings#physicsreset',
+        '.Impulse()': '/api/fracture/settings#impulse',
+        '.ImpulseReset()': '/api/fracture/settings#impulsereset',
+        '.Layer()': '/api/fracture/settings#layer',
+        '.Depth()': '/api/fracture/settings#depth',
 
         // Lifecycle
-        'Clear': '/api/fracture/lifecycle#clear',
-        'Fade': '/api/fracture/lifecycle#fade',
-        'Pause': '/api/fracture/lifecycle#pause',
-        'Resume': '/api/fracture/lifecycle#resume',
+        '.Clear()': '/api/fracture/lifecycle#clear',
+        '.Fade()': '/api/fracture/lifecycle#fade',
+        '.Pause()': '/api/fracture/lifecycle#pause',
+        '.Resume()': '/api/fracture/lifecycle#resume',
 
         // Config
         'FRACTURE_DEFAULT_COLLISION_GROUP': '/api/config#fracture-default-collision-group',

@@ -28,7 +28,7 @@ But this isn't normally an issue! Fracture targets sidescrollers, space-like gam
 Use :.Layer(): or :.Depth(): to control the layer or depth Pieces are drawn at.
 :::
 
-## The Frozen Vertex Buffer
+## The Shared Vertex Buffer
 
 When an instance fractures, Fracture builds the resulting Pieces' geometry as a single [frozen](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Primitives/vertex_freeze.htm) vertex buffer, never to be altered again.
 
