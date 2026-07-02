@@ -6,9 +6,9 @@ Every fracture call produces multiple `__objFracturePiece` instances that take t
 
 ## What Is a Piece?
 
-A Piece is a physics-enabled instance created by all fracturing methods. Each Piece gets a Box2D fixture matching the region it was clipped to, and draws its own portion of the [shared vertex buffer](/topics/rendering#the-shared-vertex-buffer) built at fracture time.
+A Piece is a physics-enabled instance created by all fracturing methods. Each Piece gets a Box2D fixture matching the region it was clipped to, and draws its own portion of the [shared vertex buffer](/topics/rendering#the-vertex-buffer) built at fracture time.
 
-Piece behaviors are controlled through :Settings:, :Lifecycle:, and :Configs:.
+Piece behaviors are controlled through :Settings:, :Lifecycle:, and :Config:.
 
 ---
 
@@ -17,7 +17,9 @@ When Pieces are created at fracture time, the original instance is destroyed as 
 Physics Settings are assigned to each Piece's fixture at the moment it's created, and Impulse is applied to explode Pieces outwards from the origin.
 
 :::tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), Physics and Impulse Settings reset to their defaults automatically after every fracturing method. Call :.Physics(): or :.Impulse(): again before each fracture if you want custom values to carry over, or set :FRACTURE_AUTO_RESET: to `false` to disable auto resetting.
+If :FRACTURE_AUTO_RESET: is enabled (the default), Physics and Impulse Settings reset to their defaults automatically after every fracturing method.
+
+Call :.Physics(): or :.Impulse(): again before each fracture if you want custom values to carry over, or set :FRACTURE_AUTO_RESET: to `false` to disable auto resetting.
 :::
 
 ## Settling and Fading
