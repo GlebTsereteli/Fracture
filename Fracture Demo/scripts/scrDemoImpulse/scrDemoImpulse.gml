@@ -10,7 +10,8 @@ function DemoImpulse(_strength = 0) constructor {
 		);
 	}
 	static RefreshInterface = function() {
-		dbg_text_separator("Impulse");
+		dbg_section("Impulse");
+		
 		dbg_slider(ref_create(self, "strength"), 0, 3, "Strength", 0.1);
 		dbg_checkbox(ref_create(self, "onMouse"), "Mouse Origin");
 	};

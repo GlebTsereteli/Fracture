@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrDemoFade",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrDemoFade",
+  "parent":{
+    "name":"Misc",
+    "path":"folders/Demo/Misc.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

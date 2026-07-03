@@ -104,6 +104,7 @@
     {"id":{"name":"FractureConstants","path":"scripts/FractureConstants/FractureConstants.yy",},},
     {"id":{"name":"scrDemo","path":"scripts/scrDemo/scrDemo.yy",},},
     {"id":{"name":"scrDemoBlast","path":"scripts/scrDemoBlast/scrDemoBlast.yy",},},
+    {"id":{"name":"scrDemoFade","path":"scripts/scrDemoFade/scrDemoFade.yy",},},
     {"id":{"name":"scrDemoImpulse","path":"scripts/scrDemoImpulse/scrDemoImpulse.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
     {"id":{"name":"scrDemoPhysics","path":"scripts/scrDemoPhysics/scrDemoPhysics.yy",},},

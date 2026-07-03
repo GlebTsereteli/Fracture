@@ -12,7 +12,7 @@ function DemoPhysics() constructor {
 		Fracture.Physics(settings);
 	};
 	static RefreshInterface = function() {
-		dbg_text_separator("Physics");
+		dbg_section("Physics");
 		
 		var _step = 0.05;
 		dbg_slider(ref_create(settings, "density"), _step, 2, "Density", _step);

@@ -54,7 +54,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
         }, _w, _h);
         dbg_same_line();
         dbg_button("Fade", function() {
-			Fracture.Fade();
+			Fracture.ForceFade();
         }, _w, _h);
         dbg_same_line();
         dbg_button("Clear", function() {
@@ -72,6 +72,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
 		
         physics.RefreshInterface();
         impulse.RefreshInterface();
+        fade.RefreshInterface();
         blast.RefreshInterface();
     };
     
@@ -98,6 +99,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
     
 	physics = new DemoPhysics();
     impulse = new DemoImpulse();
+    fade = new DemoFade();
 	blast = new DemoBlast();
     
     Fracture = function(_inst) {

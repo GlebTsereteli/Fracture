@@ -39,7 +39,7 @@ function DemoBlast() constructor {
 		}
 	};
 	static RefreshInterface = function() {
-		dbg_text_separator("Blast");
+		dbg_section("Blast");
 		
 		dbg_slider_int(ref_create(self, "radius"), 50, 500, "Radius", 25);
 		dbg_slider(ref_create(self, "strength"), -2, 2, "Strength", 0.1);
