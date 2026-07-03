@@ -1,12 +1,18 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/config
 
-#region Default Settings
+#region Defaults: General
 
 // Default depth to render all Fracture Pieces at. 
 // Defaults to a high value close to the '-16000' depth limit so Pieces are initially visible in most cases.
 // Change it with Fracture.Layer() or Fracture.Depth() to target the desired layer/depth target.
 #macro FRACTURE_DEFAULT_DEPTH -15000
+
+// Default outward impulse strength applied to each Piece after fracturing.
+#macro FRACTURE_DEFAULT_IMPULSE_STRENGTH 0
+
+#endregion
+#region Defaults: Physics
 
 // Default collision group assigned to all Piece fixtures.
 #macro FRACTURE_DEFAULT_COLLISION_GROUP 1
@@ -26,34 +32,28 @@
 // Default angular damping assigned to all Piece fixtures.
 #macro FRACTURE_DEFAULT_ANGULAR_DAMPING 0.1
 
-// Default outward impulse strength applied to each Piece after fracturing.
-#macro FRACTURE_DEFAULT_IMPULSE_STRENGTH 0
-
 #endregion
-#region Fade
+#region Defaults: Fade
 
-// Automatically fade out Pieces over time and destroy them when faded (true) or not (false).
-#macro FRACTURE_FADE_ENABLED true
+// Default fade timing: begin fading only once a Piece has come to rest (true) or immediately after its delay (false).
+#macro FRACTURE_DEFAULT_FADE_AFTER_SETTLE true
 
-// Begin fading only once a Piece has come to rest (true) or immediately after its delay (false).
-#macro FRACTURE_FADE_SETTLED true
+// Default minimum random delay in steps before a Piece begins fading.
+#macro FRACTURE_DEFAULT_FADE_DELAY_FROM 30
 
-// Minimum random delay in steps before a Piece begins fading.
-#macro FRACTURE_FADE_DELAY_FROM 30
+// Default maximum random delay in steps before a Piece begins fading.
+#macro FRACTURE_DEFAULT_FADE_DELAY_TO 40
 
-// Maximum random delay in steps before a Piece begins fading.
-#macro FRACTURE_FADE_DELAY_TO 40
+// Default minimum random alpha decrease per step while a Piece fades.
+#macro FRACTURE_DEFAULT_FADE_SPEED_FROM 0.02
 
-// Minimum random alpha decrease per step while a Piece fades.
-#macro FRACTURE_FADE_SPEED_FROM 0.02
-
-// Maximum random alpha decrease per step while a Piece fades.
-#macro FRACTURE_FADE_SPEED_TO 0.03
+// Default maximum random alpha decrease per step while a Piece fades.
+#macro FRACTURE_DEFAULT_FADE_SPEED_TO 0.03
 
 #endregion
 #region Miscellaneous
 
-// Automatically reset Physics and Impulse parameters after each fracture call (true) or not (false).
+// Automatically reset Physics, Impulse and Fade parameters after each fracture call (true) or not (false).
 #macro FRACTURE_AUTO_RESET true
 
 // Log the time taken for each fracture call to the Output window (true) or not (false).

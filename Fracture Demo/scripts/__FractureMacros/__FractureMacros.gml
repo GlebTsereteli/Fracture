@@ -84,7 +84,14 @@ var _angularDamping = _physics.__angularDamping; \
 var _impulseStrength = _impulse.__strength; \
 var _impulseX = _impulse.__x; \
 var _impulseY = _impulse.__y; \
-var _impulseHasOrigin = (_impulseX != undefined) and (_impulseY != undefined);
+var _impulseHasOrigin = (_impulseX != undefined) and (_impulseY != undefined); \
+\
+/*@ignore*/ static _fade = Fracture.__fade; \
+var _fadeAfterSettle = _fade.__afterSettle; \
+var _fadeDelayFrom = _fade.__delayFrom; \
+var _fadeDelayTo = _fade.__delayTo; \
+var _fadeSpeedFrom = _fade.__speedFrom; \
+var _fadeSpeedTo = _fade.__speedTo;
 
 #macro __FRACTURE_PIECE \
 var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
@@ -92,10 +99,17 @@ var _dir = point_direction(_centerX, _centerY, _ox, _oy); \
 var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
 var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
 with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) { \
+	image_alpha = _alpha; \
+	\
+	__state = _state; \
 	__vertexBuffer = _vb; \
 	__texture = _texture; \
-	__state = _state; \
-	image_alpha = _alpha;
+	__paused = false; \
+	\
+	__afterSettle = _fadeAfterSettle; \
+	__fadeDelay = irandom_range(_fadeDelayFrom, _fadeDelayTo); \
+	__fadeSpeed = random_range(_fadeSpeedFrom, _fadeSpeedTo); \
+	__settled = false;
 
 #macro __FRACTURE_FIXTURE_START \
 var _fx = physics_fixture_create(); \
@@ -134,6 +148,7 @@ _state.__count = _pieceCount; \
 if (FRACTURE_AUTO_RESET) { \
 	Fracture.PhysicsReset(); \
 	Fracture.ImpulseReset(); \
+	Fracture.FadeReset(); \
 } \
 if (FRACTURE_BENCHMARK) { \
 	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {__FRACTURE_BENCH_END}ms"); \

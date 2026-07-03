@@ -1,7 +1,7 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
 
-/// Main Fracture interface. Manages Fracturing, Physics and Impulse Settings, and Rendering Layer/Depth.
+/// Main Fracture interface. Manages Fracturing, Physics, Impulse and Fade Settings, Rendering, and Piece Lifecycle.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the Fracture.MethodName(<arguments>); syntax.
 function Fracture() {
@@ -156,7 +156,16 @@ function Fracture() {
 	#region Settings: Physics
 	
 	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
-	/// Accepted fields: collisionGroup, density, restitution, friction, linearDamping, and angularDamping.
+	/// ---
+	/// Supported config fields:
+	/// - collisionGroup: The Piece fixture collision group.
+	/// - density: The Piece fixture density.
+	/// - restitution: The Piece fixture restitution.
+	/// - friction: The Piece fixture friction.
+	/// - linearDamping: The Piece fixture linear damping.
+	/// - angularDamping: The Piece fixture angular damping.
+	/// ---
+	/// Defaults for each field come from the matching FRACTURE_DEFAULT_* macro under Defaults: Physics in FractureConfig.
 	/// Any omitted fields remain at their current values.
 	/// If FRACTURE_AUTO_RESET is enabled, physics properties reset automatically after any core Fracture method.
 	/// 
@@ -233,6 +242,62 @@ function Fracture() {
 	}
 	
 	#endregion
+	#region Settings: Fade
+	
+	/// Sets the fade behavior applied to all future Fracture Pieces. Existing Pieces are not affected.
+	/// ---
+	/// Supported config fields:
+	/// - afterSettle: Begin fading only once a Piece has come to rest (true) or immediately after its delay (false).
+	/// - delay: Sets both delayFrom and delayTo to a single value.
+	/// - delayFrom: Minimum random delay in steps before a Piece begins fading.
+	/// - delayTo: Maximum random delay in steps before a Piece begins fading.
+	/// - speed: Sets both speedFrom and speedTo to a single value.
+	/// - speedFrom: Minimum random alpha decrease per step while a Piece fades.
+	/// - speedTo: Maximum random alpha decrease per step while a Piece fades.
+	/// ---
+	/// Explicit delayFrom/delayTo and speedFrom/speedTo take precedence over delay/speed.
+	/// Defaults for each field come from the matching FRACTURE_DEFAULT_* macro under Defaults: Fade in FractureConfig.
+	/// Any omitted fields remain at their current values.
+	/// If FRACTURE_AUTO_RESET is enabled, fade properties reset automatically after any core Fracture method.
+	/// 
+	/// @param {Struct} config The fade configuration struct for Fracture Pieces.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static Fade = function(_config) {
+		with (__fade) {
+			__afterSettle = _config[$ "afterSettle"] ?? __afterSettle;
+			
+			var _delay = _config[$ "delay"];
+			__delayFrom = _config[$ "delayFrom"] ?? _delay ?? __delayFrom;
+			__delayTo = _config[$ "delayTo"] ?? _delay ?? __delayTo;
+			
+			var _speed = _config[$ "speed"];
+			__speedFrom = _config[$ "speedFrom"] ?? _speed ?? __speedFrom;
+			__speedTo = _config[$ "speedTo"] ?? _speed ?? __speedTo;
+		}
+		
+		return self;
+	}
+	
+	/// Resets all Fracture fade properties to their default values. Existing Pieces are not affected.
+	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
+	/// 
+	/// @return {Struct.Fracture}
+	/// @self Fracture
+	static FadeReset = function() {
+		with (__fade) {
+			__afterSettle = FRACTURE_DEFAULT_FADE_AFTER_SETTLE;
+			__delayFrom = FRACTURE_DEFAULT_FADE_DELAY_FROM;
+			__delayTo = FRACTURE_DEFAULT_FADE_DELAY_TO;
+			__speedFrom = FRACTURE_DEFAULT_FADE_SPEED_FROM;
+			__speedTo = FRACTURE_DEFAULT_FADE_SPEED_TO;
+		}
+		
+		return self;
+	}
+	
+	#endregion
 	#region Settings: Rendering
 	
 	/// Sets the layer to render all Fracture Pieces on.
@@ -278,15 +343,11 @@ function Fracture() {
 	}
 	
 	/// Begins fading out all existing Fracture Pieces immediately.
-	/// Requires FRACTURE_FADE_ENABLED to be true.
+	/// Pieces with a fade speed of 0 are not affected.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Fade = function() {
-		if (not FRACTURE_FADE_ENABLED) {
-			__FractureError("Fade(): FRACTURE_FADE_ENABLED must be enabled to fade Pieces");
-		}
-		
+	static ForceFade = function() {
 		with (__objFracturePiece) {
 			__settled = true;
 			__fadeDelay = 0;
@@ -350,6 +411,15 @@ function Fracture() {
 		__strength: FRACTURE_DEFAULT_IMPULSE_STRENGTH,
 		__x: undefined,
 		__y: undefined,
+	};
+	
+	/// @ignore
+	static __fade = {
+		__afterSettle: FRACTURE_DEFAULT_FADE_AFTER_SETTLE,
+		__delayFrom: FRACTURE_DEFAULT_FADE_DELAY_FROM,
+		__delayTo: FRACTURE_DEFAULT_FADE_DELAY_TO,
+		__speedFrom: FRACTURE_DEFAULT_FADE_SPEED_FROM,
+		__speedTo: FRACTURE_DEFAULT_FADE_SPEED_TO,
 	};
 	
 	#endregion
