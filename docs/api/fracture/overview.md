@@ -20,8 +20,10 @@ Note the lack of parentheses after `Fracture`. Unlike the classic `function_name
 
 This design offers a single, clean entry point for the entire library, with all internal data and public methods contained within a single "namespace".
 
+Fracture utilizes a [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) pattern, so chainable methods (like :Settings:) can be combined in a single expression before a fracturing call.
+
 ::: warning
-Don't call `Fracture` methods from script initialization code (code that runs before the first room). GameMaker doesn't guarantee script init order, so `Fracture` may not be initialized yet when your script runs.
+Don't call `Fracture` methods directly from scripts. GameMaker doesn't guarantee script init order, so `Fracture` may not be initialized when your script runs.
 
 This isn't a real limitation in practice. There's no reason to fracture anything before the first room loads, so you can safely call `Fracture` methods once your target room is initialized.
 :::

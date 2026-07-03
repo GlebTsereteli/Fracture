@@ -29,7 +29,7 @@ Mentioning my name (Gleb Tsereteli) in your game's credits would be greatly appr
 
 ## How is Fracture versioned?
 
-Fracture follows Semantic Versioning using the `vMAJOR.MINOR.PATCH` format, where:
+Fracture follows the [Semantic Versioning](https://semver.org/) (often called **SemVer**) versioning scheme using the `vMAJOR.MINOR.PATCH` format, where:
 - **MAJOR** increases when incompatible API changes are introduced. Updating to a new major version may require you to update your code.
 - **MINOR** increases when new features are added in a backward-compatible way, so it's always safe to update.
 - **PATCH** increases when backward-compatible bug fixes are made. These are also always safe to update to.
@@ -43,13 +43,13 @@ Fracture follows Semantic Versioning using the `vMAJOR.MINOR.PATCH` format, wher
 
 ## Can I use Fracture without physics?
 
-No. Fracture is a physics-centric library at this time. Every fracture call creates physics-powered :Piece: instances, and there's no mode that skips physics and returns only the generated geometry.
+Not currently. Fracture is a physics-centric library at this time. Every fracture call creates physics-powered :Piece: instances, and there's no mode that skips physics and returns only the generated geometry.
 
-This may be extended in the future to also expose just piece geometry for custom processing, but that's not a guarantee.
+This will be extended in the future by exposing piece geometry for custom processing. See the [Looking Ahead](/topics/performance.md#looking-ahead) section for more detail.
 
 ## Do my objects need to be physics-enabled to fracture them?
 
-No. Fracture works on any instance regardless of its physics state, scale, or rotation, and creates the physics bodies for you. If the source instance is itself physics-enabled, its linear and angular velocity carry over to the resulting :Pieces:.
+No. Fracture works on any instance regardless of its physics state, and creates the physics bodies for you. If the source instance is itself physics-enabled, its linear and angular velocity carry over to the resulting :Pieces:.
 
 This means Fracture integrates cleanly even into games that don't otherwise use :Physics:.
 

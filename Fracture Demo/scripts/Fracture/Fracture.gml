@@ -305,7 +305,7 @@ function Fracture() {
 		with (__objFracturePiece) {
 			__paused = true;
 		}
-	
+		
 		return self;
 	}
 	
@@ -318,7 +318,7 @@ function Fracture() {
 		with (__objFracturePiece) {
 			__paused = false;
 		}
-	
+		
 		return self;
 	}
 	
