@@ -11,8 +11,7 @@ This section covers the Settings methods that configure how Fracture Pieces are 
 If [FRACTURE_AUTO_RESET](/api/config) is enabled, :Physics: and :Impulse: settings reset automatically after any core Fracture method. This keeps per-fracture tweaks from leaking into later calls.
 :::
 
----
-
+::: tip FLUENT INTERFACE
 Fracture utilizes a [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) pattern, so all Settings methods are chainable and can be combined in a single expression before a fracturing call.
 
 ```js
@@ -25,6 +24,7 @@ Fracture
 .Impulse(60, mouse_x, mouse_y) // [!code highlight]
 .ConvexVoronoi(inst, FRACTURE_CONVEX_HULL, 24);
 ```
+:::
 
 ## Physics
 
