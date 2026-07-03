@@ -106,6 +106,7 @@
     {"id":{"name":"scrDemoBlast","path":"scripts/scrDemoBlast/scrDemoBlast.yy",},},
     {"id":{"name":"scrDemoImpulse","path":"scripts/scrDemoImpulse/scrDemoImpulse.yy",},},
     {"id":{"name":"scrDemoInit","path":"scripts/scrDemoInit/scrDemoInit.yy",},},
+    {"id":{"name":"scrDemoPhysics","path":"scripts/scrDemoPhysics/scrDemoPhysics.yy",},},
     {"id":{"name":"scrDemoSandbox","path":"scripts/scrDemoSandbox/scrDemoSandbox.yy",},},
     {"id":{"name":"scrDemoSandboxPatterns","path":"scripts/scrDemoSandboxPatterns/scrDemoSandboxPatterns.yy",},},
     {"id":{"name":"scrDemoSandboxShape","path":"scripts/scrDemoSandboxShape/scrDemoSandboxShape.yy",},},

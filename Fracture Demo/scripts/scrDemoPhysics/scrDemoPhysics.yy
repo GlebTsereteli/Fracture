@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scrDemoPhysics",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scrDemoPhysics",
+  "parent":{
+    "name":"Misc",
+    "path":"folders/Demo/Misc.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

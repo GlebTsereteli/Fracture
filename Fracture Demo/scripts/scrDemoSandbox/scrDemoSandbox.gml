@@ -64,12 +64,13 @@ function DemoSandbox() : Demo("Sandbox") constructor {
         
         dbg_text(" Press [LMB] to spawn a shape.");
         dbg_text(" Press [RMB] on a shape to fracture it.");
-        dbg_text_separator("");
         
+		dbg_text_separator("Pattern & Shape");
         DbgSelector("Pattern", patterns);
         DbgSelector("Shape", shapes);
         pattern.RefreshInterface();
-        
+		
+        physics.RefreshInterface();
         impulse.RefreshInterface();
         blast.RefreshInterface();
     };
@@ -95,10 +96,12 @@ function DemoSandbox() : Demo("Sandbox") constructor {
     shape = array_first(shapes);
     prevShape = shape;
     
+	physics = new DemoPhysics();
     impulse = new DemoImpulse();
 	blast = new DemoBlast();
     
     Fracture = function(_inst) {
+		physics.Set();
         impulse.Set(mouse_x, mouse_y);
         pattern.Fracture(_inst, shape.constant);
     };
