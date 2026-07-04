@@ -1,5 +1,7 @@
 # Settings
 
+<iframe frameborder="0" src="https://itch.io/embed-upload/18193319?color=000000" allowfullscreen="" width="960" height="560"><a href="https://glebtsereteli.itch.io/fracture">Play Fracture on itch.io</a></iframe>
+
 ## Overview
 
 This section covers the Settings methods that configure how Fracture Pieces are created, behave and render, from their physics and initial impulse to how they fade over time.
@@ -8,9 +10,9 @@ This section covers the Settings methods that configure how Fracture Pieces are 
 #### Per-Fracture Settings
 
 Per-fracture settings apply to Pieces created by the next fracturing call.
-* [Physics](#physics) controls the :physics properties: (collision group, density, restitution, friction, damping), letting you define different-feeling Piece "materials".
-* [Impulse](#impulse) controls the impulse strength and origin, producing fractures ranging from gentle nudges to explosive shatters.
-* [Fade](#fade) controls how Pieces fade out and destroy themselves over time.
+- [Physics](#physics) controls the :physics properties: (collision group, density, restitution, friction, damping), letting you define different-feeling Piece "materials".
+- [Impulse](#impulse) controls the impulse strength and origin, producing fractures ranging from gentle nudges to explosive shatters.
+- [Fade](#fade) controls how Pieces fade out and destroy themselves over time.
 
 ::: tip
 If :FRACTURE_AUTO_RESET: is enabled, per-fracture settings reset automatically after any core Fracture method, keeping per-fracture tweaks from leaking into later calls. It is enabled by default.
@@ -20,7 +22,7 @@ If :FRACTURE_AUTO_RESET: is enabled, per-fracture settings reset automatically a
 #### Global Settings
 
 Global settings persist until changed.
-* [Rendering](#rendering) controls the layer or depth all Pieces render on.
+- [Rendering](#rendering) controls the layer or depth all Pieces render on.
 
 ---
 ::: tip FLUENT INTERFACE

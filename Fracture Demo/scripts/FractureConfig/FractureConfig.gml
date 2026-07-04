@@ -45,6 +45,7 @@
 #macro FRACTURE_DEFAULT_FADE_DELAY_TO 40
 
 // Default minimum random alpha decrease per step while a Piece fades.
+// Set both speed values to 0 to disable fading.
 #macro FRACTURE_DEFAULT_FADE_SPEED_FROM 0.02
 
 // Default maximum random alpha decrease per step while a Piece fades.

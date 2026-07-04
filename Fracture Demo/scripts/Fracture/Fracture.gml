@@ -1,7 +1,7 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
 
-/// Main Fracture interface. Manages Fracturing, per-fracture Settings (Physics, Impulse, Fade), global Rendering, and Piece Lifecycle.
+/// Main Fracture interface. Manages Fracturing, per-fracture and global Settings, and Piece Lifecycle.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the Fracture.MethodName(<arguments>); syntax.
 function Fracture() {

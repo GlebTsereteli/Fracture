@@ -91,17 +91,17 @@ Each Piece picks a random delay between :FRACTURE_DEFAULT_FADE_DELAY_FROM: and t
 ### `FRACTURE_DEFAULT_FADE_SPEED_FROM`
 > Default: `0.02`.
 
-Minimum random alpha decrease per step while a Piece fades.
+Minimum random alpha decrease per step while a Piece fades. Each Piece picks a random fade speed between this and :FRACTURE_DEFAULT_FADE_SPEED_TO: on creation.
 
-Each Piece picks a random speed between this and :FRACTURE_DEFAULT_FADE_SPEED_TO: on creation. Set both speed values to `0` to disable fading.
+Set both speed values to `0` to disable fading.
 
 ---
 ### `FRACTURE_DEFAULT_FADE_SPEED_TO`
 > Default: `0.03`.
 
-Maximum random alpha decrease per step while a Piece fades.
+Maximum random alpha decrease per step while a Piece fades. Each Piece picks a random fade speed between :FRACTURE_DEFAULT_FADE_SPEED_FROM: and this on creation.
 
-Each Piece picks a random speed between :FRACTURE_DEFAULT_FADE_SPEED_FROM: and this on creation.
+Set both speed values to `0` to disable fading.
 
 ## Miscellaneous
 

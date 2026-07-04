@@ -21,7 +21,7 @@
 
 #macro __FRACTURE_CATCH_RENDERER \
 if (not instance_exists(__objFractureRenderer)) { \
-    instance_create_depth(0, 0, FRACTURE_DEFAULT_DEPTH, __objFractureRenderer); \
+	instance_create_depth(0, 0, FRACTURE_DEFAULT_DEPTH, __objFractureRenderer); \
 }
 
 #macro __FRACTURE_VALIDATE_SHAPE \
@@ -132,12 +132,12 @@ if (_physical) { \
 	phy_angular_velocity = _inst.phy_angular_velocity; \
 } \
 if (_impulseStrength != 0) { \
-    var _impDir = _impulseHasOrigin ? point_direction(_impulseX, _impulseY, x, y) : _dir; \
+	var _impDir = _impulseHasOrigin ? point_direction(_impulseX, _impulseY, x, y) : _dir; \
 	physics_apply_impulse( \
 		_impulseHasOrigin ? _impulseX : x, \
 		_impulseHasOrigin ? _impulseY : y, \
-	    lengthdir_x(_impulseStrength, _impDir), \
-	    lengthdir_y(_impulseStrength, _impDir) \
+		lengthdir_x(_impulseStrength, _impDir), \
+		lengthdir_y(_impulseStrength, _impDir) \
 	); \
 }
 
@@ -181,16 +181,16 @@ _px = _ax; _py = _ay; __FRACTURE_V; \
 _px = _bx; _py = _by; __FRACTURE_V; \
 _px = _cx; _py = _cy; __FRACTURE_V; \
 __FRACTURE_PIECE \
-    __primitiveType = pr_trianglelist; \
-    __vertexCount = 3; \
-    __vertexIndex = _vertexOffset; \
-    __FRACTURE_FIXTURE_START; { \
-        physics_fixture_add_point(_fx, _ax, _ay); \
-        physics_fixture_add_point(_fx, _bx, _by); \
-        physics_fixture_add_point(_fx, _cx, _cy); \
-        __FRACTURE_FIXTURE_END; \
-    } \
-    _pieces[_index++] = id; \
+	__primitiveType = pr_trianglelist; \
+	__vertexCount = 3; \
+	__vertexIndex = _vertexOffset; \
+	__FRACTURE_FIXTURE_START; { \
+		physics_fixture_add_point(_fx, _ax, _ay); \
+		physics_fixture_add_point(_fx, _bx, _by); \
+		physics_fixture_add_point(_fx, _cx, _cy); \
+		__FRACTURE_FIXTURE_END; \
+	} \
+	_pieces[_index++] = id; \
 } \
 _vertexOffset += 3;
 
@@ -208,17 +208,17 @@ _px = _ax; _py = _ay; __FRACTURE_V; \
 _px = _cx; _py = _cy; __FRACTURE_V; \
 _px = _dx; _py = _dy; __FRACTURE_V; \
 __FRACTURE_PIECE \
-    __primitiveType = pr_trianglelist; \
-    __vertexCount = 6; \
-    __vertexIndex = _vertexOffset; \
-    __FRACTURE_FIXTURE_START; { \
-        physics_fixture_add_point(_fx, _ax, _ay); \
-        physics_fixture_add_point(_fx, _bx, _by); \
-        physics_fixture_add_point(_fx, _cx, _cy); \
-        physics_fixture_add_point(_fx, _dx, _dy); \
-        __FRACTURE_FIXTURE_END; \
-    } \
-    _pieces[_index++] = id; \
+	__primitiveType = pr_trianglelist; \
+	__vertexCount = 6; \
+	__vertexIndex = _vertexOffset; \
+	__FRACTURE_FIXTURE_START; { \
+		physics_fixture_add_point(_fx, _ax, _ay); \
+		physics_fixture_add_point(_fx, _bx, _by); \
+		physics_fixture_add_point(_fx, _cx, _cy); \
+		physics_fixture_add_point(_fx, _dx, _dy); \
+		__FRACTURE_FIXTURE_END; \
+	} \
+	_pieces[_index++] = id; \
 } \
 _vertexOffset += 6;
 
@@ -242,19 +242,19 @@ _px = _ax; _py = _ay; __FRACTURE_V; \
 _px = _ex; _py = _ey; __FRACTURE_V; \
 _px = _gx; _py = _gy; __FRACTURE_V; \
 __FRACTURE_PIECE \
-    __primitiveType = pr_trianglelist; \
-    __vertexCount = 12; \
-    __vertexIndex = _vertexOffset; \
-    __FRACTURE_FIXTURE_START; { \
-        physics_fixture_add_point(_fx, _ax, _ay); \
-        physics_fixture_add_point(_fx, _bx, _by); \
-        physics_fixture_add_point(_fx, _cx, _cy); \
-        physics_fixture_add_point(_fx, _dx, _dy); \
-        physics_fixture_add_point(_fx, _ex, _ey); \
-        physics_fixture_add_point(_fx, _gx, _gy); \
-        __FRACTURE_FIXTURE_END; \
-    } \
-    _pieces[_index++] = id; \
+	__primitiveType = pr_trianglelist; \
+	__vertexCount = 12; \
+	__vertexIndex = _vertexOffset; \
+	__FRACTURE_FIXTURE_START; { \
+		physics_fixture_add_point(_fx, _ax, _ay); \
+		physics_fixture_add_point(_fx, _bx, _by); \
+		physics_fixture_add_point(_fx, _cx, _cy); \
+		physics_fixture_add_point(_fx, _dx, _dy); \
+		physics_fixture_add_point(_fx, _ex, _ey); \
+		physics_fixture_add_point(_fx, _gx, _gy); \
+		__FRACTURE_FIXTURE_END; \
+	} \
+	_pieces[_index++] = id; \
 } \
 _vertexOffset += 12;
 
@@ -305,7 +305,6 @@ for (var _i = 0; _i < _nHull; _i++) { \
 var _clipped = __FracturePolygonClip(_cell, _hull); \
 var _vertCount = array_length(_clipped) / 2; \
 if (_vertCount >= 3) { \
-	\
 	var _sumX = 0, _sumY = 0; \
 	for (var _v = 0; _v < _vertCount; _v++) { \
 		_sumX += _clipped[_v * 2]; \
@@ -362,14 +361,14 @@ var _angles = array_create(_pieceCount + 1); \
 var _weights = array_create(_pieceCount); \
 var _totalWeight = 0; \
 for (var _i = 0; _i < _pieceCount; _i++) { \
-    var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
-    _weights[_i] = _weight; \
-    _totalWeight += _weight; \
+	var _weight = lerp(1, random_range(0.1, 2), _angleNoise); \
+	_weights[_i] = _weight; \
+	_totalWeight += _weight; \
 } \
 \
 _angles[0] = random(360); \
 for (var _i = 0; _i < _pieceCount; _i++) { \
-    _angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
+	_angles[_i + 1] = _angles[_i] + (_weights[_i] / _totalWeight) * 360; \
 }
 
 #macro __FRACTURE_MAP_ORIGIN \
