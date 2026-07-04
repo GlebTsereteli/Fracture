@@ -1,7 +1,7 @@
 // feather ignore all
 // Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
 
-/// Main Fracture interface. Manages Fracturing, Physics, Impulse and Fade Settings, Rendering, and Piece Lifecycle.
+/// Main Fracture interface. Manages Fracturing, per-fracture Settings (Physics, Impulse, Fade), global Rendering, and Piece Lifecycle.
 /// Initialized internally, no additional setup required.
 /// Call public methods using the Fracture.MethodName(<arguments>); syntax.
 function Fracture() {
@@ -153,7 +153,7 @@ function Fracture() {
 	
 	#endregion
 	
-	#region Settings: Physics
+	#region Settings: Physics (Per-Fracture)
 	
 	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// ---
@@ -205,7 +205,7 @@ function Fracture() {
 	}
 	
 	#endregion
-	#region Settings: Impulse
+	#region Settings: Impulse (Per-Fracture)
 	
 	/// Sets the impulse strength and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
@@ -242,7 +242,7 @@ function Fracture() {
 	}
 	
 	#endregion
-	#region Settings: Fade
+	#region Settings: Fade (Per-Fracture)
 	
 	/// Sets the fade behavior applied to all future Fracture Pieces. Existing Pieces are not affected.
 	/// ---
@@ -298,10 +298,11 @@ function Fracture() {
 	}
 	
 	#endregion
-	#region Settings: Rendering
+	#region Settings: Rendering (Global)
 	
 	/// Sets the layer to render all Fracture Pieces on.
 	/// All Fracture Pieces share a single layer.
+	/// Unlike per-fracture settings, this persists until changed and is not affected by FRACTURE_AUTO_RESET.
 	/// 
 	/// @param {Id.Layer,String} layer The layer ID or name to render all Fracture Pieces on.
 	/// 
@@ -316,6 +317,7 @@ function Fracture() {
 	
 	/// Sets the depth to render all Fracture Pieces at.
 	/// All Fracture Pieces share a single depth.
+	/// Unlike per-fracture settings, this persists until changed and is not affected by FRACTURE_AUTO_RESET.
 	/// 
 	/// @param {Real} depth The depth value to render all Fracture Pieces at.
 	/// 
@@ -343,7 +345,7 @@ function Fracture() {
 	}
 	
 	/// Begins fading out all existing Fracture Pieces immediately.
-	/// Pieces with a fade speed of 0 are not affected.
+	/// Pieces with a fade speed of 0 have no fade rate, so their Step processing exits early and they are left unchanged.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture

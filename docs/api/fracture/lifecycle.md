@@ -4,7 +4,7 @@
 
 This section covers the Lifecycle methods that manage existing Fracture Pieces after they've been created.
 * [Clear](#clear) destroys all Pieces instantly.
-* [Fade](#fade) begins fading all Pieces out.
+* [ForceFade](#forcefade) begins fading all Pieces out.
 * [Pause](#pause) and [Resume](#resume) freeze and unfreeze Piece fade processing.
 
 All Lifecycle methods apply to all existing Pieces.
@@ -20,16 +20,16 @@ Destroys all existing Fracture Pieces immediately.
 Use it to wipe debris whenever you need a clean slate.
 
 ---
-### `.Fade()`
+### `.ForceFade()`
 
-> `Fracture.Fade()` ➜ :Struct:.:Fracture:
+> `Fracture.ForceFade()` ➜ :Struct:.:Fracture:
 
 Begins fading out all existing Fracture Pieces immediately.
 
 Use it for a soft clear that lets debris fade out gradually instead of instantly vanishing.
 
-::: warning
-:FRACTURE_FADE_ENABLED: must be enabled for this to work. It is enabled by default.
+::: tip
+Pieces with a fade speed of `0` are not affected, since they have no fade rate to apply. Set fade speed via :.Fade():.
 :::
 
 ---

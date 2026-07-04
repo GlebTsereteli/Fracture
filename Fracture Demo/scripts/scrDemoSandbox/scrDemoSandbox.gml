@@ -105,6 +105,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
     Fracture = function(_inst) {
 		physics.Set();
         impulse.Set(mouse_x, mouse_y);
+		fade.Set();
         pattern.Fracture(_inst, shape.constant);
     };
 }

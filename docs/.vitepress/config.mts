@@ -199,6 +199,7 @@ export default defineConfig({
         'Constant.Color': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/Colour_And_Alpha.htm',
 
         // Links
+        'physics properties': 'https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=create%20a%20star).-,Properties,-You%20can%20define',
         'New Issue': 'https://github.com/glebtsereteli/Fracture/issues/new',
 
         // Shortcuts
@@ -240,32 +241,34 @@ export default defineConfig({
         '.PhysicsReset()': '/api/fracture/settings#physicsreset',
         '.Impulse()': '/api/fracture/settings#impulse',
         '.ImpulseReset()': '/api/fracture/settings#impulsereset',
+        '.Fade()': '/api/fracture/settings#fade',
+        '.FadeReset()': '/api/fracture/settings#fadereset',
         '.Layer()': '/api/fracture/settings#layer',
         '.Depth()': '/api/fracture/settings#depth',
 
         // Lifecycle
         '.Clear()': '/api/fracture/lifecycle#clear',
-        '.Fade()': '/api/fracture/lifecycle#fade',
+        '.ForceFade()': '/api/fracture/lifecycle#forcefade',
         '.Pause()': '/api/fracture/lifecycle#pause',
         '.Resume()': '/api/fracture/lifecycle#resume',
 
         // Config
+        'FRACTURE_DEFAULT_DEPTH': '/api/config#fracture-default-depth',
+        'FRACTURE_DEFAULT_IMPULSE_STRENGTH': '/api/config#fracture-default-impulse-strength',
         'FRACTURE_DEFAULT_COLLISION_GROUP': '/api/config#fracture-default-collision-group',
         'FRACTURE_DEFAULT_DENSITY': '/api/config#fracture-default-density',
         'FRACTURE_DEFAULT_RESTITUTION': '/api/config#fracture-default-restitution',
         'FRACTURE_DEFAULT_FRICTION': '/api/config#fracture-default-friction',
         'FRACTURE_DEFAULT_LINEAR_DAMPING': '/api/config#fracture-default-linear-damping',
         'FRACTURE_DEFAULT_ANGULAR_DAMPING': '/api/config#fracture-default-angular-damping',
-        'FRACTURE_DEFAULT_IMPULSE_STRENGTH': '/api/config#fracture-default-impulse-strength',
+
+        'FRACTURE_DEFAULT_FADE_AFTER_SETTLE': '/api/config#fracture-default-fade-after-settle',
+        'FRACTURE_DEFAULT_FADE_DELAY_FROM': '/api/config#fracture-default-fade-delay-from',
+        'FRACTURE_DEFAULT_FADE_DELAY_TO': '/api/config#fracture-default-fade-delay-to',
+        'FRACTURE_DEFAULT_FADE_SPEED_FROM': '/api/config#fracture-default-fade-speed-from',
+        'FRACTURE_DEFAULT_FADE_SPEED_TO': '/api/config#fracture-default-fade-speed-to',
+
         'FRACTURE_AUTO_RESET': '/api/config#fracture-auto-reset',
-
-        'FRACTURE_FADE_ENABLED': '/api/config#fracture-fade-enabled',
-        'FRACTURE_FADE_SETTLED': '/api/config#fracture-fade-settled',
-        'FRACTURE_FADE_DELAY_FROM': '/api/config#fracture-fade-delay-from',
-        'FRACTURE_FADE_DELAY_TO': '/api/config#fracture-fade-delay-to',
-        'FRACTURE_FADE_SPEED_FROM': '/api/config#fracture-fade-speed-from',
-        'FRACTURE_FADE_SPEED_TO': '/api/config#fracture-fade-speed-to',
-
         'FRACTURE_BENCHMARK': '/api/config#fracture-benchmark',
       }
       
