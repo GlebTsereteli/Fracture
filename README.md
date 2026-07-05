@@ -1,4 +1,4 @@
-<img width="1280" height="300" alt="banner github" src="https://github.com/user-attachments/assets/29668536-5044-4def-b90a-257c614f94dd" />
+<img width="1280" height="300" alt="github banner" src="https://github.com/user-attachments/assets/0e2a2742-87fa-41a4-8def-fddbdbd1c36c" />
 
 <h1 align="center">Fracture v1.0.0</h1>
 <p align="center">
