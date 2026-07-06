@@ -13,17 +13,30 @@ Add procedural physics-based destruction to your game with minimal setup. The li
 
 * ℹ️ Download the `.yymps` local package from the [latest release](https://github.com/glebtsereteli/Fracture/releases/latest/) page.
 * ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Fracture/) for installation instructions, usage examples, and full API reference.
-* ℹ️ See the [Getting Started](https://glebtsereteli.github.io/Fracture/pages/home/gettingStarted/gettingStarted#getting-started) page to fracture your first instance.
+* ℹ️ See the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted/gettingStarted#getting-started) page to fracture your first instance.
 
 # Features
 
-- **7 Fracture Patterns**. Shatter instances with [Grid](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexgrid), [Brick](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexbrick), [Diamond](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexdiamond), [Hex](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexhex), [Radial](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexradial), [Slice](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexslice), and [Voronoi](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#convexvoronoi), most with optional controls to dial in the look.
-- **3 Convex Shapes**. Fracture instances as a [Box](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#box), [Circle](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#circle), or [Hull](https://glebtsereteli.github.io/Fracture/pages/api/fracture/convexFracturing#hull) to match any convex sprite, with every Piece clipped to the shape boundary.
-- **Physics & Impulse**. Define Piece "materials" through [physics properties](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#physics) and blow Pieces apart with an explosive [impulse](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#impulse) from any origin.
-- **Automatic Fading**. Pieces fade out and destroy themselves automatically, with randomized [delay and speed](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#fade) for staggered, natural-looking debris.
-- **Efficient Rendering**. Pieces share a single ([frozen](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Primitives/vertex_freeze.htm)) [vertex buffer](https://glebtsereteli.github.io/Fracture/pages/topics/rendering#the-vertex-buffer) per fracture and draw in one pass, outclassing naive sprite baking or primitive drawing.
-- **Lifecycle Control**. Command existing Pieces at any time: [clear](https://glebtsereteli.github.io/Fracture/pages/api/fracture/lifecycle#clear) them instantly, [force a fade](https://glebtsereteli.github.io/Fracture/pages/api/fracture/lifecycle#forcefade), or [pause and resume](https://glebtsereteli.github.io/Fracture/pages/api/fracture/lifecycle#pause) them alongside your game's pause flow.
-- **Fluent Settings**. Chain [.Physics()](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#physics), [.Impulse()](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#impulse) and [.Fade()](https://glebtsereteli.github.io/Fracture/pages/api/fracture/settings#fade) before any fracture call, with per-fracture settings auto-resetting between calls.
+- **7 Fracture Patterns**. Shatter instances with [Grid](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexgrid), [Brick](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexbrick), [Diamond](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexdiamond), [Hex](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexhex), [Radial](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexradial), [Slice](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexslice), and [Voronoi](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#convexvoronoi), most with optional controls to dial in the look.
+- **3 Convex Shapes**. Fracture instances as a [Box](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#box), [Circle](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#circle), or [Hull](https://glebtsereteli.github.io/Fracture/api/fracture/convexFracturing#hull) to match any convex sprite, with every Piece clipped to the shape boundary.
+- **Physics & Impulse**. Define Piece "materials" through [physics properties](https://glebtsereteli.github.io/Fracture/api/fracture/settings#physics) and blow Pieces apart with an explosive [impulse](https://glebtsereteli.github.io/Fracture/api/fracture/settings#impulse) from any origin.
+- **Automatic Fading**. Pieces fade out and destroy themselves automatically, with randomized [delay and speed](https://glebtsereteli.github.io/Fracture/api/fracture/settings#fade) for staggered, natural-looking debris.
+- **Efficient Rendering**. Pieces share a single ([frozen](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Primitives/vertex_freeze.htm)) [vertex buffer](https://glebtsereteli.github.io/Fracture/topics/rendering#the-vertex-buffer) per fracture and draw in one pass, outclassing naive sprite baking or primitive drawing.
+- **Lifecycle Control**. Command existing Pieces at any time: [clear](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#clear) them instantly, [force a fade](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#forcefade), or [pause and resume](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#pause) them alongside your game's pause flow.
+- **Fluent Settings**. Chain [.Physics()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#physics), [.Impulse()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#impulse) and [.Fade()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#fade) before any fracture call, with per-fracture settings auto-resetting between calls.
+
+# Looking Ahead
+
+Fracture began as a submission to the sixth Cookbook library jam, so its scope was deliberately limited to convex fracturing with 3 shapes and 7 patterns.
+
+But the plans reach much further! Here are some of the things I'd like to add:
+- **Concave fracturing**. Support for arbitrary sprite shapes, not just convex ones.
+- **Cutting shapes**. Split an instance along a line instead of shattering it whole, with plans for multiple cuts.
+- **Geometry/physics separation**. Fetch raw Piece geometry for custom effects without creating physics bodies, opening up non-physics workflows.
+- **Caching**. Cache hulls and pools of pre-generated geometry, keeping things as fast as possible at runtime where it matters.
+- **Stylistic extras**. Piece outlines, weighted seams, and recursive re-fracturing for more control over look and behavior.
+
+See the full list on the [Upcoming Features](https://glebtsereteli.github.io/Fracture/upcoming-features) page.
 
 # Credits
 - Created and maintained by [Gleb Tsereteli](https://github.com/GlebTsereteli).
