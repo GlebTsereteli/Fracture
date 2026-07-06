@@ -6,34 +6,6 @@ Fracture is built for speed, but the cost of a fracture call depends on the shap
 
 As long as you avoid extreme cases like fracturing *many* instances at once or a very high Piece count, you should be fine. This is especially true under [YYC](https://manual.gamemaker.io/monthly/en/index.htm#t=Settings%2FYoYo_Compiler.htm).
 
-## Shape Cost
-
-The three :Convex: shapes are not equal in cost.
-
-<table>
-<tr><td><img src="./FRACTURE_CONVEX_BOX.png" alt="FRACTURE_CONVEX_BOX"></td><td>
-
-#### Box
-
-`FRACTURE_CONVEX_BOX` treats the instance as a rectangle of the full sprite area, and is the fastest since Pieces (in most patterns) are not clipped against anything.
-
-</td></tr><tr><td><img src="./FRACTURE_CONVEX_CIRCLE.png" alt="FRACTURE_CONVEX_CIRCLE"></td><td>
-
-#### Circle
-
-`FRACTURE_CONVEX_CIRCLE` treats the instance as a circle bounded by the sprite, and is slower since every Piece is clipped against the circle boundary.
-
-</td></tr><tr><td><img src="./FRACTURE_CONVEX_HULL.png" alt="FRACTURE_CONVEX_HULL"></td><td>
-
-#### Hull
-
-`FRACTURE_CONVEX_HULL` treats the instance as the [Convex Hull](https://en.wikipedia.org/wiki/Convex_hull) of its sprite, and is the slowest since every Piece is clipped against the convex hull.
-
-The first fracture of a given sprite and subimage grabs the hull via [sprite_get_convex_hull()](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Information/sprite_get_convex_hull.htm), then caches it for reuse on later calls. That first call is therefore slower than the ones that follow.
-
-</td></tr>
-</table>
-
 ## Keeping It Fast
 
 - **Match the shape to the sprite.** Choose the :Convex: shape that best fits the sprite you're fracturing. Box is cheapest, then Circle, then Hull. Don't reach for Hull unless the sprite is genuinely irregular.
@@ -45,7 +17,7 @@ The first fracture of a given sprite and subimage grabs the hull via [sprite_get
 
 Enable :FRACTURE_BENCHMARK: to log how long each fracture call takes (in milliseconds), and read the numbers for your own shape and pattern scenarios. It is enabled by default when running the game from the IDE.
 
-At **60 FPS** you have a frame budget of **16.67 milliseconds**. Open the Profiler, check how much of that budget you have left, and gauge whether the fracture you want fits without pushing the frame over the limit. If a call eats more time than you have to spare, the game will micro-freeze on that frame.
+At **60 FPS** you have a frame budget of **16.67 milliseconds**. Open the [Profiler](https://manual.gamemaker.io/lts/en/IDE_Tools/The_Debugger/The_Profiler.htm), check how much of that budget you have left, and gauge whether the fracture you want fits without pushing the frame over the limit. If a call eats more time than you have to spare, the game will micro-freeze on that frame.
 
 Just watching the fracture happen is also a good tell. If you see a visible hitch or micro-freeze the moment an instance fractures, that call is too heavy for the frame it landed on.
 

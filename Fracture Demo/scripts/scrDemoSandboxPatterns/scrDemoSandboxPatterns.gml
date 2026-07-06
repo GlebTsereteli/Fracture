@@ -86,7 +86,7 @@ function DemoSandboxPatternRadial() : DemoSandboxPattern("Radial") constructor {
         dbg_slider(ref_create(self, "angleNoise"), 0, 1, "Angle Noise", 0.05);
     };
     static GetArguments = function() {
-        return [pieceCount, angleNoise];
+        return [pieceCount, angleNoise, mouse_x, mouse_y];
     };
 }
 function DemoSandboxPatternSlice() : DemoSandboxPattern("Slice") constructor {

@@ -25,7 +25,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexGridBox, __FractureConvexGridCircle, __FractureConvexGridHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _cols, _rows, _noiseX, _noiseY);
 	}
 	
@@ -46,7 +45,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexBrickBox, __FractureConvexBrickCircle, __FractureConvexBrickHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _cols, _rows, _horizontal);
 	}
 	
@@ -65,7 +63,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexDiamondBox, __FractureConvexDiamondCircle, __FractureConvexDiamondHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _cols, _rows);
 	}
 	
@@ -85,7 +82,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexHexBox, __FractureConvexHexCircle, __FractureConvexHexHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _cols, _rows, _flat);
 	}
 	
@@ -107,7 +103,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexRadialBox, __FractureConvexRadialCircle, __FractureConvexRadialHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _pieceCount, _angleNoise, _originX, _originY);
 	}
 	
@@ -127,7 +122,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexSliceBox, __FractureConvexSliceCircle, __FractureConvexSliceHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _pieceCount, _cutAngle);
 	}
 	
@@ -147,7 +141,6 @@ function Fracture() {
 		/*@ignore*/ static _funcs = [__FractureConvexVoronoiBox, __FractureConvexVoronoiCircle, __FractureConvexVoronoiHull];
 		
 		__FRACTURE_VALIDATE_SHAPE;
-		
 		return _funcs[_shape](_inst, _pieceCount, _noise);
 	}
 	
@@ -211,8 +204,8 @@ function Fracture() {
 	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
 	/// 
 	/// @param {Real} strength The strength of the impulse applied to Fracture Pieces.
-	/// @param {Real} x The world x position of the impulse origin. [Default: center]
-	/// @param {Real} y The world y position of the impulse origin. [Default: center]
+	/// @param {Real} x The world-space x position of the impulse origin. [Default: center]
+	/// @param {Real} y The world-space y position of the impulse origin. [Default: center]
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture

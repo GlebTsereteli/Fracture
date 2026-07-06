@@ -1,6 +1,6 @@
 # Configuration
 
-This page provides an overview of all Fracture configuration macros. These settings control the default :Physics(): properties applied to Fracture Pieces, how Pieces fade out and destroy themselves, and runtime logging.
+This page provides an overview of all Fracture configuration macros. These settings control the default :.Physics(): properties applied to Fracture Pieces, how Pieces fade out and destroy themselves, and runtime logging.
 
 ## Defaults: General
 
@@ -20,12 +20,12 @@ Change it with :.Layer(): or :.Depth(): to target the desired layer/depth target
 Default outward impulse strength applied to each Piece after fracturing.
 
 ::: tip
-Read about setting the impulse strength and origin in :Impulse():.
+Read about setting the impulse strength and origin in :.Impulse():.
 :::
 
 ## Defaults: Physics
 
-Default physics properties assigned to Piece fixtures. Set these at runtime with :Physics():.
+Default physics properties assigned to Piece fixtures. Set these at runtime with :.Physics():.
 
 ### `FRACTURE_DEFAULT_COLLISION_GROUP`
 > Default: `1`.
@@ -64,7 +64,7 @@ Default angular damping assigned to all Piece fixtures.
 
 ## Defaults: Fade
 
-Defaults controlling how Pieces fade out and destroy themselves over time. Set these at runtime with :Fade():.
+Defaults controlling how Pieces fade out and destroy themselves over time. Set these at runtime with :.Fade():.
 
 ### `FRACTURE_DEFAULT_FADE_AFTER_SETTLE`
 > Default: `true`.
@@ -110,7 +110,7 @@ Runtime behavior toggles for auto-resetting settings and benchmark logging.
 ### `FRACTURE_AUTO_RESET`
 > Default: `true`.
 
-Whether to automatically reset :Physics():, :Impulse(): and :Fade(): parameters after each fracture call (`true`) or not (`false`).
+Whether to automatically reset :.Physics():, :.Impulse(): and :.Fade(): parameters after each fracture call (`true`) or not (`false`).
 
 ---
 ### `FRACTURE_BENCHMARK`

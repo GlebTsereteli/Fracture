@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Blast",
-    "path":"folders/Demo/Misc/Blast.yy",
+    "path":"folders/Demo/Modules/Blast.yy",
   },
   "parentObjectId":null,
   "persistent":false,

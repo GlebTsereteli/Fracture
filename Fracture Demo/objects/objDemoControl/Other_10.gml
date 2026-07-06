@@ -25,10 +25,7 @@ RefreshInterface = function() {
 		dbg_checkbox(ref_create(self, "coms"), "Coms");
 		dbg_checkbox(ref_create(self, "shapes"), "Shapes");
 		
-		if (FRACTURE_BENCHMARK) {
-			dbg_text_separator("Render Performance");
-			dbg_text(ref_create(self, "performanceNote"));
-		}
+		renderPerformance.RefreshInterface();
 	}
 	
 	if (room != demo.rm) {

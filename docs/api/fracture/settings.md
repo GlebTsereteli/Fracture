@@ -1,7 +1,5 @@
 # Settings
 
-<iframe frameborder="0" src="https://itch.io/embed-upload/18193319?color=000000" allowfullscreen="" width="960" height="560"><a href="https://glebtsereteli.itch.io/fracture">Play Fracture on itch.io</a></iframe>
-
 ## Overview
 
 This section covers the Settings methods that configure how Fracture Pieces are created, behave and render, from their physics and initial impulse to how they fade over time.

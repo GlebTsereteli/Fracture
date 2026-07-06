@@ -6,7 +6,7 @@
   "name":"scrDemoBlast",
   "parent":{
     "name":"Blast",
-    "path":"folders/Demo/Misc/Blast.yy",
+    "path":"folders/Demo/Modules/Blast.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scrDemoPhysics",
   "parent":{
-    "name":"Misc",
-    "path":"folders/Demo/Misc.yy",
+    "name":"Modules",
+    "path":"folders/Demo/Modules.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
