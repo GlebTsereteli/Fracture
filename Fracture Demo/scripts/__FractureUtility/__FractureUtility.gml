@@ -7,5 +7,6 @@ function __FractureLog(_message) {
 
 /// @ignore
 function __FractureError(_message) {
-	show_error($"[{__FRACTURE_NAME} {__FRACTURE_VERSION}] Error.\n-----------------------------------\n{_message}.\n\n", true);
+	var _div = $"\n{string_repeat("—", 100)}\n";
+	show_error($"\n{_div}[{string_upper(__FRACTURE_NAME)} {__FRACTURE_VERSION}] ERROR!\n{_message}.{_div}\n", true);
 }

@@ -2,13 +2,13 @@
 
 ## Overview
 
-Fracture is built for speed, but the cost of a fracture call depends on the shape, the pattern, and the number of Pieces. This page covers what to expect and how to keep things fast.
+Fracture is built for speed, but the cost of a fracture call depends on the :Shape:, the :Pattern:, and the number of Pieces. This page covers what to expect and how to keep things fast.
 
 As long as you avoid extreme cases like fracturing *many* instances at once or a very high Piece count, you should be fine. This is especially true under [YYC](https://manual.gamemaker.io/monthly/en/index.htm#t=Settings%2FYoYo_Compiler.htm).
 
 ## Keeping It Fast
 
-- **Match the shape to the sprite.** Choose the :Convex: shape that best fits the sprite you're fracturing. Box is cheapest, then Circle, then Hull. Don't reach for Hull unless the sprite is genuinely irregular.
+- **Match the shape to the sprite.** Choose the Convex :Shape: that best fits the sprite you're fracturing. Box is cheapest, then Circle, then Hull. Don't reach for Hull unless the sprite is genuinely irregular.
 - **Lower the Piece count.** Piece count is the biggest performance killer. If performance is critical, drop columns/rows/cell counts as low as your design allows. Fewer Pieces means less geometry to calculate and fewer physics bodies to process.
 - **Spread work across frames.** When fracturing many instances at once, consider doing it over several frames rather than all together. Fracture one shape per frame, or several per frame, depending on your frame budget.
 - **Compile with YYC.** Fracture is CPU-bound at fracture time, when all the geometry is calculated. The [YoYo Compiler](https://manual.gamemaker.io/monthly/en/index.htm#t=Settings%2FYoYo_Compiler.htm) produces native machine code and is great at optimizing CPU operations. Use it for release builds where speed matters.

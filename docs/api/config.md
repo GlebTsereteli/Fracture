@@ -1,6 +1,6 @@
 # Configuration
 
-This page provides an overview of all Fracture configuration macros. These settings control the default :.Physics(): properties applied to Fracture Pieces, how Pieces fade out and destroy themselves, and runtime logging.
+This page provides an overview of all Fracture configuration macros. These settings control the default render depth, :.Physics():, :.Impulse():, and :.Fade(): behavior, plus runtime logging.
 
 ## Defaults: General
 
@@ -9,9 +9,9 @@ General Piece defaults that don't belong to a specific settings group.
 ### `FRACTURE_DEFAULT_DEPTH`
 > Default: `-15000`.
 
-Default depth to render all Fracture Pieces at. Defaults to a high value close to the `-16000` depth limit so Pieces are initially visible in most cases.
+Default depth to render all Fracture :Pieces: at. Defaults to a high value close to the `-16000` depth limit so Pieces are initially visible in most cases.
 
-Change it with :.Layer(): or :.Depth(): to target the desired layer/depth target.
+Change it with :.Layer(): or :.Depth(): to render on the desired layer or depth.
 
 ---
 ### `FRACTURE_DEFAULT_IMPULSE_STRENGTH`

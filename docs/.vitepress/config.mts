@@ -190,7 +190,6 @@ export default defineConfig({
         'Id.Function': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Script_Functions.htm',
 
         // Physics
-        'Physics': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Physics.htm',
         'Box2D': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Physics.htm',
         'Fixture': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm',
         'Vertex Buffer': 'https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Primitives/Primitives.htm',
@@ -202,24 +201,26 @@ export default defineConfig({
         'physics properties': 'https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=create%20a%20star).-,Properties,-You%20can%20define',
         'New Issue': 'https://github.com/glebtsereteli/Fracture/issues/new',
 
-        // Shortcuts
+        // Home
         'Getting Started': '/home/gettingStarted/gettingStarted',
         'Demo': '/home/demo/demo',
         'Demos': '/home/demo/demo',
         'FAQ': '/home/faq',
+
+        // Topics
         'Requirements': '/topics/requirements',
         'Pieces': '/topics/pieces',
         'Piece': '/topics/pieces',
         'Rendering': '/topics/rendering',
         'Performance': '/topics/performance',
-        'Fracture': '/api/fracture/overview',
-        'Patterns': '/api/fracture/convexFracturing#patterns',
-        'Settings': '/api/fracture/settings',
-        'Lifecycle': '/api/fracture/lifecycle',
-        'Config': '/api/config',
-        'Upcoming Features': '/others/upcomingFeatures',
 
-        // Shapes
+        // Fracture
+        'Fracture': '/api/fracture/overview',
+
+        // Convex Fracturing
+        'Convex': '/api/fracture/convexFracturing',
+        'Convex Fracturing': '/api/fracture/convexFracturing',
+        'Shape': '/api/fracture/convexFracturing#shapes',
         'Shapes': '/api/fracture/convexFracturing#shapes',
         'FRACTURE_CONVEX_BOX': '/api/fracture/convexFracturing#box',
         'FRACTURE_CONVEX_CIRCLE': '/api/fracture/convexFracturing#circle',
@@ -227,8 +228,8 @@ export default defineConfig({
         'Box': '/api/fracture/convexFracturing#box',
         'Circle': '/api/fracture/convexFracturing#circle',
         'Hull': '/api/fracture/convexFracturing#hull',
-
-        // Patterns
+        'Pattern': '/api/fracture/convexFracturing#patterns',
+        'Patterns': '/api/fracture/convexFracturing#patterns',
         'ConvexGrid': '/api/fracture/convexFracturing#convexgrid',
         'ConvexBrick': '/api/fracture/convexFracturing#convexbrick',
         'ConvexDiamond': '/api/fracture/convexFracturing#convexdiamond',
@@ -245,24 +246,28 @@ export default defineConfig({
         'Voronoi': '/api/fracture/convexFracturing#convexvoronoi',
 
         // Settings
-        'Impulse': '/api/fracture/settings#impulse',
-        'Fade': '/api/fracture/settings#fade',
+        'Settings': '/api/fracture/settings',
+        'Physics': '/api/fracture/settings#physics',
         '.Physics()': '/api/fracture/settings#physics',
         '.PhysicsReset()': '/api/fracture/settings#physicsreset',
+        'Impulse': '/api/fracture/settings#impulse',
         '.Impulse()': '/api/fracture/settings#impulse',
         '.ImpulseReset()': '/api/fracture/settings#impulsereset',
+        'Fade': '/api/fracture/settings#fade',
         '.Fade()': '/api/fracture/settings#fade',
         '.FadeReset()': '/api/fracture/settings#fadereset',
         '.Layer()': '/api/fracture/settings#layer',
         '.Depth()': '/api/fracture/settings#depth',
 
         // Lifecycle
+        'Lifecycle': '/api/fracture/lifecycle',
         '.Clear()': '/api/fracture/lifecycle#clear',
         '.ForceFade()': '/api/fracture/lifecycle#forcefade',
         '.Pause()': '/api/fracture/lifecycle#pause',
         '.Resume()': '/api/fracture/lifecycle#resume',
 
         // Config
+        'Config': '/api/config',
         'FRACTURE_DEFAULT_DEPTH': '/api/config#fracture-default-depth',
         'FRACTURE_DEFAULT_IMPULSE_STRENGTH': '/api/config#fracture-default-impulse-strength',
         'FRACTURE_DEFAULT_COLLISION_GROUP': '/api/config#fracture-default-collision-group',
@@ -271,15 +276,16 @@ export default defineConfig({
         'FRACTURE_DEFAULT_FRICTION': '/api/config#fracture-default-friction',
         'FRACTURE_DEFAULT_LINEAR_DAMPING': '/api/config#fracture-default-linear-damping',
         'FRACTURE_DEFAULT_ANGULAR_DAMPING': '/api/config#fracture-default-angular-damping',
-
         'FRACTURE_DEFAULT_FADE_AFTER_SETTLE': '/api/config#fracture-default-fade-after-settle',
         'FRACTURE_DEFAULT_FADE_DELAY_FROM': '/api/config#fracture-default-fade-delay-from',
         'FRACTURE_DEFAULT_FADE_DELAY_TO': '/api/config#fracture-default-fade-delay-to',
         'FRACTURE_DEFAULT_FADE_SPEED_FROM': '/api/config#fracture-default-fade-speed-from',
         'FRACTURE_DEFAULT_FADE_SPEED_TO': '/api/config#fracture-default-fade-speed-to',
-
         'FRACTURE_AUTO_RESET': '/api/config#fracture-auto-reset',
         'FRACTURE_BENCHMARK': '/api/config#fracture-benchmark',
+
+        // Others
+        'Upcoming Features': '/others/upcomingFeatures',
       }
       
       // Markdown-it rule

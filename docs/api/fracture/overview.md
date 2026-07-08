@@ -2,9 +2,9 @@
 
 ## Overview
 `Fracture` is the main interface of the library. It handles most library operations and is organized into the following modules:
-- :Convex: fracturing breaks a convex-shaped instance (Box, Circle, or Hull) into :Piece: instances using one of the available patterns: :Grid:, :Brick:, :Diamond:, :Hex:, :Radial:, :Slice:, and :Voronoi:.
-- :Settings: configure the :Physics:, :Impulse:, and :Rendering: properties applied to subsequent Fracture calls.
-- :Lifecycle: methods control existing :Piece: instances, covering :.Clear():, :.Fade():, :.Pause():, and :.Resume():.
+- :Convex Fracturing: breaks convex-shaped instances (:Box:, :Circle:, or :Hull:) into :Pieces: using one of the available patterns: :Grid:, :Brick:, :Diamond:, :Hex:, :Radial:, :Slice:, and :Voronoi:.
+- :Settings: configure the :Physics:, :Impulse:, and :Fade: properties applied to subsequent Fracture calls, plus the :Rendering: layer or depth for all Pieces.
+- :Lifecycle: methods control existing :Piece: instances, covering :.Clear():, :.ForceFade():, :.Pause():, and :.Resume():.
 - [Config](/api/config) macros set library-wide defaults and behavior.
 
 ---

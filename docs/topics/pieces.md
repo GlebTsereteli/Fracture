@@ -48,6 +48,6 @@ The physics simulation can be paused and resumed via the [`physics_pause_enable(
 
 ## Cleanup
 
-A Piece is destroyed by finishing its fade, or immediately via :.ForceFade(): or :.Clear():.
+A Piece is destroyed by finishing its fade, or immediately via :.Clear():. :.ForceFade(): triggers fading early but still fades over the Piece's speed value.
 
 Each Piece holds a reference to the vertex buffer it shares with the other Pieces from the same fracture call. Once every Piece from that call has been destroyed, the buffer itself is freed automatically.
