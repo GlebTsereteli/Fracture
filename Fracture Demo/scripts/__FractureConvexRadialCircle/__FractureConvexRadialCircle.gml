@@ -54,6 +54,7 @@ function __FractureConvexRadialCircle(_inst, _pieceCount, _angleNoise = 0.5, _or
 		
 		// Piece
 		__FRACTURE_PIECE
+			__primitiveType = pr_trianglelist;
 			__vertexCount = _nArc * 3;
 			__vertexIndex = _vertexOffset;
 			

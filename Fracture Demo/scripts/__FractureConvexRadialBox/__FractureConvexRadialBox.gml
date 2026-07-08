@@ -116,6 +116,7 @@ function __FractureConvexRadialBox(_inst, _pieceCount, _angleNoise, _originX, _o
 		}
 		
 		__FRACTURE_PIECE
+			__primitiveType = pr_trianglelist;
 			__vertexCount = _nTris * 3;
 			__vertexIndex = _vertexOffset;
 			
