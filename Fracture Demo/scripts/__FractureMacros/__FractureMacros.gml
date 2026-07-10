@@ -20,8 +20,8 @@
 #region Core
 
 #macro __FRACTURE_CATCH_RENDERER \
-if (not instance_exists(__objFractureRenderer)) { \
-	instance_create_depth(0, 0, FRACTURE_DEFAULT_DEPTH, __objFractureRenderer); \
+if (not instance_exists(__FractureRenderer)) { \
+	instance_create_depth(0, 0, FRACTURE_DEFAULT_DEPTH, __FractureRenderer); \
 }
 
 #macro __FRACTURE_VALIDATE_SHAPE \
@@ -98,7 +98,7 @@ var _dist = point_distance(_centerX, _centerY, _ox, _oy); \
 var _dir = point_direction(_centerX, _centerY, _ox, _oy); \
 var _pieceX = _inst.x + lengthdir_x(_dist, _dir - _angle); \
 var _pieceY = _inst.y + lengthdir_y(_dist, _dir - _angle); \
-with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __objFracturePiece)) { \
+with (instance_create_depth(_pieceX, _pieceY, _inst.depth, __FracturePiece)) { \
 	image_alpha = _alpha; \
 	\
 	__state = _state; \

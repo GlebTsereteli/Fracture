@@ -8,7 +8,7 @@ This page covers how that system works and where its limits are.
 
 ## The Renderer
 
-All Pieces are drawn by an internal renderer object, `__objFractureRenderer`. It's a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), created automatically when needed and fully managed by the system.
+All Pieces are drawn by an internal renderer object, `__FractureRenderer`. It's a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), created automatically when needed and fully managed by the system.
 
 Drawing everything through the renderer is what makes [fading Pieces](/topics/pieces#settling-and-fading) affordable. Vertex buffers respect neither [image_alpha](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Instance_Variables/image_alpha.htm) nor [draw_set_alpha()](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Colour_And_Alpha/draw_set_alpha.htm), so fading requires a shader.
 

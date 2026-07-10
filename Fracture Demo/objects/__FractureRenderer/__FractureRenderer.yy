@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"__objFracturePiece",
+  "%Name":"__FractureRenderer",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"__objFracturePiece",
+  "name":"__FractureRenderer",
   "overriddenProperties":[],
   "parent":{
-    "name":"(System)",
-    "path":"folders/Fracture/(System).yy",
+    "name":"Non-Scripts",
+    "path":"folders/Fracture/(System)/Non-Scripts.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"__FractureShader",
+  "name":"__FractureShader",
+  "parent":{
+    "name":"Non-Scripts",
+    "path":"folders/Fracture/(System)/Non-Scripts.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

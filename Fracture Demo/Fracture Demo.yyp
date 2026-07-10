@@ -37,6 +37,7 @@
     {"$GMFolder":"","%Name":"05 Radial","folderPath":"folders/Fracture/(System)/Convex/05 Radial.yy","name":"05 Radial","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/Fracture/(System)/Convex/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/Fracture/(System)/Convex/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Non-Scripts","folderPath":"folders/Fracture/(System)/Non-Scripts.yy","name":"Non-Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
@@ -51,8 +52,8 @@
   "resources":[
     {"id":{"name":"Fracture Info","path":"notes/Fracture Info/Fracture Info.yy",},},
     {"id":{"name":"README","path":"notes/README/README.yy",},},
-    {"id":{"name":"__objFracturePiece","path":"objects/__objFracturePiece/__objFracturePiece.yy",},},
-    {"id":{"name":"__objFractureRenderer","path":"objects/__objFractureRenderer/__objFractureRenderer.yy",},},
+    {"id":{"name":"__FracturePiece","path":"objects/__FracturePiece/__FracturePiece.yy",},},
+    {"id":{"name":"__FractureRenderer","path":"objects/__FractureRenderer/__FractureRenderer.yy",},},
     {"id":{"name":"objDemoBlast","path":"objects/objDemoBlast/objDemoBlast.yy",},},
     {"id":{"name":"objDemoControl","path":"objects/objDemoControl/objDemoControl.yy",},},
     {"id":{"name":"objDemoSandboxShapeBox","path":"objects/objDemoSandboxShapeBox/objDemoSandboxShapeBox.yy",},},
@@ -115,7 +116,7 @@
     {"id":{"name":"scrDemoSandboxShape","path":"scripts/scrDemoSandboxShape/scrDemoSandboxShape.yy",},},
     {"id":{"name":"scrDemoUtility","path":"scripts/scrDemoUtility/scrDemoUtility.yy",},},
     {"id":{"name":"scrDemoWalls","path":"scripts/scrDemoWalls/scrDemoWalls.yy",},},
-    {"id":{"name":"__shdFracture","path":"shaders/__shdFracture/__shdFracture.yy",},},
+    {"id":{"name":"__FractureShader","path":"shaders/__FractureShader/__FractureShader.yy",},},
     {"id":{"name":"sprDemoSandboxBackground","path":"sprites/sprDemoSandboxBackground/sprDemoSandboxBackground.yy",},},
     {"id":{"name":"sprDemoSandboxShapeBox","path":"sprites/sprDemoSandboxShapeBox/sprDemoSandboxShapeBox.yy",},},
     {"id":{"name":"sprDemoSandboxShapeCircle","path":"sprites/sprDemoSandboxShapeCircle/sprDemoSandboxShapeCircle.yy",},},

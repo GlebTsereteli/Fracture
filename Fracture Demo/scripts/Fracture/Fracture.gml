@@ -19,7 +19,7 @@ function Fracture() {
 	/// @param {Real} noiseX The horizontal grid noise intensity, from 0 to 1. [Default: 1]
 	/// @param {Real} noiseY The vertical grid noise intensity, from 0 to 1. [Default: noiseX]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexGrid = function(_inst, _shape, _cols, _rows, _noiseX = 1, _noiseY = _noiseX) {
 		/*@ignore*/ static _funcs = [__FractureConvexGridBox, __FractureConvexGridCircle, __FractureConvexGridHull];
@@ -39,7 +39,7 @@ function Fracture() {
 	/// @param {Real} rows The number of rows.
 	/// @param {Bool} horizontal Whether bricks are laid horizontally (true) or vertically (false). [Default: true]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexBrick = function(_inst, _shape, _cols, _rows, _horizontal = true) {
 		/*@ignore*/ static _funcs = [__FractureConvexBrickBox, __FractureConvexBrickCircle, __FractureConvexBrickHull];
@@ -57,7 +57,7 @@ function Fracture() {
 	/// @param {Real} cols The number of columns.
 	/// @param {Real} rows The number of rows.
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexDiamond = function(_inst, _shape, _cols, _rows) {
 		/*@ignore*/ static _funcs = [__FractureConvexDiamondBox, __FractureConvexDiamondCircle, __FractureConvexDiamondHull];
@@ -76,7 +76,7 @@ function Fracture() {
 	/// @param {Real} rows The number of rows.
 	/// @param {Bool} flat Whether hexagons are flat-topped (true) or pointy-topped (false). [Default: true]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexHex = function(_inst, _shape, _cols, _rows, _flat = true) {
 		/*@ignore*/ static _funcs = [__FractureConvexHexBox, __FractureConvexHexCircle, __FractureConvexHexHull];
@@ -97,7 +97,7 @@ function Fracture() {
 	/// @param {Real} originX The world-space x position of the radial origin. [Default: center]
 	/// @param {Real} originY The world-space y position of the radial origin. [Default: center]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexRadial = function(_inst, _shape, _pieceCount, _angleNoise = 0, _originX = undefined, _originY = undefined) {
 		/*@ignore*/ static _funcs = [__FractureConvexRadialBox, __FractureConvexRadialCircle, __FractureConvexRadialHull];
@@ -116,7 +116,7 @@ function Fracture() {
 	/// @param {Real} pieceCount The number of Pieces.
 	/// @param {Real} cutAngle The angle of the slice cuts in degrees. [Default: random(360)]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexSlice = function(_inst, _shape, _pieceCount, _cutAngle = random(360)) {
 		/*@ignore*/ static _funcs = [__FractureConvexSliceBox, __FractureConvexSliceCircle, __FractureConvexSliceHull];
@@ -135,7 +135,7 @@ function Fracture() {
 	/// @param {Real} pieceCount The number of Voronoi cells.
 	/// @param {Real} noise The seed noise intensity, from 0 to 1, where 0 produces a perfect grid and 1 is most organic. [Default: 1]
 	/// 
-	/// @return {Array<Id.Instance of __objFracturePiece>}
+	/// @return {Array<Id.Instance of __FracturePiece>}
 	/// @self Fracture
 	static ConvexVoronoi = function(_inst, _shape, _pieceCount, _noise = 1) {
 		/*@ignore*/ static _funcs = [__FractureConvexVoronoiBox, __FractureConvexVoronoiCircle, __FractureConvexVoronoiHull];
@@ -303,7 +303,7 @@ function Fracture() {
 	/// @self Fracture
 	static Layer = function(_layer) {
 		__FRACTURE_CATCH_RENDERER;
-		__objFractureRenderer.layer = _layer;
+		__FractureRenderer.layer = _layer;
 		
 		return self;
 	}
@@ -318,7 +318,7 @@ function Fracture() {
 	/// @self Fracture
 	static Depth = function(_depth) {
 		__FRACTURE_CATCH_RENDERER;
-		__objFractureRenderer.depth = _depth;
+		__FractureRenderer.depth = _depth;
 		
 		return self;
 	}
@@ -332,7 +332,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static Clear = function() {
-		instance_destroy(__objFracturePiece);
+		instance_destroy(__FracturePiece);
 		
 		return self;
 	}
@@ -343,7 +343,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static ForceFade = function() {
-		with (__objFracturePiece) {
+		with (__FracturePiece) {
 			__settled = true;
 			__fadeDelay = 0;
 		}
@@ -358,7 +358,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static Pause = function() {
-		with (__objFracturePiece) {
+		with (__FracturePiece) {
 			__paused = true;
 		}
 		
@@ -371,7 +371,7 @@ function Fracture() {
 	/// @return {Struct.Fracture}
 	/// @self Fracture
 	static Resume = function() {
-		with (__objFracturePiece) {
+		with (__FracturePiece) {
 			__paused = false;
 		}
 		
