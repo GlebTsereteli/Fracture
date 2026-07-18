@@ -97,7 +97,7 @@ Make sure to match the pattern's detail to the instance size and keep counts rea
 
 > `Fracture.ConvexGrid(inst, shape, cols, rows, [noiseX], [noiseY])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexGrid"/>
+<PatternRow pattern="Grid"/>
 
 Fractures the given convex instance into a grid of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 
@@ -130,7 +130,7 @@ Fracture.ConvexGrid(inst, FRACTURE_CONVEX_HULL, 6, 6, 1, 0.4); // [!code highlig
 
 > `Fracture.ConvexBrick(inst, shape, cols, rows, [horizontal])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexBrick"/>
+<PatternRow pattern="Brick"/>
 
 Fractures the given convex instance into a brick pattern of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 
@@ -162,7 +162,7 @@ Fracture.ConvexBrick(inst, FRACTURE_CONVEX_HULL, 5, 5); // [!code highlight]
 
 > `Fracture.ConvexDiamond(inst, shape, cols, rows)` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexDiamond"/>
+<PatternRow pattern="Diamond"/>
 
 Fractures the given convex instance into a diamond pattern of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 
@@ -191,7 +191,7 @@ Fracture.ConvexDiamond(inst, FRACTURE_CONVEX_HULL, 4, 4); // [!code highlight]
 
 > `Fracture.ConvexHex(inst, shape, cols, rows, [flat])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexHex"/>
+<PatternRow pattern="Hex"/>
 
 Fractures the given convex instance into a [Hexagonal](https://en.wikipedia.org/wiki/Hexagonal_tiling) pattern of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 
@@ -221,7 +221,7 @@ Fracture.ConvexHex(inst, FRACTURE_CONVEX_HULL, 8, 8); // [!code highlight]
 
 > `Fracture.ConvexRadial(inst, shape, pieceCount, [angleNoise], [originX], [originY])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexRadial"/>
+<PatternRow pattern="Radial"/>
 
 Fractures the given convex instance into a radial pattern of Pieces clipped to the shape boundary, defined by the number of Pieces.
 
@@ -254,7 +254,7 @@ Fracture.ConvexRadial(inst, FRACTURE_CONVEX_HULL, 14, 0, mouse_x, mouse_y); // [
 
 > `Fracture.ConvexSlice(inst, shape, pieceCount, [cutAngle])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexSlice"/>
+<PatternRow pattern="Slice"/>
 
 Fractures the given convex instance into a series of parallel slices clipped to the shape boundary, defined by the number of Pieces.
 
@@ -285,7 +285,7 @@ Fracture.ConvexSlice(inst, FRACTURE_CONVEX_HULL, 10, 0); // [!code highlight]
 
 > `Fracture.ConvexVoronoi(inst, shape, pieceCount, [noise])` ➜ :Array: of :Piece:
 
-<ShapeRow pattern="ConvexVoronoi"/>
+<PatternRow pattern="Voronoi"/>
 
 Fractures the given convex instance into a [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) pattern of Pieces clipped to the shape boundary, defined by the number of cells.
 

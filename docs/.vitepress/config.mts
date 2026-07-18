@@ -13,7 +13,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: 'logoSmall.png' }],
 
-    // embeds
+    // Embeds
     ["meta", { property: "og:title", content: "Fracture Documentation" }],
     ["meta", { property: "og:description", content: "Documentation for the Fracture GameMaker library. Setup instructions, usage examples and full API coverage." }],
     ["meta", { property: "og:type", content: "website" }],
@@ -25,19 +25,19 @@ export default defineConfig({
     ["meta", { name: "twitter:description", content: "Documentation for the Fracture GameMaker library. Setup instructions, usage examples and full API coverage." }],
     ["meta", { name: "twitter:image", content: "https://glebtsereteli.github.io/Fracture/socialEmbed.png" }],
   
-    // analytics
-    // [
-    //   'script',
-    //   { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-5T6N7GGRNE' }
-    // ],
-    // [
-    //   'script',
-    //   {},
-    //   `window.dataLayer = window.dataLayer || [];
-    //    function gtag(){dataLayer.push(arguments);}
-    //    gtag('js', new Date());
-    //    gtag('config', 'G-Y7N1YYYGY7');`
-    // ]
+    // Analytics
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-FBXGHSN5QK' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+       gtag('config', 'G-FBXGHSN5QK');`
+    ]
   ],
 
   themeConfig: {
@@ -56,7 +56,7 @@ export default defineConfig({
             items: [
               { text: 'What is Fracture?', link: '/home/whatIsIt/whatIsIt' },
               { text: 'Getting Started', link: '/home/gettingStarted/gettingStarted' },
-              { text: 'Demo', link: '/home/demo/demo' },
+              { text: 'Upcoming Features', link: '/home/upcomingFeatures' },
               { text: 'FAQ', link: '/home/faq' },
             ]
           },
@@ -69,14 +69,6 @@ export default defineConfig({
               { text: 'Performance', link: '/topics/performance' },
             ]
           },
-          {
-            text: '🗂️ Others',
-            items: [
-              { text: 'Contact & Support', link: '/others/contactSupport' },
-              { text: 'Upcoming Features', link: '/others/upcomingFeatures' },
-              { text: 'Credits', link: '/others/credits' },
-            ]
-          }
         ]
       },
       { 
@@ -105,7 +97,7 @@ export default defineConfig({
         items: [
           { text: 'What is Fracture?', link: '/home/whatIsIt/whatIsIt' },
           { text: 'Getting Started', link: '/home/gettingStarted/gettingStarted' },
-          { text: 'Demo', link: '/home/demo/demo' },
+          { text: 'Upcoming Features', link: '/home/upcomingFeatures' },
           { text: 'FAQ', link: '/home/faq' },
         ]
       },
@@ -132,15 +124,6 @@ export default defineConfig({
           },
           { text: 'Configuration', link: '/api/config' },
         ]
-      },
-      {
-          text: '🗂️ Others',
-          link: '/others/contactSupport',
-          items: [
-            { text: 'Contact & Support', link: '/others/contactSupport' },
-            { text: 'Upcoming Features', link: '/others/upcomingFeatures' },
-            { text: 'Credits', link: '/others/credits' },
-          ]
       },
     ],
     
@@ -203,8 +186,7 @@ export default defineConfig({
 
         // Home
         'Getting Started': '/home/gettingStarted/gettingStarted',
-        'Demo': '/home/demo/demo',
-        'Demos': '/home/demo/demo',
+        'Upcoming Features': '/home/upcomingFeatures',
         'FAQ': '/home/faq',
 
         // Topics
@@ -248,23 +230,20 @@ export default defineConfig({
         // Settings
         'Settings': '/api/fracture/settings',
         'Physics': '/api/fracture/settings#physics',
-        '.Physics()': '/api/fracture/settings#physics',
-        '.PhysicsReset()': '/api/fracture/settings#physicsreset',
+        'PhysicsReset': '/api/fracture/settings#physicsreset',
         'Impulse': '/api/fracture/settings#impulse',
-        '.Impulse()': '/api/fracture/settings#impulse',
-        '.ImpulseReset()': '/api/fracture/settings#impulsereset',
+        'ImpulseReset': '/api/fracture/settings#impulsereset',
         'Fade': '/api/fracture/settings#fade',
-        '.Fade()': '/api/fracture/settings#fade',
-        '.FadeReset()': '/api/fracture/settings#fadereset',
-        '.Layer()': '/api/fracture/settings#layer',
-        '.Depth()': '/api/fracture/settings#depth',
+        'FadeReset': '/api/fracture/settings#fadereset',
+        'Layer': '/api/fracture/settings#layer',
+        'Depth': '/api/fracture/settings#depth',
 
         // Lifecycle
         'Lifecycle': '/api/fracture/lifecycle',
-        '.Clear()': '/api/fracture/lifecycle#clear',
-        '.ForceFade()': '/api/fracture/lifecycle#forcefade',
-        '.Pause()': '/api/fracture/lifecycle#pause',
-        '.Resume()': '/api/fracture/lifecycle#resume',
+        'Clear': '/api/fracture/lifecycle#clear',
+        'ForceFade': '/api/fracture/lifecycle#forcefade',
+        'Pause': '/api/fracture/lifecycle#pause',
+        'Resume': '/api/fracture/lifecycle#resume',
 
         // Config
         'Config': '/api/config',
@@ -283,9 +262,11 @@ export default defineConfig({
         'FRACTURE_DEFAULT_FADE_SPEED_TO': '/api/config#fracture-default-fade-speed-to',
         'FRACTURE_AUTO_RESET': '/api/config#fracture-auto-reset',
         'FRACTURE_BENCHMARK': '/api/config#fracture-benchmark',
-
-        // Others
-        'Upcoming Features': '/others/upcomingFeatures',
+      }
+      
+      // Generate a .Name() variation for every shortcut
+      for (const key of Object.keys(shortcuts)) {
+        shortcuts[`.${key}()`] = shortcuts[key]
       }
       
       // Markdown-it rule

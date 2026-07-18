@@ -8,8 +8,8 @@
   "name":"objDemoSandboxShapeHull",
   "overriddenProperties":[],
   "parent":{
-    "name":"03 Convex",
-    "path":"folders/Demo/Types/01 Sandbox/Shapes/03 Convex.yy",
+    "name":"03 Hull",
+    "path":"folders/Demo/Types/01 Sandbox/Shapes/03 Hull.yy",
   },
   "parentObjectId":{
     "name":"objDemoSandboxShapeParent",
@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprDemoSandboxShapeHull01",
-    "path":"sprites/sprDemoSandboxShapeHull01/sprDemoSandboxShapeHull01.yy",
+    "name":"sprDemoSandboxShapeHull",
+    "path":"sprites/sprDemoSandboxShapeHull/sprDemoSandboxShapeHull.yy",
   },
   "spriteMaskId":null,
   "visible":true,

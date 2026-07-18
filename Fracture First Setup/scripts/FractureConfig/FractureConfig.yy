@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"FractureConfig",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"FractureConfig",
+  "parent":{
+    "name":"Fracture",
+    "path":"folders/Fracture.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

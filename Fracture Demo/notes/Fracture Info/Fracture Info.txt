@@ -1,5 +1,5 @@
 
-# Fracture v1.0.0 (2026.07.16) Info
+# Fracture v1.0.0 (2026.07.19) Info
 - Author: Gleb Tsereteli
 - GitHub: https://github.com/glebtsereteli/Fracture
 - itch.io: https://glebtsereteli.itch.io/fracture

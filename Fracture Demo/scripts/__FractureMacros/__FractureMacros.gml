@@ -4,7 +4,7 @@
 
 #macro __FRACTURE_NAME "Fracture"
 #macro __FRACTURE_VERSION "v1.0.0" // major.minor.patch
-#macro __FRACTURE_DATE "2026.07.16" // year.month.day
+#macro __FRACTURE_DATE "2026.07.19" // year.month.day
 
 #endregion
 #region Constants

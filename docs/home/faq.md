@@ -38,7 +38,7 @@ Fracture follows the [Semantic Versioning](https://semver.org/) (often called **
 
 1. Back up your settings from the `FractureConfig` script.
 2. Delete the `Fracture` folder from your project.
-3. Repeat the [Installation](/pages/home/gettingStarted/gettingStarted#installation) process.
+3. Repeat the [Installation](/home/gettingStarted/gettingStarted#installation) process.
 4. Reapply your config changes in the `FractureConfig` script.
 
 ## Can I use Fracture without physics?
@@ -53,6 +53,33 @@ No. Fracture works on any instance regardless of its physics state, and creates 
 
 This means Fracture integrates cleanly even into games that don't otherwise use :Physics:.
 
-## What happens to the original instance when I fracture it?
+## HELP!
 
-It's destroyed automatically. Every fracture call returns an :Array: of the created :Piece: instances, so you can keep working with them afterwards if needed.
+Stuck on something or need a hand with Fracture?
+
+You can get help through any of these channels:
+- Reach out on the [GameMaker Kitchen](https://discord.gg/gamemakerkitchen) Discord server.
+- Start a topic on the [itch.io board](https://glebtsereteli.itch.io/fracture/community).
+- Open a :New Issue: on GitHub with the `help` label.
+
+:::warning DISCLAIMER
+Before asking, please read the relevant documentation pages first, and check this FAQ and the [Requirements](/topics/requirements) page to see if your question is already answered there.
+
+My support is limited to questions directly related to Fracture. When it comes to physics setups, gameplay integration, or other general topics, I'm happy to discuss ideas, but not implementation specifics. For those, use any of these:
+- The `#help` channels on the [GameMaker](https://discord.com/invite/gamemaker) Discord server.
+- The [r/GameMaker](https://www.reddit.com/r/gamemaker/) subreddit.
+- The GameMaker [Community Forums](https://forum.gamemaker.io/).
+:::
+:::tip PERSONAL HELP
+If you need a tailored solution for your project, I'm happy to take on both short commissions and longer-term work. DM me to discuss the details:
+- Discord `@GlebTsereteli`
+- [Twitter](https://x.com/glebtsereteli)
+- [Bluesky](https://bsky.app/profile/glebtsereteli.bsky.social)
+:::
+
+Found a bug or have a feature request? Please open a :New Issue: with the `bug` or `feature` label.
+
+## Bugs & Feature Requests
+
+- Found a bug? Please open a :New Issue: on GitHub with the `bug` label.
+- Got a feature request for something you'd like to see added? Please open a :New Issue: on GitHub with the `feature` label.
