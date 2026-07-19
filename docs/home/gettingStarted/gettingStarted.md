@@ -215,7 +215,7 @@ Each pattern takes its own parameters, but the first two are always the same: th
 
 We've got our shapes fracturing, but the result is a little underwhelming. Pieces just drop straight down with no force behind them. Let's add an :Impulse: to sell the shatter!
 
-Before the switch, we'll add a :.Impulse(): call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get reactive directional explosions.
+Before the switch, we'll add a :.Impulse(): call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get a directional explosion.
 
 :::code-group
 ```js [Left Pressed event]
