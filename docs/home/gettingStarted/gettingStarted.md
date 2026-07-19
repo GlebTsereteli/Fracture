@@ -231,7 +231,7 @@ switch (irandom(2)) {
 ```
 :::
 
-Notice that :.Impulse(): is called before fracturing. :Settings: apply to the next fracture regardless of which pattern runs, so we set it once before the switch.
+Note that :.Impulse(): is called before fracturing. :Settings: apply to the next fracture regardless of which pattern runs, so we set it once before the switch.
 
 :::details Picking a Strength
 The right strength depends on your room's **Pixels To Meters** scale, so `1.5` works here but won't translate directly to a different setting. Expect to play around with the value until the shatter feels right for your game.
