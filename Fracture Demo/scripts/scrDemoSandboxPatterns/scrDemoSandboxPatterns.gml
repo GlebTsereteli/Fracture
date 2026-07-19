@@ -12,7 +12,7 @@ function DemoSandboxPattern(_name) constructor {
         return [];
     };
     
-    static Fracture = function(_inst, _shape) {
+    static DoFracture = function(_inst, _shape) {
 		var _args = GetArguments();
         array_insert(_args, 0, _inst, _shape);
 		

@@ -79,6 +79,7 @@ var _restitution = _physics.__restitution; \
 var _friction = _physics.__friction; \
 var _linearDamping = _physics.__linearDamping; \
 var _angularDamping = _physics.__angularDamping; \
+var _mass = _physics.__mass; \
 \
 /*@ignore*/ static _impulse = Fracture.__impulse; \
 var _impulseStrength = _impulse.__strength; \
@@ -125,6 +126,10 @@ physics_fixture_set_polygon_shape(_fx);
 __fixture = physics_fixture_bind(_fx, id); \
 physics_fixture_delete(_fx); \
 \
+if (_mass != undefined) { \
+	physics_mass_properties(_mass, 0, 0, phy_inertia); \
+} \
+\
 phy_rotation = _angle; \
 if (_physical) { \
 	phy_linear_velocity_x = _inst.phy_linear_velocity_x; \
@@ -145,11 +150,7 @@ if (_impulseStrength != 0) { \
 vertex_end(_vb); \
 vertex_freeze(_vb); \
 _state.__count = _pieceCount; \
-if (FRACTURE_AUTO_RESET) { \
-	Fracture.PhysicsReset(); \
-	Fracture.ImpulseReset(); \
-	Fracture.FadeReset(); \
-} \
+Fracture.__ResetSettings(); \
 if (FRACTURE_BENCHMARK) { \
 	__FractureLog($"{_funcName}: Fractured <{object_get_name(_inst.object_index)}> into {_pieceCount} pieces in {__FRACTURE_BENCH_END}ms"); \
 } \

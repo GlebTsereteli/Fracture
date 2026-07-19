@@ -1,9 +1,5 @@
 event_inherited();
 
-image_xscale = random_range(1.5, 2);
-image_yscale = image_xscale;
-image_index = irandom(image_number - 1);
-
 var _fx = physics_fixture_create(); {
 	var _halfW = sprite_width / 2;
 	var _halfH = sprite_height / 2

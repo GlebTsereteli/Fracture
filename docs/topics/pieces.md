@@ -13,9 +13,9 @@ When Pieces are created at fracture time, the original instance is destroyed as 
 :Physics: Settings are assigned to each Piece's fixture at the moment it's created, and :Impulse: is applied to explode Pieces outwards from the origin.
 
 :::tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), Physics and Impulse Settings reset to their defaults automatically after every fracturing method.
+Per-fracture Settings reset to their defaults after every fracturing method, so custom values never leak into later calls.
 
-Call :.Physics(): or :.Impulse(): again before each fracture if you want custom values to carry over, or set :FRACTURE_AUTO_RESET: to `false` to disable auto resetting.
+Set them again before each fracture that needs them.
 :::
 
 ## Settling and Fading

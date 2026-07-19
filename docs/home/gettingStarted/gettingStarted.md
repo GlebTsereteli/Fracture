@@ -112,13 +112,13 @@ Finally, we'll drop a few instances of `objShape` in our test room.
 
 ### Take Control
 
-We'll also make a controller object called `objControl` and place it in the room. It sets the layer Fracture renders Pieces on in the Create event, and restarts the room when pressing R so we can try different fracture results without relaunching the game.
+We'll also make a controller object called `objControl` and place it in the room. It sets the layer Fracture renders Pieces on in the Create event via :.RenderAt():, and restarts the room when pressing R so we can try different fracture results without relaunching the game.
 
 :::code-group
 ```js [Create event]
 /// @desc Set Fracture rendering layer
 
-Fracture.Layer("Instances");
+Fracture.RenderAt("Pieces");
 ```
 ```js [Key Press - R event]
 /// @desc Restart room
@@ -188,7 +188,7 @@ Looking at the [Output](https://manual.gamemaker.io/lts/en/Introduction/The_Outp
 
 We've got our shapes fracturing, but the result is a little underwhelming. Pieces just drop straight down with no force behind them. Let's add an :Impulse: to sell the shatter!
 
-Before calling :.ConvexGrid():, we'll add a [.Impulse()](/topics/settings#impulse) call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get reactive directional explosions.
+Before calling :.ConvexGrid():, we'll add a :.Impulse(): call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get reactive directional explosions.
 
 :::code-group
 ```js [Left Pressed event]

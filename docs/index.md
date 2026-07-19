@@ -28,7 +28,7 @@ features:
   - title: 🎯 Impulse Control
     details: Trigger an outward impulse through every piece on fracture, from any origin point. Tune it from a gentle nudge to an explosive shatter.
   - title: 🔧 Configurable Physics
-    details: Set density, restitution, friction, and damping for all pieces through a chainable call. Values reset between fractures by default.
+    details: Set density/restitution/friction/damping/mass for all pieces through a chainable call. Values reset after every fracture.
 
 ---
 

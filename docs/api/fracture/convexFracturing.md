@@ -8,7 +8,7 @@ This section covers Convex fracturing methods, the library's core functionality.
 
 All :Patterns: take an instance to fracture, a [Shape](#shapes) to define how Pieces are clipped, and a set of custom parameters per pattern. They share the same set of base behaviors:
 - Pieces are created from the source instance's sprite, each with its own geometry.
-- Each Piece is created with the per-fracture :Physics:, :Impulse: and :Fade: settings configured beforehand.
+- Each Piece is created with the per-fracture :Physics:, :Mass:, :Impulse: and :Fade: settings configured beforehand.
 - The source instance is destroyed automatically after fracturing.
 - An array of the created :Piece: instances is returned.
 

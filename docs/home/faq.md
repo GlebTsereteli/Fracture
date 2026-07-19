@@ -77,8 +77,6 @@ If you need a tailored solution for your project, I'm happy to take on both shor
 - [Bluesky](https://bsky.app/profile/glebtsereteli.bsky.social)
 :::
 
-Found a bug or have a feature request? Please open a :New Issue: with the `bug` or `feature` label.
-
 ## Bugs & Feature Requests
 
 - Found a bug? Please open a :New Issue: on GitHub with the `bug` label.

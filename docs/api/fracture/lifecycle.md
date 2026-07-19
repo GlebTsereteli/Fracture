@@ -3,9 +3,9 @@
 ## Overview
 
 This section covers the Lifecycle methods that manage existing Fracture Pieces after they've been created.
-* [Clear](#clear) destroys all Pieces instantly.
-* [ForceFade](#forcefade) begins fading all Pieces out.
-* [Pause](#pause) and [Resume](#resume) freeze and unfreeze Piece fade processing.
+- [.Clear()](#clear) destroys all Pieces instantly.
+- [.ForceFade()](#forcefade) begins fading all Pieces out.
+- [.Pause()](#pause) and [.Resume()](#resume) freeze and unfreeze Piece fade processing.
 
 All Lifecycle methods apply to all existing Pieces.
 

@@ -7,20 +7,19 @@ This section covers the Settings methods that configure how Fracture Pieces are 
 ---
 #### Per-Fracture Settings
 
-Per-fracture settings apply to Pieces created by the next fracturing call.
-- [Physics](#physics) controls the :physics properties: (collision group, density, restitution, friction, damping), letting you define different-feeling Piece "materials".
-- [Impulse](#impulse) controls the impulse strength and origin, producing fractures ranging from gentle nudges to explosive shatters.
-- [Fade](#fade) controls how Pieces fade out and destroy themselves over time.
+Per-fracture settings apply to Pieces created by the next fracturing call, then reset to their defaults automatically.
+- [.Physics()](#physics) controls the :physics properties: (collision group, density, restitution, friction, damping), letting you define different-feeling Piece "materials".
+- [.Mass()](#mass) overrides the density-derived mass, so Pieces of any size get the same mass.
+- [.Impulse()](#impulse) controls the impulse strength and origin, producing fractures ranging from gentle nudges to explosive shatters.
+- [.Fade()](#fade) controls how Pieces fade out and destroy themselves over time.
 
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled, per-fracture settings reset automatically after any core Fracture method, keeping per-fracture tweaks from leaking into later calls. It is enabled by default.
-:::
+Per-fracture settings never persist. Each fracturing call consumes them and restores the defaults, so tweaks can't leak into later calls. Reusable configs live in your own code, not in Fracture.
 
 ---
 #### Global Settings
 
 Global settings persist until changed.
-- [Rendering](#rendering) controls the layer or depth all Pieces render on.
+- [.RenderAt()](#renderat) controls the layer or depth all Pieces render on.
 
 ---
 ::: tip FLUENT INTERFACE
@@ -38,24 +37,17 @@ Fracture
 ```
 :::
 
-## Physics
+## Per-Fracture
 
-Physics methods control the [physics fixture properties](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=physics_fixture_add_point-,Setting%20Properties,-In%20order%20for) (collision group, density, restitution, friction, damping) applied to Pieces created by the next fracturing call, letting you define different-feeling Piece "materials".
-
----
 ### `.Physics()`
 
 > `Fracture.Physics(config)` ➜ :Struct:.:Fracture:
 
-Sets the :physics properties: applied to future Fracture Pieces. Existing Pieces are not affected.
+Sets the [physics fixture properties](https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=physics_fixture_add_point-,Setting%20Properties,-In%20order%20for) (collision group, density, restitution, friction, damping) applied to the next fracturing call, letting you define different-feeling Piece "materials". Existing Pieces are not affected.
 
 Takes a struct so you can define different Piece materials or feels (stone, rubber, etc) as reusable configs and pass them in as needed.
 
-Any omitted fields remain at their current values.
-
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), :physics properties: reset automatically after any core Fracture method. Call :.PhysicsReset(): to reset them manually.
-:::
+Any omitted fields remain at their current values. :Physics properties: reset to their defaults after the next fracturing call.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -71,6 +63,8 @@ Accepted `config` fields:
 | `friction` | :Real: | The Piece fixture [friction](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Fixtures/physics_fixture_set_friction.htm). [Default: :FRACTURE_DEFAULT_FRICTION:] |
 | `linearDamping` | :Real: | The Piece fixture [linear damping](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Fixtures/physics_fixture_set_linear_damping.htm). [Default: :FRACTURE_DEFAULT_LINEAR_DAMPING:] |
 | `angularDamping` | :Real: | The Piece fixture [angular damping](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Fixtures/physics_fixture_set_angular_damping.htm). [Default: :FRACTURE_DEFAULT_ANGULAR_DAMPING:] |
+
+Defaults are defined by the [Defaults: Physics](/api/config#defaults-physics) config macros.
 
 :::code-group
 ```js [Literal]
@@ -97,36 +91,43 @@ Fracture.Physics(global.stoneFixture) // [!code highlight]
 :::
 
 ---
-### `.PhysicsReset()`
+### `.Mass()`
 
-> `Fracture.PhysicsReset()` ➜ :Struct:.:Fracture:
+> `Fracture.Mass(mass)` ➜ :Struct:.:Fracture:
 
-Resets all Fracture :physics properties: to their default values. Existing Pieces are not affected.
+Sets the [mass](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/physics_mass_properties.htm) applied to Pieces in the next fracturing call. Existing Pieces are not affected.
 
-Defaults are defined by the [Defaults: Physics](/api/config#defaults-physics) config macros.
+By default a Piece's mass comes from its density and area, so smaller Pieces are lighter. Setting a mass overrides that, giving every Piece the same mass regardless of its size.
 
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), this is called automatically after any core Fracture method.
+This can be useful when you fracture instances at wildly different scales and want them all to feel the same.
+
+The mass resets after the next fracturing call, returning Pieces to density-derived mass.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `mass` | :Real: | The mass applied to each Fracture Piece, or `undefined` to derive it from density and area |
+
+:::code-group
+```js [Example]
+// Every Piece weighs the same, no matter how big the instance is
+Fracture
+.Mass(0.5) // [!code highlight]
+.ConvexVoronoi(inst, FRACTURE_CONVEX_HULL, 10);
+```
 :::
-
-## Impulse
-
-Controls the impulse strength and origin applied to Pieces created by the next fracturing call, producing fractures ranging from gentle nudges to explosive shatters.
 
 ---
 ### `.Impulse()`
 
 > `Fracture.Impulse(strength, [x], [y])` ➜ :Struct:.:Fracture:
 
-Sets the impulse strength and origin applied to all Pieces in the next fracturing call. Existing Pieces are not affected.
+Sets the impulse strength and origin applied to all Pieces in the next fracturing call, producing fractures ranging from gentle nudges to explosive shatters. Existing Pieces are not affected.
 
 The impulse pushes Pieces outward from the origin at fracture time. The instance center is used if no origin is provided.
 
-`strength` is applied in newtons via [physics_apply_impulse](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Forces/physics_apply_impulse.htm), so its feel depends on your world's [pixel-to-meter ratio](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/The_Physics_World/physics_world_create.htm) and each Piece's density (set via :.Physics():). Experiment to find values that feel good for your game.
+`strength` is applied in newtons via [physics_apply_impulse](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/Forces/physics_apply_impulse.htm), so its feel depends on your world's [pixel-to-meter ratio](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/The_Physics_World/physics_world_create.htm) and each Piece's density (set via :.Physics():) or mass (set via :.Mass():). Experiment to find values that feel good for your game.
 
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), the impulse resets automatically after any core Fracture method. Call :.ImpulseReset(): to reset it manually.
-:::
+The impulse resets to its default after the next fracturing call. The default strength is defined in :FRACTURE_DEFAULT_IMPULSE_STRENGTH:, and the default origin is the instance center.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -145,32 +146,15 @@ Fracture.Impulse(1.5, x, y).ConvexVoronoi(inst, FRACTURE_CONVEX_HULL, 10); // [!
 :::
 
 ---
-### `.ImpulseReset()`
-
-> `Fracture.ImpulseReset()` ➜ :Struct:.:Fracture:
-
-Resets the impulse strength and origin to their default values. Existing Pieces are not affected.
-
-The default strength is defined in :FRACTURE_DEFAULT_IMPULSE_STRENGTH:, and the default origin is the instance center.
-
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), this is called automatically after any core Fracture method.
-:::
-
-## Fade
-
-Controls how Pieces fade out and destroy themselves over time, applied to Pieces created by the next fracturing call.
-
----
 ### `.Fade()`
 
 > `Fracture.Fade(config)` ➜ :Struct:.:Fracture:
 
-Sets the fade behavior applied to future Fracture Pieces. Existing Pieces are not affected.
+Sets how Pieces created by the next fracturing call fade out and destroy themselves over time. Existing Pieces are not affected.
 
 Each Piece picks a random delay and fade speed from the configured ranges on creation, so a single fracture produces Pieces that fade at slightly different times and rates.
 
-Any omitted fields remain at their current values.
+Any omitted fields remain at their current values. Fade properties reset to their defaults after the next fracturing call.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -190,12 +174,10 @@ Accepted `config` fields:
 
 Explicit `delayFrom`/`delayTo` and `speedFrom`/`speedTo` take precedence over `delay`/`speed`.
 
-::: tip
-Set both speed values to `0` to disable fading, so Pieces persist until cleared with :.Clear():. Note that :.ForceFade(): also has no effect on speed-`0` Pieces, since they have no fade rate to apply.
-:::
+Defaults are defined by the [Defaults: Fade](/api/config#defaults-fade) config macros.
 
 ::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), fade properties reset automatically after any core Fracture method. Call :.FadeReset(): to reset them manually.
+Set both speed values to `0` to disable fading, so Pieces persist until cleared with :.Clear():. Note that :.ForceFade(): also has no effect on speed-`0` Pieces, since they have no fade rate to apply.
 :::
 
 :::code-group
@@ -240,59 +222,31 @@ Fracture.Fade({ // [!code highlight]
 ```
 :::
 
----
-### `.FadeReset()`
+## Global
 
-> `Fracture.FadeReset()` ➜ :Struct:.:Fracture:
+### `.RenderAt()`
 
-Resets all Fracture fade properties to their default values. Existing Pieces are not affected.
+> `Fracture.RenderAt(layerOrDepth)` ➜ :Struct:.:Fracture:
 
-Defaults are defined by the [Defaults: Fade](/api/config#defaults-fade) config macros.
+Sets the layer or depth to render **all** Fracture Pieces on, persisting until changed.
 
-::: tip
-If :FRACTURE_AUTO_RESET: is enabled (the default), this is called automatically after any core Fracture method.
-:::
-
-## Rendering
-
-Controls the layer or depth all Pieces render on, persisting until changed.
-
----
-### `.Layer()`
-
-> `Fracture.Layer(layer)` ➜ :Struct:.:Fracture:
-
-Sets the layer to render **all** Fracture Pieces on.
+Pass a :Real: for a depth, or a layer ID or name for a layer. Anything else throws an error.
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `layer` | :Id.Layer: or :String: | The layer ID or name to render all Fracture Pieces on |
+| `layerOrDepth` | :Real:, :Id.Layer: or :String: | The depth value, or the layer ID or name, to render all Fracture Pieces on |
 
 :::code-group
-```js [Example]
+```js [Layer]
 // Render Pieces on the "Debris" layer, by name or by ID
-Fracture.Layer("Debris"); // [!code highlight]
-Fracture.Layer(layer_get_id("Debris")); // [!code highlight]
+Fracture.RenderAt("Debris"); // [!code highlight]
+Fracture.RenderAt(layer_get_id("Debris")); // [!code highlight]
 ```
-:::
-
----
-### `.Depth()`
-
-> `Fracture.Depth(depth)` ➜ :Struct:.:Fracture:
-
-Sets the depth to render **all** Fracture Pieces at.
-
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `depth` | :Real: | The depth value to render all Fracture Pieces at |
-
-:::code-group
-```js [Example]
+```js [Depth]
 // Somewhere in your macros script
 #macro DEPTH_DEBRIS 1000
 
 // Render Pieces at 'DEPTH_DEBRIS'
-Fracture.Depth(DEPTH_DEBRIS); // [!code highlight]
+Fracture.RenderAt(DEPTH_DEBRIS); // [!code highlight]
 ```
 :::

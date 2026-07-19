@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"First Setup","folderPath":"folders/First Setup.yy","name":"First Setup","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Shape","folderPath":"folders/First Setup/Shape.yy","name":"Shape","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Wall","folderPath":"folders/First Setup/Wall.yy","name":"Wall","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fracture","folderPath":"folders/Fracture.yy","name":"Fracture","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Fracture/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Convex","folderPath":"folders/Fracture/(System)/Convex.yy","name":"Convex","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -26,7 +27,6 @@
     {"$GMFolder":"","%Name":"06 Slice","folderPath":"folders/Fracture/(System)/Convex/06 Slice.yy","name":"06 Slice","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"07 Voronoi","folderPath":"folders/Fracture/(System)/Convex/07 Voronoi.yy","name":"07 Voronoi","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Non-Scripts","folderPath":"folders/Fracture/(System)/Non-Scripts.yy","name":"Non-Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Wall","folderPath":"folders/First Setup/Wall.yy","name":"Wall","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},

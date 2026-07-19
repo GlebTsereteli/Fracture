@@ -5,7 +5,7 @@
 
 // Default depth to render all Fracture Pieces at. 
 // Defaults to a high value close to the '-16000' depth limit so Pieces are initially visible in most cases.
-// Change it with Fracture.Layer() or Fracture.Depth() to target the desired layer/depth target.
+// Change it with Fracture.RenderAt() to target the desired depth (or layer) target.
 #macro FRACTURE_DEFAULT_DEPTH -15000
 
 // Default outward impulse strength applied to each Piece after fracturing.
@@ -53,9 +53,6 @@
 
 #endregion
 #region Miscellaneous
-
-// Automatically reset Physics, Impulse and Fade parameters after each fracture call (true) or not (false).
-#macro FRACTURE_AUTO_RESET true
 
 // Log the time taken for each fracture call to the Output window (true) or not (false).
 // Defaults to enabled when running the game from the IDE.

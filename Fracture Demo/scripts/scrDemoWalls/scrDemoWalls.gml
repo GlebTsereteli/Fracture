@@ -33,7 +33,6 @@ function DemoWalls() : Demo("Walls") constructor {
 		}
 	};
 	Draw = function() {
-		draw_rectangle(x1, y1, x2, y2, true);
 		draw_rectangle(x, y, x + size, y + size, true);
 	};
 	RefreshInterface = function() {
@@ -48,7 +47,7 @@ function DemoWalls() : Demo("Walls") constructor {
 	size = 100;
 	obj = objDemoWallsTile;
 	
-	var _pad = size / 2;
+	var _pad = 0;
 	x1 = ceil(_pad / size) * size;
 	y1 = ceil(_pad / size) * size;
 	x2 = (room_width - _pad) div size * size;

@@ -11,7 +11,7 @@ export default defineConfig({
   title: "Fracture",
   description: "Fracture Documentation",
   head: [
-    ['link', { rel: 'icon', href: 'logoSmall.png' }],
+    ['link', { rel: 'icon', href: 'logoBig.png' }],
 
     // Embeds
     ["meta", { property: "og:title", content: "Fracture Documentation" }],
@@ -41,7 +41,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logoSmall.png',
+    logo: '/logoBig.png',
 
     search: {
       provider: 'local'
@@ -182,6 +182,7 @@ export default defineConfig({
 
         // Links
         'physics properties': 'https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=create%20a%20star).-,Properties,-You%20can%20define',
+        'Physics properties': 'https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Physics/Fixtures/Fixtures.htm#:~:text=create%20a%20star).-,Properties,-You%20can%20define',
         'New Issue': 'https://github.com/glebtsereteli/Fracture/issues/new',
 
         // Home
@@ -230,13 +231,10 @@ export default defineConfig({
         // Settings
         'Settings': '/api/fracture/settings',
         'Physics': '/api/fracture/settings#physics',
-        'PhysicsReset': '/api/fracture/settings#physicsreset',
+        'Mass': '/api/fracture/settings#mass',
         'Impulse': '/api/fracture/settings#impulse',
-        'ImpulseReset': '/api/fracture/settings#impulsereset',
         'Fade': '/api/fracture/settings#fade',
-        'FadeReset': '/api/fracture/settings#fadereset',
-        'Layer': '/api/fracture/settings#layer',
-        'Depth': '/api/fracture/settings#depth',
+        'RenderAt': '/api/fracture/settings#renderat',
 
         // Lifecycle
         'Lifecycle': '/api/fracture/lifecycle',
@@ -260,7 +258,6 @@ export default defineConfig({
         'FRACTURE_DEFAULT_FADE_DELAY_TO': '/api/config#fracture-default-fade-delay-to',
         'FRACTURE_DEFAULT_FADE_SPEED_FROM': '/api/config#fracture-default-fade-speed-from',
         'FRACTURE_DEFAULT_FADE_SPEED_TO': '/api/config#fracture-default-fade-speed-to',
-        'FRACTURE_AUTO_RESET': '/api/config#fracture-auto-reset',
         'FRACTURE_BENCHMARK': '/api/config#fracture-benchmark',
       }
       

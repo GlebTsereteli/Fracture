@@ -11,13 +11,15 @@ General Piece defaults that don't belong to a specific settings group.
 
 Default depth to render all Fracture :Pieces: at. Defaults to a high value close to the `-16000` depth limit so Pieces are initially visible in most cases.
 
-Change it with :.Layer(): or :.Depth(): to render on the desired layer or depth.
+Change it with :.RenderAt(): to render on the desired depth or layer.
 
 ---
 ### `FRACTURE_DEFAULT_IMPULSE_STRENGTH`
 > Default: `0`.
 
 Default outward impulse strength applied to each Piece after fracturing.
+
+Per-fracture settings return to their defaults after every fracturing call, so this is the strength used unless :.Impulse(): is called first.
 
 ::: tip
 Read about setting the impulse strength and origin in :.Impulse():.
@@ -26,6 +28,8 @@ Read about setting the impulse strength and origin in :.Impulse():.
 ## Defaults: Physics
 
 Default physics properties assigned to Piece fixtures. Set these at runtime with :.Physics():.
+
+Per-fracture settings return to their defaults after every fracturing call, so these values apply to any fracture that doesn't set physics properties explicitly.
 
 ### `FRACTURE_DEFAULT_COLLISION_GROUP`
 > Default: `1`.
@@ -66,6 +70,8 @@ Default angular damping assigned to all Piece fixtures.
 
 Defaults controlling how Pieces fade out and destroy themselves over time. Set these at runtime with :.Fade():.
 
+Per-fracture settings return to their defaults after every fracturing call, so these values apply to any fracture that doesn't set fade behavior explicitly.
+
 ### `FRACTURE_DEFAULT_FADE_AFTER_SETTLE`
 > Default: `true`.
 
@@ -105,14 +111,6 @@ Set both speed values to `0` to disable fading.
 
 ## Miscellaneous
 
-Runtime behavior toggles for auto-resetting settings and benchmark logging.
-
-### `FRACTURE_AUTO_RESET`
-> Default: `true`.
-
-Whether to automatically reset :.Physics():, :.Impulse(): and :.Fade(): parameters after each fracture call (`true`) or not (`false`).
-
----
 ### `FRACTURE_BENCHMARK`
 > Default: `(GM_build_type == "run")`.
 

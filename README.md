@@ -11,6 +11,17 @@ Fracture is a [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open
 
 Add procedural physics-based destruction to your game with minimal setup. The library does the heavy lifting for you - geometry, physics and rendering are all handled internally.
 
+```js
+// Shatter into 10 organic pieces, blown outwards from the mouse
+Fracture.Impulse(2, mouse_x, mouse_y).ConvexVoronoi(id, FRACTURE_CONVEX_HULL, 10);
+
+// Break a crate into a 6x6 grid of heavy, barely-bouncy chunks
+Fracture.Physics({ density: 4, restitution: 0.1 }).ConvexGrid(id, FRACTURE_CONVEX_BOX, 6, 6);
+
+// Slice a circle into 10 radial wedges that linger before fading
+Fracture.Fade({ delay: 120, speed: 0.005 }).ConvexRadial(id, FRACTURE_CONVEX_CIRCLE, 10);
+```
+
 * ℹ️ Download the `.yymps` local package from the [latest release](https://github.com/glebtsereteli/Fracture/releases/latest/) page.
 * ℹ️ Refer to the [Documentation](https://glebtsereteli.github.io/Fracture/) for installation instructions, usage examples, and full API reference.
 * ℹ️ See the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted/gettingStarted#getting-started) page to fracture your first instance.
@@ -23,7 +34,7 @@ Add procedural physics-based destruction to your game with minimal setup. The li
 - **Automatic Fading**. Pieces fade out and destroy themselves automatically, with randomized [delay and speed](https://glebtsereteli.github.io/Fracture/api/fracture/settings#fade) for staggered, natural-looking debris.
 - **Efficient Rendering**. Pieces share a single ([frozen](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Drawing/Primitives/vertex_freeze.htm)) [vertex buffer](https://glebtsereteli.github.io/Fracture/topics/rendering#the-vertex-buffer) per fracture and draw in one pass, outclassing naive sprite baking or primitive drawing.
 - **Lifecycle Control**. Command existing Pieces at any time: [clear](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#clear) them instantly, [force a fade](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#forcefade), or [pause and resume](https://glebtsereteli.github.io/Fracture/api/fracture/lifecycle#pause) them alongside your game's pause flow.
-- **Fluent Settings**. Chain [.Physics()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#physics), [.Impulse()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#impulse) and [.Fade()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#fade) before any fracture call, with per-fracture settings auto-resetting between calls.
+- **Fluent Settings**. Chain [.Physics()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#physics), [.Mass()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#mass), [.Impulse()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#impulse) and [.Fade()](https://glebtsereteli.github.io/Fracture/api/fracture/settings#fade) before any fracture call to customize how Pieces feel, weigh, scatter and disappear.
 
 # Looking Ahead
 

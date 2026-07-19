@@ -21,7 +21,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
 			// Fracture
             if (mouse_check_button_pressed(mb_right)) {
                 with (instance_position(mouse_x, mouse_y, objDemoSandboxShapeParent)) {
-                    other.Fracture(id);
+                    other.DoFracture(id);
                 }
             }
         }
@@ -102,10 +102,11 @@ function DemoSandbox() : Demo("Sandbox") constructor {
     fade = new DemoFade();
 	blast = new DemoBlast();
     
-    Fracture = function(_inst) {
+    DoFracture = function(_inst) {
 		physics.Set();
         impulse.Set(mouse_x, mouse_y);
 		fade.Set();
-        pattern.Fracture(_inst, shape.constant);
+		
+        pattern.DoFracture(_inst, shape.constant);
     };
 }

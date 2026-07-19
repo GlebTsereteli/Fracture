@@ -27,7 +27,7 @@ Drawing everything in a single pass comes with a downside: Fracture only support
 But this isn't normally an issue! Fracture targets sidescrollers, space shooters, and other perspectives where depth sorting is not a concern.
 
 :::tip
-Use :.Layer(): or :.Depth(): to control the layer or depth Pieces are drawn at.
+Use :.RenderAt(): to control the layer or depth Pieces are drawn at.
 :::
 
 ## The Vertex Buffer
