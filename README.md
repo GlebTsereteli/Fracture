@@ -11,6 +11,8 @@ Fracture is a [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open
 
 Add procedural physics-based destruction to your game with minimal setup. The library does the heavy lifting for you - geometry, physics and rendering are all handled internally.
 
+<img width="1400" height="193" alt="PatternsRowDualStagger" src="https://github.com/user-attachments/assets/c4765984-3505-4350-918c-901702c95f90" />
+
 ```js
 // Shatter a hull into 10 organic pieces, blown outwards from the mouse
 Fracture.Impulse(2, mouse_x, mouse_y).ConvexVoronoi(id, FRACTURE_CONVEX_HULL, 10);
