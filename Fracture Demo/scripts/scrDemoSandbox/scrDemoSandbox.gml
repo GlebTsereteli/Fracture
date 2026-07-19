@@ -47,7 +47,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
             impulse.onMouse = false;
             
             with (objDemoSandboxShapeParent) {
-                other.Fracture(id);
+                other.DoFracture(id);
             }
             
             impulse.onMouse = _prevOnMouse;
