@@ -108,6 +108,7 @@ function Fracture() {
 	
 	/// Fractures the given convex instance into a series of parallel slices clipped to the shape boundary, defined by the number of Pieces.
 	/// A fixed angle produces consistent results, a random angle produces natural-looking variation.
+	/// Angles follow GameMaker's convention: '0' points right, increasing counter-clockwise.
 	/// The instance is destroyed automatically after fracturing.
 	/// Returns an array of the created Piece instances.
 	/// 

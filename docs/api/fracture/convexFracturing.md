@@ -260,6 +260,8 @@ Fractures the given convex instance into a series of parallel slices clipped to 
 
 A fixed angle produces consistent results, a random angle produces natural-looking variation.
 
+Angles follow GameMaker's convention: `0` points right, increasing counter-clockwise.
+
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `inst` | :Id.Instance: | The instance to fracture |

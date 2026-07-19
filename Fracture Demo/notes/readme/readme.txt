@@ -24,6 +24,6 @@ See the [Contact & Support](https://glebtsereteli.github.io/Fracture/topics/cont
 
 ## Credits
 
-- [runtile-for-gamemaker](https://github.com/attic-stuff/runtile-for-gamemaker) by [attic-stuff](https://github.com/attic-stuff), adapted to work with objects instead of tiles in the `Walls` demo.
+- [runtile-for-gamemaker](https://github.com/attic-stuff/runtile-for-gamemaker) by [attic-stuff](https://github.com/attic-stuff), adapted to objects for the `Walls` demo.
 - [Puzzle Pack 2](https://kenney.nl/assets/puzzle-pack-2) and [Shape Characters](https://kenney.nl/assets/shape-characters) by [Kenney](https://kenney.nl/).
 - [Asset Bundles](https://gamemaker.io/en/bundles) by [GameMaker](https://gamemaker.io/en).

@@ -10,7 +10,7 @@ function __FractureConvexSliceHull(_inst, _pieceCount, _cutAngle) {
 	__FRACTURE_CONVEX_HULL;
 	
 	// Project hull vertices onto cut normal, find extent
-	var _nx = -dsin(_cutAngle);
+	var _nx = dsin(_cutAngle);
 	var _ny = dcos(_cutAngle);
 	
 	var _projMin = infinity;
@@ -51,18 +51,18 @@ function __FractureConvexSliceHull(_inst, _pieceCount, _cutAngle) {
 				// Edge spans both planes. Sort by t so intersections are added in traversal order
 				var _tNear = (_nearBound - _pj) / (_pj2 - _pj);
 				var _tFar = (_farBound - _pj) / (_pj2 - _pj);
-				var _tFirst = min(_tNear, _tFar);
-				var _tSecond = max(_tNear, _tFar);
+				var _t1 = min(_tNear, _tFar);
+				var _t2 = max(_tNear, _tFar);
 				
 				// Strict bounds exclude edge endpoints already added as inside vertices
-				if ((_tFirst > 0) and (_tFirst < 1)) {
-					_polyX[_polyCount] = lerp(_vjx, _vj2x, _tFirst);
-					_polyY[_polyCount] = lerp(_vjy, _vj2y, _tFirst);
+				if ((_t1 > 0) and (_t1 < 1)) {
+					_polyX[_polyCount] = lerp(_vjx, _vj2x, _t1);
+					_polyY[_polyCount] = lerp(_vjy, _vj2y, _t1);
 					_polyCount++;
 				}
-				if ((_tSecond > 0) and (_tSecond < 1)) {
-					_polyX[_polyCount] = lerp(_vjx, _vj2x, _tSecond);
-					_polyY[_polyCount] = lerp(_vjy, _vj2y, _tSecond);
+				if ((_t2 > 0) and (_t2 < 1)) {
+					_polyX[_polyCount] = lerp(_vjx, _vj2x, _t2);
+					_polyY[_polyCount] = lerp(_vjy, _vj2y, _t2);
 					_polyCount++;
 				}
 			}
@@ -106,7 +106,6 @@ function __FractureConvexSliceHull(_inst, _pieceCount, _cutAngle) {
 		}
 		
 		// Fixture
-		var _fixtureCount = min(_polyCount, 8);
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
 			__vertexCount = _triCount * 3;
@@ -115,9 +114,16 @@ function __FractureConvexSliceHull(_inst, _pieceCount, _cutAngle) {
 			// Stride evenly around the perimeter so the 8-point cap covers
 			// the whole polygon instead of one side. Reverse for CW winding
 			__FRACTURE_FIXTURE_START; {
-				for (var _f = _fixtureCount - 1; _f >= 0; _f--) {
-					var _fi = (_f * _polyCount) div _fixtureCount;
-					physics_fixture_add_point(_fx, _polyX[_fi] - _ox, _polyY[_fi] - _oy);
+				if (_polyCount <= 8) {
+					for (var _f = _polyCount - 1; _f >= 0; _f--) {
+						physics_fixture_add_point(_fx, _polyX[_f] - _ox, _polyY[_f] - _oy);
+					}
+				}
+				else {
+					for (var _f = 7; _f >= 0; _f--) {
+						var _fi = round(_f * _polyCount / 8) mod _polyCount;
+						physics_fixture_add_point(_fx, _polyX[_fi] - _ox, _polyY[_fi] - _oy);
+					}
 				}
 				__FRACTURE_FIXTURE_END;
 			}

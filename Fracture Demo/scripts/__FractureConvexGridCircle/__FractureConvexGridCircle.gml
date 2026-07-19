@@ -36,7 +36,7 @@ function __FractureConvexGridCircle(_inst, _cols, _rows, _noiseX, _noiseY) {
 			var _nearY = clamp(_centerY, min(_y1, _y2, _y3, _y4), max(_y1, _y2, _y3, _y4));
 			var _nearDx = _nearX - _centerX;
 			var _nearDy = _nearY - _centerY;
-			if (_nearDx * _nearDx + _nearDy * _nearDy > _radiusSq) continue;
+			if (((_nearDx * _nearDx) + (_nearDy * _nearDy)) > _radiusSq) continue;
 			
 			// Check if all 4 corners are inside the circle
 			var _dx1 = _x1 - _centerX, _dy1 = _y1 - _centerY;
@@ -44,10 +44,10 @@ function __FractureConvexGridCircle(_inst, _cols, _rows, _noiseX, _noiseY) {
 			var _dx3 = _x3 - _centerX, _dy3 = _y3 - _centerY;
 			var _dx4 = _x4 - _centerX, _dy4 = _y4 - _centerY;
 			var _fullyInside = (
-				_dx1 * _dx1 + _dy1 * _dy1 <= _radiusSq and
-				_dx2 * _dx2 + _dy2 * _dy2 <= _radiusSq and
-				_dx3 * _dx3 + _dy3 * _dy3 <= _radiusSq and
-				_dx4 * _dx4 + _dy4 * _dy4 <= _radiusSq
+				((_dx1 * _dx1) + (_dy1 * _dy1) <= _radiusSq) and
+				((_dx2 * _dx2) + (_dy2 * _dy2) <= _radiusSq) and
+				((_dx3 * _dx3) + (_dy3 * _dy3) <= _radiusSq) and
+				((_dx4 * _dx4) + (_dy4 * _dy4) <= _radiusSq)
 			);
 			
 			if (_fullyInside) {

@@ -34,9 +34,7 @@ features:
 
 <hr style="border: none; border-top: 2px solid #888; margin:4em 0 1em;" />
 
-<div style="text-align:center; font-size:1.1em; color:#555; margin-bottom:2em;">
-  <strong>Fracture</strong> Team
-</div>
+<h2 style="text-align:center; border-top: none; padding-top: 0; margin-top: 0;">Fracture Team</h2>
 
 <script setup>
 import { VPTeamMembers } from 'vitepress/theme'
