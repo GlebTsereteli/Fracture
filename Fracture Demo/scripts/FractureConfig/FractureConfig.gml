@@ -1,5 +1,5 @@
 // feather ignore all
-// Documentation: https://glebtsereteli.github.io/Fracture/pages/api/config
+// Documentation: https://glebtsereteli.github.io/Fracture/api/config
 
 #region Defaults: General
 

@@ -12,10 +12,10 @@ Fracture is a [Free and Open Source](https://en.wikipedia.org/wiki/Free_and_open
 Add procedural physics-based destruction to your game with minimal setup. The library does the heavy lifting for you - geometry, physics and rendering are all handled internally.
 
 ```js
-// Shatter into 10 organic pieces, blown outwards from the mouse
+// Shatter a hull into 10 organic pieces, blown outwards from the mouse
 Fracture.Impulse(2, mouse_x, mouse_y).ConvexVoronoi(id, FRACTURE_CONVEX_HULL, 10);
 
-// Break a crate into a 6x6 grid of heavy, barely-bouncy chunks
+// Break a box into a 6x6 grid of heavy, barely-bouncy chunks
 Fracture.Physics({ density: 4, restitution: 0.1 }).ConvexGrid(id, FRACTURE_CONVEX_BOX, 6, 6);
 
 // Slice a circle into 10 radial wedges that linger before fading
@@ -47,7 +47,7 @@ But the plans reach much further! Here are some of the things I'd like to add:
 - **Caching**. Cache hulls and pools of pre-generated geometry, keeping things as fast as possible at runtime.
 - **Stylistic extras**. Piece outlines, weighted seams, and recursive re-fracturing.
 
-See the full list on the [Upcoming Features](https://glebtsereteli.github.io/Fracture/upcoming-features) page.
+See the full list on the [Upcoming Features](https://glebtsereteli.github.io/Fracture/home/upcoming-features) page.
 
 # Credits
 - Created and maintained by [Gleb Tsereteli](https://github.com/GlebTsereteli).
