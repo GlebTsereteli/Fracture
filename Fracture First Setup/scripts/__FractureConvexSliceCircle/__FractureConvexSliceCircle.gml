@@ -1,6 +1,6 @@
 // feather ignore all
-
 /// @ignore
+
 function __FractureConvexSliceCircle(_inst, _pieceCount, _cutAngle) {
 	// Arc sample buffers. 7 per side, 14 verts per slice
 	static _polyX = array_create(14);
@@ -25,22 +25,21 @@ function __FractureConvexSliceCircle(_inst, _pieceCount, _cutAngle) {
 		
 		var _vertCount = 0;
 		
-		// A-side arc: sweep nearA → farA
-		for (var _s = 0; _s <= _arcSteps; _s++) {
-		    var _acos = lerp(_nearAcos, _farAcos, _s / _arcSteps);
-		    var _a = -_cutAngle - 90 - _acos;
-		    _polyX[_vertCount] = _centerX + _radius * dcos(_a);
-		    _polyY[_vertCount] = _centerY + _radius * -dsin(_a);
-		    _vertCount++;
+		// A-side arc: sweep nearA to farA
+		for (var _step = 0; _step <= _arcSteps; _step++) {
+			var _acos = lerp(_nearAcos, _farAcos, _step / _arcSteps);
+			var _a = _cutAngle - 90 - _acos;
+			_polyX[_vertCount] = _centerX + (_radius * dcos(_a));
+			_polyY[_vertCount] = _centerY + (_radius * -dsin(_a));
+			_vertCount++;
 		}
-
-		// B-side arc, sweep farB → nearB
-		for (var _s = 0; _s <= _arcSteps; _s++) {
-		    var _acos = lerp(_farAcos, _nearAcos, _s / _arcSteps);
-		    var _a = -_cutAngle - 90 + _acos;
-		    _polyX[_vertCount] = _centerX + _radius * dcos(_a);
-		    _polyY[_vertCount] = _centerY + _radius * -dsin(_a);
-		    _vertCount++;
+		// B-side arc, sweep farB to nearB
+		for (var _step = 0; _step <= _arcSteps; _step++) {
+			var _acos = lerp(_farAcos, _nearAcos, _step / _arcSteps);
+			var _a = _cutAngle - 90 + _acos;
+			_polyX[_vertCount] = _centerX + (_radius * dcos(_a));
+			_polyY[_vertCount] = _centerY + (_radius * -dsin(_a));
+			_vertCount++;
 		}
 		
 		// Centroid
@@ -64,7 +63,7 @@ function __FractureConvexSliceCircle(_inst, _pieceCount, _cutAngle) {
 			vertex_position(_vb, _bx - _ox, _by - _oy); __FRACTURE_VCOLOR; vertex_texcoord(_vb, lerp(_u0, _u1, _bx / _w), lerp(_v0, _v1, _by / _h));
 		}
 		
-		// Fixture. B reversed then A reversed traces the perimeter clockwise: nearB(13) → farB(7) → farA(6) → nearA(0)
+		// Fixture. B reversed then A reversed traces the perimeter clockwise: nearB(13) to farB(7) to farA(6) to nearA(0)
 		__FRACTURE_PIECE
 			__primitiveType = pr_trianglelist;
 			__vertexCount = _nTris * 3;

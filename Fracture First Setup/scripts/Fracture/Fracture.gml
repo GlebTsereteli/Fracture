@@ -108,6 +108,7 @@ function Fracture() {
 	
 	/// Fractures the given convex instance into a series of parallel slices clipped to the shape boundary, defined by the number of Pieces.
 	/// A fixed angle produces consistent results, a random angle produces natural-looking variation.
+	/// Angles follow GameMaker's convention: '0' points right, increasing counter-clockwise.
 	/// The instance is destroyed automatically after fracturing.
 	/// Returns an array of the created Piece instances.
 	/// 
@@ -146,9 +147,9 @@ function Fracture() {
 	
 	#endregion
 	
-	#region Settings: Physics (Per-Fracture)
+	#region Settings: Per-Fracture
 	
-	/// Sets the physics properties applied to all future Fracture Pieces. Existing Pieces are not affected.
+	/// Sets the physics properties applied to the next fracture call. Existing Pieces are not affected.
 	/// ---
 	/// Supported config fields:
 	/// - collisionGroup: The Piece fixture collision group.
@@ -160,7 +161,7 @@ function Fracture() {
 	/// ---
 	/// Defaults for each field come from the matching FRACTURE_DEFAULT_* macro under Defaults: Physics in FractureConfig.
 	/// Any omitted fields remain at their current values.
-	/// If FRACTURE_AUTO_RESET is enabled, physics properties reset automatically after any core Fracture method.
+	/// Physics properties reset after the next fracturing call.
 	/// 
 	/// @param {Struct} config The physics configuration struct for Fracture Pieces.
 	/// 
@@ -179,29 +180,22 @@ function Fracture() {
 		return self;
 	}
 	
-	/// Resets all Fracture physics properties to their default values. Existing Pieces are not affected.
-	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
+	/// Sets the mass applied to the next fracture call. Existing Pieces are not affected.
+	/// Overrides the density-derived mass, so every Piece gets the same mass regardless of its size.
+	/// Mass resets after the next fracturing call.
+	/// 
+	/// @param {Real} mass The mass applied to each Fracture Piece, or undefined to derive it from density and area.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static PhysicsReset = function() {
-		with (__physics) {
-			__collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
-			__density = FRACTURE_DEFAULT_DENSITY;
-			__restitution = FRACTURE_DEFAULT_RESTITUTION;
-			__friction = FRACTURE_DEFAULT_FRICTION;
-			__linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
-			__angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
-		}
+	static Mass = function(_mass) {
+		__physics.__mass = _mass;
 		
 		return self;
 	}
 	
-	#endregion
-	#region Settings: Impulse (Per-Fracture)
-	
-	/// Sets the impulse strength and origin applied to all future Fracture Pieces. Existing Pieces are not affected.
-	/// If FRACTURE_AUTO_RESET is enabled, the impulse resets automatically after any core Fracture method.
+	/// Sets the impulse strength and origin applied to the next fracture call. Existing Pieces are not affected.
+	/// Impulse settings reset after the next fracturing call.
 	/// 
 	/// @param {Real} strength The strength of the impulse applied to Fracture Pieces.
 	/// @param {Real} x The world-space x position of the impulse origin. [Default: center]
@@ -219,25 +213,7 @@ function Fracture() {
 		return self;
 	}
 	
-	/// Resets the impulse strength and origin to their default values. Existing Pieces are not affected.
-	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static ImpulseReset = function() {
-		with (__impulse) {
-			__strength = FRACTURE_DEFAULT_IMPULSE_STRENGTH;
-			__x = undefined;
-			__y = undefined;
-		}
-		
-		return self;
-	}
-	
-	#endregion
-	#region Settings: Fade (Per-Fracture)
-	
-	/// Sets the fade behavior applied to all future Fracture Pieces. Existing Pieces are not affected.
+	/// Sets the fade behavior applied to the next fracture call. Existing Pieces are not affected.
 	/// ---
 	/// Supported config fields:
 	/// - afterSettle: Begin fading only once a Piece has come to rest (true) or immediately after its delay (false).
@@ -251,7 +227,7 @@ function Fracture() {
 	/// Explicit delayFrom/delayTo and speedFrom/speedTo take precedence over delay/speed.
 	/// Defaults for each field come from the matching FRACTURE_DEFAULT_* macro under Defaults: Fade in FractureConfig.
 	/// Any omitted fields remain at their current values.
-	/// If FRACTURE_AUTO_RESET is enabled, fade properties reset automatically after any core Fracture method.
+	/// Fade settings reset after the next fracturing call.
 	/// 
 	/// @param {Struct} config The fade configuration struct for Fracture Pieces.
 	/// 
@@ -273,52 +249,30 @@ function Fracture() {
 		return self;
 	}
 	
-	/// Resets all Fracture fade properties to their default values. Existing Pieces are not affected.
-	/// If FRACTURE_AUTO_RESET is enabled, this is called automatically after any core Fracture method.
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static FadeReset = function() {
-		with (__fade) {
-			__afterSettle = FRACTURE_DEFAULT_FADE_AFTER_SETTLE;
-			__delayFrom = FRACTURE_DEFAULT_FADE_DELAY_FROM;
-			__delayTo = FRACTURE_DEFAULT_FADE_DELAY_TO;
-			__speedFrom = FRACTURE_DEFAULT_FADE_SPEED_FROM;
-			__speedTo = FRACTURE_DEFAULT_FADE_SPEED_TO;
-		}
-		
-		return self;
-	}
-	
 	#endregion
-	#region Settings: Rendering (Global)
+	#region Settings: Global
 	
-	/// Sets the layer to render all Fracture Pieces on.
-	/// All Fracture Pieces share a single layer.
-	/// Unlike per-fracture settings, this persists until changed and is not affected by FRACTURE_AUTO_RESET.
+	/// Sets the layer or depth to render all Fracture Pieces on.
+	/// Pass a real for a depth, or a layer ID or name for a layer.
+	/// All Fracture Pieces share a single layer/depth.
+	/// Unlike per-fracture settings, this persists until changed again.
 	/// 
-	/// @param {Id.Layer,String} layer The layer ID or name to render all Fracture Pieces on.
+	/// @param {Real,Id.Layer,String} layerOrDepth The depth value, or the layer ID or name, to render all Fracture Pieces on.
 	/// 
 	/// @return {Struct.Fracture}
 	/// @self Fracture
-	static Layer = function(_layer) {
+	static RenderAt = function(_layerOrDepth) {
 		__FRACTURE_CATCH_RENDERER;
-		__FractureRenderer.layer = is_string(_layer) ? layer_get_id(_layer) : _layer;
 		
-		return self;
-	}
-	
-	/// Sets the depth to render all Fracture Pieces at.
-	/// All Fracture Pieces share a single depth.
-	/// Unlike per-fracture settings, this persists until changed and is not affected by FRACTURE_AUTO_RESET.
-	/// 
-	/// @param {Real} depth The depth value to render all Fracture Pieces at.
-	/// 
-	/// @return {Struct.Fracture}
-	/// @self Fracture
-	static Depth = function(_depth) {
-		__FRACTURE_CATCH_RENDERER;
-		__FractureRenderer.depth = _depth;
+		if (is_real(_layerOrDepth)) {
+			__FractureRenderer.depth = _layerOrDepth;
+		}
+		else if (is_string(_layerOrDepth) or is_handle(_layerOrDepth)) {
+			__FractureRenderer.layer = is_string(_layerOrDepth) ? layer_get_id(_layerOrDepth) : _layerOrDepth;
+		}
+		else {
+			__FractureError($"Could not render Pieces at layer or depth <{_layerOrDepth}>.\nExpected <Real, String or Id.Layer>, got <{typeof(_layerOrDepth)}>");
+		}
 		
 		return self;
 	}
@@ -399,6 +353,7 @@ function Fracture() {
 		__friction: FRACTURE_DEFAULT_FRICTION,
 		__linearDamping: FRACTURE_DEFAULT_LINEAR_DAMPING,
 		__angularDamping: FRACTURE_DEFAULT_ANGULAR_DAMPING,
+		__mass: undefined,
 	};
 	
 	/// @ignore
@@ -415,6 +370,31 @@ function Fracture() {
 		__delayTo: FRACTURE_DEFAULT_FADE_DELAY_TO,
 		__speedFrom: FRACTURE_DEFAULT_FADE_SPEED_FROM,
 		__speedTo: FRACTURE_DEFAULT_FADE_SPEED_TO,
+	};
+	
+	/// @ignore
+	static __ResetSettings = function() {
+		with (__physics) {
+			__collisionGroup = FRACTURE_DEFAULT_COLLISION_GROUP;
+			__density = FRACTURE_DEFAULT_DENSITY;
+			__restitution = FRACTURE_DEFAULT_RESTITUTION;
+			__friction = FRACTURE_DEFAULT_FRICTION;
+			__linearDamping = FRACTURE_DEFAULT_LINEAR_DAMPING;
+			__angularDamping = FRACTURE_DEFAULT_ANGULAR_DAMPING;
+			__mass = undefined;
+		}
+		with (__impulse) {
+			__strength = FRACTURE_DEFAULT_IMPULSE_STRENGTH;
+			__x = undefined;
+			__y = undefined;
+		}
+		with (__fade) {
+			__afterSettle = FRACTURE_DEFAULT_FADE_AFTER_SETTLE;
+			__delayFrom = FRACTURE_DEFAULT_FADE_DELAY_FROM;
+			__delayTo = FRACTURE_DEFAULT_FADE_DELAY_TO;
+			__speedFrom = FRACTURE_DEFAULT_FADE_SPEED_FROM;
+			__speedTo = FRACTURE_DEFAULT_FADE_SPEED_TO;
+		}
 	};
 	
 	#endregion

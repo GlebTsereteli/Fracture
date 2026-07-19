@@ -4,7 +4,7 @@
 
 Welcome to Fracture! Let's get you set up and ready to break your first instance into physics-driven pieces.
 
-We'll start by downloading and importing the `.yymps` package and preparing your project in [Installation](#installation). Then in [Usage](#usage), we'll walk through fracturing your first instance and see how Fracture breaks it into Box2D pieces. By the end, you'll have a simple working example that shatters an instance when you click on it.
+We'll start by downloading and importing the `.yymps` package and preparing your project in [Installation](#installation). Then in [First Setup](#first-setup), we'll walk through fracturing your first instance and see how Fracture breaks it into Box2D pieces. By the end, you'll have a simple working example that shatters an instance when you click on it.
 
 :::tip
 Throughout this page, and the documentation as a whole, you'll see many hyperlinks to key Fracture concepts. I encourage you to explore them briefly as you get started, as they'll help you quickly understand the library's overall structure.
@@ -23,7 +23,7 @@ Throughout this page, and the documentation as a whole, you'll see many hyperlin
 
 Fracture is a fairly specific library that makes some assumptions about your project and needs a bit of setup before you fracture anything. The two big ones to know upfront:
 * Room Physics must be enabled in any room where Fracture is used, since Pieces are handled as Box2D bodies.
-* Fractured instances must have a valid non-vector sprite assigned, and their `image_xscale`/`image_yscale` must be positive.
+* Fractured instances must have a valid non-vector sprite assigned, and their [image_xscale](https://manual.gamemaker.io/lts/en/#t=GameMaker_Language%2FGML_Reference%2FAsset_Management%2FSprites%2FSprite_Instance_Variables%2Fimage_xscale.htm)/[image_yscale](https://manual.gamemaker.io/lts/en/#t=GameMaker_Language%2FGML_Reference%2FAsset_Management%2FSprites%2FSprite_Instance_Variables%2Fimage_yscale.htm) must be positive.
 
 See the full [Requirements](/topics/requirements) page for the complete list before you get going, including physics world geometry, depth sorting, and scale limitations.
 
@@ -59,10 +59,9 @@ If you already have Fracture installed and want to update to the latest version,
 
 ## First Setup
 
-Let's set up a super simple example by fracturing some non-physics :Box:-shaped instances.
+Let's set up a simple example. We'll fracture some non-physics :Box:-shaped instances with a few different patterns, then add an :Impulse: to send :Pieces: flying.
 
-Here's what we'll be building.
-<Video src="./fractureImpulse.mp4" />
+<Video src="./fracture3.mp4" />
 
 > ℹ️ Download the [Fracture First Setup.yyz](https://github.com/glebtsereteli/Fracture/releases/latest/download/Fracture.First.Setup.yyz) example and poke around as you read.
 
@@ -100,9 +99,9 @@ To show that Fracture works with instances of any (positive) scale, we'll add a 
 ```js [Create event]
 /// @desc Randomize scale and frame
 
-image_xscale = random_range(1.2, 1.5);
-image_yscale = image_xscale;
-image_index = irandom(image_number - 1);
+image_xscale = random_range(1.2, 1.5); // [!code highlight]
+image_yscale = image_xscale; // [!code highlight]
+image_index = irandom(image_number - 1); // [!code highlight]
 ```
 :::
 
@@ -112,24 +111,28 @@ Finally, we'll drop a few instances of `objShape` in our test room.
 
 ### Take Control
 
-We'll also make a controller object called `objControl` and place it in the room. It sets the layer Fracture renders Pieces on in the Create event via :.RenderAt():, and restarts the room when pressing R so we can try different fracture results without relaunching the game.
+We'll also make a controller object called `objControl` and place it in the room. It sets the layer Fracture renders :Pieces: on in the Create event via :.RenderAt():, and restarts the room when pressing R so we can try different fracture results without relaunching the game.
+
+Our room has a **Debris** layer sitting just above **Instances**, so Pieces will draw in front of shapes and walls.
 
 :::code-group
 ```js [Create event]
 /// @desc Set Fracture rendering layer
 
-Fracture.RenderAt("Pieces");
+Fracture.RenderAt("Debris"); // [!code highlight]
 ```
 ```js [Key Press - R event]
 /// @desc Restart room
 
-room_restart();
+room_restart(); // [!code highlight]
 ```
 :::
 
-:::tip
-Setting the [rendering layer](/topics/rendering) puts Pieces on the same layer as the rest of our instances, so they sort correctly against everything else instead of drawing on the default depth.
-:::
+Pieces aren't drawn by the instances themselves. They're all rendered together in one batch by an internal renderer object, and that batch needs a single depth to sit at. :.RenderAt(): sets it by pointing at a layer in the room.
+
+---
+
+See [Rendering](/topics/rendering) for more details, including how the shared vertex buffer works and why Pieces can't be depth sorted against other instances.
 
 ### Set Boundaries
 
@@ -155,9 +158,9 @@ Let's use one of the available :Patterns: to fracture the shape. We'll go with :
 
 :::code-group
 ```js [Left Pressed event]
-/// @desc Fracture the instance
+/// @desc Fracture
 
-Fracture.ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4);
+Fracture.ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4); // [!code highlight]
 ```
 :::
 
@@ -173,7 +176,7 @@ That single call destroys the calling instance and creates the resulting physics
 
 Running the game now, we click a shape and it shatters into Pieces that fall and settle against the walls.
 
-<Video src="/home/gettingStarted/fractureNoImpulse.mp4" />
+<Video src="./fracture1.mp4" />
 
 You'll also see them fade out after a delay. They destroy themselves once fully transparent. That is Fracture's [Fading](/topics/pieces#settling-and-fading) system at work, which you can fully customize per fracture call via the :.Fade(): settings method.
 
@@ -184,36 +187,86 @@ Looking at the [Output](https://manual.gamemaker.io/lts/en/Introduction/The_Outp
 ```
 :::
 
-### Blow It Up
+### Mix It Up
 
-We've got our shapes fracturing, but the result is a little underwhelming. Pieces just drop straight down with no force behind them. Let's add an :Impulse: to sell the shatter!
+One pattern gets repetitive fast. Fracture ships 7 :Patterns: total, so let's play with some variation.
 
-Before calling :.ConvexGrid():, we'll add a :.Impulse(): call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get reactive directional explosions.
+We'll pick a random one on every click: :Grid: for regular subdivision, :Radial: for slices radiating from a point, and :Voronoi: for organic-looking shards.
+
+Note how :.ConvexRadial(): takes more than just a count. We pass it the number of slices, an angle noise value, and a world position to radiate from, so the shape splits outward from our mouse position.
 
 :::code-group
 ```js [Left Pressed event]
-/// @desc Fracture the instance with an impulse
+/// @desc Fracture with random pattern
 
-Fracture.Impulse(1.5, mouse_x, mouse_y).ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4);
+switch (irandom(2)) {
+	case 0: Fracture.ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4); break; // [!code highlight]
+	case 1: Fracture.ConvexRadial(id, FRACTURE_CONVEX_BOX, 8, 0.5, mouse_x, mouse_y); break; // [!code highlight]
+	case 2: Fracture.ConvexVoronoi(id, FRACTURE_CONVEX_BOX, 10); break; // [!code highlight]
+}
 ```
 :::
+
+<Video src="./fracture2.mp4" />
+
+Each pattern takes its own parameters, but the first two are always the same: the instance to fracture and the :Shape: constant. See [Convex Fracturing](/api/fracture/convexFracturing) for the full list.
+
+### Blow Things Up
+
+We've got our shapes fracturing, but the result is a little underwhelming. Pieces just drop straight down with no force behind them. Let's add an :Impulse: to sell the shatter!
+
+Before the switch, we'll add a :.Impulse(): call to apply an impulse to every Piece created by the next fracture. We'll give it a strength of `1.5` and originate it from the mouse to get reactive directional explosions.
+
+:::code-group
+```js [Left Pressed event]
+/// @desc Fracture with impulse and random pattern
+
+Fracture.Impulse(1.5, mouse_x, mouse_y); // [!code highlight]
+
+switch (irandom(2)) {
+	case 0: Fracture.ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4); break;
+	case 1: Fracture.ConvexRadial(id, FRACTURE_CONVEX_BOX, 8, 0.5, mouse_x, mouse_y); break;
+	case 2: Fracture.ConvexVoronoi(id, FRACTURE_CONVEX_BOX, 10); break;
+}
+```
+:::
+
+Notice that :.Impulse(): is called before fracturing. :Settings: apply to the next fracture regardless of which pattern runs, so we set it once before the switch.
 
 :::details Picking a Strength
 The right strength depends on your room's **Pixels To Meters** scale, so `1.5` works here but won't translate directly to a different setting. Expect to play around with the value until the shatter feels right for your game.
 :::
 
-Notice how we chain those calls together using Fracture's [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) API.
-
 ---
 
 Running the game again, our shapes burst away from the mouse. Awesome!
 
-<Video src="./fractureImpulse.mp4" />
+<Video src="./fracture3.mp4" />
+
+:::tip CHAINING
+:Settings: methods return `Fracture` itself, so you can chain them straight into the fracture call using the [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) API.
+```js
+Fracture.Impulse(1.5, mouse_x, mouse_y).ConvexGrid(id, FRACTURE_CONVEX_BOX, 4, 4);
+```
+Our switch keeps them separate only because we'd have to repeat the chain in all 3 branches.
+:::
+
+:::details Why Small Pieces Fly Faster
+You'll notice smaller Pieces shoot off faster than big ones. Box2D derives a fixture's mass from its density and area, so a small Piece is lighter, and the same impulse moves it further.
+
+That's usually what you want, but :.Mass(): overrides it and gives every Piece the same mass regardless of size.
+:::
 
 ## That's It!
 
 And we're done! That's a complete working fracture: a clickable instance that shatters into physics-driven Pieces that fade away on their own.
 
+Now that everything works, try swapping the :Shape:. Give `objShape` a round sprite and pass :FRACTURE_CONVEX_CIRCLE:, or an irregular one with :FRACTURE_CONVEX_HULL:. Every pattern accepts all 3 shapes, so the same calls clip the Pieces to the new silhouette.
+
+---
+
 This is of course just a quick demonstration. The same flow fits wherever your game needs it, whether that's a crate shattering on impact, an asteroid blown up by a rocket, or an enemy bursting into Pieces on death. You set the needed :Settings:, pick the right :Shape: and :Pattern:, and fracture your objects.
 
 From here, I'd recommend working through pages under Topics, starting with [Requirements](/topics/requirements), then [Pieces](/topics/pieces) and [Rendering](/topics/rendering), to get familiar with how Fracture works. The [API](/api/overview) section is there to reference along the way whenever you need the details on a specific pattern or setting.
+
+Now go break some things!

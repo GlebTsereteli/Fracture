@@ -268,7 +268,7 @@ function Fracture() {
 			__FractureRenderer.depth = _layerOrDepth;
 		}
 		else if (is_string(_layerOrDepth) or is_handle(_layerOrDepth)) {
-			__FractureRenderer.layer = _layerOrDepth;
+			__FractureRenderer.layer = is_string(_layerOrDepth) ? layer_get_id(_layerOrDepth) : _layerOrDepth;
 		}
 		else {
 			__FractureError($"Could not render Pieces at layer or depth <{_layerOrDepth}>.\nExpected <Real, String or Id.Layer>, got <{typeof(_layerOrDepth)}>");
