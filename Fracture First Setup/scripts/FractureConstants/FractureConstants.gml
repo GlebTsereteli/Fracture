@@ -1,5 +1,5 @@
 // feather ignore all
-// Documentation: https://glebtsereteli.github.io/Fracture/pages/api/constants
+// Documentation: https://glebtsereteli.github.io/Fracture/api/constants
 
 // This script defines constants used internally by the Fracture library.
 // Their values MUST NOT be modified.

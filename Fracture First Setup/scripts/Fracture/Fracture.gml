@@ -1,5 +1,5 @@
 // feather ignore all
-// Documentation: https://glebtsereteli.github.io/Fracture/pages/api/fracture/overview
+// Documentation: https://glebtsereteli.github.io/Fracture/api/fracture/overview
 
 /// Main Fracture interface. Manages Fracturing, per-fracture and global Settings, and Piece Lifecycle.
 /// Initialized internally, no additional setup required.
