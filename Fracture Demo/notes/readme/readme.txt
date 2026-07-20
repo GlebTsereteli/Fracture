@@ -4,7 +4,7 @@
 
 Welcome to the [Fracture](https://github.com/glebtsereteli/Fracture) demo project!
 
-This project showcases the core functionality of the library. It's designed as a feature demonstration and reference, not a tutorial. For a guided introduction, check out the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted/gettingStarted) page of the documentation.
+This project showcases the core functionality of the library. It's designed as a feature demonstration and reference, not a tutorial. For a guided introduction, check out the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted) page of the documentation.
 
 This project can also be played in the browser on the [itch page](https://glebtsereteli.itch.io/fracture).
 

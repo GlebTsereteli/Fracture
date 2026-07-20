@@ -55,7 +55,7 @@ export default defineConfig({
             text: '🏡 Home',
             items: [
               { text: 'What is Fracture?', link: '/home/whatIsIt/whatIsIt' },
-              { text: 'Getting Started', link: '/home/gettingStarted/gettingStarted' },
+              { text: 'Getting Started', link: '/home/gettingStarted' },
               { text: 'Upcoming Features', link: '/home/upcomingFeatures' },
               { text: 'FAQ', link: '/home/faq' },
             ]
@@ -96,7 +96,7 @@ export default defineConfig({
         link: '/home/whatIsIt/whatIsIt',
         items: [
           { text: 'What is Fracture?', link: '/home/whatIsIt/whatIsIt' },
-          { text: 'Getting Started', link: '/home/gettingStarted/gettingStarted' },
+          { text: 'Getting Started', link: '/home/gettingStarted' },
           { text: 'Upcoming Features', link: '/home/upcomingFeatures' },
           { text: 'FAQ', link: '/home/faq' },
         ]
@@ -186,7 +186,7 @@ export default defineConfig({
         'New Issue': 'https://github.com/glebtsereteli/Fracture/issues/new',
 
         // Home
-        'Getting Started': '/home/gettingStarted/gettingStarted',
+        'Getting Started': '/home/gettingStarted',
         'Upcoming Features': '/home/upcomingFeatures',
         'FAQ': '/home/faq',
 

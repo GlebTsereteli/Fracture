@@ -23,7 +23,7 @@ Fracture.Fade({ delay: 120, speed: 0.005 }).ConvexRadial(id, FRACTURE_CONVEX_CIR
 ```
 
 * ℹ️ Download the `.yymps` local package from the [latest release](https://github.com/glebtsereteli/Fracture/releases/latest/) page.
-* ℹ️ See the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted/gettingStarted#getting-started) page to fracture your first instance.
+* ℹ️ See the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted) page to fracture your first instance.
 
 ## Features
 

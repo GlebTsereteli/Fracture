@@ -38,7 +38,7 @@ Fracture follows the [Semantic Versioning](https://semver.org/) (often called **
 
 1. Back up your settings from the `FractureConfig` script.
 2. Delete the `Fracture` folder from your project.
-3. Repeat the [Installation](/home/gettingStarted/gettingStarted#installation) process.
+3. Repeat the [Installation](/home/gettingStarted#installation) process.
 4. Reapply your config changes in the `FractureConfig` script.
 
 ## Can I use Fracture without physics?

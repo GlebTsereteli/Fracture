@@ -2,7 +2,7 @@
 
 Welcome to Fracture v1.0.0 First Setup!
 
-This project is the example built in the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted/gettingStarted) page of the documentation, which walks you through installing Fracture and fracturing your first instance step by step.
+This project is the example built in the [Getting Started](https://glebtsereteli.github.io/Fracture/home/gettingStarted) page of the documentation, which walks you through installing Fracture and fracturing your first instance step by step.
 
 For a more complete picture of what Fracture can do, check out the demo project. It can be downloaded or played in the browser on the [itch page](https://glebtsereteli.itch.io/fracture).
 

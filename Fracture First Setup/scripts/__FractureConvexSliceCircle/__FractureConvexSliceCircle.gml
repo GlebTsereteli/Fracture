@@ -26,16 +26,16 @@ function __FractureConvexSliceCircle(_inst, _pieceCount, _cutAngle) {
 		var _vertCount = 0;
 		
 		// A-side arc: sweep nearA to farA
-		for (var _step = 0; _step <= _arcSteps; _step++) {
-			var _acos = lerp(_nearAcos, _farAcos, _step / _arcSteps);
+		for (var _s = 0; _s <= _arcSteps; _s++) {
+			var _acos = lerp(_nearAcos, _farAcos, _s / _arcSteps);
 			var _a = _cutAngle - 90 - _acos;
 			_polyX[_vertCount] = _centerX + (_radius * dcos(_a));
 			_polyY[_vertCount] = _centerY + (_radius * -dsin(_a));
 			_vertCount++;
 		}
 		// B-side arc, sweep farB to nearB
-		for (var _step = 0; _step <= _arcSteps; _step++) {
-			var _acos = lerp(_farAcos, _nearAcos, _step / _arcSteps);
+		for (var _s = 0; _s <= _arcSteps; _s++) {
+			var _acos = lerp(_farAcos, _nearAcos, _s / _arcSteps);
 			var _a = _cutAngle - 90 + _acos;
 			_polyX[_vertCount] = _centerX + (_radius * dcos(_a));
 			_polyY[_vertCount] = _centerY + (_radius * -dsin(_a));

@@ -11,7 +11,7 @@ hero:
       link: '/home/whatIsIt/whatIsIt'
     - theme: alt
       text: Get Started
-      link: '/home/gettingStarted/gettingStarted'
+      link: '/home/gettingStarted'
   image:
     src: /logoBig.png
     alt: Icon

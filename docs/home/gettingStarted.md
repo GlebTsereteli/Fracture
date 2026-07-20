@@ -61,14 +61,14 @@ If you already have Fracture installed and want to update to the latest version,
 
 Let's set up a simple example. We'll fracture some non-physics :Box:-shaped instances with a few different patterns, then add an :Impulse: to send :Pieces: flying.
 
-<Video src="./fracture3.mp4" />
+<Video src="/gettingStarted/fracture3.mp4" />
 
-> ℹ️ Download the [Fracture First Setup.yyz](https://github.com/glebtsereteli/Fracture/releases/latest/download/Fracture.First.Setup.yyz) example and poke around as you read.
+> ℹ️ Download the [Fracture First Setup.yyz](https://github.com/GlebTsereteli/Fracture/releases/download/v1.0.0/Fracture.v1.0.0.First.Setup.yyz) example and poke around as you read.
 
 ### Lay The Groundwork
 
 <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1.5rem;">
-  <img src="./shapeSprite.png" alt="objShape sprite" style="width: 118px; flex-shrink: 0;" />
+  <img src="/gettingStarted/shapeSprite.png" alt="objShape sprite" style="width: 118px; flex-shrink: 0;" />
   <div>
 
 Starting from a fresh project with the library imported, we'll create the object we'll be breaking. We'll call it `objShape` and give it a simple box-shaped sprite.
@@ -78,7 +78,7 @@ Starting from a fresh project with the library imported, we'll create the object
 
 This object won't be physics-enabled itself (although it could be, Fracture supports both), but the :Pieces: it breaks into are physics-driven, so we need to enable physics in our room either [through the IDE](https://manual.gamemaker.io/lts/en/The_Asset_Editors/Room_Properties/Room_Properties.htm#physics) or [programmatically](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Physics/The_Physics_World/physics_world_create.htm).
 
-![alt text](roomPhysics.png)
+![alt text](/gettingStarted/roomPhysics.png)
 
 :::warning NO PHYSICS CRASH
 If you forget to enable physics in a room where you use Fracture (or any other Box2D features), you'll get a crash saying: `The current room does not have a physics world representation`.
@@ -107,7 +107,7 @@ image_index = irandom(image_number - 1); // [!code highlight]
 
 Finally, we'll drop a few instances of `objShape` in our test room.
 
-![alt text](shapesInRoom.png)
+![alt text](/gettingStarted/shapesInRoom.png)
 
 ### Take Control
 
@@ -140,11 +140,11 @@ Before we fracture anything, our room needs something for Pieces to collide agai
 
 We'll make a wall object called `objWall` with a simple 64x64 box sprite and check **Uses Physics** on it. The defaults are fine across the board, with one exception: we'll set **Density** to `0` so the wall stays static and never moves.
 
-![alt text](wallObject.png)
+![alt text](/gettingStarted/wallObject.png)
 
 Then we'll place scaled `objWall` instances around the room to seal it in.
 
-![alt text](wallsInRoom.png)
+![alt text](/gettingStarted/wallsInRoom.png)
 
 Now our room is sealed and any Pieces we create will collide and bounce against the walls.
 
@@ -176,7 +176,7 @@ That single call destroys the calling instance and creates the resulting physics
 
 Running the game now, we click a shape and it shatters into Pieces that fall and settle against the walls.
 
-<Video src="./fracture1.mp4" />
+<Video src="/gettingStarted/fracture1.mp4" />
 
 You'll also see them fade out after a delay. They destroy themselves once fully transparent. That is Fracture's [Fading](/topics/pieces#settling-and-fading) system at work, which you can fully customize per fracture call via the :.Fade(): settings method.
 
@@ -207,7 +207,7 @@ switch (irandom(2)) {
 ```
 :::
 
-<Video src="./fracture2.mp4" />
+<Video src="/gettingStarted/fracture2.mp4" />
 
 Each pattern takes its own parameters, but the first two are always the same: the instance to fracture and the :Shape: constant. See [Convex Fracturing](/api/fracture/convexFracturing) for the full list.
 
@@ -241,7 +241,7 @@ The right strength depends on your room's **Pixels To Meters** scale, so `1.5` w
 
 Running the game again, our shapes burst away from the mouse. Awesome!
 
-<Video src="./fracture3.mp4" />
+<Video src="/gettingStarted/fracture3.mp4" />
 
 :::tip CHAINING
 :Settings: methods return `Fracture` itself, so you can chain them straight into the fracture call using the [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) API.
