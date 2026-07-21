@@ -49,7 +49,7 @@ But the plans reach much further! Here are some of the things I'd like to add:
 - **Caching**. Cache hulls and pools of pre-generated geometry, keeping things as fast as possible at runtime.
 - **Stylistic extras**. Piece outlines, weighted seams, and recursive re-fracturing.
 
-See the full list on the [Upcoming Features](https://glebtsereteli.github.io/Fracture/home/upcoming-features) page.
+See the full list on the [Upcoming Features](https://glebtsereteli.github.io/Fracture/home/upcomingFeatures) page.
 
 # Credits
 - Created and maintained by [Gleb Tsereteli](https://github.com/GlebTsereteli).
