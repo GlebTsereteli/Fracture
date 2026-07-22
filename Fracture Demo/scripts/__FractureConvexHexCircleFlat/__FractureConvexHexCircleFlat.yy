@@ -6,7 +6,7 @@
   "name":"__FractureConvexHexCircleFlat",
   "parent":{
     "name":"Circle",
-    "path":"folders/Fracture/(System)/Convex/04 Hex/Circle.yy",
+    "path":"folders/Fracture/(System)/Convex/05 Hex/Circle.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

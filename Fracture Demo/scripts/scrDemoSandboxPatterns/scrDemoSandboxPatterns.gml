@@ -63,6 +63,18 @@ function DemoSandboxPatternDiamond() : DemoSandboxPattern("Diamond") constructor
         return [cols, rows];
     };
 }
+function DemoSandboxPatternZigzag() : DemoSandboxPattern("Zigzag") constructor {
+    pieceCount = 4;
+    tipNoise = 0.5;
+    
+    static RefreshInterface = function() {
+        dbg_slider_int(ref_create(self, "pieceCount"), 2, 20, "Piece Count");
+        dbg_slider(ref_create(self, "tipNoise"), 0, 1, "Tip Noise", 0.05);
+    };
+    static GetArguments = function() {
+        return [pieceCount, tipNoise];
+    };
+}
 function DemoSandboxPatternHex() : DemoSandboxPattern("Hex") constructor {
     cols = 4;
     rows = 4;

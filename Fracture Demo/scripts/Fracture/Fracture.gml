@@ -66,6 +66,25 @@ function Fracture() {
 		return _funcs[_shape](_inst, _cols, _rows);
 	}
 	
+	/// Fractures the given convex instance into a zigzag strip of triangular Pieces clipped to the shape boundary, defined by the number of Pieces.
+	/// Optional noise varies the tip spacing to produce less uniform pieces.
+	/// The instance is destroyed automatically after fracturing.
+	/// Returns an array of the created Piece instances.
+	/// 
+	/// @param {Id.Instance} inst The instance to fracture.
+	/// @param {Real} shape The convex shape constant (FRACTURE_CONVEX_BOX, FRACTURE_CONVEX_CIRCLE, or FRACTURE_CONVEX_HULL).
+	/// @param {Real} pieceCount The number of Pieces.
+	/// @param {Real} tipNoise The tip spacing noise intensity, from 0 to 1. [Default: 0]
+	/// 
+	/// @return {Array<Id.Instance of __FracturePiece>}
+	/// @self Fracture
+	static ConvexZigzag = function(_inst, _shape, _pieceCount, _tipNoise = 0) {
+		/*@ignore*/ static _funcs = [__FractureConvexZigzagBox, __FractureConvexZigzagCircle, __FractureConvexZigzagHull];
+		
+		__FRACTURE_VALIDATE_SHAPE;
+		return _funcs[_shape](_inst, _pieceCount, _tipNoise);
+	}
+	
 	/// Fractures the given convex instance into a hexagonal pattern of Pieces clipped to the shape boundary, defined by the number of columns and rows.
 	/// The instance is destroyed automatically after fracturing.
 	/// Returns an array of the created Piece instances.

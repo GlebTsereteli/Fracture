@@ -1,4 +1,4 @@
-# Fracture v1.0.0 Demo
+# Fracture v1.1.0 Demo
 
 ## Welcome!
 

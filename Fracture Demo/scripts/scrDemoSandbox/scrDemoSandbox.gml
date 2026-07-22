@@ -81,6 +81,7 @@ function DemoSandbox() : Demo("Sandbox") constructor {
         new DemoSandboxPatternGrid(),
         new DemoSandboxPatternBrick(),
         new DemoSandboxPatternDiamond(),
+        new DemoSandboxPatternZigzag(),
         new DemoSandboxPatternHex(),
         new DemoSandboxPatternRadial(),
         new DemoSandboxPatternSlice(),

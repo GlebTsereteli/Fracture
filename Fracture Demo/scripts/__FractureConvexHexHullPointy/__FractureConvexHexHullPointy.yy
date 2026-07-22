@@ -6,7 +6,7 @@
   "name":"__FractureConvexHexHullPointy",
   "parent":{
     "name":"Hull",
-    "path":"folders/Fracture/(System)/Convex/04 Hex/Hull.yy",
+    "path":"folders/Fracture/(System)/Convex/05 Hex/Hull.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

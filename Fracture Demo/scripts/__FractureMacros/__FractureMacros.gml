@@ -3,8 +3,8 @@
 #region Info
 
 #macro __FRACTURE_NAME "Fracture"
-#macro __FRACTURE_VERSION "v1.0.0" // major.minor.patch
-#macro __FRACTURE_DATE "2026.07.19" // year.month.day
+#macro __FRACTURE_VERSION "v1.1.0" // major.minor.patch
+#macro __FRACTURE_DATE "2026.XX.XX" // year.month.day
 
 #endregion
 #region Constants
@@ -14,6 +14,7 @@
 #macro __FRACTURE_GOLDEN_ANGLE (180 * (3 - sqrt(5)));
 
 #macro __FRACTURE_GRID_MAX_NOISE 0.25
+#macro __FRACTURE_ZIGZAG_MAX_NOISE 0.4
 #macro __FRACTURE_VORONOI_BOX_MAX_NOISE 0.4
 
 #endregion
