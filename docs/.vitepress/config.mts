@@ -78,7 +78,7 @@ export default defineConfig({
           { 
             text: '🧩 Fracture',
             items: [
-              { text: 'Convex Fracturing', link: '/api/fracture/convexFracturing' },
+              { text: 'Convex Fracturing ⭐', link: '/api/fracture/convexFracturing' },
               { text: 'Settings', link: '/api/fracture/settings' },
               { text: 'Lifecycle', link: '/api/fracture/lifecycle' },
             ]
@@ -117,7 +117,7 @@ export default defineConfig({
             text: 'Fracture',
             link: '/api/fracture/overview',
             items: [
-              { text: 'Convex Fracturing', link: '/api/fracture/convexFracturing' },
+              { text: 'Convex Fracturing ⭐', link: '/api/fracture/convexFracturing' },
               { text: 'Settings', link: '/api/fracture/settings' },
               { text: 'Lifecycle', link: '/api/fracture/lifecycle' },
             ]
